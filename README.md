@@ -2,5 +2,5 @@
 Financial Portfolio Tracking System
 
 Developers:<br />
--Sultan Mira
+-Sultan Mira<br />
 -Hunter Caskey
