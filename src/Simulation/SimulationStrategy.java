@@ -11,14 +11,17 @@ import java.util.*;
 abstract class SimulationStrategy {
 
 	//attrs to be used by subclasses
-	protected double growthRate;
-	protected double initValue;
-	protected double currentValue;
-	protected int steps;
-	protected int interval;
+	private double growthRate;
+	private double initValue;
+	private double currentValue;
+	private int steps;
+	private int interval;
 	
+	public SimulationStrategy(){}
 	//Abstract methods
-	public abstract ArrayList<Double> simulate();
+	public abstract ArrayList<Double> simulate(double growthRate, 
+			int timeSteps, int interval, int value);
+	
 	public abstract Double steps();
 	
 	//Getters and setters

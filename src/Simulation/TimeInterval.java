@@ -11,7 +11,7 @@ public enum TimeInterval {
 	day, month, year;
 
 	// Maps to the enum, returns -1 if type not found.
-	public int getTime(TimeInterval t) {
+	public int mapInterval(TimeInterval t) {
 
 		int time = -1;
 		switch (t) {
@@ -27,4 +27,5 @@ public enum TimeInterval {
 		}
 		return time;
 	}
+
 }
