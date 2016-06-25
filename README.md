@@ -1,6 +1,6 @@
 # FPTS
 Financial Portfolio Tracking System
 
-Developers:
+Developers:\n
 -Sultan Mira
 -Hunter Caskey
