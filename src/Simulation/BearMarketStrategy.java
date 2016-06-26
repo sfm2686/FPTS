@@ -2,7 +2,6 @@
  * 
  */
 package Simulation;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 /**
@@ -30,22 +29,4 @@ public class BearMarketStrategy extends SimulationStrategy {
 		}
 		return vals;
 	}
-
-	/* (non-Javadoc)
-	 * @see Simulation.SimulationStrategy#steps()
-	 */
-	@Override
-	public Double steps() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
-
 }

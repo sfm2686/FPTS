@@ -7,6 +7,10 @@ import java.util.*;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
+ * 
+ * Works with an input value not portfolio.
+ * Input value should be replaced with a portfolio object when portfolio is 
+ * Implemented.
  *
  */
 public class SimulationContext {
@@ -17,10 +21,9 @@ public class SimulationContext {
 	private double initValue;
 	private double currentValue;
 	private int steps;
+	private int count;
 	private int intervalNum;
 	private String interval;
-	
-	private int count;
 	
 	/*
 	//Portfolio commented out until it is implemented
@@ -52,17 +55,20 @@ public class SimulationContext {
 			this.strategy = new NoGrowthMarketStrategy();		
 	}
 	
-	private int determineInterval(String i){
-		
-		switch(i.toLowerCase()) {
-		case "day"  : return 7;
-		case "month": return 30;
-		case "year" : return 365;
-		}
-		return -1;
+	public String getInterval(){
+		return this.interval;
 	}
 	
-	private double getNextResult(){
+	//Testing purposes..
+	public double getInitValue(){
+		return this.initValue;
+	}
+	
+	public void restValue(){
+		this.currentValue = this.initValue;
+	}
+	
+	public double getNextResult(){
 		if ( this.count == this.simResults.size() ){
 			this.count = -1;
 			return (double) count;
@@ -84,26 +90,17 @@ public class SimulationContext {
 			this.strategy = new BullMarketStrategy();
 		else
 			this.strategy = new NoGrowthMarketStrategy();
-		System.out.println("NEWSIM() IS CALLED ---------------------------");
 	}
 	
-	public ArrayList<Double> simulate(){
+	public void simulate(){
 		this.simResults = this.strategy.simulate(this.growthRate, this.currentValue,
 				this.steps, this.intervalNum);
-		System.out.println("SIMULATE() IS CALLED ...........................");
+		this.count = 0;
+		
+		//Testing purposes ..
 		System.out.println(this.simResults);
-		return this.simResults;
 	}
 	
-	public void testingDisplay(){
-		Scanner scan = new Scanner(System.in);
-		while ( this.count != -1 ){
-			if ( scan.nextLine().isEmpty() && this.count != -1)
-				System.out.print(this.getNextResult());
-			else
-				System.out.println("Simulation done.");
-		}
-	}
 	
 	//-------------------------------------------------------------------------
 	//                            MAIN
@@ -114,14 +111,16 @@ public class SimulationContext {
 	public static void main(String[] args) {
 		//Testing .. 
 		int timeSteps;
+		int c;
 		double initValue;
 		double growthRate;
+		double val;
 		String interval;
 		String result;
 		
 		Scanner input = new Scanner(System.in);
 		System.out.print("Please enter time interval(year, month, day): ");
-		interval = input.nextLine();
+		interval = input.next();
 		System.out.print("Please enter time steps(integer): ");
 		timeSteps = input.nextInt();
 		System.out.print("Please enter the portfolio's value(double): ");
@@ -134,26 +133,50 @@ public class SimulationContext {
 		test.simulate();
 		
 		System.out.println("\nPlease press 'Enter' to view next value");
-		test.testingDisplay();
+		c = 1;
+		val = test.getNextResult();
+		while ( val != -1 ){
+			if ( input.nextLine().isEmpty() )
+				System.out.print(test.getInterval() + " " + c ++ + ": " + val);
+			else {
+				System.out.println("Stopping simulation result display");
+				break;
+			}
+			val = test.getNextResult();
+		}
+		
 		
 		while ( true ){
-			System.out.println("\nWould you like to simulate again?");
-			System.out.print("Please type 'Yes' or 'No': ");
-			result = input.nextLine();
-			System.out.println("YOU ENTERED " + result);
-			System.out.print("Please enter time interval(year, month, day): ");
-			interval = input.nextLine();
-			System.out.print("Please enter time steps(integer): ");
-			timeSteps = input.nextInt();
-			System.out.print("Please enter the growth rate(%): ");
-			growthRate = input.nextDouble();
-			test.newSim(growthRate, timeSteps, interval);
-			test.simulate();
-			System.out.println("\nPlease press 'Enter' to view next value");
-			test.testingDisplay();
+			System.out.print("\nWould you like to simulate again(yes, no): ");
+			result = input.next();
+			if ( result.equalsIgnoreCase("yes") ){
+				System.out.print("Please enter time interval(year, month, day): ");
+				interval = input.next();
+				System.out.print("Please enter time steps(integer): ");
+				timeSteps = input.nextInt();
+				System.out.print("Please enter the growth rate(%): ");
+				growthRate = input.nextDouble();
+				test.newSim(growthRate, timeSteps, interval);
+				test.simulate();
+				System.out.println("\nPlease press 'Enter' to view next value");
+				c = 1;
+				val = test.getNextResult();
+				while ( val != -1 ){
+					if ( input.nextLine().isEmpty() )
+						System.out.print(test.getInterval() + " " + c ++ + ": " + val);
+					else {
+						System.out.println("Stopping simulation result display");
+						break;
+					}
+					val = test.getNextResult();
+				}
+				
+			}
+			else
+				break;
 
 		}
-		//System.out.println("End of testing for simulationContext");
+		System.out.println("End of testing for simulationContext");
 	
 	}
 

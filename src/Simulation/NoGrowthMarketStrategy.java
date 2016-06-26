@@ -23,18 +23,9 @@ public class NoGrowthMarketStrategy extends SimulationStrategy {
 		ArrayList vals = new ArrayList<Double>();
 		for ( int i = 0; i < (timeSteps * interval); i ++ )
 			vals.add(super.getCurrentValue());
-		return vals;
-		
+		return vals;	
 	}
 
-	/* (non-Javadoc)
-	 * @see Simulation.SimulationStrategy#steps()
-	 */
-	@Override
-	public Double steps() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	/**
 	 * @param args

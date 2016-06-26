@@ -43,7 +43,4 @@ abstract class SimulationStrategy {
 	public abstract ArrayList<Double> simulate(double growthRate, 
 			double value, int timeSteps, int interval);
 	
-	public abstract Double steps();
-	
-	//Getters and setters
 }
