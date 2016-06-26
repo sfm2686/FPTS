@@ -13,11 +13,18 @@ public class BearMarketStrategy extends SimulationStrategy {
 	/* (non-Javadoc)
 	 * @see Simulation.SimulationStrategy#simulate()
 	 */
-	@Override
+	
 	public ArrayList<Double> simulate(double growthRate, 
-			int timeSteps, int interval, int value) {
-		// TODO Auto-generated method stub
-		return null;
+			double value, int timeSteps, int interval) {
+		
+		super.setInitValue(value);
+		super.setCurrentValue(value);
+		ArrayList vals = new ArrayList<Double>();
+		for ( int i = 0; i < (timeSteps * interval); i ++ ){
+			super.setCurrentValue(super.getCurrentValue() * growthRate);
+			vals.add(super.getCurrentValue());
+		}
+		return vals;
 	}
 
 	/* (non-Javadoc)

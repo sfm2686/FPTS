@@ -16,7 +16,7 @@ public class BullMarketStrategy extends SimulationStrategy {
 	 */
 	@Override
 	public ArrayList<Double> simulate(double growthRate, 
-			int timeSteps, int interval, int value) {
+			double value, int timeSteps, int interval) {
 		// TODO Auto-generated method stub
 		return null;
 	}
