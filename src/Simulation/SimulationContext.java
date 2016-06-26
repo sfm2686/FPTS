@@ -103,11 +103,11 @@ public class SimulationContext {
 		int timeSteps = input.nextInt();
 		System.out.print("Please enter the portfolio's value(double): ");
 		double initValue = input.nextDouble();
-		System.out.print("Please enter the growth rate(double): ");
+		System.out.print("Please enter the growth rate(%): ");
 		double growthRate = input.nextDouble();
 		System.out.println("Assuming all of the information provided is correct, starting simulation...");
 		
-		SimulationContext test = new SimulationContext(growthRate, initValue, timeSteps, interval);
+		SimulationContext test = new SimulationContext(growthRate / 100, initValue, timeSteps, interval);
 		test.simulate();
 		
 		System.out.println("\nPlease press 'Enter' to view next value");

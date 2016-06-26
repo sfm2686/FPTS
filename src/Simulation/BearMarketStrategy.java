@@ -2,6 +2,7 @@
  * 
  */
 package Simulation;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 /**
@@ -20,8 +21,11 @@ public class BearMarketStrategy extends SimulationStrategy {
 		super.setInitValue(value);
 		super.setCurrentValue(value);
 		ArrayList vals = new ArrayList<Double>();
+		double result;
 		for ( int i = 0; i < (timeSteps * interval); i ++ ){
-			super.setCurrentValue(super.getCurrentValue() * growthRate);
+			result = super.getCurrentValue() +
+					(super.getCurrentValue() * growthRate);
+			super.setCurrentValue(Math.round(result * 100.0) / 100.0);
 			vals.add(super.getCurrentValue());
 		}
 		return vals;

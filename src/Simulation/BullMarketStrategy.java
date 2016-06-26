@@ -2,8 +2,8 @@
  * 
  */
 package Simulation;
-
-import java.util.ArrayList;
+import java.util.*;
+import java.lang.*;
 
 /**
  * @author Sultan Mira
@@ -17,8 +17,20 @@ public class BullMarketStrategy extends SimulationStrategy {
 	@Override
 	public ArrayList<Double> simulate(double growthRate, 
 			double value, int timeSteps, int interval) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		super.setInitValue(value);
+		super.setCurrentValue(value);
+		ArrayList vals = new ArrayList<Double>();
+		double result;
+		for ( int i = 0; i < (timeSteps * interval) &&
+				super.getCurrentValue() >= 0; i ++ ){
+			result = super.getCurrentValue() -
+					(super.getCurrentValue() * Math.abs(growthRate));
+			super.setCurrentValue(Math.round(result * 100.0) / 100.0);
+			vals.add(super.getCurrentValue());
+		}
+		return vals;
+		
 	}
 
 	/* (non-Javadoc)

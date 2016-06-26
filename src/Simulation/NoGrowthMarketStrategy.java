@@ -17,8 +17,14 @@ public class NoGrowthMarketStrategy extends SimulationStrategy {
 	@Override
 	public ArrayList<Double> simulate(double growthRate, 
 			double value, int timeSteps, int interval) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		super.setInitValue(value);
+		super.setCurrentValue(value);
+		ArrayList vals = new ArrayList<Double>();
+		for ( int i = 0; i < (timeSteps * interval); i ++ )
+			vals.add(super.getCurrentValue());
+		return vals;
+		
 	}
 
 	/* (non-Javadoc)
