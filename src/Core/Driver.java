@@ -7,7 +7,7 @@ package Core;
  * @authors Sultan Mira, Hunter Caskey
  * 
  * 
- * This is a test for merging files.
+ * This is NOT(JUST ADDED) a test for merging files.
  *
  */
 public class Driver {
