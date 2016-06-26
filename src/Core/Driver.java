@@ -8,6 +8,8 @@ package Core;
  * 
  * 
  * This is NOT(JUST NOT ADDED) a test for merging files.
+ * This is (JUST ADDED) a test for merging files.
+ * Sultan Mira
  *
  */
 public class Driver {
