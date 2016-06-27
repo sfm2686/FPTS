@@ -1,5 +1,9 @@
 package CSV;
 
-public class IndexUtil {
-
+public class IndexUtil extends EquityUtil {
+ 
+	
+	public double getPrice(){
+		
+	}
 }

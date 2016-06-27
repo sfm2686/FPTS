@@ -1,6 +1,4 @@
-/**
- * 
- */
+import java.util.*;
 package CSV;
 
 /**
@@ -16,5 +14,8 @@ public class EquityBin {
 		// TODO Auto-generated method stub
 
 	}
-
+	
+	public void addEquity(ArrayList<String> equity){
+		
+	}
 }
