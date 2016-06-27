@@ -4,7 +4,7 @@
 package Finance;
 
 /**
- * @author muro
+ * @author Sultan Mira & Hunter Caskey
  *
  */
 public class Portfolio {
