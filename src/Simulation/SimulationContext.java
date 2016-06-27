@@ -172,8 +172,11 @@ public class SimulationContext {
 				}
 				
 			}
-			else
+			else { //Reset value back..
+				System.out.println("Your portfolio's value is reset back to: " +
+						test.getInitValue());
 				break;
+			}
 
 		}
 		System.out.println("End of testing for simulationContext");
