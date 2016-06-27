@@ -145,7 +145,6 @@ public class SimulationContext {
 			val = test.getNextResult();
 		}
 		
-		
 		while ( true ){
 			System.out.print("\nWould you like to simulate again(yes, no): ");
 			result = input.next();
@@ -170,17 +169,13 @@ public class SimulationContext {
 					}
 					val = test.getNextResult();
 				}
-				
 			}
 			else { //Reset value back..
 				System.out.println("Your portfolio's value is reset back to: " +
 						test.getInitValue());
 				break;
 			}
-
 		}
 		System.out.println("End of testing for simulationContext");
-	
 	}
-
 }
