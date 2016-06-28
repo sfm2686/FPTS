@@ -34,7 +34,22 @@ public class EquityBin {
 	 * 		The remaining values of the collection specify the index/sector that the stock belongs to, if any.
 	 */
 	public void addEquity(ArrayList<String> equity){
-		
+		StockUtil stock = new StockUtil(equity.get(0), equity.get(1), equity.get(2));
+		this.stockBin.add(stock);
+		for(int i = 3; i <= equity.size(); i++){
+			this.getIndex(equity.get(i)).addStock(stock);;
+		}
+	}
+	
+	private IndexUtil getIndex(String name){
+		for(IndexUtil index : this.indexBin){
+			if(index.getName().equals(name)){
+				return(index);
+			}
+		}
+		IndexUtil index = new IndexUtil(name);
+		this.indexBin.add(index);
+		return (new IndexUtil(name));	
 	}
 	
 	/**
