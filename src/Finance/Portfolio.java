@@ -1,6 +1,4 @@
-/**
- * 
- */
+import java.util.ArrayList;
 package Finance;
 
 /**
@@ -9,6 +7,9 @@ package Finance;
  */
 public class Portfolio {
 
+	private Log log;
+	private User owner;
+	private ArrayList<Holding> holdings;
 	
 	public double getValue(){
 		return 0;
