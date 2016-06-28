@@ -4,6 +4,7 @@
 package Finance;
 
 import java.util.ArrayList;
+import CSV.*;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
@@ -11,18 +12,26 @@ import java.util.ArrayList;
  */
 public class Stock extends Equity {
 
-	private String name;
+	private StockUtil referenceStock;
 	
-	
-	public String getTicker(){
-		return this.name;
+	public Stock(int numShares, StockUtil referenceStock){
+		super.setNumShares(numShares);
+		this.referenceStock = referenceStock;
 	}
 	
-	@Override
-	double getPrice(String name) {
-		// TODO Auto-generated method stub
-		return 0;
+	public String getTickerSymbol(){
+		return this.referenceStock.getTickerSymbol();
 	}
+	
+	public String getName(){
+		return referenceStock.getName();
+	}
+	
+	public double getPrice(){
+		return this.referenceStock.getPrice();
+	}
+	
+	// Following methods should not be implemented as part of the Composite (leaf) Pattern.
 	
 	@Override
 	void removeChild(Stock child) {}

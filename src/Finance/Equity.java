@@ -11,9 +11,16 @@ import java.util.ArrayList;
  */
 public abstract class Equity implements Holding {
 
+	private int numShares;
 	
-	abstract double getPrice( String name );
+	protected void setNumShares(int shares){
+		this.numShares = shares;
+	}
 	
+	public int getNumShares(){
+		return this.numShares;
+	}
+
 	//CHILD RELATED OPERATIONS
 	
 	abstract void removeChild(Stock child);
