@@ -19,7 +19,7 @@ public class Context {
 	//Private User user;
 	
 	public Context(){
-		//Should set the portfolio depending on the user.
+		//Should set the user
 	}
 	
 	public void setVars(){
@@ -43,7 +43,7 @@ public class Context {
 		State S17 = new ViewSimResults(this);
 		State S18 = new DisplayLog(this);
 		
-		State[][] tables = { 
+		State[][] tempTable = { 
 				{S1, S16, S18},           //0
 				{S13, S15, S10, S2, S4},  //1
 				{S3},                     //2
@@ -64,7 +64,11 @@ public class Context {
 				{S16, S0},                //17
 				{S0}                      //18
 				};
-		
+		this.table = tempTable;
+	}
+	
+	public void setPortfolio( Portfolio portfolio ){
+		this.portfolio = portfolio;
 	}
 	
 	public void goToNextState(State next){
@@ -74,8 +78,7 @@ public class Context {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		
 	}
 
 }
