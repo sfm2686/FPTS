@@ -24,13 +24,12 @@ public class Stock extends Equity {
 	}
 	
 	public String getName(){
-		return super.getName();
+		return referenceStock.getName();
 	}
 	
 	public double getPrice(){
 		return this.referenceStock.getPrice();
 	}
-	
 	
 	// Following methods should not be implemented as part of the Composite (leaf) Pattern.
 	

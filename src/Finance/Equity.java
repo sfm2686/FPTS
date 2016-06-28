@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * @authors Sultan Mira, Hunter Caskey
  *
  */
-public abstract class Equity extends Holding {
+public abstract class Equity implements Holding {
 
 	private int numShares;
 	
@@ -20,18 +20,7 @@ public abstract class Equity extends Holding {
 	public int getNumShares(){
 		return this.numShares;
 	}
-	
-	
-	protected double getPrice( String name ){
-		//TODO
-		//THIS WILL BE DONE AFTER EQUITYBIN IS DONE
-		return -1;
-	}
-	
-	public String getName(){
-		return super.getName();
-	}
-	
+
 	//CHILD RELATED OPERATIONS
 	
 	abstract void removeChild(Stock child);
