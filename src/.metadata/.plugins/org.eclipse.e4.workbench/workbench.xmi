@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="ASCII"?>
 <application:Application xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:advanced="http://www.eclipse.org/ui/2010/UIModel/application/ui/advanced" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_DOQwwD1TEeaCrcP7Fj4eLA" elementId="org.eclipse.e4.legacy.ide.application" contributorURI="platform:/plugin/org.eclipse.platform" selectedElement="_DOQwwT1TEeaCrcP7Fj4eLA" bindingContexts="_DOQwwz1TEeaCrcP7Fj4eLA">
-  <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;workbench>&#xA;&lt;mruList/>&#xA;&lt;/workbench>"/>
+  <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;workbench>&#xA;&lt;mruList>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;TransactionClient.java&quot; tooltip=&quot;/Users/huntercaskey/git/FPTS/src/Finance/TransactionClient.java&quot;>&#xA;&lt;persistable uri=&quot;file:/Users/huntercaskey/git/FPTS/src/Finance/TransactionClient.java&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;Transaction.java&quot; tooltip=&quot;/Users/huntercaskey/git/FPTS/src/Finance/Transaction.java&quot;>&#xA;&lt;persistable uri=&quot;file:/Users/huntercaskey/git/FPTS/src/Finance/Transaction.java&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;SubtractEquity.java&quot; tooltip=&quot;/Users/huntercaskey/git/FPTS/src/Finance/SubtractEquity.java&quot;>&#xA;&lt;persistable uri=&quot;file:/Users/huntercaskey/git/FPTS/src/Finance/SubtractEquity.java&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;SubtractCash.java&quot; tooltip=&quot;/Users/huntercaskey/git/FPTS/src/Finance/SubtractCash.java&quot;>&#xA;&lt;persistable uri=&quot;file:/Users/huntercaskey/git/FPTS/src/Finance/SubtractCash.java&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;Stock.java&quot; tooltip=&quot;/Users/huntercaskey/git/FPTS/src/Finance/Stock.java&quot;>&#xA;&lt;persistable uri=&quot;file:/Users/huntercaskey/git/FPTS/src/Finance/Stock.java&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;RemoveEquity.java&quot; tooltip=&quot;/Users/huntercaskey/git/FPTS/src/Finance/RemoveEquity.java&quot;>&#xA;&lt;persistable uri=&quot;file:/Users/huntercaskey/git/FPTS/src/Finance/RemoveEquity.java&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;RemoveCash.java&quot; tooltip=&quot;/Users/huntercaskey/git/FPTS/src/Finance/RemoveCash.java&quot;>&#xA;&lt;persistable uri=&quot;file:/Users/huntercaskey/git/FPTS/src/Finance/RemoveCash.java&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;Receiver.java&quot; tooltip=&quot;/Users/huntercaskey/git/FPTS/src/Finance/Receiver.java&quot;>&#xA;&lt;persistable uri=&quot;file:/Users/huntercaskey/git/FPTS/src/Finance/Receiver.java&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;Log.java&quot; tooltip=&quot;/Users/huntercaskey/git/FPTS/src/Finance/Log.java&quot;>&#xA;&lt;persistable uri=&quot;file:/Users/huntercaskey/git/FPTS/src/Finance/Log.java&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;Index.java&quot; tooltip=&quot;/Users/huntercaskey/git/FPTS/src/Finance/Index.java&quot;>&#xA;&lt;persistable uri=&quot;file:/Users/huntercaskey/git/FPTS/src/Finance/Index.java&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;Holding.java&quot; tooltip=&quot;/Users/huntercaskey/git/FPTS/src/Finance/Holding.java&quot;>&#xA;&lt;persistable uri=&quot;file:/Users/huntercaskey/git/FPTS/src/Finance/Holding.java&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;Equity.java&quot; tooltip=&quot;/Users/huntercaskey/git/FPTS/src/Finance/Equity.java&quot;>&#xA;&lt;persistable uri=&quot;file:/Users/huntercaskey/git/FPTS/src/Finance/Equity.java&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;CreateEquity.java&quot; tooltip=&quot;/Users/huntercaskey/git/FPTS/src/Finance/CreateEquity.java&quot;>&#xA;&lt;persistable uri=&quot;file:/Users/huntercaskey/git/FPTS/src/Finance/CreateEquity.java&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;CreateCash.java&quot; tooltip=&quot;/Users/huntercaskey/git/FPTS/src/Finance/CreateCash.java&quot;>&#xA;&lt;persistable uri=&quot;file:/Users/huntercaskey/git/FPTS/src/Finance/CreateCash.java&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;CashAcc.java&quot; tooltip=&quot;/Users/huntercaskey/git/FPTS/src/Finance/CashAcc.java&quot;>&#xA;&lt;persistable uri=&quot;file:/Users/huntercaskey/git/FPTS/src/Finance/CashAcc.java&quot;/>&#xA;&lt;/file>&#xA;&lt;/mruList>&#xA;&lt;/workbench>"/>
   <tags>activeSchemeId:org.eclipse.ui.defaultAcceleratorConfiguration</tags>
   <tags>ModelMigrationProcessor.001</tags>
-  <children xsi:type="basic:TrimmedWindow" xmi:id="_DOQwwT1TEeaCrcP7Fj4eLA" elementId="IDEWindow" contributorURI="platform:/plugin/org.eclipse.platform" selectedElement="_DygtUT1TEeaCrcP7Fj4eLA" label="%trimmedwindow.label.eclipseSDK" x="42" y="23" width="1024" height="717">
+  <children xsi:type="basic:TrimmedWindow" xmi:id="_DOQwwT1TEeaCrcP7Fj4eLA" elementId="IDEWindow" contributorURI="platform:/plugin/org.eclipse.platform" selectedElement="_DygtUT1TEeaCrcP7Fj4eLA" label="%trimmedwindow.label.eclipseSDK" x="42" y="23" width="1241" height="717">
     <persistedState key="coolBarVisible" value="true"/>
     <persistedState key="perspectiveBarVisible" value="true"/>
     <persistedState key="isRestored" value="true"/>
     <persistedState key="show_in_time" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;show_in_time/>"/>
     <persistedState key="workingSets" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;workingSets/>"/>
-    <persistedState key="aggregateWorkingSetId"/>
+    <persistedState key="aggregateWorkingSetId" value="Aggregate for window 1467134557244"/>
     <tags>topLevel</tags>
+    <tags>shellMaximized</tags>
     <children xsi:type="basic:PartSashContainer" xmi:id="_DygtUT1TEeaCrcP7Fj4eLA" selectedElement="_DygtUj1TEeaCrcP7Fj4eLA" horizontal="true">
       <children xsi:type="advanced:PerspectiveStack" xmi:id="_DygtUj1TEeaCrcP7Fj4eLA" elementId="org.eclipse.ui.ide.perspectivestack" containerData="7500" selectedElement="_EEcK0D1TEeaCrcP7Fj4eLA">
         <children xsi:type="advanced:Perspective" xmi:id="_EEcK0D1TEeaCrcP7Fj4eLA" elementId="org.eclipse.jst.j2ee.J2EEPerspective" selectedElement="_EEcK0T1TEeaCrcP7Fj4eLA" label="Java EE" iconURI="platform:/plugin/org.eclipse.jst.j2ee.ui/icons/full/cview16/j2ee_perspective.gif">
@@ -69,16 +70,15 @@
           <tags>persp.newWizSC:org.eclipse.m2e.core.wizards.Maven2ProjectWizard</tags>
           <tags>persp.showIn:org.eclipse.tm.terminal.view.ui.TerminalsView</tags>
           <tags>persp.actionSet:org.eclipse.wst.ws.explorer.explorer</tags>
-          <children xsi:type="basic:PartSashContainer" xmi:id="_EEcK0T1TEeaCrcP7Fj4eLA" selectedElement="_EEcK0j1TEeaCrcP7Fj4eLA" horizontal="true">
+          <children xsi:type="basic:PartSashContainer" xmi:id="_EEcK0T1TEeaCrcP7Fj4eLA" selectedElement="_EEcK1z1TEeaCrcP7Fj4eLA" horizontal="true">
             <children xsi:type="basic:PartStack" xmi:id="_EEcK0j1TEeaCrcP7Fj4eLA" elementId="topLeft" containerData="2500" selectedElement="_EEcK0z1TEeaCrcP7Fj4eLA">
-              <tags>active</tags>
               <children xsi:type="advanced:Placeholder" xmi:id="_EEcK0z1TEeaCrcP7Fj4eLA" elementId="org.eclipse.ui.navigator.ProjectExplorer" ref="_EEEXYD1TEeaCrcP7Fj4eLA"/>
               <children xsi:type="advanced:Placeholder" xmi:id="_EEcK1D1TEeaCrcP7Fj4eLA" elementId="org.eclipse.ui.views.ResourceNavigator" toBeRendered="false" ref="_EEFlgD1TEeaCrcP7Fj4eLA"/>
               <children xsi:type="advanced:Placeholder" xmi:id="_EEcK1T1TEeaCrcP7Fj4eLA" elementId="org.eclipse.jdt.ui.TypeHierarchy" toBeRendered="false" ref="_EEGMkD1TEeaCrcP7Fj4eLA"/>
               <children xsi:type="advanced:Placeholder" xmi:id="_EEcK1j1TEeaCrcP7Fj4eLA" elementId="org.eclipse.jdt.ui.PackagesView" toBeRendered="false" ref="_EEXSUD1TEeaCrcP7Fj4eLA"/>
             </children>
-            <children xsi:type="basic:PartSashContainer" xmi:id="_EEcK1z1TEeaCrcP7Fj4eLA" containerData="7500">
-              <children xsi:type="basic:PartSashContainer" xmi:id="_EEcK2D1TEeaCrcP7Fj4eLA" containerData="7000" horizontal="true">
+            <children xsi:type="basic:PartSashContainer" xmi:id="_EEcK1z1TEeaCrcP7Fj4eLA" containerData="7500" selectedElement="_EEcK2D1TEeaCrcP7Fj4eLA">
+              <children xsi:type="basic:PartSashContainer" xmi:id="_EEcK2D1TEeaCrcP7Fj4eLA" containerData="7000" selectedElement="_EEcK2T1TEeaCrcP7Fj4eLA" horizontal="true">
                 <children xsi:type="advanced:Placeholder" xmi:id="_EEcK2T1TEeaCrcP7Fj4eLA" elementId="org.eclipse.ui.editorss" containerData="7000" ref="_ED6mYD1TEeaCrcP7Fj4eLA"/>
                 <children xsi:type="basic:PartStack" xmi:id="_EEcK2j1TEeaCrcP7Fj4eLA" elementId="topRight" containerData="3000" selectedElement="_EEcK2z1TEeaCrcP7Fj4eLA">
                   <children xsi:type="advanced:Placeholder" xmi:id="_EEcK2z1TEeaCrcP7Fj4eLA" elementId="org.eclipse.ui.views.ContentOutline" ref="_EEZHhD1TEeaCrcP7Fj4eLA"/>
@@ -125,18 +125,121 @@
       <tags>View</tags>
       <tags>categoryTag:Help</tags>
     </sharedElements>
-    <sharedElements xsi:type="advanced:Area" xmi:id="_ED6mYD1TEeaCrcP7Fj4eLA" elementId="org.eclipse.ui.editorss">
-      <children xsi:type="basic:PartStack" xmi:id="_ED6mYT1TEeaCrcP7Fj4eLA" elementId="org.eclipse.e4.primaryDataStack">
+    <sharedElements xsi:type="advanced:Area" xmi:id="_ED6mYD1TEeaCrcP7Fj4eLA" elementId="org.eclipse.ui.editorss" selectedElement="_ED6mYT1TEeaCrcP7Fj4eLA">
+      <children xsi:type="basic:PartStack" xmi:id="_ED6mYT1TEeaCrcP7Fj4eLA" elementId="org.eclipse.e4.primaryDataStack" selectedElement="_H2gcUD1VEeaKuJexM7hjWQ">
         <tags>org.eclipse.e4.primaryDataStack</tags>
         <tags>EditorStack</tags>
+        <tags>active</tags>
+        <children xsi:type="basic:Part" xmi:id="_HRY9ED1VEeaKuJexM7hjWQ" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="AddCash.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.png" closeable="true">
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;AddCash.java&quot; partName=&quot;AddCash.java&quot; title=&quot;AddCash.java&quot; tooltip=&quot;/Users/huntercaskey/git/FPTS/src/Finance/AddCash.java&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; uri=&quot;file:/Users/huntercaskey/git/FPTS/src/Finance/AddCash.java&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;0&quot; selectionTopPixel=&quot;0&quot;/>&#xA;&lt;/editor>"/>
+          <tags>Editor</tags>
+          <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
+          <tags>removeOnHide</tags>
+        </children>
+        <children xsi:type="basic:Part" xmi:id="_HcidID1VEeaKuJexM7hjWQ" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="AddEquity.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.png" closeable="true">
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;AddEquity.java&quot; partName=&quot;AddEquity.java&quot; title=&quot;AddEquity.java&quot; tooltip=&quot;/Users/huntercaskey/git/FPTS/src/Finance/AddEquity.java&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; uri=&quot;file:/Users/huntercaskey/git/FPTS/src/Finance/AddEquity.java&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;0&quot; selectionTopPixel=&quot;0&quot;/>&#xA;&lt;/editor>"/>
+          <tags>Editor</tags>
+          <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
+          <tags>removeOnHide</tags>
+        </children>
+        <children xsi:type="basic:Part" xmi:id="_HepV8D1VEeaKuJexM7hjWQ" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="CashAcc.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.png" closeable="true">
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;CashAcc.java&quot; partName=&quot;CashAcc.java&quot; title=&quot;CashAcc.java&quot; tooltip=&quot;/Users/huntercaskey/git/FPTS/src/Finance/CashAcc.java&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; uri=&quot;file:/Users/huntercaskey/git/FPTS/src/Finance/CashAcc.java&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;0&quot; selectionTopPixel=&quot;0&quot;/>&#xA;&lt;/editor>"/>
+          <tags>Editor</tags>
+          <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
+          <tags>removeOnHide</tags>
+        </children>
+        <children xsi:type="basic:Part" xmi:id="_HgwOwD1VEeaKuJexM7hjWQ" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="CreateCash.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.png" closeable="true">
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;CreateCash.java&quot; partName=&quot;CreateCash.java&quot; title=&quot;CreateCash.java&quot; tooltip=&quot;/Users/huntercaskey/git/FPTS/src/Finance/CreateCash.java&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; uri=&quot;file:/Users/huntercaskey/git/FPTS/src/Finance/CreateCash.java&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;0&quot; selectionTopPixel=&quot;0&quot;/>&#xA;&lt;/editor>"/>
+          <tags>Editor</tags>
+          <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
+          <tags>removeOnHide</tags>
+        </children>
+        <children xsi:type="basic:Part" xmi:id="_HizdMD1VEeaKuJexM7hjWQ" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="CreateEquity.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.png" closeable="true">
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;CreateEquity.java&quot; partName=&quot;CreateEquity.java&quot; title=&quot;CreateEquity.java&quot; tooltip=&quot;/Users/huntercaskey/git/FPTS/src/Finance/CreateEquity.java&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; uri=&quot;file:/Users/huntercaskey/git/FPTS/src/Finance/CreateEquity.java&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;0&quot; selectionTopPixel=&quot;0&quot;/>&#xA;&lt;/editor>"/>
+          <tags>Editor</tags>
+          <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
+          <tags>removeOnHide</tags>
+        </children>
+        <children xsi:type="basic:Part" xmi:id="_HlAcoD1VEeaKuJexM7hjWQ" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="Equity.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.png" closeable="true">
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;Equity.java&quot; partName=&quot;Equity.java&quot; title=&quot;Equity.java&quot; tooltip=&quot;/Users/huntercaskey/git/FPTS/src/Finance/Equity.java&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; uri=&quot;file:/Users/huntercaskey/git/FPTS/src/Finance/Equity.java&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;0&quot; selectionTopPixel=&quot;0&quot;/>&#xA;&lt;/editor>"/>
+          <tags>Editor</tags>
+          <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
+          <tags>removeOnHide</tags>
+        </children>
+        <children xsi:type="basic:Part" xmi:id="_HnB14D1VEeaKuJexM7hjWQ" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="Holding.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.png" closeable="true">
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;Holding.java&quot; partName=&quot;Holding.java&quot; title=&quot;Holding.java&quot; tooltip=&quot;/Users/huntercaskey/git/FPTS/src/Finance/Holding.java&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; uri=&quot;file:/Users/huntercaskey/git/FPTS/src/Finance/Holding.java&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;0&quot; selectionTopPixel=&quot;0&quot;/>&#xA;&lt;/editor>"/>
+          <tags>Editor</tags>
+          <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
+          <tags>removeOnHide</tags>
+        </children>
+        <children xsi:type="basic:Part" xmi:id="_HpG5gD1VEeaKuJexM7hjWQ" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="Index.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.png" closeable="true">
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;Index.java&quot; partName=&quot;Index.java&quot; title=&quot;Index.java&quot; tooltip=&quot;/Users/huntercaskey/git/FPTS/src/Finance/Index.java&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; uri=&quot;file:/Users/huntercaskey/git/FPTS/src/Finance/Index.java&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;0&quot; selectionTopPixel=&quot;0&quot;/>&#xA;&lt;/editor>"/>
+          <tags>Editor</tags>
+          <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
+          <tags>removeOnHide</tags>
+        </children>
+        <children xsi:type="basic:Part" xmi:id="_HrVuID1VEeaKuJexM7hjWQ" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="Log.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.png" closeable="true">
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;Log.java&quot; partName=&quot;Log.java&quot; title=&quot;Log.java&quot; tooltip=&quot;/Users/huntercaskey/git/FPTS/src/Finance/Log.java&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; uri=&quot;file:/Users/huntercaskey/git/FPTS/src/Finance/Log.java&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;0&quot; selectionTopPixel=&quot;0&quot;/>&#xA;&lt;/editor>"/>
+          <tags>Editor</tags>
+          <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
+          <tags>removeOnHide</tags>
+        </children>
+        <children xsi:type="basic:Part" xmi:id="_HtaKsD1VEeaKuJexM7hjWQ" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="Receiver.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.png" closeable="true">
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;Receiver.java&quot; partName=&quot;Receiver.java&quot; title=&quot;Receiver.java&quot; tooltip=&quot;/Users/huntercaskey/git/FPTS/src/Finance/Receiver.java&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; uri=&quot;file:/Users/huntercaskey/git/FPTS/src/Finance/Receiver.java&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;0&quot; selectionTopPixel=&quot;0&quot;/>&#xA;&lt;/editor>"/>
+          <tags>Editor</tags>
+          <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
+          <tags>removeOnHide</tags>
+        </children>
+        <children xsi:type="basic:Part" xmi:id="_HvhDgD1VEeaKuJexM7hjWQ" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="RemoveCash.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.png" closeable="true">
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;RemoveCash.java&quot; partName=&quot;RemoveCash.java&quot; title=&quot;RemoveCash.java&quot; tooltip=&quot;/Users/huntercaskey/git/FPTS/src/Finance/RemoveCash.java&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; uri=&quot;file:/Users/huntercaskey/git/FPTS/src/Finance/RemoveCash.java&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;0&quot; selectionTopPixel=&quot;0&quot;/>&#xA;&lt;/editor>"/>
+          <tags>Editor</tags>
+          <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
+          <tags>removeOnHide</tags>
+        </children>
+        <children xsi:type="basic:Part" xmi:id="_Hxs00D1VEeaKuJexM7hjWQ" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="RemoveEquity.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.png" closeable="true">
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;RemoveEquity.java&quot; partName=&quot;RemoveEquity.java&quot; title=&quot;RemoveEquity.java&quot; tooltip=&quot;/Users/huntercaskey/git/FPTS/src/Finance/RemoveEquity.java&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; uri=&quot;file:/Users/huntercaskey/git/FPTS/src/Finance/RemoveEquity.java&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;0&quot; selectionTopPixel=&quot;0&quot;/>&#xA;&lt;/editor>"/>
+          <tags>Editor</tags>
+          <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
+          <tags>removeOnHide</tags>
+        </children>
+        <children xsi:type="basic:Part" xmi:id="_Hz8QgD1VEeaKuJexM7hjWQ" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="Stock.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.png" closeable="true">
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;Stock.java&quot; partName=&quot;Stock.java&quot; title=&quot;Stock.java&quot; tooltip=&quot;/Users/huntercaskey/git/FPTS/src/Finance/Stock.java&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; uri=&quot;file:/Users/huntercaskey/git/FPTS/src/Finance/Stock.java&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;0&quot; selectionTopPixel=&quot;0&quot;/>&#xA;&lt;/editor>"/>
+          <tags>Editor</tags>
+          <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
+          <tags>removeOnHide</tags>
+        </children>
+        <children xsi:type="basic:Part" xmi:id="_H2gcUD1VEeaKuJexM7hjWQ" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="SubtractCash.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.png" closeable="true">
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;SubtractCash.java&quot; partName=&quot;SubtractCash.java&quot; title=&quot;SubtractCash.java&quot; tooltip=&quot;/Users/huntercaskey/git/FPTS/src/Finance/SubtractCash.java&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; uri=&quot;file:/Users/huntercaskey/git/FPTS/src/Finance/SubtractCash.java&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;0&quot; selectionTopPixel=&quot;0&quot;/>&#xA;&lt;/editor>"/>
+          <tags>Editor</tags>
+          <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
+          <tags>removeOnHide</tags>
+          <tags>active</tags>
+          <tags>activeOnClose</tags>
+        </children>
+        <children xsi:type="basic:Part" xmi:id="_H48FQD1VEeaKuJexM7hjWQ" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="SubtractEquity.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.png" closeable="true">
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;SubtractEquity.java&quot; partName=&quot;SubtractEquity.java&quot; title=&quot;SubtractEquity.java&quot; tooltip=&quot;/Users/huntercaskey/git/FPTS/src/Finance/SubtractEquity.java&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; uri=&quot;file:/Users/huntercaskey/git/FPTS/src/Finance/SubtractEquity.java&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;0&quot; selectionTopPixel=&quot;0&quot;/>&#xA;&lt;/editor>"/>
+          <tags>Editor</tags>
+          <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
+          <tags>removeOnHide</tags>
+        </children>
+        <children xsi:type="basic:Part" xmi:id="_H96E0D1VEeaKuJexM7hjWQ" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="Transaction.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.png" closeable="true">
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;Transaction.java&quot; partName=&quot;Transaction.java&quot; title=&quot;Transaction.java&quot; tooltip=&quot;/Users/huntercaskey/git/FPTS/src/Finance/Transaction.java&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; uri=&quot;file:/Users/huntercaskey/git/FPTS/src/Finance/Transaction.java&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;0&quot; selectionTopPixel=&quot;0&quot;/>&#xA;&lt;/editor>"/>
+          <tags>Editor</tags>
+          <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
+          <tags>removeOnHide</tags>
+        </children>
+        <children xsi:type="basic:Part" xmi:id="_IAYKAD1VEeaKuJexM7hjWQ" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="TransactionClient.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.png" closeable="true">
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;TransactionClient.java&quot; partName=&quot;TransactionClient.java&quot; title=&quot;TransactionClient.java&quot; tooltip=&quot;/Users/huntercaskey/git/FPTS/src/Finance/TransactionClient.java&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; uri=&quot;file:/Users/huntercaskey/git/FPTS/src/Finance/TransactionClient.java&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;0&quot; selectionTopPixel=&quot;0&quot;/>&#xA;&lt;/editor>"/>
+          <tags>Editor</tags>
+          <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
+          <tags>removeOnHide</tags>
+        </children>
       </children>
     </sharedElements>
     <sharedElements xsi:type="basic:Part" xmi:id="_EEEXYD1TEeaCrcP7Fj4eLA" elementId="org.eclipse.ui.navigator.ProjectExplorer" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView" label="Project Explorer" iconURI="platform:/plugin/org.eclipse.ui.navigator.resources/icons/full/eview16/resource_persp.gif" tooltip="" closeable="true">
-      <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;view CommonNavigator.LINKING_ENABLED=&quot;0&quot; org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets=&quot;0&quot;/>"/>
+      <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;view CommonNavigator.LINKING_ENABLED=&quot;0&quot; currentWorkingSetName=&quot;Aggregate for window 1467134557244&quot; org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets=&quot;0&quot;/>"/>
       <tags>View</tags>
       <tags>categoryTag:General</tags>
-      <tags>active</tags>
-      <tags>activeOnClose</tags>
       <menus xmi:id="_EHqd8D1TEeaCrcP7Fj4eLA" elementId="org.eclipse.ui.navigator.ProjectExplorer">
         <tags>ViewMenu</tags>
         <tags>menuContribution:menu</tags>
@@ -226,11 +329,14 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_D25eED1TEeaCrcP7Fj4eLA" elementId="org.eclipse.ui.workbench.file">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_D3NAED1TEeaCrcP7Fj4eLA" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" enabled="false" command="_DO_wqz1TEeaCrcP7Fj4eLA"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_5rmc0D1UEeaKuJexM7hjWQ" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" command="_DO_wqz1TEeaCrcP7Fj4eLA"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_D26FID1TEeaCrcP7Fj4eLA" elementId="additions" toBeRendered="false">
         <tags>toolbarSeparator</tags>
         <children xsi:type="menu:ToolBarSeparator" xmi:id="_D26FIT1TEeaCrcP7Fj4eLA" elementId="additions" toBeRendered="false"/>
+      </children>
+      <children xsi:type="menu:ToolBar" xmi:id="_HaLFoD1VEeaKuJexM7hjWQ" elementId="org.eclipse.ui.edit.text.actionSet.presentation">
+        <tags>Draggable</tags>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_EFwZcD1TEeaCrcP7Fj4eLA" elementId="org.eclipse.debug.ui.launchActionSet">
         <tags>Draggable</tags>
@@ -253,7 +359,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_D26FJD1TEeaCrcP7Fj4eLA" elementId="org.eclipse.ui.workbench.navigate">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_D3OOMj1TEeaCrcP7Fj4eLA" elementId="org.eclipse.ui.window.pinEditor" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" type="Check" command="_DO-ifT1TEeaCrcP7Fj4eLA"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_5rquQD1UEeaKuJexM7hjWQ" elementId="org.eclipse.ui.window.pinEditor" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" type="Check" command="_DO-ifT1TEeaCrcP7Fj4eLA"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_D26FJT1TEeaCrcP7Fj4eLA" elementId="group.editor" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -840,7 +946,7 @@
     <bindings xmi:id="_DQYQpD1TEeaCrcP7Fj4eLA" keySequence="ALT+COMMAND+X E" command="_DO8tTz1TEeaCrcP7Fj4eLA">
       <tags>platform:cocoa</tags>
     </bindings>
-    <bindings xmi:id="_DQuO5D1TEeaCrcP7Fj4eLA" keySequence="COMMAND+CTRL+F" command="_DQuO4j1TEeaCrcP7Fj4eLA"/>
+    <bindings xmi:id="_5EjD4T1UEeaKuJexM7hjWQ" keySequence="COMMAND+CTRL+F" command="_DQuO4j1TEeaCrcP7Fj4eLA"/>
   </bindingTables>
   <bindingTables xmi:id="_DP2FJz1TEeaCrcP7Fj4eLA" elementId="org.eclipse.datatools.sqltools.SQLEditorScope" bindingContext="_DPI6hz1TEeaCrcP7Fj4eLA">
     <bindings xmi:id="_DP2FKD1TEeaCrcP7Fj4eLA" keySequence="ALT+COMMAND+D" command="_DO4b2j1TEeaCrcP7Fj4eLA"/>
@@ -1033,7 +1139,7 @@
     <bindings xmi:id="_DQPtwz1TEeaCrcP7Fj4eLA" keySequence="ALT+CR" command="_DO64JT1TEeaCrcP7Fj4eLA"/>
   </bindingTables>
   <bindingTables xmi:id="_DQvdAT1TEeaCrcP7Fj4eLA" contributorURI="platform:/fragment/org.eclipse.e4.ui.workbench.renderers.swt.cocoa" bindingContext="_DOQwxj1TEeaCrcP7Fj4eLA">
-    <bindings xmi:id="_DQvdAj1TEeaCrcP7Fj4eLA" keySequence="M1+W" command="_DQu18j1TEeaCrcP7Fj4eLA"/>
+    <bindings xmi:id="_5EkSAD1UEeaKuJexM7hjWQ" keySequence="M1+W" command="_DQu18j1TEeaCrcP7Fj4eLA"/>
   </bindingTables>
   <bindingTables xmi:id="_ED70gT1TEeaCrcP7Fj4eLA" bindingContext="_ED70gD1TEeaCrcP7Fj4eLA"/>
   <bindingTables xmi:id="_ED8bkT1TEeaCrcP7Fj4eLA" bindingContext="_ED8bkD1TEeaCrcP7Fj4eLA"/>

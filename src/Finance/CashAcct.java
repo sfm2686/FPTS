@@ -7,7 +7,7 @@ package Finance;
  * @authors Sultan Mira, Hunter Caskey
  *
  */
-public class CashAcc extends Holding {
+public class CashAcct extends Holding {
 
 	/**
 	 * @param args
