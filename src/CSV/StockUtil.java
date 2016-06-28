@@ -6,9 +6,37 @@ package CSV;
 
 public class StockUtil extends EquityUtil {
 	private String tickerSymbol;
-	private int price;
+	private double price;
 
-	public double getPrice{
+	public StockUtil(String name, String symbol, String price){
+		super.setName(name);
+		this.tickerSymbol = symbol;
+		this.price = Double.parseDouble(price);
+	}
+	
+	public double getPrice(){
+		return this.price;
+	}
+	
+	public String getTickerSymbol(){
+		return this.tickerSymbol;
+	}
+	
+	public static void main(String[] args){
+		StockUtil testStock = new StockUtil("Apple", "APPL", "300");
 		
+		int testNum = 3;
+		int failCount = 0;
+		
+		if (testStock.getName() != "Apple"){
+			++failCount;
+		}
+		if (testStock.getTickerSymbol() != "APPL"){
+			++failCount;
+		}
+		if (testStock.getPrice() != 300.00){
+			++failCount;
+		}
+		System.out.println("Conducting unit tests for StockUtil:\n" + (testNum - failCount) + " out of " + testNum + " tests passed.");
 	}
 }

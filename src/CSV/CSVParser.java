@@ -1,5 +1,6 @@
 package CSV;
 import java.io.*;
+import java.util.ArrayList;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
@@ -12,22 +13,23 @@ public class CSVParser {
 	
 	public CSVParser(EquityBin bin){
 		this.bin = bin;
-		String [] fields;
+	}
+	
+	public boolean startReading(){
+		ArrayList<String> fields = new ArrayList<String>();
 		try(FileInputStream fi = new FileInputStream(this.name)) {
 			InputStreamReader in = new InputStreamReader(fi);
 			BufferedReader br = 
 					new BufferedReader(in);
 		    for(String row; (row = br.readLine()) != null; ) {
 		        fields = row.split("\",\"");
-		        
-		        for ( int i = 0; i < fields.length; i ++ )
-		        	System.out.println("Field " + (i + 1) + ": " + fields[i].replace("\"", ""));
 		    }
 		} catch (IOException e) {
-			bin.fileNotFound();
-			return ;
+			return false;
 		}
+		return true;
 	}
+	
 	
 	
 	public static void main(String[] args){
