@@ -9,20 +9,23 @@ import java.util.*;
  */
 public class EquityBin {
 
+	private static EquityBin instance = null;
 	private Set<StockUtil> stockBin;
 	private Set<IndexUtil> indexBin;
-	private static EquityBin instance = null;
+	private CSVParser parser;
 	
-	public EquityBin getEquityBin(){
-		if (this.instance == null) {
+	public static EquityBin getEquityBin(){
+		if (instance == null) {
 			instance = new EquityBin();
 		}
-		return this.instance;
+		return instance;
 	}
 	
 	private EquityBin(){
 		this.stockBin = new HashSet<StockUtil>();
 		this.indexBin = new HashSet<IndexUtil>();
+		this.parser = new CSVParser();
+		this.parser.startReading();
 	}
 	
 	/**
@@ -56,7 +59,7 @@ public class EquityBin {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 
 	}
 }
