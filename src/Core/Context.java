@@ -38,7 +38,7 @@ public class Context {
 		State S12 = new PromptDest(this);
 		State S13 = new SpecAcct(this);
 		State S14 = new PromptCashDest(this);
-		State S15 = new PromptSrcAcct(this);
+		State S15 = new PromptSrcHolding(this);
 		State S16 = new PromptSimSettings(this);
 		State S17 = new ViewSimResults(this);
 		State S18 = new DisplayLog(this);

@@ -1,6 +1,3 @@
-/**
- * 
- */
 package Finance;
 
 import java.util.ArrayList;
@@ -20,11 +17,20 @@ public abstract class Equity implements Holding {
 	public int getNumShares(){
 		return this.numShares;
 	}
-
-	//CHILD RELATED OPERATIONS
 	
-	abstract void removeChild(Stock child);
-	abstract void addChild(Stock child);
-	abstract ArrayList<Stock> getChildren();
+	public boolean subtractShares(int numShares){
+		if (numShares <= this.numShares){
+			this.numShares -= numShares;
+			return true;
+		}
+		return false;
+	}
 	
+	public void addShares(int numShares){
+		this.numShares += numShares;
+	}
+	
+	abstract double getPrice();
+	
+	abstract  String getName();
 }
