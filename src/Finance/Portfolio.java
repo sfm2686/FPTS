@@ -100,6 +100,24 @@ public class Portfolio {
 		return false;
 	}
 	
+	public Equity getEquity(String name){
+		for(Equity equity : this.equities){
+			if(equity.getName().equalsIgnoreCase(name)){
+				return(equity);
+			}
+		}
+		return null;
+	}
+	
+	public CashAcct getCashAcct(String name){
+		for(CashAcct account : this.cashAccounts){
+			if(account.getName().equalsIgnoreCase(name)){
+				return(account);
+			}
+		}
+		return null;
+	}
+	
 	/**
 	 * @param args
 	 */
