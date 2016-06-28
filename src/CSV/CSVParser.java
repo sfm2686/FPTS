@@ -10,12 +10,15 @@ public class CSVParser {
 
 	private String name = "./equities.csv";
 	private EquityBin bin;
+
+	public CSVParser(){}
 	
-	public CSVParser(){
-		//this.bin = EquityBin.getEquityBin();
+	public boolean init(EquityBin bin){
+		this.bin = bin;
+		return this.startReading();
 	}
 	
-	public boolean startReading(){
+	private boolean startReading(){
 		ArrayList<String> fields;
 		try(FileInputStream fi = new FileInputStream(this.name)) {
 			InputStreamReader in = new InputStreamReader(fi);
@@ -25,8 +28,7 @@ public class CSVParser {
 		    	fields = new ArrayList<String>();
 		        for ( String field : row.split("\",\"") )
 		        	fields.add(field.replace("\"", "").replace(" ", ""));
-		        System.out.println(fields);
-		       //EquityBin.getEquityBin().addEquity(fields);
+		       this.bin.addEquity(fields);
 		    }
 		} catch (IOException e) {
 			return false;
@@ -37,7 +39,5 @@ public class CSVParser {
 	
 	
 	public static void main(String[] args){
-		CSVParser test = new CSVParser();
-		test.startReading();
 	}
 }
