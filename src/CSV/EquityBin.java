@@ -1,5 +1,5 @@
-import java.util.*;
 package CSV;
+import java.util.*;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
@@ -17,5 +17,9 @@ public class EquityBin {
 	
 	public void addEquity(ArrayList<String> equity){
 		
+	}
+	
+	public int fileNotFound(){
+		return -1;
 	}
 }
