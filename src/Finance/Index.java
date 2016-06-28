@@ -1,42 +1,31 @@
-/**
- * 
- */
 package Finance;
 
 import java.util.ArrayList;
+import CSV.*;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
  * 
- * This class is the composite in the composite pattern.
- * This class has all of the children-related operations.
- *
  */
 public class Index extends Equity {
 
-	private ArrayList<Stock> stocks;
+	private IndexUtil referenceIndex;
 	
-	@Override
-	void removeChild(Stock child) {
-		this.stocks.remove(child);
-	}
-
-	@Override
-	void addChild(Stock child) {
-		this.stocks.add(child);
-	}
-
-	@Override
-	ArrayList<Stock> getChildren() {
-		return this.stocks;
+	public Index(int numShares, IndexUtil referenceIndex){
+		super.setNumShares(numShares);
+		this.referenceIndex = referenceIndex;
 	}
 	
-	double getPrice(String name) {
-		// TODO Auto-generated method stub
-		return 0;
+	public double getPrice(String name) {
+		return this.referenceIndex.getPrice();
 	}
 
+	public String getName(){
+		return this.referenceIndex.getName();
+	}
+	
 	/**
+	 * Unit Tests for Index
 	 * @param args
 	 */
 	public static void main(String[] args) {
