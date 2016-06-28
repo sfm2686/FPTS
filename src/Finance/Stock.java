@@ -7,7 +7,7 @@ package Finance;
  * @authors Sultan Mira, Hunter Caskey
  *
  */
-public class Stock {
+public class Stock extends Equity {
 
 	/**
 	 * @param args
