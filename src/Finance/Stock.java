@@ -11,13 +11,17 @@ import java.util.ArrayList;
  */
 public class Stock extends Equity {
 
+	private String name;
+	
 	
 	public String getTicker(){
-		return super.getName();
+		return this.name;
 	}
 	
-	public double getPrice(){
-		return super.getPrice(getTicker());
+	@Override
+	double getPrice(String name) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	
 	@Override

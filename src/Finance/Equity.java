@@ -9,17 +9,10 @@ import java.util.ArrayList;
  * @authors Sultan Mira, Hunter Caskey
  *
  */
-public abstract class Equity extends Holding {
+public abstract class Equity implements Holding {
 
-	protected double getPrice( String name ){
-		//TODO
-		//THIS WILL BE DONE AFTER EQUITYBIN IS DONE
-		return -1;
-	}
 	
-	public String getName(){
-		return super.getName();
-	}
+	abstract double getPrice( String name );
 	
 	//CHILD RELATED OPERATIONS
 	

@@ -30,6 +30,12 @@ public class Index extends Equity {
 	ArrayList<Stock> getChildren() {
 		return this.stocks;
 	}
+	
+	@Override
+	double getPrice(String name) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 
 	/**
 	 * @param args
@@ -38,4 +44,5 @@ public class Index extends Equity {
 		// TODO Auto-generated method stub
 
 	}
+
 }

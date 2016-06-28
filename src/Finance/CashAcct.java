@@ -7,13 +7,18 @@ package Finance;
  * @authors Sultan Mira, Hunter Caskey
  *
  */
-public class CashAcct extends Holding {
+public class CashAcct implements Holding {
 
 	private double balance;
+	private String name;
 	
 	public CashAcct(String name, double balance){
-		super.setName(name);
+		this.name = name;
 		this.balance = balance;
+	}
+	
+	public String getName(){
+		return this.name;
 	}
 	
 	public boolean withdraw(double amount){
