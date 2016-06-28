@@ -1,5 +1,6 @@
-import java.util.ArrayList;
 package Finance;
+
+import java.util.ArrayList;
 
 /**
  * @author Sultan Mira & Hunter Caskey
@@ -8,7 +9,9 @@ package Finance;
 public class Portfolio {
 
 	private Log log;
-	private User owner;
+	
+	//Commented out until User class is made
+	//private User owner;
 	private ArrayList<Holding> holdings;
 	
 	public double getValue(){
