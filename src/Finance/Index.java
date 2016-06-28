@@ -4,6 +4,7 @@
 package Finance;
 
 import java.util.ArrayList;
+import CSV.*;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
@@ -14,7 +15,10 @@ import java.util.ArrayList;
  */
 public class Index extends Equity {
 
-	private ArrayList<Stock> stocks;
+	private IndexUtil stocks;
+	
+	public Index( int numShares, IndexUtil indexUtil ){
+	}
 	
 	@Override
 	void removeChild(Stock child) {
