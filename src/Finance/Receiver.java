@@ -9,4 +9,5 @@ package Finance;
  */
 public interface Receiver {
 
+	public void action();
 }
