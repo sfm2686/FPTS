@@ -18,5 +18,19 @@ public abstract class Equity implements Holding {
 		return this.numShares;
 	}
 	
+	public boolean subtractShares(int numShares){
+		if (numShares <= this.numShares){
+			this.numShares -= numShares;
+			return true;
+		}
+		return false;
+	}
+	
+	public void addShares(int numShares){
+		this.numShares += numShares;
+	}
+	
 	abstract double getPrice();
+	
+	abstract  String getName();
 }

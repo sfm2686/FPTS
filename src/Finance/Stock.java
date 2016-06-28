@@ -1,6 +1,3 @@
-/**
- * 
- */
 package Finance;
 
 import java.util.ArrayList;
@@ -42,7 +39,34 @@ public class Stock extends Equity {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		StockUtil stockRef = new StockUtil("Apple", "AAPL", "500.00");
+		Stock testStock = new Stock(100, stockRef);
+		
+		int testCount = 6;
+		int failCount = 0;
+		
+		if (testStock.getName() != "Apple"){
+			++failCount;
+		}
+		if (testStock.getNumShares() != 100){
+			++failCount;
+		}
+		if (testStock.getTickerSymbol() != "AAPL"){
+			++failCount;
+		}
+		if (testStock.getValue() != 50000.00){
+			++failCount;
+		}
+		testStock.addShares(100);
+		if (testStock.getValue() != 100000.00){
+			++failCount;
+		}
+		testStock.subtractShares(150);
+		if(testStock.getValue() != 25000.00){
+			++failCount;
+		}
+		
+		System.out.println("Conducting unit tests for Stock:\n" + (testCount - failCount) + " out of " + testCount + " tests passed.");
+		
 	}
 }
