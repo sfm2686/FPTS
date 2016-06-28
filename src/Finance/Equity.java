@@ -17,4 +17,6 @@ public abstract class Equity implements Holding {
 	public int getNumShares(){
 		return this.numShares;
 	}
+	
+	abstract double getPrice();
 }

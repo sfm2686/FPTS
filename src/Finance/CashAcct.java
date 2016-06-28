@@ -17,6 +17,11 @@ public class CashAcct implements Holding {
 		this.balance = balance;
 	}
 	
+	@Override
+	public double getValue(){
+		return this.getBalance();
+	}
+	
 	public String getName(){
 		return this.name;
 	}

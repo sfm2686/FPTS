@@ -19,6 +19,10 @@ public class Stock extends Equity {
 		this.referenceStock = referenceStock;
 	}
 	
+	public double getValue(){
+		return (super.getNumShares() * this.getPrice());
+	}
+	
 	public String getTickerSymbol(){
 		return this.referenceStock.getTickerSymbol();
 	}
@@ -27,22 +31,14 @@ public class Stock extends Equity {
 		return referenceStock.getName();
 	}
 	
+	@Override
 	public double getPrice(){
 		return this.referenceStock.getPrice();
 	}
 	
-	// Following methods should not be implemented as part of the Composite (leaf) Pattern.
-	
-	@Override
-	void removeChild(Stock child) {}
-
-	@Override
-	void addChild(Stock child) {}
-
-	@Override
-	ArrayList<Stock> getChildren() {return null;}
-	
 	/**
+	 * Unit tests for Stock.
+	 * 
 	 * @param args
 	 */
 	public static void main(String[] args) {
