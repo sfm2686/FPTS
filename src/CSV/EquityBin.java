@@ -9,23 +9,32 @@ import java.util.*;
  */
 public class EquityBin {
 
-	private static EquityBin instance = null;
 	private Set<StockUtil> stockBin;
 	private Set<IndexUtil> indexBin;
 	private CSVParser parser;
 	
-	public static EquityBin getEquityBin(){
-		if (instance == null) {
-			instance = new EquityBin();
-		}
-		return instance;
-	}
 	
-	private EquityBin(){
+	public EquityBin(){
 		this.stockBin = new HashSet<StockUtil>();
 		this.indexBin = new HashSet<IndexUtil>();
 		this.parser = new CSVParser();
-		this.parser.startReading();
+	}
+	
+	public void readEquities(){
+		parser.init(this);
+	}
+	
+	/**
+	 * TODO don't display
+	 * This function displays all of the stock's in each of the indices 
+	 */
+	public void displayMarket(){
+		for (IndexUtil index : indexBin){
+			System.out.println(index.getName());
+			for (StockUtil stock : index.getStocks()){
+				System.out.println("\t" + stock.getName());
+			}
+		}
 	}
 	
 	/**
@@ -39,7 +48,7 @@ public class EquityBin {
 	public void addEquity(ArrayList<String> equity){
 		StockUtil stock = new StockUtil(equity.get(0), equity.get(1), equity.get(2));
 		this.stockBin.add(stock);
-		for(int i = 3; i <= equity.size(); i++){
+		for(int i = 3; i < equity.size(); i++){
 			this.getIndex(equity.get(i)).addStock(stock);;
 		}
 	}
@@ -59,7 +68,7 @@ public class EquityBin {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		
-
+		EquityBin test = new EquityBin();
+		test.readEquities();
 	}
 }
