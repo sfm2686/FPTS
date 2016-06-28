@@ -46,7 +46,7 @@ public class EquityBin {
 	
 	private IndexUtil getIndex(String name){
 		for(IndexUtil index : this.indexBin){
-			if(index.getName().equals(name)){
+			if(index.getName().equalsIgnoreCase(name)){
 				return(index);
 			}
 		}
