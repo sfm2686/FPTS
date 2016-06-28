@@ -13,11 +13,11 @@ public class EquityBin {
 	private Set<IndexUtil> indexBin;
 	private static EquityBin instance = null;
 	
-	public EquityBin getEquityBin(){
-		if (this.instance == null) {
+	public static EquityBin getEquityBin(){
+		if (instance == null) {
 			instance = new EquityBin();
 		}
-		return this.instance;
+		return instance;
 	}
 	
 	private EquityBin(){
