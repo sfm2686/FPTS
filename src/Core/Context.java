@@ -108,6 +108,10 @@ public class Context {
 		this.portfolio = user.getPorts().get(i);
 	}
 	
+	protected Portfolio getPort(){
+		return this.portfolio;
+	}
+	
 	public void goToNextState(){
 		while ( this.current.getID() != QUIT ){
 			this.current.execute();

@@ -27,8 +27,7 @@ public class AcctOverview extends State {
 	void displayOptions() {
 		System.out.println("Options:");
 		System.out.println("\tView portfolios (enter: 1)");
-		System.out.println("\tQuit (enter: 0 )");
-		
+		System.out.println("\tQuit (enter: 0)");
 	}
 
 	/* (non-Javadoc)
@@ -40,16 +39,21 @@ public class AcctOverview extends State {
 		int in;
 		System.out.print("Taking input: ");
 		in = super.getSc().nextInt();
+		while ( in != 1 && in != 0){
+			System.out.println("Invalid input. Please try again");
+			this.displayOptions();
+			in = super.getSc().nextInt();
+		}
 		
 		//Displays ports, sets ports in context by port ID taken from user.
 		//if input is valid next state is table[2][0] which is S3
 		if ( in == 1 ){
 			this.listPorts();
-			in = super.getSc().nextInt();
+			in = super.getSc().nextInt() - 1;
 			while  ( in <= super.getContext().getUserPorts().size() ){
 				System.out.println("Invalid ID, please try again");
 				this.listPorts();
-				in = super.getSc().nextInt();
+				in = super.getSc().nextInt() - 1;
 			}
 			super.getContext().setPort(in);
 			super.setNext(0);
