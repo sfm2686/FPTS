@@ -33,6 +33,13 @@ public class Stock extends Equity {
 		return this.referenceStock.getPrice();
 	}
 	
+	@Override
+	public String toString(){
+		return "Stock Holding: " + this.getName() + ", " + this.getTickerSymbol() 
+			+ ", " + this.getNumShares() + " shares, current price: $" + this.getPrice() 
+				+ ", current value: " + this.getValue() + ".";
+	}
+	
 	/**
 	 * Unit tests for Stock.
 	 * 

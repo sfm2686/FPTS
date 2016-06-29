@@ -9,6 +9,24 @@ package Finance;
  */
 public class AddCash extends Transaction {
 
+	private String acctName;
+	private double deposit;
+	
+	public AddCash(Portfolio receiver, String name, double deposit){
+		super(receiver);
+		this.acctName = name;
+		this.deposit = deposit;
+	}
+	
+	public boolean Execute(){
+		CashAcct acct = super.getReciever().getCashAcct(this.acctName);
+		if (acct != null){
+			acct.deposit(this.deposit);
+			return true;
+		}
+		return false;	
+	}
+	
 	/**
 	 * @param args
 	 */
@@ -16,5 +34,4 @@ public class AddCash extends Transaction {
 		// TODO Auto-generated method stub
 
 	}
-
 }

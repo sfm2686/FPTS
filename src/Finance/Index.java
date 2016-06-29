@@ -30,6 +30,13 @@ public class Index extends Equity {
 		return this.referenceIndex.getName();
 	}
 	
+	@Override
+	public String toString(){
+		return "Index Holding: " + this.getName() +  ", " + this.getNumShares() 
+			+ " shares, current price: $" + this.getPrice() 
+				+ ", current value: " + this.getValue() + ".";
+	}
+		
 	/**
 	 * Unit Tests for Index
 	 * @param args
@@ -72,7 +79,7 @@ public class Index extends Equity {
 		}
 		
 		System.out.println("Conducting unit tests for Index:\n" + (testCount - failCount) + " out of " + testCount + " tests passed.");
-		
+
 	}
 
 }

@@ -1,7 +1,8 @@
-/**
- * 
- */
 package Finance;
+ 
+import java.util.Date;
+import java.util.Calendar;
+import java.util.TimeZone;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
@@ -11,10 +12,12 @@ public class CashAcct implements Holding {
 
 	private double balance;
 	private String name;
+	private Date creationDate;
 	
 	public CashAcct(String name, double balance){
 		this.name = name;
 		this.balance = balance;
+		this.creationDate = Calendar.getInstance(TimeZone.getTimeZone("EST")).getTime();
 	}
 	
 	@Override
@@ -46,6 +49,16 @@ public class CashAcct implements Holding {
 		return this.balance;
 	}
 	
+	public Date getCreationDate(){
+		return this.creationDate;
+	}
+	
+	@Override
+	public String toString(){
+		return "Cash Holding: " + this.getName() + ", current balance: " 
+				+ this.getBalance() + ", date created: " + this.getCreationDate().toString() + ".";
+	}
+	
 	/**
 	 * @param args
 	 */
@@ -75,5 +88,6 @@ public class CashAcct implements Holding {
 		}
 		
 		System.out.println("Conducting unit tests for CashAcct:\n" + (testNum - failCount) + " out of " + testNum + " tests passed.");
+		System.out.println(testAcct.toString());
 	}
 }

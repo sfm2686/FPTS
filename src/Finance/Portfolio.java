@@ -11,9 +11,16 @@ public class Portfolio {
 	private Log log;
 	
 	//private User owner; //Commented out until User class is made
+	private String name;
 	private ArrayList<Equity> equities;
 	private ArrayList<CashAcct> cashAccounts;
 
+	public Portfolio(String name){
+		this.name = name;
+		this.equities = new ArrayList<>();
+		this.cashAccounts = new ArrayList<>();
+	}
+	
 	public double getPortfolioValue(){
 		double value = 0;
 		for (Equity equity : this.equities){
@@ -42,6 +49,14 @@ public class Portfolio {
 		return true;
 	}
 	
+	private void addEquity(Equity equity){
+		this.equities.add(equity);
+	}
+	
+	private void addCash(CashAcct cash){
+		this.cashAccounts.add(cash);
+	}
+	
 	protected boolean removeEquity(EquityUtil equityRef){
 		if (this.hasEquity(equityRef)){
 			Equity removal = null;
@@ -57,14 +72,22 @@ public class Portfolio {
 		return false;
 	}
 	
-	protected boolean createCashAcct(String name, double balance){
-		for(CashAcct account : this.cashAccounts){
-			if (this.hasCashAccount(name)){
-				return false;
-			}
-		}
-		this.cashAccounts.add(new CashAcct(name, balance));
-		return true;
+//	protected boolean createCashAcct(String name, double balance){
+//		for(CashAcct account : this.cashAccounts){
+//			if (this.hasCashAccount(name)){
+//				return false;
+//			}
+//		}
+//		this.cashAccounts.add(new CashAcct(name, balance));
+//		return true;
+//	}
+	
+	protected ArrayList<CashAcct> getCashAccounts(){
+		return this.cashAccounts;
+	}
+	
+	protected void addCashAccount(CashAcct account){
+		this.cashAccounts.add(account);
 	}
 	
 	protected boolean removeCashAcct(String name){
@@ -82,7 +105,7 @@ public class Portfolio {
 		return false;
 	}
 	
-	private boolean hasEquity(EquityUtil equityRef){
+	protected boolean hasEquity(EquityUtil equityRef){
 		for(Equity equity : this.equities){
 			if ((equity.getName()).equalsIgnoreCase(equityRef.getName())){
 				return true;
@@ -91,7 +114,7 @@ public class Portfolio {
 		return false;
 	}
 	
-	private boolean hasCashAccount(String name){
+	protected boolean hasCashAccount(String name){
 		for(CashAcct account : this.cashAccounts){
 			if ((account.getName()).equalsIgnoreCase(name)){
 				return true;
@@ -118,11 +141,41 @@ public class Portfolio {
 		return null;
 	}
 	
+	@Override
+	public String toString(){
+		String string = "Portfolio: " + this.name + "\n\tHoldings:";
+		for (CashAcct account : this.cashAccounts){
+			string += "\n\t\t" + account.toString();
+		}
+		for (Equity equity : this.equities){
+			string += "\n\t\t" + equity.toString();
+		}
+		return string;
+	}
+	
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		StockUtil stockRef = new StockUtil("Apple", "AAPL", "500.00");
+		Stock testStock = new Stock(100, stockRef);
+		IndexUtil indexRef = new IndexUtil("Tech Companies");
+		StockUtil stock1 = new StockUtil("Apple", "APPL", "300");
+		StockUtil stock2 = new StockUtil("Google", "GOOG", "200");
+		StockUtil stock3 = new StockUtil("Microsoft", "MSFT", "1000");
+		indexRef.addStock(stock1);
+		indexRef.addStock(stock2);
+		indexRef.addStock(stock3);
+		Index testIndex = new Index(10, indexRef);
+		CashAcct testAcct = new CashAcct("Account 1", 500.00);
+
+		Portfolio testPortfolio = new Portfolio("MyPortfolio");
+		testPortfolio.addEquity(testStock);
+		testPortfolio.addEquity(testIndex);
+		testPortfolio.addEquity(testIndex);
+		testPortfolio.addCash(testAcct);
+		testPortfolio.addCash(testAcct);
+		System.out.println(testPortfolio.toString());
 	}
 
 }
