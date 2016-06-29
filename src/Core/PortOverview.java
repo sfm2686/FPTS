@@ -23,8 +23,21 @@ public class PortOverview extends State {
 	 */
 	@Override
 	void displayOptions() {
-		// TODO Auto-generated method stub
-		
+		/*
+		 * Can go to:
+		 * 1. S2 
+		 * 2. S4
+		 * 3. S5
+		 * 4. S7
+		 * 5. S13
+		 * 
+		 */
+		System.out.println("Options:");
+		System.out.println("\tAccount Overview (enter: 1)");  //S2
+		System.out.println("\tView Log (enter: 2)");          //S4
+		System.out.println("\tSimulate (enter: 3)");          //S5
+		System.out.println("\tTransaction Menu (enter: 4)");  //S7
+		System.out.println("\tQuit (enter: 0)");              //S13
 	}
 
 	/* (non-Javadoc)
@@ -32,7 +45,22 @@ public class PortOverview extends State {
 	 */
 	@Override
 	void execute() {
-		System.out.println("Just got to portfolio overview, S3");
+		System.out.println("Holdings in this Portfolio:");
+		System.out.println(super.getContext().getPort());
+		this.displayOptions();
+		int in;
+		System.out.println("Taking input: ");
+		in = super.getSc().nextInt();
+		//option bounds [0 , 4]
+		while ( in > 5 && in < 0 ){
+			System.out.println("Invalid input. Please try again");
+			this.displayOptions();
+			in = super.getSc().nextInt();
+		}
+		if ( in > 0 ){
+			super.setNext(in - 1);
+		}
+		super.setNext(super.getContext().getTable()[this.id].length);
 	}
 
 	/* (non-Javadoc)
