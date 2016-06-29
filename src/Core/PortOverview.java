@@ -38,6 +38,7 @@ public class PortOverview extends State {
 		System.out.println("\tSimulate (enter: 3)");          //S5
 		System.out.println("\tTransaction Menu (enter: 4)");  //S7
 		System.out.println("\tQuit (enter: 0)");              //S13
+		System.out.print("Taking input: ");
 	}
 
 	/* (non-Javadoc)
@@ -45,20 +46,23 @@ public class PortOverview extends State {
 	 */
 	@Override
 	void execute() {
+		System.out.println("\n------Portfolio Overview-----\n");
 		System.out.println("Holdings in this Portfolio:");
-		System.out.println(super.getContext().getPort());
+		System.out.println(getContext().getPort());
+		
 		this.displayOptions();
 		int in;
-		System.out.println("Taking input: ");
 		in = super.getSc().nextInt();
 		//option bounds [0 , 4]
-		while ( in > 5 && in < 0 ){
+		while ( !isValid(0, 4, in) ){
 			System.out.println("Invalid input. Please try again");
 			this.displayOptions();
-			in = super.getSc().nextInt();
+			
+			in = getSc().nextInt();
 		}
 		if ( in > 0 ){
 			super.setNext(in - 1);
+			return ;
 		}
 		super.setNext(super.getContext().getTable()[this.id].length);
 	}

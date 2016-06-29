@@ -24,7 +24,8 @@ public class Logout extends State {
 	@Override
 	void displayOptions() {
 		System.out.println("Are you sure you wish to logout and quit?");
-		System.out.print("(yes, no): ");
+		System.out.println("(yes, no)");
+		System.out.print("Taking input: ");
 	}
 
 	/* (non-Javadoc)
@@ -32,7 +33,14 @@ public class Logout extends State {
 	 */
 	@Override
 	void execute() {
+		System.out.println("\n------Logout-----\n");
 		this.displayOptions();
+		String input = super.getSc().next();
+		while ( !(input.equalsIgnoreCase("yes") && input.equalsIgnoreCase("no" )) ){
+			System.out.println("Invalid input, please try again");
+			this.displayOptions();
+			input = super.getSc().next();
+		}
 		if ( super.getSc().next().equalsIgnoreCase("yes") ){
 			System.out.println("System exiting....");
 			System.exit(1);
