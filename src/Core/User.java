@@ -24,6 +24,10 @@ public class User implements Serializable {
 		return this.portfolios;
 	}
 	
+	public String getUserName(){
+		return this.username;
+	}
+	
 	/**
 	 * @param args
 	 */
