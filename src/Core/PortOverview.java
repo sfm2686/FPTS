@@ -7,12 +7,14 @@ package Core;
  * @authors Sultan Mira, Hunter Caskey
  *
  */
-public class PromptSrcAcct extends State {
+public class PortOverview extends State {
+	
+	private int id = 3;
 
 	/**
 	 * @param context
 	 */
-	public PromptSrcAcct(Context context) {
+	public PortOverview(Context context) {
 		super(context);
 	}
 
@@ -41,6 +43,14 @@ public class PromptSrcAcct extends State {
 	int transition() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	/* (non-Javadoc)
+	 * @see Core.State#getID()
+	 */
+	@Override
+	int getID() {
+		return this.id;
 	}
 
 }

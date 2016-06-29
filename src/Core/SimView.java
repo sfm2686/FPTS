@@ -7,14 +7,16 @@ package Core;
  * @authors Sultan Mira, Hunter Caskey
  *
  */
-public class PromptAction extends State {
+public class SimView extends State {
+	
+	private int id = 6;
 
 	/**
 	 * @param context
 	 */
-	public PromptAction(Context context) {
+	public SimView(Context context) {
 		super(context);
-	}
+		}
 
 	/* (non-Javadoc)
 	 * @see Core.State#displayOptions()
@@ -41,6 +43,14 @@ public class PromptAction extends State {
 	int transition() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	/* (non-Javadoc)
+	 * @see Core.State#getID()
+	 */
+	@Override
+	int getID() {
+		return this.id;
 	}
 
 }

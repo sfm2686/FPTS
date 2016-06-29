@@ -7,13 +7,16 @@ package Core;
  * @authors Sultan Mira, Hunter Caskey
  *
  */
-public class EquityInfo extends State {
+public class SpecifyEquity extends State {
+	
+	private int id = 14;
 
 	/**
 	 * @param context
 	 */
-	public EquityInfo(Context context) {
-		super(context);	}
+	public SpecifyEquity(Context context) {
+		super(context);
+	}
 
 	/* (non-Javadoc)
 	 * @see Core.State#displayOptions()
@@ -40,6 +43,14 @@ public class EquityInfo extends State {
 	int transition() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	/* (non-Javadoc)
+	 * @see Core.State#getID()
+	 */
+	@Override
+	int getID() {
+		return this.id;
 	}
 
 }

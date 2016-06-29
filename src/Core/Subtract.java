@@ -7,12 +7,14 @@ package Core;
  * @authors Sultan Mira, Hunter Caskey
  *
  */
-public class PromptCashDest extends State {
+public class Subtract extends State {
+	
+	private int id = 19;
 
 	/**
 	 * @param context
 	 */
-	public PromptCashDest(Context context) {
+	public Subtract(Context context) {
 		super(context);
 	}
 
@@ -22,7 +24,7 @@ public class PromptCashDest extends State {
 	@Override
 	void displayOptions() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	/* (non-Javadoc)
@@ -30,8 +32,7 @@ public class PromptCashDest extends State {
 	 */
 	@Override
 	void execute() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("This state is NOT done yet, id = " + this.id);
 	}
 
 	/* (non-Javadoc)
@@ -41,6 +42,14 @@ public class PromptCashDest extends State {
 	int transition() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	/* (non-Javadoc)
+	 * @see Core.State#getID()
+	 */
+	@Override
+	int getID() {
+		return this.id;
 	}
 
 }

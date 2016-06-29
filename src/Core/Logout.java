@@ -7,12 +7,14 @@ package Core;
  * @authors Sultan Mira, Hunter Caskey
  *
  */
-public class PromptSrcHolding extends State {
+public class Logout extends State {
+	
+	private int id = 13;
 
 	/**
 	 * @param context
 	 */
-	public PromptSrcHolding(Context context) {
+	public Logout(Context context) {
 		super(context);
 	}
 
@@ -41,6 +43,14 @@ public class PromptSrcHolding extends State {
 	int transition() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	/* (non-Javadoc)
+	 * @see Core.State#getID()
+	 */
+	@Override
+	int getID() {
+		return this.id;
 	}
 
 }

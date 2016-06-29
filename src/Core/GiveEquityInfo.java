@@ -7,12 +7,14 @@ package Core;
  * @authors Sultan Mira, Hunter Caskey
  *
  */
-public class DisplayAllHoldings extends State {
+public class GiveEquityInfo extends State {
+	
+	private int id = 12;
 
 	/**
 	 * @param context
 	 */
-	public DisplayAllHoldings(Context context) {
+	public GiveEquityInfo(Context context) {
 		super(context);
 	}
 
@@ -41,6 +43,14 @@ public class DisplayAllHoldings extends State {
 	int transition() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	/* (non-Javadoc)
+	 * @see Core.State#getID()
+	 */
+	@Override
+	int getID() {
+		return this.id;
 	}
 
 }

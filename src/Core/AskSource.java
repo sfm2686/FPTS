@@ -7,12 +7,14 @@ package Core;
  * @authors Sultan Mira, Hunter Caskey
  *
  */
-public class AwaitingType extends State {
+public class AskSource extends State {
+	
+	private int id = 18;
 
 	/**
 	 * @param context
 	 */
-	public AwaitingType(Context context) {
+	public AskSource(Context context) {
 		super(context);
 	}
 
@@ -41,6 +43,14 @@ public class AwaitingType extends State {
 	int transition() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	/* (non-Javadoc)
+	 * @see Core.State#getID()
+	 */
+	@Override
+	int getID() {
+		return this.id;
 	}
 
 }

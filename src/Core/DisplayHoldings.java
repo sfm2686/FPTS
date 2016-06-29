@@ -7,12 +7,14 @@ package Core;
  * @authors Sultan Mira, Hunter Caskey
  *
  */
-public class AwaitingFundSrcType extends State {
+public class DisplayHoldings extends State {
+	
+	private int id = 8;
 
 	/**
 	 * @param context
 	 */
-	public AwaitingFundSrcType(Context context) {
+	public DisplayHoldings(Context context) {
 		super(context);
 	}
 
@@ -41,6 +43,14 @@ public class AwaitingFundSrcType extends State {
 	int transition() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	/* (non-Javadoc)
+	 * @see Core.State#getID()
+	 */
+	@Override
+	int getID() {
+		return this.id;
 	}
 
 }

@@ -7,24 +7,24 @@ package Core;
  * @authors Sultan Mira, Hunter Caskey
  *
  */
-public class PortfolioOverview extends State{
-
+public class AskNumPriceDest extends State {
 	
-	 /**
-	 * 
+	/**
+	 * @param context
 	 */
-	public PortfolioOverview(Context context) {
+	public AskNumPriceDest(Context context) {
 		super(context);
-	} 
+	}
 
-	
+	private int id = 21;
+
 	/* (non-Javadoc)
 	 * @see Core.State#displayOptions()
 	 */
 	@Override
 	void displayOptions() {
-		System.out.println("");
-		
+		// TODO Auto-generated method stub
+
 	}
 
 	/* (non-Javadoc)
@@ -33,7 +33,7 @@ public class PortfolioOverview extends State{
 	@Override
 	void execute() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	/* (non-Javadoc)
@@ -43,6 +43,14 @@ public class PortfolioOverview extends State{
 	int transition() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	/* (non-Javadoc)
+	 * @see Core.State#getID()
+	 */
+	@Override
+	int getID() {
+		return this.id;
 	}
 
 }

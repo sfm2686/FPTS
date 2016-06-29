@@ -7,12 +7,14 @@ package Core;
  * @authors Sultan Mira, Hunter Caskey
  *
  */
-public class Confirm extends State {
+public class ViewLog extends State {
+	
+	private int id = 4;
 
 	/**
 	 * @param context
 	 */
-	public Confirm(Context context) {
+	public ViewLog(Context context) {
 		super(context);
 	}
 
@@ -41,6 +43,14 @@ public class Confirm extends State {
 	int transition() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	/* (non-Javadoc)
+	 * @see Core.State#getID()
+	 */
+	@Override
+	int getID() {
+		return this.id;
 	}
 
 }

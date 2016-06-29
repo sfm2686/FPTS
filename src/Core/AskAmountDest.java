@@ -7,13 +7,15 @@ package Core;
  * @authors Sultan Mira, Hunter Caskey
  *
  */
-public class PromptSimSettings extends State {
+public class AskAmountDest extends State {
 
+	private int id = 20;
 	/**
 	 * @param context
 	 */
-	public PromptSimSettings(Context context) {
+	public AskAmountDest(Context context) {
 		super(context);
+		// TODO Auto-generated constructor stub
 	}
 
 	/* (non-Javadoc)
@@ -22,7 +24,7 @@ public class PromptSimSettings extends State {
 	@Override
 	void displayOptions() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	/* (non-Javadoc)
@@ -31,7 +33,7 @@ public class PromptSimSettings extends State {
 	@Override
 	void execute() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	/* (non-Javadoc)
@@ -41,6 +43,14 @@ public class PromptSimSettings extends State {
 	int transition() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	/* (non-Javadoc)
+	 * @see Core.State#getID()
+	 */
+	@Override
+	int getID() {
+		return this.id;
 	}
 
 }

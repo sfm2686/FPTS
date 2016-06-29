@@ -7,12 +7,14 @@ package Core;
  * @authors Sultan Mira, Hunter Caskey
  *
  */
-public class ViewSimResults extends State{
+public class GiveCashInfo extends State {
+	
+	private int id = 11;
 
 	/**
 	 * @param context
 	 */
-	public ViewSimResults(Context context) {
+	public GiveCashInfo(Context context) {
 		super(context);
 	}
 
@@ -41,6 +43,14 @@ public class ViewSimResults extends State{
 	int transition() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	/* (non-Javadoc)
+	 * @see Core.State#getID()
+	 */
+	@Override
+	int getID() {
+		return this.id;
 	}
 
 }

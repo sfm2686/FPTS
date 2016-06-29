@@ -7,14 +7,15 @@ package Core;
  * @authors Sultan Mira, Hunter Caskey
  *
  */
-public class TransactionSelection extends State {
+public class SimSetUp extends State {
+	
+	private int id = 5;
 
 	/**
 	 * @param context
 	 */
-	public TransactionSelection(Context context) {
-		super(context);
-	}
+	public SimSetUp(Context context) {
+		super(context);	}
 
 	/* (non-Javadoc)
 	 * @see Core.State#displayOptions()
@@ -41,6 +42,14 @@ public class TransactionSelection extends State {
 	int transition() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	/* (non-Javadoc)
+	 * @see Core.State#getID()
+	 */
+	@Override
+	int getID() {
+		return this.id;
 	}
 
 }

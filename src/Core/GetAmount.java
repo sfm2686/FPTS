@@ -7,12 +7,14 @@ package Core;
  * @authors Sultan Mira, Hunter Caskey
  *
  */
-public class PromptAmount extends State {
+public class GetAmount extends State {
+	
+	private int id = 16;
 
 	/**
 	 * @param context
 	 */
-	public PromptAmount(Context context) {
+	public GetAmount(Context context) {
 		super(context);
 	}
 
@@ -41,6 +43,14 @@ public class PromptAmount extends State {
 	int transition() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	/* (non-Javadoc)
+	 * @see Core.State#getID()
+	 */
+	@Override
+	int getID() {
+		return this.id;
 	}
 
 }

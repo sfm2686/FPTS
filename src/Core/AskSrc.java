@@ -7,12 +7,14 @@ package Core;
  * @authors Sultan Mira, Hunter Caskey
  *
  */
-public class DisplayAllHoldingsAskAmount extends State {
+public class AskSrc extends State {
+	
+	private int id = 9;
 
 	/**
 	 * @param context
 	 */
-	public DisplayAllHoldingsAskAmount(Context context) {
+	public AskSrc(Context context) {
 		super(context);
 	}
 
@@ -41,6 +43,14 @@ public class DisplayAllHoldingsAskAmount extends State {
 	int transition() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	/* (non-Javadoc)
+	 * @see Core.State#getID()
+	 */
+	@Override
+	int getID() {
+		return this.id;
 	}
 
 }

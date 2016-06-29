@@ -7,14 +7,16 @@ package Core;
  * @authors Sultan Mira, Hunter Caskey
  *
  */
-public class CashInfo extends State {
+public class GetSharesPrice extends State{
+	
+	private int id = 17;
 
 	/**
 	 * @param context
 	 */
-	public CashInfo(Context context) {
+	public GetSharesPrice(Context context) {
 		super(context);
-		}
+	}
 
 	/* (non-Javadoc)
 	 * @see Core.State#displayOptions()
@@ -41,6 +43,14 @@ public class CashInfo extends State {
 	int transition() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	/* (non-Javadoc)
+	 * @see Core.State#getID()
+	 */
+	@Override
+	int getID() {
+		return this.id;
 	}
 
 }

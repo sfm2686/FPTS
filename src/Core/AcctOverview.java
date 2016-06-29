@@ -7,12 +7,14 @@ package Core;
  * @authors Sultan Mira, Hunter Caskey
  *
  */
-public class PromptDest extends State {
+public class AcctOverview extends State {
+	
+	private int id = 2;
 
 	/**
 	 * @param context
 	 */
-	public PromptDest(Context context) {
+	public AcctOverview(Context context) {
 		super(context);
 	}
 
@@ -41,6 +43,14 @@ public class PromptDest extends State {
 	int transition() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	/* (non-Javadoc)
+	 * @see Core.State#getID()
+	 */
+	@Override
+	int getID() {
+		return this.id;
 	}
 
 }

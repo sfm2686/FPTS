@@ -7,12 +7,14 @@ package Core;
  * @authors Sultan Mira, Hunter Caskey
  *
  */
-public class DisplayLog extends State {
+public class SpecifyHoldingType extends State {
+	
+	private int id = 10;
 
 	/**
 	 * @param context
 	 */
-	public DisplayLog(Context context) {
+	public SpecifyHoldingType(Context context) {
 		super(context);
 	}
 
@@ -41,6 +43,14 @@ public class DisplayLog extends State {
 	int transition() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	/* (non-Javadoc)
+	 * @see Core.State#getID()
+	 */
+	@Override
+	int getID() {
+		return this.id;
 	}
 
 }
