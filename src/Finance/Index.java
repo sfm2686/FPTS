@@ -26,6 +26,11 @@ public class Index extends Equity {
 		return this.referenceIndex.getPrice();
 	}
 
+	@Override
+	public EquityUtil getReference(){
+		return this.referenceIndex;
+	}
+	
 	public String getName(){
 		return this.referenceIndex.getName();
 	}

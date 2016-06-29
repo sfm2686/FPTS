@@ -1,6 +1,7 @@
 package Finance;
 
 import java.util.ArrayList;
+import CSV.EquityUtil;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
@@ -31,6 +32,6 @@ public abstract class Equity implements Holding {
 	}
 	
 	abstract double getPrice();
-	
+	abstract EquityUtil getReference();
 	abstract  String getName();
 }

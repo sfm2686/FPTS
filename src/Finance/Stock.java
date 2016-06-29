@@ -34,6 +34,11 @@ public class Stock extends Equity {
 	}
 	
 	@Override
+	public EquityUtil getReference(){
+		return this.referenceStock;
+	}
+	
+	@Override
 	public String toString(){
 		return "Stock Holding: " + this.getName() + ", " + this.getTickerSymbol() 
 			+ ", " + this.getNumShares() + " shares, current price: $" + this.getPrice() 
