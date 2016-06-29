@@ -23,6 +23,7 @@ public class AddEquity extends Transaction {
 		}
 		return false;	
 	}
+	
 	/**
 	 * @param args
 	 */
