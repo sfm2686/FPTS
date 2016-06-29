@@ -16,10 +16,12 @@ public class User {
 	public User(String username, String password){
 		this.username = username;
 		this.password = password;
-		this.portfolios = new ArrayList<>();
+		this.portfolios = new ArrayList<Portfolio>();
 	}
 	
-	
+	public ArrayList<Portfolio> getPorts(){
+		return this.portfolios;
+	}
 	
 	/**
 	 * @param args

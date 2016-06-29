@@ -34,6 +34,7 @@ public class Login extends State{
 		 * 1. S1
 		 * 2. S2
 		 */
+		//BELOW CODE IS THE OLD STATE..
 		System.out.println("To go to: ");
 		System.out.println("\t'Transactions' enter (1) ");
 		System.out.println("\t'Logout' enter 0");
@@ -49,8 +50,7 @@ public class Login extends State{
 	 */
 	@Override
 	void execute() {
-		System.out.println("\n\nALL PORTFOLIO OWNED BY CURRENT USER DISPLAYED HERE\n\n");
-		this.displayOptions();
+		//TODO
 	}
 
 	/* (non-Javadoc)

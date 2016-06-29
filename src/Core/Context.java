@@ -5,6 +5,7 @@ package Core;
 
 import Finance.*;
 import Simulation.SimulationContext;
+import java.util.*;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
@@ -18,10 +19,13 @@ public class Context {
 	private State[][] table;
 	private Portfolio portfolio;
 	private State current;
-	//Private User user;
+	private User user;
 	
 	public Context(){
-		//Should set the user
+		//STARTS ALL OTHER SUBSYSTEMS HERE..
+		//CVS
+		//DBINTERFACE
+		//..
 	}
 	
 	public void setVars(){
@@ -82,8 +86,14 @@ public class Context {
 		return this.table;
 	}
 	
+	
+	//For testing
 	protected void setCurrent(State cur){
 		this.current = cur;
+	}
+	
+	protected ArrayList<Portfolio> getUserPorts(){
+		return this.user.getPorts();
 	}
 	
 	public void setPortfolio( Portfolio portfolio ){
@@ -107,14 +117,6 @@ public class Context {
 	public static void main(String[] args) {
 		Context context = new Context();
 		context.setVars();
-		
-		State logout = new Logout(context);
-		logout.execute();
-		System.out.println("Next state should be: " + logout.getID() + ", " + logout.getNext());
-
-		context.getTable()[logout.getID()][logout.getNext()].execute();
-
-		System.out.println(context.getCurrent().getID());
 	}
 
 }

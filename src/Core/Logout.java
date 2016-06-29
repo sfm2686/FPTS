@@ -24,7 +24,7 @@ public class Logout extends State {
 	@Override
 	void displayOptions() {
 		System.out.println("Are you sure you wish to logout and quit?");
-		System.out.println("(yes, no)");
+		System.out.print("(yes, no): ");
 	}
 
 	/* (non-Javadoc)
