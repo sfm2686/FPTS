@@ -14,6 +14,7 @@ import Simulation.SimulationContext;
  */
 public class Context {
 
+	public static final int QUIT = 13;
 	private State[][] table;
 	private Portfolio portfolio;
 	private State current;
@@ -48,7 +49,7 @@ public class Context {
 		State S21 = new AskNumPriceDest(this);
 		
 		State[][] tempTable = { 
-				{S1, S2, S13},                  //S0
+				{S1, S2},                       //S0
 				{S0, S13},                      //S1
 				{S3, S13},                      //S2
 				{S2, S4, S5, S7, S13},          //S3
@@ -61,7 +62,7 @@ public class Context {
 				{S11, S12, S13},                //S10
 				{S3, S13},                      //S11
 				{S14, S13},                     //S12
-				{null},                         //S13
+				{S3},                           //S13
 				{S3, S13},                      //S14
 				{S16, S17, S13},                //S15
 				{S18, S13},                     //S16
@@ -74,7 +75,7 @@ public class Context {
 		
 		this.table = tempTable;
 		this.current = table[0][0];
-		this.goToNextState();
+		//this.goToNextState();
 	}
 	
 	public State[][] getTable(){
@@ -89,8 +90,12 @@ public class Context {
 		this.portfolio = portfolio;
 	}
 	
+	public State getCurrent(){
+		return this.current;
+	}
+	
 	public void goToNextState(){
-		while ( this.current != table[0][3] ){
+		while ( this.current.getID() != QUIT ){
 			this.current.execute();
 			this.current = this.table[current.getID()][current.getNext()];
 		}
@@ -102,6 +107,14 @@ public class Context {
 	public static void main(String[] args) {
 		Context context = new Context();
 		context.setVars();
+		
+		State logout = new Logout(context);
+		logout.execute();
+		System.out.println("Next state should be: " + logout.getID() + ", " + logout.getNext());
+
+		context.getTable()[logout.getID()][logout.getNext()].execute();
+
+		System.out.println(context.getCurrent().getID());
 	}
 
 }

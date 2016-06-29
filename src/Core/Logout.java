@@ -23,8 +23,8 @@ public class Logout extends State {
 	 */
 	@Override
 	void displayOptions() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("Are you sure you wish to logout and quit?");
+		System.out.println("(yes, no)");
 	}
 
 	/* (non-Javadoc)
@@ -32,8 +32,13 @@ public class Logout extends State {
 	 */
 	@Override
 	void execute() {
-		// TODO Auto-generated method stub
-		
+		this.displayOptions();
+		if ( super.getSc().next().equalsIgnoreCase("yes") ){
+			System.out.println("System exiting....");
+			System.exit(1);
+		}
+		else
+			super.setNext(0);
 	}
 
 	/* (non-Javadoc)
@@ -41,8 +46,7 @@ public class Logout extends State {
 	 */
 	@Override
 	int transition() {
-		// TODO Auto-generated method stub
-		return 0;
+		return super.getNext();
 	}
 
 	/* (non-Javadoc)
@@ -51,6 +55,11 @@ public class Logout extends State {
 	@Override
 	int getID() {
 		return this.id;
+	}
+	
+	@Override
+	public String toString(){
+		return "This is state number #13, LOGOUT";
 	}
 
 }

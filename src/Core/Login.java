@@ -3,6 +3,8 @@
  */
 package Core;
 
+import java.util.*;
+
 /**
  * @authors Sultan Mira, Hunter Caskey
  *
@@ -17,6 +19,7 @@ public class Login extends State{
 	 */
 	public Login(Context context) {
 		super(context);
+		Scanner sc = new Scanner(System.in);
 	} 
 
 	
@@ -29,16 +32,16 @@ public class Login extends State{
 		/*
 		 * Can go to:
 		 * 1. S1
-		 * 2. S16
-		 * 3. S18
-		 * 4. S19
+		 * 2. S2
 		 */
 		System.out.println("To go to: ");
 		System.out.println("\t'Transactions' enter (1) ");
-		System.out.println("\t'Simulation' enter (2)");
-		System.out.println("\t'Log View' enter 3");
 		System.out.println("\t'Logout' enter 0");
-		super.setNext(super.getSc().nextInt() - 1);
+		int input = super.getSc().nextInt();
+		if ( input != 0 )
+			super.setNext(input - 1);
+		else
+			super.setNext(super.getContext().getTable()[this.id].length);
 	}
 
 	/* (non-Javadoc)

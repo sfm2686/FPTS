@@ -32,8 +32,7 @@ public class PortOverview extends State {
 	 */
 	@Override
 	void execute() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("Just got to portfolio overview, S3");
 	}
 
 	/* (non-Javadoc)

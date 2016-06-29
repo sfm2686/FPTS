@@ -15,7 +15,7 @@ public abstract class State {
 	
 	//Next state index number in the look-up table
 	private int next;
-	private Scanner sc;
+	private Scanner sc = new Scanner(System.in);
 	
 	public State(Context context){
 		this.context = context;
