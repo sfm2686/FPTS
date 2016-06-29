@@ -35,14 +35,15 @@ public class AcctOverview extends State {
 	 */
 	@Override
 	void execute() {
+		System.out.println("\n------Account Overview-----\n");
 		this.displayOptions();
 		int in;
 		System.out.print("Taking input: ");
-		in = super.getSc().nextInt();
+		in = getSc().nextInt();
 		while ( in != 1 && in != 0){
 			System.out.println("Invalid input. Please try again");
 			this.displayOptions();
-			in = super.getSc().nextInt();
+			in = getSc().nextInt();
 		}
 		
 		//Displays ports, sets ports in context by port ID taken from user.
@@ -50,22 +51,22 @@ public class AcctOverview extends State {
 		if ( in == 1 ){
 			this.listPorts();
 			in = super.getSc().nextInt() - 1;
-			while  ( in <= super.getContext().getUserPorts().size() ){
+			while  ( in <= getContext().getUserPorts().size() ){
 				System.out.println("Invalid ID, please try again");
 				this.listPorts();
-				in = super.getSc().nextInt() - 1;
+				in = getSc().nextInt() - 1;
 			}
 			super.getContext().setPort(in);
 			super.setNext(0);
 		}
 		else
-			super.setNext(super.getContext().getTable()[this.id].length);
+			super.setNext(getContext().getTable()[this.id].length);
 	}
 	
 	//Helper method for listing portfolios
 	private void listPorts(){
 		int i = 1;
-		for ( Portfolio port : super.getContext().getUserPorts() )
+		for ( Portfolio port : getContext().getUserPorts() )
 			System.out.println(i++ + ": " + port);
 		System.out.println("Select a portfolio to view by their number");
 		System.out.print("Taking input: ");
@@ -76,7 +77,7 @@ public class AcctOverview extends State {
 	 */
 	@Override
 	int transition() {
-		return super.getNext();
+		return getNext();
 	}
 
 	/* (non-Javadoc)

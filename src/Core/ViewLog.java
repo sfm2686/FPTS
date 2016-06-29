@@ -23,8 +23,15 @@ public class ViewLog extends State {
 	 */
 	@Override
 	void displayOptions() {
-		// TODO Auto-generated method stub
-		
+		/*
+		 * Can go to:
+		 * 1. S3
+		 * 2. S13
+		 */
+		System.out.println("Options:");
+		System.out.println("\tPortfolio Overview (enter: 1)");  //S3
+		System.out.println("\tQuit (enter: 0)");                //S13
+		System.out.print("Taking input: ");
 	}
 
 	/* (non-Javadoc)
@@ -32,8 +39,21 @@ public class ViewLog extends State {
 	 */
 	@Override
 	void execute() {
-		// TODO Auto-generated method stub
+		System.out.println("\n------View Log-----\n");
 		
+		System.out.println(getContext().getPort().getLog());
+		
+		this.displayOptions();
+		int in = getSc().nextInt();
+		while ( in != 0 && in != 1 ){
+			System.out.println("Invalid input, please try again");
+			this.displayOptions();
+			in = getSc().nextInt();
+		}
+		if ( in == 0 )
+			setNext(getContext().getTable()[this.id].length);
+		else
+			setNext(in - 1);
 	}
 
 	/* (non-Javadoc)
