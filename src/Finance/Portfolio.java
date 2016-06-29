@@ -32,44 +32,48 @@ public class Portfolio {
 		return value;
 	}
 	
-	protected boolean createEquity(int numShares, EquityUtil equityRef){
-		if (this.hasEquity(equityRef)){
-			return false;
-		}
-		Equity equity;
-		try{
-			StockUtil stockRef = (StockUtil)equityRef;
-			equity = new Stock(numShares, stockRef);
-		}
-		catch(Exception e){
-			IndexUtil indexRef = (IndexUtil)equityRef;
-			equity = new Index(numShares, indexRef);
-		}
+//	protected boolean createEquity(int numShares, EquityUtil equityRef){
+//		if (this.hasEquity(equityRef)){
+//			return false;
+//		}
+//		Equity equity;
+//		try{
+//			StockUtil stockRef = (StockUtil)equityRef;
+//			equity = new Stock(numShares, stockRef);
+//		}
+//		catch(Exception e){
+//			IndexUtil indexRef = (IndexUtil)equityRef;
+//			equity = new Index(numShares, indexRef);
+//		}
+//		this.equities.add(equity);
+//		return true;
+//	}
+	
+	protected void addEquity(Equity equity){
 		this.equities.add(equity);
-		return true;
 	}
 	
-	private void addEquity(Equity equity){
-		this.equities.add(equity);
-	}
-	
-	private void addCash(CashAcct cash){
+	protected void addCash(CashAcct cash){
 		this.cashAccounts.add(cash);
 	}
 	
-	protected boolean removeEquity(EquityUtil equityRef){
-		if (this.hasEquity(equityRef)){
-			Equity removal = null;
-			for(Equity equity : this.equities){
-				if (equity.getName().equalsIgnoreCase(equityRef.getName())){
-					removal = equity;
-					break;
-				}
-			}
-			this.equities.remove(removal);
-			return true;
-		}
-		return false;
+//	protected boolean removeEquity(EquityUtil equityRef){
+//		if (this.hasEquity(equityRef)){
+//			Equity removal = null;
+//			for(Equity equity : this.equities){
+//				if (equity.getName().equalsIgnoreCase(equityRef.getName())){
+//					removal = equity;
+//					break;
+//				}
+//			}
+//			this.equities.remove(removal);
+//			return true;
+//		}
+//		return false;
+//	}
+	
+	protected void removeEquity(Equity equity){
+		this.equities.remove(equity);
 	}
 	
 //	protected boolean createCashAcct(String name, double balance){
@@ -86,23 +90,31 @@ public class Portfolio {
 		return this.cashAccounts;
 	}
 	
+	protected ArrayList<Equity> getEquities(){
+		return this.equities;
+	}
+	
 	protected void addCashAccount(CashAcct account){
 		this.cashAccounts.add(account);
 	}
 	
-	protected boolean removeCashAcct(String name){
-		if (this.hasCashAccount(name)){
-			CashAcct removal = null;
-			for(CashAcct account : this.cashAccounts){
-				if (account.getName().equalsIgnoreCase(name)){
-					removal = account;
-					break;
-				}
-			}
-			this.cashAccounts.remove(removal);
-			return true;
-		}
-		return false;
+//	protected boolean removeCashAcct(String name){
+//		if (this.hasCashAccount(name)){
+//			CashAcct removal = null;
+//			for(CashAcct account : this.cashAccounts){
+//				if (account.getName().equalsIgnoreCase(name)){
+//					removal = account;
+//					break;
+//				}
+//			}
+//			this.cashAccounts.remove(removal);
+//			return true;
+//		}
+//		return false;
+//	}
+	
+	protected void removeCashAccount(CashAcct account){
+		this.cashAccounts.remove(account);
 	}
 	
 	protected boolean hasEquity(EquityUtil equityRef){

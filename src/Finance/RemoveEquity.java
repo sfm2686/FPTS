@@ -1,7 +1,6 @@
-/**
- * 
- */
 package Finance;
+
+import CSV.EquityUtil;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
@@ -9,6 +8,28 @@ package Finance;
  */
 public class RemoveEquity extends Transaction {
 
+	private EquityUtil reference;
+	
+	public RemoveEquity(Portfolio receiver, EquityUtil reference){
+		super(receiver);
+		this.reference = reference;
+	}
+	
+	public boolean Execute(){
+		if (super.getReciever().hasEquity(this.reference)){
+			Equity removal = null;
+			for(Equity equity : super.getReciever().getEquities()){
+				if (equity.getName().equalsIgnoreCase(this.reference.getName())){
+					removal = equity;
+					break;
+				}
+			}
+			super.getReciever().removeEquity(removal);
+			return true;
+		}
+		return false;
+	}
+	
 	/**
 	 * @param args
 	 */
