@@ -2,12 +2,13 @@ package Core;
 
 import java.util.ArrayList;
 import Finance.Portfolio;
+import java.io.Serializable;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
  *
  */
-public class User {
+public class User implements Serializable {
 
 	private final String username;
 	private String password;

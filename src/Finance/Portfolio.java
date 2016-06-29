@@ -8,17 +8,22 @@ import CSV.*;
  *
  */
 public class Portfolio {
-	private Log log;
 	
 	//private User owner; //Commented out until User class is made
 	private String name;
 	private ArrayList<Equity> equities;
 	private ArrayList<CashAcct> cashAccounts;
+	private Log log;
 
 	public Portfolio(String name){
 		this.name = name;
 		this.equities = new ArrayList<>();
 		this.cashAccounts = new ArrayList<>();
+		this.log = new Log(name);
+	}
+	
+	public Log getLog(){
+		return this.log;
 	}
 	
 	public double getPortfolioValue(){

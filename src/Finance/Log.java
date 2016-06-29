@@ -1,7 +1,6 @@
-/**
- * 
- */
 package Finance;
+
+import java.util.ArrayList;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
@@ -9,6 +8,26 @@ package Finance;
  */
 public class Log {
 
+	private ArrayList<Transaction> log;
+	private String portfolioName;
+	
+	public Log(String portfolioName){
+		this.log = new ArrayList<Transaction>();
+		this.portfolioName = portfolioName;
+	}
+	
+	public void log (Transaction change){
+		this.log.add(change);
+	}
+	
+	public String toString(){
+		String str = "Log for Portfolio: " + this.portfolioName + "\n";
+		for(Transaction item : this.log){
+			str += "\t" + item.toString() + "\n";
+		}
+		return str;
+	}
+	
 	/**
 	 * @param args
 	 */
