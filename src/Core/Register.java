@@ -50,6 +50,8 @@ public class Register extends State {
 	 */
 	@Override
 	void execute() {
+		System.out.println("\n------Register-----\n");
+
 		this.displayOptions();
 		while ( DBInterface.getUserData(this.username) != null &&
 				!this.isValidPass(pw1, pw2) ){
