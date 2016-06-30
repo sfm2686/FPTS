@@ -33,8 +33,8 @@ public class GetSharesPrice extends State{
 	
 	@Override
 	public void execute(){
-		boolean failure = false;
 		System.out.println("\n------Select an Equity to Add Shares To-----\n");
+		boolean failure = false;
 		displayOptions();
 		int in;
 		in = getSc().nextInt();

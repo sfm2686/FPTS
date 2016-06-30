@@ -44,6 +44,7 @@ public class TransactionOverview extends State {
 
 	@Override
 	void execute() {
+		System.out.println("\n------Transaction Menu-----\n");
 		displayOptions();
 		int in;
 		in = getSc().nextInt();

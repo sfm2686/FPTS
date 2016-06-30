@@ -45,7 +45,10 @@ public class Logout extends State {
 			input = getSc().next();
 		}
 		if ( input.equalsIgnoreCase("yes") ){
-			DBInterface.saveUserData(getContext().getUser());
+			if ( DBInterface.saveUserData(getContext().getUser()) ) 
+				System.out.println("All changes saved successfully");
+			else
+				System.out.println("Could not save changes, plaese contact customer service");
 			System.out.println("System exiting....");
 			System.exit(1);
 		}

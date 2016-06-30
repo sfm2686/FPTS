@@ -24,7 +24,7 @@ public class SpecifyEquity extends State {
 		System.out.println("Available Equities:");
 		int i = 1;
 		for(EquityUtil equity : getContext().getMarket().displayMarket()){
-			System.out.println(i + ". " + equity.toString());
+			System.out.println(i++ + ". " + equity.toString());
 		}
 		System.out.print("Please select an equity by the listing number (integer): ");
 	}

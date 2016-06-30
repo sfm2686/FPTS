@@ -44,6 +44,7 @@ public class AskSource extends State {
 
 	@Override
 	void execute() {
+		System.out.println("\n------Specify Source-----\n");
 		boolean failure = false;
 		int in = -1;
 		CashAcct src = null;
