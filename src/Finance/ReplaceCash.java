@@ -3,11 +3,13 @@
  */
 package Finance;
 
+import java.io.Serializable;
+
 /**
  * @authors Sultan Mira, Hunter Caskey
  *
  */
-public class ReplaceCash extends Transaction {
+public class ReplaceCash extends Transaction implements Serializable{
 
 	private String accountName;
 	private double newBalance;

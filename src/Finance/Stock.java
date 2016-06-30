@@ -1,13 +1,14 @@
 package Finance;
 
 import java.util.ArrayList;
+import java.io.Serializable;
 import CSV.*;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
  *
  */
-public class Stock extends Equity {
+public class Stock extends Equity implements Serializable{
 
 	private StockUtil referenceStock;
 	

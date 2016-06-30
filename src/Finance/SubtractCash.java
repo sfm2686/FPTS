@@ -1,10 +1,12 @@
 package Finance;
 
+import java.io.Serializable;
+
 /**
  * @authors Sultan Mira, Hunter Caskey
  *
  */
-public class SubtractCash extends Transaction {
+public class SubtractCash extends Transaction implements Serializable {
 
 	private String acctName;
 	private double withdrawal;

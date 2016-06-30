@@ -3,12 +3,13 @@ package Finance;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
+import java.io.Serializable;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
  *
  */
-public abstract class Transaction {
+public abstract class Transaction implements Serializable {
 
 	private Portfolio receiver;
 	private Date transactionDate;

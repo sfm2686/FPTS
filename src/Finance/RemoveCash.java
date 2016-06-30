@@ -3,11 +3,13 @@
  */
 package Finance;
 
+import java.io.Serializable;
+
 /**
  * @authors Sultan Mira, Hunter Caskey
  *
  */
-public class RemoveCash extends Transaction {
+public class RemoveCash extends Transaction implements Serializable{
 
 	private String accountName;
 	

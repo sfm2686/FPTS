@@ -1,12 +1,13 @@
 package Finance;
 
 import CSV.EquityUtil;
+import java.io.Serializable;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
  *
  */
-public class RemoveEquity extends Transaction {
+public class RemoveEquity extends Transaction implements Serializable{
 
 	private EquityUtil reference;
 	

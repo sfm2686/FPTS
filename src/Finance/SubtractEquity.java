@@ -3,11 +3,13 @@
  */
 package Finance;
 
+import java.io.Serializable;
+
 /**
  * @authors Sultan Mira, Hunter Caskey
  *
  */
-public class SubtractEquity extends Transaction {
+public class SubtractEquity extends Transaction implements Serializable {
 
 	private String equityName;
 	private int numShares;
