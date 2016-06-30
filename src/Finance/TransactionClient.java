@@ -9,6 +9,12 @@ import Core.User;
  */
 public class TransactionClient {
 
+	private User user;
+	
+	public TransactionClient(User user){
+		this.user = user;
+	}
+	
 	public boolean buyEquity(EquityUtil reference, int shares, double price, Portfolio destPort, Portfolio srcPort, CashAcct srcCashAcct){
 		double cost = shares * price;
 		Transaction command = new SubtractCash(srcPort, srcCashAcct.getName(), cost);
@@ -35,7 +41,6 @@ public class TransactionClient {
 			addCash(destPort, destCashAcct.getName(), salePrice);
 		}
 	}
-	
 	
 	public boolean transferEquity(Portfolio portfolio, Equity equity, int shares, double price){
 		if (equity.getNumShares() >= shares){
