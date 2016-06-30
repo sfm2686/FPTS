@@ -28,13 +28,15 @@ public class EquityBin {
 	 * TODO don't display
 	 * This function displays all of the stock's in each of the indices 
 	 */
-	public void displayMarket(){
-		for (IndexUtil index : indexBin){
-			System.out.println(index.getName());
-			for (StockUtil stock : index.getStocks()){
-				System.out.println("\t" + stock.getName());
-			}
+	public ArrayList<EquityUtil> displayMarket(){
+		ArrayList<EquityUtil> market = new ArrayList<>();
+		for(IndexUtil index : this.indexBin){
+			market.add(index);
 		}
+		for(StockUtil stock : this.stockBin){
+			market.add(stock);
+		}
+		return marlet;
 	}
 	
 	/**

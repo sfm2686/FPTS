@@ -62,7 +62,6 @@ public class GiveEquityInfo extends State {
 		SpecifyEquity next = (SpecifyEquity)getContext().getNextState(0);
 		next.shares = shareNum;
 		next.price = pricePerShare;
-		
 	}
 	@Override
 	int getID() {

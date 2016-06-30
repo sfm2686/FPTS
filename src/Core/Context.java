@@ -5,6 +5,7 @@ package Core;
 
 import Finance.*;
 import Simulation.SimulationContext;
+import CSV.*;
 import java.util.*;
 
 /**
@@ -22,12 +23,15 @@ public class Context {
 	private User user;
 	private TransactionClient transClient = null;
 	private SimulationContext sim = null;
+	private EquityBin market;
 	
 	public Context(){
 		//STARTS ALL OTHER SUBSYSTEMS HERE..
 		//CVS
 		//DBINTERFACE
 		//..
+		this.market = new EquityBin();
+		this.market.readEquities();
 	}
 	
 	public void setVars(){
@@ -64,16 +68,16 @@ public class Context {
 				{S3, S5, S13},                  //S6
 				{S3, S8, S10, S15, S19, S13},   //S7
 				{S3, S13},                      //S8
-				{S3, S13},                      //S9
-				{S11, S12, S13},                //S10
-				{S3, S13},                      //S11
+				{S3},                      //S9
+				{S11, S12},                //S10
+				{S3},                      //S11
 				{S14},                     //S12
 				{S3},                           //S13
-				{S3, S13},                      //S14
-				{S16, S17, S13},                //S15
-				{S18, S13},                     //S16
+				{S3},                      //S14
+				{S16, S17},                //S15
+				{S18},                     //S16
 				{S9, S13},                      //S17
-				{S3, S13},                      //S18
+				{S3},                      //S18
 				{S20, S21, S13},                //S19
 				{S3, S13},                      //S20
 				{S3, S13},                      //S21
@@ -86,6 +90,10 @@ public class Context {
 	
 	public State[][] getTable(){
 		return this.table;
+	}
+	
+	protected EquityBin getMarket(){
+		return this.market;
 	}
 	
 	

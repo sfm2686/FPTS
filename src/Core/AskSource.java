@@ -1,7 +1,6 @@
-/**
- * 
- */
 package Core;
+
+import Finance.CashAcct;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
@@ -10,6 +9,8 @@ package Core;
 public class AskSource extends State {
 	
 	private int id = 18;
+	protected CashAcct acct;
+	protected double amount;
 
 	/**
 	 * @param context
