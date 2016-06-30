@@ -24,6 +24,10 @@ public class User implements Serializable {
 		return this.portfolios;
 	}
 	
+	protected void addPort(Portfolio port){
+		this.portfolios.add(port);
+	}
+	
 	public String getUserName(){
 		return this.username;
 	}

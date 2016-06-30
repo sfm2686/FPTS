@@ -49,20 +49,20 @@ public class Register extends State {
 	void execute() {
 		System.out.println("\n------Registration-----\n");
 		this.displayOptions();
-		while ( DBInterface.getUserData(this.username) != null &&
+		while ( DBInterface.getUserData(this.username) != null ||
 				!this.isValidPass(pw1, pw2) ){
 			if ( DBInterface.getUserData(this.username) != null )
-				System.out.println("Username already");
+				System.out.println("Username already taken :(");
 			if ( !this.isValidPass(pw1, pw2) )
 				System.out.println("Passwords do not match, please try again");
 			this.displayOptions();
 		}
 		
 		String pass = new StringBuilder(pw1).reverse().toString();
-		User user = new User(this.username, pass);
-		System.out.println("User: " + user.getUserName() + " ,,,,,, " + user.getPass());
 		if ( !DBInterface.saveUserData(new User(this.username, pass)) )
 			System.out.println("\tRegistration failed. Please contact customer service..");
+		else
+			System.out.println("Registration successful..");
 		setNext(0);
 	}
 

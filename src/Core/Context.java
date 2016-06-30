@@ -61,7 +61,7 @@ public class Context {
 		State[][] tempTable = { 
 				{S1, S2},                       //S0
 				{S0, S13},                      //S1
-				{S3, S13},                      //S2
+				{S2, S3, S13},                  //S2
 				{S2, S4, S5, S7, S13},          //S3
 				{S3, S13},                      //S4
 				{S6},                           //S5
@@ -72,7 +72,7 @@ public class Context {
 				{S11, S12},                     //S10
 				{S3},                           //S11
 				{S14},                          //S12
-				{S3},                           //S13
+				{S2},                           //S13
 				{S3},                           //S14
 				{S16, S17},                     //S15
 				{S18},                          //S16
@@ -150,6 +150,10 @@ public class Context {
 	
 	protected State getNextState(int transition){
 		return table[this.current.getID()][transition];
+	}
+	
+	protected User getUser(){
+		return this.user;
 	}
 
 	

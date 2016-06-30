@@ -24,7 +24,6 @@ public class  DBInterface {
 			return true;
 		}
 		catch(Exception e){
-			e.printStackTrace();
 			return false;
 		}
 	}
@@ -41,7 +40,6 @@ public class  DBInterface {
 				ois.close();
 			}
 			catch(Exception e){
-				e.printStackTrace();
 			}
 		}
 		return user;

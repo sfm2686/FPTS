@@ -36,9 +36,9 @@ public class Login extends State{
 		 * 1. S1
 		 * 2. S2
 		 */
-		System.out.println("Options ");
+		System.out.println("Options: ");
 		System.out.println("\tRegister (enter: 1) ");
-		System.out.println("\tLogin (enter: 2");
+		System.out.println("\tLogin (enter: 2)");
 		System.out.print("Taking input: ");
 	}
 	
@@ -70,11 +70,31 @@ public class Login extends State{
 		this.getUserInfo();
 		//Make believe hashing for now :P
 		String checkPass = new StringBuilder(this.password).reverse().toString();
-		while ( user == null && !this.user.getPass().equals(checkPass) ){
-			System.out.println("Invalid input, please try again");
-			this.getUserInfo();
-			checkPass = new StringBuilder(this.password).reverse().toString();
-		}
+		boolean fail = true;
+		do{
+			if(user != null){
+				if(this.user.getPass().equals(checkPass)){
+					fail = false;
+				}
+				else{
+					System.out.println("Invalid input, please try again");
+					this.getUserInfo();
+					checkPass = new StringBuilder(this.password).reverse().toString();
+				}
+			}
+			else{
+				System.out.println("Invalid input, please try again");
+				this.getUserInfo();
+				checkPass = new StringBuilder(this.password).reverse().toString();
+			}
+			
+		}while(fail);
+		
+//		while ( user == null && !this.user.getPass().equals(checkPass) ){
+//			System.out.println("Invalid input, please try again");
+//			this.getUserInfo();
+//			checkPass = new StringBuilder(this.password).reverse().toString();
+//		}
 	}
 	
 
