@@ -76,11 +76,11 @@ public class Context {
 				{S3},                           //S14
 				{S16, S17},                     //S15
 				{S18},                          //S16
-				{S9, S13},                      //S17
+				{S9},                           //S17
 				{S3},                           //S18
-				{S20, S21, S13},                //S19
-				{S3, S13},                      //S20
-				{S3, S13},                      //S21
+				{S20, S21},                     //S19
+				{S3},                           //S20
+				{S3},                           //S21
 				};
 		
 		this.table = tempTable;

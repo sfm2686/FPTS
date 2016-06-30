@@ -51,7 +51,7 @@ public class AcctOverview extends State {
 		if ( in == 1 ){
 			this.listPorts();
 			in = getSc().nextInt() - 1;
-			while  ( in <= getContext().getUserPorts().size() ){
+			while  ( in <= getContext().getUserPorts().size() && in > 0){
 				System.out.println("Invalid ID, please try again");
 				this.listPorts();
 				in = getSc().nextInt();
@@ -67,7 +67,7 @@ public class AcctOverview extends State {
 	private void listPorts(){
 		int i = 1;
 		for ( Portfolio port : getContext().getUserPorts() )
-			System.out.println(i++ + ": " + port);
+			System.out.println(i++ + ": " + port.getName());
 		System.out.print("Select a portfolio to view by their number (integer): ");
 	}
 
