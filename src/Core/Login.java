@@ -24,10 +24,7 @@ public class Login extends State{
 		super(context);
 	} 
 
-	
-	/* (non-Javadoc)
-	 * @see Core.State#displayOptions()
-	 */
+
 	@Override
 	void displayOptions() {
 		

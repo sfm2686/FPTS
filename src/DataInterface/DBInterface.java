@@ -15,8 +15,9 @@ public class  DBInterface {
 
 	
 	public static boolean saveUserData(User user){
-		String fileName = user.getUserName() + DBInterface.extension;
-		File file = new File(DBInterface.directory, fileName);
+		File directory = new File(DBInterface.directory);
+		String fileName = user.getUserName() +  DBInterface.extension;
+		File file = new File(directory, fileName);
 		try{
 			ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file));
 			oos.writeObject(user);
@@ -57,22 +58,22 @@ public class  DBInterface {
 	 * @throws IOException 
 	 */
 	public static void main(String[] args) throws IOException {
-		if(args.length == 2){
-			if(args[0].equals("-delete")){
-				boolean status = deleteUserData(args[1]);
-				if(status){
-					System.out.println("Successful deletion of User: " + args[1]);
-					return;
-				}
-				System.out.println("Unsuccessful deletion of User: " + args[1]);
-				return;
-			}
-		}
-//		User testUser = new User("user123", "password");
-//		saveUserData(testUser);
-//		User retrieval = getUserData("user123");
-//		System.out.println(retrieval);
-//		deleteUserData(retrieval.getUserName());
+//		if(args.length == 2){
+//			if(args[0].equals("-delete")){
+//				boolean status = deleteUserData(args[1]);
+//				if(status){
+//					System.out.println("Successful deletion of User: " + args[1]);
+//					return;
+//				}
+//				System.out.println("Unsuccessful deletion of User: " + args[1]);
+//				return;
+//			}
+//		}
+		User testUser = new User("user123", "password");
+		saveUserData(testUser);
+		User retrieval = getUserData("user123");
+		System.out.println(retrieval);
+		//deleteUserData(retrieval.getUserName());
 	}
 
 }
