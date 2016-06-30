@@ -28,7 +28,7 @@ public class Add extends State {
 
 	@Override
 	void execute() {
-		System.out.println("\n------Select a Holding Type to Add to-----\n");
+		System.out.println("\n------Adding to a Holding-----\n");
 		this.displayOptions();
 		int input = getSc().nextInt();
 		while (!isValid(1, 2, input)){
