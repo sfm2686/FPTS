@@ -18,39 +18,49 @@ public class TransactionOverview extends State {
 		super(context);
 	}
 
-	/* (non-Javadoc)
-	 * @see Core.State#displayOptions()
-	 */
+
 	@Override
 	void displayOptions() {
-		// TODO Auto-generated method stub
-		
+		/*
+		 * Can go to:
+		 * 1. S3 
+		 * 2. S8
+		 * 3. S10
+		 * 4. S15
+		 * 5. S19
+		 * 6. S13
+		 * 
+		 */
+		System.out.println("Options:");
+		System.out.println("\tPortofolio Overview (enter: 1)");  //S3
+		System.out.println("\tRemove a Holding  (enter: 2)");          //S8
+		System.out.println("\tCreate a Holding (enter: 3)");          //S10
+		System.out.println("\tAdd to a Holding (enter: 4)");  //S15
+		System.out.println("\tTake from a Holding (enter: 5)");  //S19
+		System.out.println("\tQuit (enter: 0)");              //S13
+		System.out.print("Taking input: ");
 	}
 
-	/* (non-Javadoc)
-	 * @see Core.State#execute()
-	 */
+
 	@Override
 	void execute() {
-		System.out.println("This state is NOT done yet, id = " + this.id);
+		displayOptions();
+		int in;
+		in = getSc().nextInt();
+		while(!isValid(0,5,in)){
+			System.out.println("Invalid input, please try again.");
+			displayOptions();
+			in = getSc().nextInt();
+		}
+		if(in == 0){
+			setNext(getContext().getTable()[this.id].length);
+		}
+		setNext(in - 1);
 	}
 
-	/* (non-Javadoc)
-	 * @see Core.State#transition()
-	 */
-	@Override
-	int transition() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	/* (non-Javadoc)
-	 * @see Core.State#getID()
-	 */
 	@Override
 	int getID() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.id;
 	}
 
 }

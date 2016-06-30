@@ -91,11 +91,11 @@ public class Portfolio {
 //		return true;
 //	}
 	
-	protected ArrayList<CashAcct> getCashAccounts(){
+	public ArrayList<CashAcct> getCashAccounts(){
 		return this.cashAccounts;
 	}
 	
-	protected ArrayList<Equity> getEquities(){
+	public ArrayList<Equity> getEquities(){
 		return this.equities;
 	}
 	

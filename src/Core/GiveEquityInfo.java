@@ -18,36 +18,52 @@ public class GiveEquityInfo extends State {
 		super(context);
 	}
 
-	/* (non-Javadoc)
-	 * @see Core.State#displayOptions()
-	 */
 	@Override
 	void displayOptions() {
-		// TODO Auto-generated method stub
-		
 	}
-
-	/* (non-Javadoc)
-	 * @see Core.State#execute()
-	 */
+	
 	@Override
 	void execute() {
-		// TODO Auto-generated method stub
+		System.out.println("\n------Specify New Equity Information-----\n");
+		String acctName;
+		int shareNum = 0;
+		double pricePerShare = 0;
+		boolean repeat;
+		
+		do{
+			repeat = false;
+			System.out.print("Please enter the number of shares for the new equity (integer): ");
+			String shares = getSc().next();
+			try{
+				shareNum = Integer.parseInt(shares);
+			}
+			catch(Exception e){
+				System.out.println("Invalid input, please try again.");
+				repeat = true;
+			}
+		}while(repeat);
+		
+		do{
+			repeat = false;
+			System.out.print("Please enter the acquisition price per share (double): ");
+			String price = getSc().next();
+			try{
+				pricePerShare = Double.parseDouble(price);
+			}
+			catch(Exception e){
+				System.out.println("Invalid input, please try again.");
+				repeat = true;
+			}
+		}while(repeat);
+
+		setNext(0);
+		
+		// This is the hackiest shit ever. 
+		SpecifyEquity next = (SpecifyEquity)getContext().getNextState(0);
+		next.shares = shareNum;
+		next.price = pricePerShare;
 		
 	}
-
-	/* (non-Javadoc)
-	 * @see Core.State#transition()
-	 */
-	@Override
-	int transition() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	/* (non-Javadoc)
-	 * @see Core.State#getID()
-	 */
 	@Override
 	int getID() {
 		return this.id;

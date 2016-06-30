@@ -67,6 +67,11 @@ public class TransactionClient {
 		command.Execute();
 	}
 	
+	public boolean createCash(Portfolio portfolio, String accountName, double amount){
+		Transaction command = new CreateCash(portfolio, accountName, amount);
+		return(command.Execute());
+	}
+	
 	public void removeCash(Portfolio srcPort, CashAcct srcCashAccount){
 		Transaction command = new RemoveCash(srcPort, srcCashAccount.getName());
 		command.Execute();

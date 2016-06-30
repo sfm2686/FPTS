@@ -10,6 +10,8 @@ package Core;
 public class SpecifyEquity extends State {
 	
 	private int id = 14;
+	protected double price;
+	protected int shares;
 
 	/**
 	 * @param context
@@ -18,36 +20,12 @@ public class SpecifyEquity extends State {
 		super(context);
 	}
 
-	/* (non-Javadoc)
-	 * @see Core.State#displayOptions()
-	 */
 	@Override
 	void displayOptions() {
 		// TODO Auto-generated method stub
 		
 	}
 
-	/* (non-Javadoc)
-	 * @see Core.State#execute()
-	 */
-	@Override
-	void execute() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	/* (non-Javadoc)
-	 * @see Core.State#transition()
-	 */
-	@Override
-	int transition() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	/* (non-Javadoc)
-	 * @see Core.State#getID()
-	 */
 	@Override
 	int getID() {
 		return this.id;

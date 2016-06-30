@@ -20,6 +20,7 @@ public class Context {
 	private Portfolio portfolio;
 	private State current;
 	private User user;
+	private TransactionClient transClient = null;
 	
 	public Context(){
 		//STARTS ALL OTHER SUBSYSTEMS HERE..
@@ -65,7 +66,7 @@ public class Context {
 				{S3, S13},                      //S9
 				{S11, S12, S13},                //S10
 				{S3, S13},                      //S11
-				{S14, S13},                     //S12
+				{S14},                     //S12
 				{S3},                           //S13
 				{S3, S13},                      //S14
 				{S16, S17, S13},                //S15
@@ -113,12 +114,24 @@ public class Context {
 	}
 	
 	public void goToNextState(){
-		while ( this.current.getID() != QUIT ){
+		while ( true ){
 			this.current.execute();
 			this.current = this.table[current.getID()][current.getNext()];
 		}
-		this.current.execute();
 	}
+	
+	protected TransactionClient getTransClient(){
+		if(this.transClient == null){
+			this.transClient = new TransactionClient();
+		}
+		return this.transClient;
+	}
+	
+	protected State getNextState(int transition){
+		return table[this.current.getID()][transition];
+	}
+
+	
 	/**
 	 * @param args
 	 */

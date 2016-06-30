@@ -3,6 +3,9 @@
  */
 package Core;
 
+import Finance.CashAcct;
+import Finance.Equity;
+
 /**
  * @authors Sultan Mira, Hunter Caskey
  *
@@ -18,36 +21,27 @@ public class SpecifyHoldingType extends State {
 		super(context);
 	}
 
-	/* (non-Javadoc)
-	 * @see Core.State#displayOptions()
-	 */
 	@Override
 	void displayOptions() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("Holding Types:");
+		System.out.println("1. Cash Account");
+		System.out.println("2. Equity");
+		System.out.print("Please select a holding type (integer): ");
 	}
 
-	/* (non-Javadoc)
-	 * @see Core.State#execute()
-	 */
 	@Override
 	void execute() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("\n------Select a Holding Type to Create-----\n");
+		this.displayOptions();
+		int input = getSc().nextInt();
+		while (!isValid(1, 2, input)){
+			System.out.println("Invalid input, please try again.");
+			displayOptions();
+			input = getSc().nextInt();
+		}
+		setNext(input - 1);
 	}
 
-	/* (non-Javadoc)
-	 * @see Core.State#transition()
-	 */
-	@Override
-	int transition() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	/* (non-Javadoc)
-	 * @see Core.State#getID()
-	 */
 	@Override
 	int getID() {
 		return this.id;

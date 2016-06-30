@@ -47,6 +47,5 @@ public abstract class State {
 	
 	abstract void displayOptions();
 	abstract void execute();
-	abstract int transition();
 	abstract int getID();
 }
