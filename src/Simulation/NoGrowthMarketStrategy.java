@@ -6,7 +6,11 @@ package Simulation;
 import java.util.ArrayList;
 
 /**
- * @author Sultan Mira
+ * @author Sultan Mira, Hunter Caskey
+ * 
+ * This class represents the no-growth type of the simulation strategy.
+ * This type of strategy does not simulate any growth or decrease in the
+ * value of the portfolio.
  *
  */
 public class NoGrowthMarketStrategy extends SimulationStrategy {

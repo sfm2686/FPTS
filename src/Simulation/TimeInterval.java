@@ -4,7 +4,12 @@
 package Simulation;
 
 /**
- * @author muro
+ * @authors Sultan Mira, Hunter Caskey
+ * 
+ * This class was initially set to map the time interval speicifed in 
+ * SimulationContext to a value but it was not used when SimulationContext
+ * was implemented. This enum might be used for future refactoring/modifications.
+ * Which is why it will not be deleted.
  *
  */
 public enum TimeInterval {

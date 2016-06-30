@@ -6,17 +6,13 @@ import java.util.*;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
+ * 
+ * This class defines the methods that all strategy classes should implement
+ * or could use from their super, this class.
  *
  */
 abstract class SimulationStrategy {
 
-	//commented out for now, might not use
-	/*
-	//attrs to be used by subclasses
-	private double growthRate;
-	private int steps;
-	private int interval;
-	*/
 	
 	private double initValue;
 	private double currentValue;

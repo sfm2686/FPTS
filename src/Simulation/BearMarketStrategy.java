@@ -5,7 +5,11 @@ package Simulation;
 import java.util.ArrayList;
 
 /**
- * @author Sultan Mira
+ * @author Sultan Mira, Hunter Caskey
+ * 
+ * This class represents the bear market strategy for simulating a portfolio
+ * value over a specified time interval multiplied by time steps.
+ * This type of strategy is decreasing.
  *
  */
 public class BearMarketStrategy extends SimulationStrategy {

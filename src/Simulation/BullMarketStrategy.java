@@ -5,7 +5,11 @@ package Simulation;
 import java.util.*;
 
 /**
- * @author Sultan Mira
+ * @author Sultan Mira, Hunter Caskey
+ * 
+ * This class represents the bull market strategy for simulating a portfolio's
+ * value over a specified time interval.
+ * This type of strategy is increasing.
  *
  */
 public class BullMarketStrategy extends SimulationStrategy {

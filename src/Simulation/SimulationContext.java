@@ -2,15 +2,19 @@
  * 
  */
 package Simulation;
-import Finance.Portfolio;
 import java.util.*;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
  * 
- * Works with an input value not portfolio.
- * Input value should be replaced with a portfolio object when portfolio is 
- * Implemented.
+ * This class delegates between different stratigies depending on the input/choice
+ * of the user. It will set its strategy class reference to what the user has
+ * chosen. Once that is done it will simulate and display the results one result at a 
+ * time. The client of the class is able to determine what invokes the display of the 
+ * next result in the next time step. The class returns the next result everytime the
+ * getNextResult method is called. The class is also able to simulate off a simulation result.
+ * If the client of the class does not simulate again the current value will be reset to the
+ * initial.
  *
  */
 public class SimulationContext {
@@ -25,21 +29,11 @@ public class SimulationContext {
 	private int intervalNum;
 	private String interval;
 	
-	/*
-	//Portfolio commented out until it is implemented
-	//private Portfolio portfolio;
-	
-	//Helper methods
-	private double getPortfolioValue(){
-		return portfolio.getValue();
-	}
-	*/
 	
 	//Constructor
 	public SimulationContext(double growthRate, double value, 
 			int timeSteps, String interval, String type){
 		
-		//this.portfolio = portfolio;
 		this.growthRate = growthRate / 100;
 		this.currentValue = value;
 		this.initValue = value;
