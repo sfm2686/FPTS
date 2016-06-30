@@ -26,6 +26,10 @@ public class Portfolio {
 		return this.log;
 	}
 	
+	public String getName(){
+		return this.name;
+	}
+	
 	public double getPortfolioValue(){
 		double value = 0;
 		for (Equity equity : this.equities){

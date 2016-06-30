@@ -18,9 +18,6 @@ public class PortOverview extends State {
 		super(context);
 	}
 
-	/* (non-Javadoc)
-	 * @see Core.State#displayOptions()
-	 */
 	@Override
 	void displayOptions() {
 		/*
@@ -40,9 +37,6 @@ public class PortOverview extends State {
 		System.out.print("Taking input: ");
 	}
 
-	/* (non-Javadoc)
-	 * @see Core.State#execute()
-	 */
 	@Override
 	void execute() {
 		System.out.println("\n------Portfolio Overview-----\n");
@@ -66,18 +60,6 @@ public class PortOverview extends State {
 		super.setNext(super.getContext().getTable()[this.id].length);
 	}
 
-	/* (non-Javadoc)
-	 * @see Core.State#transition()
-	 */
-	@Override
-	int transition() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	/* (non-Javadoc)
-	 * @see Core.State#getID()
-	 */
 	@Override
 	int getID() {
 		return this.id;

@@ -25,8 +25,7 @@ public class EquityBin {
 	}
 	
 	/**
-	 * TODO don't display
-	 * This function displays all of the stock's in each of the indices 
+	 * This function returns the complete listing of available equities in the system. 
 	 */
 	public ArrayList<EquityUtil> displayMarket(){
 		ArrayList<EquityUtil> market = new ArrayList<>();
@@ -36,7 +35,7 @@ public class EquityBin {
 		for(StockUtil stock : this.stockBin){
 			market.add(stock);
 		}
-		return marlet;
+		return market;
 	}
 	
 	/**
