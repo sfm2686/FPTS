@@ -84,8 +84,8 @@ public class Context {
 				};
 		
 		this.table = tempTable;
-		this.current = table[0][0];
-		//this.goToNextState();
+		this.current = S0;
+		this.goToNextState();
 	}
 	
 	public State[][] getTable(){
@@ -96,11 +96,6 @@ public class Context {
 		return this.market;
 	}
 	
-	
-	//For testing
-	protected void setCurrent(State cur){
-		this.current = cur;
-	}
 	
 	protected void setUser(User user){
 		this.user = user;

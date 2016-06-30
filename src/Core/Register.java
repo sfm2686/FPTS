@@ -45,13 +45,9 @@ public class Register extends State {
 		return false;
 	}
 
-	/* (non-Javadoc)
-	 * @see Core.State#execute()
-	 */
 	@Override
 	void execute() {
-		System.out.println("\n------Register-----\n");
-
+		System.out.println("\n------Registration-----\n");
 		this.displayOptions();
 		while ( DBInterface.getUserData(this.username) != null &&
 				!this.isValidPass(pw1, pw2) ){
@@ -61,8 +57,12 @@ public class Register extends State {
 				System.out.println("Passwords do not match, please try again");
 			this.displayOptions();
 		}
+		
 		String pass = new StringBuilder(pw1).reverse().toString();
-		DBInterface.saveUserData(new User(this.username, pass));
+		User user = new User(this.username, pass);
+		System.out.println("User: " + user.getUserName() + " ,,,,,, " + user.getPass());
+		if ( !DBInterface.saveUserData(new User(this.username, pass)) )
+			System.out.println("\tRegistration failed. Please contact customer service..");
 		setNext(0);
 	}
 
