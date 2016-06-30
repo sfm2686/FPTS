@@ -67,14 +67,6 @@ public class SimView extends State {
 		getContext().getPort().getPortfolioValue());
 	}
 
-	/* (non-Javadoc)
-	 * @see Core.State#transition()
-	 */
-	@Override
-	int transition() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 	/* (non-Javadoc)
 	 * @see Core.State#getID()

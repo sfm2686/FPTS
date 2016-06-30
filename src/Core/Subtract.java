@@ -18,35 +18,27 @@ public class Subtract extends State {
 		super(context);
 	}
 
-	/* (non-Javadoc)
-	 * @see Core.State#displayOptions()
-	 */
 	@Override
 	void displayOptions() {
-		// TODO Auto-generated method stub
-
+		System.out.println("Holding Types:");
+		System.out.println("1. Cash Account");
+		System.out.println("2. Equity");
+		System.out.print("Please select a holding type to subtract from (integer): ");
 	}
 
-	/* (non-Javadoc)
-	 * @see Core.State#execute()
-	 */
 	@Override
 	void execute() {
-		System.out.println("This state is NOT done yet, id = " + this.id);
+		System.out.println("\n------Subtracting from a Holding-----\n");
+		this.displayOptions();
+		int input = getSc().nextInt();
+		while (!isValid(1, 2, input)){
+			System.out.println("Invalid input, please try again.");
+			displayOptions();
+			input = getSc().nextInt();
+		}
+		setNext(input - 1);
 	}
 
-	/* (non-Javadoc)
-	 * @see Core.State#transition()
-	 */
-	@Override
-	int transition() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	/* (non-Javadoc)
-	 * @see Core.State#getID()
-	 */
 	@Override
 	int getID() {
 		return this.id;

@@ -50,16 +50,16 @@ public class AcctOverview extends State {
 		//if input is valid next state is table[2][0] which is S3
 		if ( in == 1 ){
 			this.listPorts();
-			in = super.getSc().nextInt() - 1;
+			in = getSc().nextInt() - 1;
 			while  ( in <= getContext().getUserPorts().size() ){
 				System.out.println("Invalid ID, please try again");
 				this.listPorts();
-				in = getSc().nextInt() - 1;
+				in = getSc().nextInt();
 			}
-			super.getContext().setPort(in);
-			super.setNext(0);
+			getContext().setPort(in - 1);
+			setNext(in - 1);
 		}
-		else
+		else //Quiting..
 			super.setNext(getContext().getTable()[this.id].length);
 	}
 	
@@ -68,8 +68,7 @@ public class AcctOverview extends State {
 		int i = 1;
 		for ( Portfolio port : getContext().getUserPorts() )
 			System.out.println(i++ + ": " + port);
-		System.out.println("Select a portfolio to view by their number");
-		System.out.print("Taking input: ");
+		System.out.print("Select a portfolio to view by their number (integer): ");
 	}
 
 	@Override

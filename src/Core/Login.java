@@ -41,16 +41,6 @@ public class Login extends State{
 		System.out.println("\tLogin (enter: 2");
 		System.out.print("Taking input: ");
 	}
-
-	private void getUserInfo(int in){
-		if ( in == 2 ){
-			System.out.print("Enter your username: ");
-			this.username = getSc().next();
-			System.out.print("Enter your password: "); //SHOULD NOT BE VISIABLE ///////////////////////////////////
-			this.password = getSc().next();
-			this.user = DBInterface.getUserData(this.username);
-		}
-	}
 	
 	@Override
 	void execute() {
@@ -64,22 +54,37 @@ public class Login extends State{
 			in = getSc().nextInt();
 		}
 		
-		this.getUserInfo(in);
-			if ( user == null ){
-				System.out.println("Invalid username, please try again");
-				this.getUserInfo(in);
-			}
-			else {
-			//	if ( this.password.equals(user.))
-				;
-			}
+		if ( in == 1 ){
+			setNext(in - 1);
+			return ;
+		}
+		else {
+			this.logIn();
+			getContext().setUser(this.user);
+			setNext(in - 1);
+		}
+			
 	}
 
-	@Override
-	int transition() {
-		return super.getNext();
+	private void logIn(){
+		this.getUserInfo();
+		//Make believe hashing for now :P
+		String checkPass = new StringBuilder(this.password).reverse().toString();
+		while ( user == null && !this.user.getPass().equals(checkPass) ){
+			System.out.println("Invalid input, please try again");
+			this.getUserInfo();
+			checkPass = new StringBuilder(this.password).reverse().toString();
+		}
 	}
+	
 
+	private void getUserInfo(){
+		System.out.print("Enter your username: ");
+		this.username = getSc().next();
+		System.out.print("Enter your password: "); //SHOULD NOT BE VISIABLE ///////////////////////////////////
+		this.password = getSc().next();
+		this.user = DBInterface.getUserData(this.username);
+	}
 
 	/* (non-Javadoc)
 	 * @see Core.State#getID()
@@ -88,5 +93,4 @@ public class Login extends State{
 	int getID() {
 		return this.id;
 	}
-
 }

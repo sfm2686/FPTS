@@ -56,18 +56,6 @@ public class ViewLog extends State {
 			setNext(in - 1);
 	}
 
-	/* (non-Javadoc)
-	 * @see Core.State#transition()
-	 */
-	@Override
-	int transition() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	/* (non-Javadoc)
-	 * @see Core.State#getID()
-	 */
 	@Override
 	int getID() {
 		return this.id;
