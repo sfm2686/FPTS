@@ -8,6 +8,9 @@ import CSV.IndexUtil;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
+ * 
+ * This class is responsible to creating an equity and binding it to
+ * the instance of portfolio that is passed in the constructor
  *
  */
 public class CreateEquity extends Transaction implements Serializable {

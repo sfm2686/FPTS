@@ -7,6 +7,12 @@ import java.util.TimeZone;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
+ * 
+ * This class represents the Cash Account type of Holding.
+ * A user can have as many cash accounts as they want, cash accounts belong
+ * to a portfolio which belongs to a user. The cash account class supports getters
+ * and setters and it does all of its operations in the class scope to
+ * Separate concerns
  *
  */
 public class CashAcct implements Holding, Serializable {

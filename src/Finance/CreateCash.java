@@ -7,6 +7,9 @@ import java.io.Serializable;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
+ * 
+ * This concrete is responsible for creating a new cash accounts and binding it to
+ * the portfolio that is passed in the constructor. 
  *
  */
 public class CreateCash extends Transaction implements Serializable {

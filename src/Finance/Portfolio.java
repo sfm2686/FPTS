@@ -6,6 +6,12 @@ import CSV.*;
 
 /**
  * @author Sultan Mira & Hunter Caskey
+ * 
+ * This class represents a portfolio. A portfolio owns 2 collections of type
+ * holdings, a collection of cash accounts, and a collection of equities. A 
+ * portfolio also has a log that it uses to log the transactions that happen to
+ * that log. The portfolio is owned by a user but the portfolio itself does not
+ * know or need to know about its owner.
  *
  */
 public class Portfolio implements Serializable {

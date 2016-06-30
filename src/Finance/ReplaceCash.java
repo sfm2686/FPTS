@@ -7,6 +7,10 @@ import java.io.Serializable;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
+ * 
+ * This class replaces the balance of the Cash account that has the passed
+ * in String as its name with the double that was passed in. So the double that 
+ * is passed in as the amount would be set as the new amount.
  *
  */
 public class ReplaceCash extends Transaction implements Serializable{

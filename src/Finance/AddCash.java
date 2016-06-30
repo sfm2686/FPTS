@@ -4,6 +4,10 @@ import java.io.Serializable;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
+ * 
+ * This is a concrete object of transaction. This can be viewed as a microCommand
+ * however it does not employ the Composite pattern. This class is only responsible
+ * for adding a number of cash to a cash account.
  *
  */
 public class AddCash extends Transaction implements Serializable {

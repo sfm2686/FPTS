@@ -6,6 +6,10 @@ import CSV.EquityUtil;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
+ * 
+ * This abstract class defines what an equity/index should have. The composite
+ * pattern was originally applied here but the application of the Composite was moved
+ * to CSV because the intent was needed there. 
  *
  */
 public abstract class Equity implements Holding, Serializable {

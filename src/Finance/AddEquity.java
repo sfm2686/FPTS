@@ -2,6 +2,10 @@ package Finance;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
+ * 
+ * This class operates similarly to AddCash class, however this concrete command
+ * adds shares to an equity that the owner of the portfolio, user, already
+ * owns. Instead of adding money to a cash account like AddCash
  *
  */
 public class AddEquity extends Transaction {

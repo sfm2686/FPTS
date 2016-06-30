@@ -5,6 +5,11 @@ import java.util.ArrayList;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
+ * 
+ * This class is responsible for logging the transactions that happen to a 
+ * portfolio. This class stores an arraylist of type transaction and lists them
+ * when needed. This class also makes it possible to support undo transaction
+ * functionality.
  *
  */
 public class Log implements Serializable {

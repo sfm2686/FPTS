@@ -7,6 +7,9 @@ import java.io.Serializable;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
+ * 
+ * This class subtracts shares from an equity that belongs to the receiver portfolio
+ * that has the same name as the passed in string. Also the number of shares is provided.
  *
  */
 public class SubtractEquity extends Transaction implements Serializable {

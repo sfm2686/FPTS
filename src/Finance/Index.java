@@ -7,6 +7,12 @@ import CSV.*;
 /**
  * @authors Sultan Mira, Hunter Caskey
  * 
+ * This class represents an index that contains equtieis.
+ * An index is the same as a sector. An index can be owned by a portfolio
+ * which is owned by a user.
+ * An index has a collection of portoflio that it can do some basic operations 
+ * on such as display, get total price of the sector/index
+ * 
  */
 public class Index extends Equity implements Serializable {
 

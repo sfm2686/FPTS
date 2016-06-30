@@ -1,11 +1,17 @@
 package Finance;
 
-import java.util.ArrayList;
 import java.io.Serializable;
 import CSV.*;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
+ * 
+ * This class extends the Equity abstract class and represents an owned stock.
+ * A stock is owned by a portfolio which is owned by a user. A stock has a 
+ * reference to a StockUtil from EquityBin in the CSV subsystem. The stock
+ * depends on the reference to get some of its information such as price.
+ * This allows to dynamically change prices of stocks without directly changing
+ * the owned objects until needed.
  *
  */
 public class Stock extends Equity implements Serializable{

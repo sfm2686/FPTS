@@ -4,6 +4,10 @@ import java.io.Serializable;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
+ * 
+ * This class represents the concert command of withdrawing from a cash account.
+ * The class takes a portfolio as a receiver and retrieves the cash account in the
+ * Receiver portfolio and subtracts the amount passed in the constructor.
  *
  */
 public class SubtractCash extends Transaction implements Serializable {

@@ -7,6 +7,9 @@ import java.io.Serializable;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
+ * 
+ * This concerete command is responsible for removing the cash account that has
+ * the passed String as a name from the portfolio passed as the receiver.
  *
  */
 public class RemoveCash extends Transaction implements Serializable{

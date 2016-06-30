@@ -5,6 +5,9 @@ import java.io.Serializable;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
+ * 
+ * This class takes a portfolio as a receiver and removes all of the shares
+ * of equities that has the passed in string as their name in the receiver.
  *
  */
 public class RemoveEquity extends Transaction implements Serializable{
