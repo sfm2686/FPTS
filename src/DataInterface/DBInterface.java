@@ -6,6 +6,12 @@ import Finance.Portfolio;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
+ * 
+ * This class has only static methods that return either boolean to indicate
+ * success or failure of an operation for confirmation messages, or a User object
+ * to be checked against the user input in the Core subsystem. This class will not
+ * be able to save if the directory with the same name as in the constant field did
+ * not exist.
  *
  */
 public class  DBInterface {
