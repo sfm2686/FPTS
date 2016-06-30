@@ -86,9 +86,6 @@ public class Login extends State{
 		this.user = DBInterface.getUserData(this.username);
 	}
 
-	/* (non-Javadoc)
-	 * @see Core.State#getID()
-	 */
 	@Override
 	int getID() {
 		return this.id;

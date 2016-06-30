@@ -32,6 +32,6 @@ public abstract class Equity implements Holding {
 	}
 	
 	abstract double getPrice();
-	abstract EquityUtil getReference();
-	abstract  String getName();
+	public abstract EquityUtil getReference();
+	public abstract String getName();
 }

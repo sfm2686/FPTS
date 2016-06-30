@@ -54,7 +54,7 @@ public class AskSource extends State {
 				if(isValid(0, this.cashAccounts.size(), in)){
 					if(in != 0){
 						src = this.cashAccounts.get(in - 1);
-						if(src.getBalance() > this.amount){
+						if(src.getBalance() < this.amount){
 							failure = true;
 							System.out.println("Insufficient funds. Please use a different source.");
 						}

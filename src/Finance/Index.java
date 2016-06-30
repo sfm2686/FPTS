@@ -31,6 +31,7 @@ public class Index extends Equity {
 		return this.referenceIndex;
 	}
 	
+	@Override
 	public String getName(){
 		return this.referenceIndex.getName();
 	}

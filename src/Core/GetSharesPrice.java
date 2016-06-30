@@ -3,6 +3,8 @@
  */
 package Core;
 
+import Finance.Equity;
+
 /**
  * @authors Sultan Mira, Hunter Caskey
  *
@@ -18,36 +20,71 @@ public class GetSharesPrice extends State{
 		super(context);
 	}
 
-	/* (non-Javadoc)
-	 * @see Core.State#displayOptions()
-	 */
+
 	@Override
 	void displayOptions() {
-		// TODO Auto-generated method stub
+		System.out.println("Currently Owned Equities:");
+		int i = 1;
+		for(Equity equity : getContext().getPort().getEquities()){
+			System.out.println(i + ". " + equity.toString());
+		}
+		System.out.print("Please select an equity by the listing number (integer): ");
+	}
+	
+	@Override
+	public void execute(){
+		boolean failure = false;
+		System.out.println("\n------Select an Equity to Add Shares To-----\n");
+		displayOptions();
+		int in;
+		in = getSc().nextInt();
+		while(!isValid(1, getContext().getPort().getEquities().size(), in)){
+			System.out.println("Invalid input, please try again.");
+			displayOptions();
+		}
+		
+		double price = -1;
+		do{
+			failure = false;
+			System.out.print("Please enter the acquisition price per share (double): ");
+			try{
+				price = getSc().nextDouble();
+				if(price <= 0){
+					failure = true;
+					System.out.println("Invalid input, please try again.");
+				}
+			}
+			catch(Exception e){
+				System.out.println("Invalid input, please try again.");
+				failure = true;
+			}
+		}while(failure);
+		
+		int shares = -1;
+		do{
+			failure = false;
+			System.out.print("Please enter the number of shares being acquired (double): ");
+			try{
+				shares = getSc().nextInt();
+				if(shares <= 0){
+					failure = true;
+					System.out.println("Invalid input, please try again.");
+				}
+			}
+			catch(Exception e){
+				System.out.println("Invalid input, please try again.");
+				failure = true;
+			}
+		}while(failure);
+
+		setNext(0);
+		AskSrc next = (AskSrc)getContext().getNextState(0);
+		next.equity = getContext().getPort().getEquities().get(in - 1);
+		next.price = price;
+		next.shares = shares;
 		
 	}
 
-	/* (non-Javadoc)
-	 * @see Core.State#execute()
-	 */
-	@Override
-	void execute() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	/* (non-Javadoc)
-	 * @see Core.State#transition()
-	 */
-	@Override
-	int transition() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	/* (non-Javadoc)
-	 * @see Core.State#getID()
-	 */
 	@Override
 	int getID() {
 		return this.id;
