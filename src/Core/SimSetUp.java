@@ -104,5 +104,4 @@ public class SimSetUp extends State {
 	int getID() {
 		return this.id;
 	}
-
 }

@@ -39,7 +39,8 @@ public class SimView extends State {
 	 */
 	@Override
 	void execute() {
-		
+		System.out.println("\n------Simulation Results View-----\n");
+
 		int c = 1;
 		double val = getContext().getSim().getNextResult();
 		while ( val != -1 ){
