@@ -20,7 +20,11 @@ public class AskAmountDest extends State {
 	}
 
 	@Override
-	void displayOptions() {
+	void displayOptions() {		
+		System.out.println("Options:");
+		System.out.println("\tWithdraw cash to Outside FPTS (enter: 1)");  //S2
+		System.out.println("\tTransfer Cash between Cash Accounts (enter: 2)");          //S4
+		System.out.print("Taking input: ");
 	}
 	//Helper method for selecting portfolios
 	private void selectPorts(){
@@ -98,20 +102,59 @@ public class AskAmountDest extends State {
 	@Override
 	void execute() {
 		System.out.println("\n------Withdrawal-----\n");
-		this.selectPorts();
-		this.selectCashAcct();
-		System.out.print("Please enter the amount you would like to withdraw (double): ");
-		double in = getSc().nextDouble();
-		while ( in > this.srcAcct.getBalance() ){
-			System.out.println("insufficient funds, please try again");
-			System.out.print("Please enter the amount you would like to withdraw (double): ");
-			in = getSc().nextDouble();
+		this.displayOptions();
+		int input = getSc().nextInt();
+		while ( !isValid(1, 2, input) ){
+			System.out.println("Invalid input, please try again");
+			this.displayOptions();
+			input = getSc().nextInt();
 		}
 		
-		this.srcAcct.setBalance(this.srcAcct.getBalance() - in);
-		this.destAcct.setBalance(this.destAcct.getBalance() + in);
-		System.out.println("Transfer successful..");
-		setNext(0);
+		if ( input == 2 ) {
+			this.selectPorts();
+			this.selectCashAcct();
+			System.out.print("Please enter the amount you would like to withdraw (double): ");
+			double amount = getSc().nextDouble();
+			while ( amount > this.srcAcct.getBalance() ){
+				System.out.println("insufficient funds, please try again");
+				System.out.print("Please enter the amount you would like to withdraw (double): ");
+				amount = getSc().nextDouble();
+			}
+			
+			getContext().getTransClient().withdrawCash(this.srcPort, 
+					this.srcAcct, amount, this.destPort, this.destAcct);
+			System.out.println("Transfer successful..");
+			setNext(0);
+		}
+		else {
+			this.i = 1;
+			for ( CashAcct acct : getContext().getPort().getCashAccounts() )
+				System.out.println(i++ + ". " + acct.toString());
+			System.out.print("Select a source Cash Account by their number (integer): ");		
+			int in = getSc().nextInt();
+			
+			while ( !isValid(1, i, in) ){
+				System.out.println("Invalid input, please try again");
+				this.i = 1;
+				for ( CashAcct acct : getContext().getPort().getCashAccounts() )
+					System.out.println(i++ + ". " + acct.toString());
+				System.out.print("Select a source Cash Account by their number (integer): ");		
+				in = getSc().nextInt();
+			}
+			this.srcAcct = getContext().getPort().getCashAccounts().get(in - 1);
+			
+			System.out.print("Please enter the amount you would like to withdraw (double): ");
+			double amount = getSc().nextDouble();
+			while ( amount > this.srcAcct.getBalance() ){
+				System.out.println("insufficient funds, please try again");
+				System.out.print("Please enter the amount you would like to withdraw (double): ");
+				amount = getSc().nextDouble();
+			}
+			
+			getContext().getTransClient().withdrawCash(getContext().getPort(), 
+					this.srcAcct, amount);
+			setNext(0);
+		}
 	}
 
 	@Override
