@@ -35,18 +35,18 @@ public class Logout extends State {
 	void execute() {
 		System.out.println("\n------Logout-----\n");
 		this.displayOptions();
-		String input = super.getSc().next();
+		String input = getSc().next();
 		while ( !(input.equalsIgnoreCase("yes") && input.equalsIgnoreCase("no" )) ){
 			System.out.println("Invalid input, please try again");
 			this.displayOptions();
-			input = super.getSc().next();
+			input = getSc().next();
 		}
-		if ( super.getSc().next().equalsIgnoreCase("yes") ){
+		if ( getSc().next().equalsIgnoreCase("yes") ){
 			System.out.println("System exiting....");
 			System.exit(1);
 		}
 		else
-			super.setNext(0);
+			setNext(0);
 	}
 
 	/* (non-Javadoc)

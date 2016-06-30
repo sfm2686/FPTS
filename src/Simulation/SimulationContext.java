@@ -37,7 +37,7 @@ public class SimulationContext {
 	
 	//Constructor
 	public SimulationContext(double growthRate, double value, 
-			int timeSteps, String interval){
+			int timeSteps, String interval, String type){
 		
 		//this.portfolio = portfolio;
 		this.growthRate = growthRate / 100;
@@ -47,11 +47,12 @@ public class SimulationContext {
 		this.intervalNum = 1;
 		this.interval = interval;
 		
-		if ( growthRate > 0 )
+		
+		if ( type.equalsIgnoreCase("bear" ))
 			this.strategy = new BearMarketStrategy();
-		else if ( growthRate < 0 )
+		else if ( type.equalsIgnoreCase("bull") )
 			this.strategy = new BullMarketStrategy();
-		else
+		else if ( type.equalsIgnoreCase("no-growth") )
 			this.strategy = new NoGrowthMarketStrategy();		
 	}
 	
@@ -77,18 +78,18 @@ public class SimulationContext {
 	}
 	
 	public void newSim(double growthRate, 
-			int timeSteps, String interval){
+			int timeSteps, String interval, String type){
 		this.growthRate = growthRate / 100;
 		this.steps = timeSteps;
 		this.intervalNum = 1;
 		this.interval = interval;
 		this.currentValue = (double) this.simResults.get(this.simResults.size() - 1);
 		
-		if ( growthRate > 0 )
+		if ( type.equalsIgnoreCase("bear" ))
 			this.strategy = new BearMarketStrategy();
-		else if ( growthRate < 0 )
+		else if ( type.equalsIgnoreCase("bull") )
 			this.strategy = new BullMarketStrategy();
-		else
+		else if ( type.equalsIgnoreCase("no-growth") )
 			this.strategy = new NoGrowthMarketStrategy();
 	}
 	
@@ -117,6 +118,7 @@ public class SimulationContext {
 		double val;
 		String interval;
 		String result;
+		String type;
 		
 		Scanner input = new Scanner(System.in);
 		System.out.print("Please enter time interval(year, month, day): ");
@@ -125,11 +127,14 @@ public class SimulationContext {
 		timeSteps = input.nextInt();
 		System.out.print("Please enter the portfolio's value(double): ");
 		initValue = input.nextDouble();
+		System.out.print("Please enter the type of simulation(Bear, Bull, No-growth): ");
+		type = input.next();
 		System.out.print("Please enter the growth rate(%): ");
 		growthRate = input.nextDouble();
 		System.out.println("Assuming all of the information provided is correct, starting simulation...");
 		
-		SimulationContext test = new SimulationContext(growthRate, initValue, timeSteps, interval);
+		SimulationContext test = new SimulationContext(growthRate, initValue, 
+				timeSteps, interval, type);
 		test.simulate();
 		
 		System.out.println("\nPlease press 'Enter' to view next value");
@@ -153,9 +158,11 @@ public class SimulationContext {
 				interval = input.next();
 				System.out.print("Please enter time steps(integer): ");
 				timeSteps = input.nextInt();
+				System.out.print("Please enter the type of simulation(Bear, Bull, No-growth): ");
+				type = input.next();
 				System.out.print("Please enter the growth rate(%): ");
 				growthRate = input.nextDouble();
-				test.newSim(growthRate, timeSteps, interval);
+				test.newSim(growthRate, timeSteps, interval, type);
 				test.simulate();
 				System.out.println("\nPlease press 'Enter' to view next value");
 				c = 1;
@@ -167,7 +174,7 @@ public class SimulationContext {
 						System.out.println("Stopping simulation result display");
 						break;
 					}
-					val = test.getNextResult();
+					//val = test.getNextResult();
 				}
 			}
 			else { //Reset value back..

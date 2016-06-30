@@ -3,7 +3,7 @@
  */
 package Core;
 
-import java.util.*;
+import DataInterface.DBInterface;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
@@ -14,12 +14,14 @@ public class Login extends State{
 	
 	//State number in the look-up table
 	private int id = 0;
+	private String username;
+	private String password;
+	private User user;
 	 /**
 	 * 
 	 */
 	public Login(Context context) {
 		super(context);
-		Scanner sc = new Scanner(System.in);
 	} 
 
 	
@@ -34,28 +36,45 @@ public class Login extends State{
 		 * 1. S1
 		 * 2. S2
 		 */
-		//BELOW CODE IS THE OLD STATE..
-		System.out.println("To go to: ");
-		System.out.println("\t'Transactions' enter (1) ");
-		System.out.println("\t'Logout' enter 0");
-		int input = super.getSc().nextInt();
-		if ( input != 0 )
-			super.setNext(input - 1);
-		else
-			super.setNext(super.getContext().getTable()[this.id].length);
+		System.out.println("Options ");
+		System.out.println("\tRegister (enter: 1) ");
+		System.out.println("\tLogin (enter: 2");
+		System.out.print("Taking input: ");
 	}
 
-	/* (non-Javadoc)
-	 * @see Core.State#execute()
-	 */
+	private void getUserInfo(int in){
+		if ( in == 2 ){
+			System.out.print("Enter your username: ");
+			this.username = getSc().next();
+			System.out.print("Enter your password: "); //SHOULD NOT BE VISIABLE ///////////////////////////////////
+			this.password = getSc().next();
+			this.user = DBInterface.getUserData(this.username);
+		}
+	}
+	
 	@Override
 	void execute() {
-		//TODO
+		System.out.println("\n------Login-----\n");
+
+		this.displayOptions();
+		int in = getSc().nextInt();
+		while ( !isValid(1, 2, in) ){
+			System.out.println("Invalid input, please try again");
+			this.displayOptions();
+			in = getSc().nextInt();
+		}
+		
+		this.getUserInfo(in);
+			if ( user == null ){
+				System.out.println("Invalid username, please try again");
+				this.getUserInfo(in);
+			}
+			else {
+			//	if ( this.password.equals(user.))
+				;
+			}
 	}
 
-	/* (non-Javadoc)
-	 * @see Core.State#transition()
-	 */
 	@Override
 	int transition() {
 		return super.getNext();

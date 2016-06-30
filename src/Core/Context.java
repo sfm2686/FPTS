@@ -21,6 +21,7 @@ public class Context {
 	private State current;
 	private User user;
 	private TransactionClient transClient = null;
+	private SimulationContext sim = null;
 	
 	public Context(){
 		//STARTS ALL OTHER SUBSYSTEMS HERE..
@@ -59,7 +60,7 @@ public class Context {
 				{S3, S13},                      //S2
 				{S2, S4, S5, S7, S13},          //S3
 				{S3, S13},                      //S4
-				{S3, S6, S13},                  //S5
+				{S6},                           //S5
 				{S3, S5, S13},                  //S6
 				{S3, S8, S10, S15, S19, S13},   //S7
 				{S3, S13},                      //S8
@@ -111,6 +112,19 @@ public class Context {
 	
 	protected Portfolio getPort(){
 		return this.portfolio;
+	}
+	
+	protected void setSim(double growthRate, int timeSteps,
+			String interval, String type){
+		if ( this.sim == null )
+		this.sim = new SimulationContext(growthRate, 
+				this.portfolio.getPortfolioValue(), timeSteps, interval
+				, type);
+		this.sim.newSim(growthRate, timeSteps, interval, type);
+	}
+	
+	protected SimulationContext getSim(){
+		return this.sim;
 	}
 	
 	public void goToNextState(){
