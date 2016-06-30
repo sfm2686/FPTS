@@ -23,8 +23,15 @@ public class SimView extends State {
 	 */
 	@Override
 	void displayOptions() {
-		// TODO Auto-generated method stub
-		
+		/*
+		 * Can go to:
+		 * 1. S3
+		 * 2. S5
+		 */
+		System.out.println("Options:");
+		System.out.println("\tPortfolio Overview (enter: 1)"); //S3
+		System.out.println("\tSimulate again (enter: 2)");     //S5
+		System.out.print("Taking input: ");
 	}
 
 	/* (non-Javadoc)
@@ -32,8 +39,31 @@ public class SimView extends State {
 	 */
 	@Override
 	void execute() {
-		// TODO Auto-generated method stub
 		
+		int c = 1;
+		double val = getContext().getSim().getNextResult();
+		while ( val != -1 ){
+			if ( getSc().nextLine().isEmpty() )
+				System.out.print(getContext().getSim().getInterval() + " " + c ++ + ": " + val);
+			else {
+				System.out.println("Stopping simulation result display");
+				break;
+			}
+			val = getContext().getSim().getNextResult();
+		}
+
+		this.displayOptions();
+		int in = getSc().nextInt();
+		while ( !isValid(1, 2, in) ){
+			System.out.println("Invalid input, please try again");
+			this.displayOptions();
+			in = getSc().nextInt();
+		}
+		setNext(in - 1);
+		
+		if ( in == 1 )
+			System.out.println("Your portfolio's value is reset back to " + 
+		getContext().getPort().getPortfolioValue());
 	}
 
 	/* (non-Javadoc)

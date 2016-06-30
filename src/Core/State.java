@@ -39,7 +39,6 @@ public abstract class State {
 	
 	protected boolean isValid(int b1, int b2, int val){
 		//Bounds [b1 , b2], val should be between them
-		// b1 = 0, b2 = 4, val should be between them
 		if ( val < b1 || val > b2 )
 			return false;
 		return true;

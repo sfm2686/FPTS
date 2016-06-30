@@ -30,7 +30,6 @@ public class PortOverview extends State {
 		 * 3. S5
 		 * 4. S7
 		 * 5. S13
-		 * 
 		 */
 		System.out.println("Options:");
 		System.out.println("\tAccount Overview (enter: 1)");  //S2
