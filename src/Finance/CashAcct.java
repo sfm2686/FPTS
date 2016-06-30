@@ -1,6 +1,7 @@
 package Finance;
  
 import java.util.Date;
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.TimeZone;
 
@@ -8,7 +9,7 @@ import java.util.TimeZone;
  * @authors Sultan Mira, Hunter Caskey
  *
  */
-public class CashAcct implements Holding {
+public class CashAcct implements Holding, Serializable {
 
 	private double balance;
 	private String name;

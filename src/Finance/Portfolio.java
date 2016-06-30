@@ -1,5 +1,6 @@
 package Finance;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import CSV.*;
 
@@ -7,7 +8,7 @@ import CSV.*;
  * @author Sultan Mira & Hunter Caskey
  *
  */
-public class Portfolio {
+public class Portfolio implements Serializable {
 	
 	//private User owner; //Commented out until User class is made
 	private String name;

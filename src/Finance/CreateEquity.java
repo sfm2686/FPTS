@@ -1,5 +1,7 @@
 package Finance;
 
+import java.io.Serializable;
+
 import CSV.EquityUtil;
 import CSV.StockUtil;
 import CSV.IndexUtil;
@@ -8,7 +10,7 @@ import CSV.IndexUtil;
  * @authors Sultan Mira, Hunter Caskey
  *
  */
-public class CreateEquity extends Transaction {
+public class CreateEquity extends Transaction implements Serializable {
 
 	private EquityUtil reference;
 	private int numShares;

@@ -1,10 +1,12 @@
 package Finance;
 
+import java.io.Serializable;
+
 /**
  * @authors Sultan Mira, Hunter Caskey
  *
  */
-public class AddCash extends Transaction {
+public class AddCash extends Transaction implements Serializable {
 
 	private String acctName;
 	private double deposit;
