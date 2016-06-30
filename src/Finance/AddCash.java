@@ -26,6 +26,13 @@ public class AddCash extends Transaction implements Serializable {
 		return false;	
 	}
 	
+	@Override
+	public String toString(){
+		return "\nPortfolio Operated On: " + super.getReciever() + "\n\tAccount: " + 
+				this.acctName + "\n\tTransaction: Deposit Cash" + "\n\tAmount: " +
+				this.deposit;
+	}
+	
 	/**
 	 * @param args
 	 */

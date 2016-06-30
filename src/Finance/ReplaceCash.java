@@ -29,6 +29,12 @@ public class ReplaceCash extends Transaction implements Serializable{
 		return false;
 	}
 	
+	@Override
+	public String toString(){
+		return "\nPortfolio Operated On: " + super.getReciever() + "\n\tAccount: " + 
+				this.accountName + "\n\tTransaction: Reset Balane" + "\n\tNew Balance: " +
+				this.newBalance;
+	}
 
 	/**
 	 * @param args

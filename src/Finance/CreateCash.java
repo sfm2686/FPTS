@@ -29,6 +29,13 @@ public class CreateCash extends Transaction implements Serializable {
 		return true;
 	}
 	
+	@Override
+	public String toString(){
+		return "\nPortfolio Operated On: " + super.getReciever() + "\n\tAccount: " + 
+				this.accountName + "\n\tTransaction: Created Cash Account" + "\n\tInitial Amount: " +
+				this.balance;
+	}
+	
 	/**
 	 * @param args
 	 */

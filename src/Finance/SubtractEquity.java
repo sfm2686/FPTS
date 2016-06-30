@@ -29,6 +29,13 @@ public class SubtractEquity extends Transaction implements Serializable {
 		return false;	
 	}
 	
+	@Override
+	public String toString(){
+		return "\nPortfolio Operated On: " + super.getReciever() + "\n\tEquity: " + 
+				this.equityName + "\n\tTransaction: Remove Shares" + "\n\tShares Removed: " +
+				this.numShares;
+	}
+	
 	/**
 	 * @param args
 	 */

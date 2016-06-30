@@ -32,6 +32,11 @@ public class RemoveCash extends Transaction implements Serializable{
 		}
 		return false;
 	}
+	@Override
+	public String toString(){
+		return "\nPortfolio Operated On: " + super.getReciever() + "\n\tAccount: " + 
+				this.accountName + "\n\tTransaction: Removed Cash Account";
+	}
 	
 	/**
 	 * @param args

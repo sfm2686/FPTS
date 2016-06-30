@@ -23,6 +23,12 @@ public class AddEquity extends Transaction {
 		}
 		return false;	
 	}
+	@Override
+	public String toString(){
+		return "\nPortfolio Operated On: " + super.getReciever() + "\n\tEquity: " + 
+				this.equityName + "\n\tTransaction: Add Equity" + "\n\tShares: " +
+				this.numShares;
+	}
 	
 	/**
 	 * @param args

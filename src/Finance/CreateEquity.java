@@ -38,6 +38,13 @@ public class CreateEquity extends Transaction implements Serializable {
 		return true;
 	}
 	
+	@Override
+	public String toString(){
+		return "\nPortfolio Operated On: " + super.getReciever() + "\n\tEquity: " + 
+				this.reference.getName() + "\n\tTransaction: Created new Equity" + "\n\tShares: " +
+				this.numShares;
+	}
+	
 	/**
 	 * @param args
 	 */
