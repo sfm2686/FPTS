@@ -8,6 +8,9 @@ import java.util.ArrayList;
 /**
  * @authors Sultan Mira, Hunter Caskey
  *
+ *This state is prompts the user for the source of the money to be transfered
+ *in a cash account. As the header of the state suggests, it prompts the user
+ *to specify a source of a cash account.
  */
 public class AskSource extends State {
 	

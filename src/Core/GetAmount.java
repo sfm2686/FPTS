@@ -8,6 +8,8 @@ import Finance.CashAcct;
 /**
  * @authors Sultan Mira, Hunter Caskey
  *
+ *This state prmopts the user to provide the amount of money they would like
+ *to add to a cash account.
  */
 public class GetAmount extends State {
 	

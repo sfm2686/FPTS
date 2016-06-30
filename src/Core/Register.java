@@ -8,6 +8,11 @@ import DataInterface.DBInterface;
 /**
  * @authors Sultan Mira, Hunter Caskey
  *
+ *The main purpose of this state is to register a user. This state interacts
+ *with the DBInterface in order to verify that the given username is not already
+ *taken by another user, so 2 user account CANNOT have the same username.
+ *Once the user is done, the state goes back to Login, S0 so the user can use
+ *their new gained cred. to login the system.
  */
 public class Register extends State {
 	

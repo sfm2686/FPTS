@@ -6,6 +6,8 @@ import java.util.ArrayList;
 /**
  * @authors Sultan Mira, Hunter Caskey
  *
+ *This state displays the holdings of a portfolio in order for the user
+ *to select one of them to be removed
  */
 public class DisplayHoldings extends State {
 	

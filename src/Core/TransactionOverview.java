@@ -5,6 +5,9 @@ package Core;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
+ * 
+ * This class acts as a menu of transactions that the user can perform on 
+ * the current selected portfolio.
  *
  */
 public class TransactionOverview extends State {

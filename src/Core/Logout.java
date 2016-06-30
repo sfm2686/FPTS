@@ -8,6 +8,11 @@ import DataInterface.DBInterface;
 /**
  * @authors Sultan Mira, Hunter Caskey
  *
+ *This state's main purpose is to log the user out of the system and shut down
+ *the system. Before doing anything the state asks the user if they are sure
+ *they would like to logout, if they answer yes then the state calls the 
+ *DBInterface in order to save any changes they might have made in case they
+ *forgot to save those changes, and closes the system.
  */
 public class Logout extends State {
 	

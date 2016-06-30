@@ -8,6 +8,11 @@ import DataInterface.DBInterface;
 /**
  * @authors Sultan Mira, Hunter Caskey
  *
+ *This state has the logic of login, it also goes to the register state S0 if 
+ *the user inputted that they do not own an account. The state interacts
+ *with the DBInterface static methods in order to verify the user input. The state
+ *applies an algorithm that is hash-like on the user's passowrds so they are not
+ *stored/compared as is.
  */
 public class Login extends State{
 

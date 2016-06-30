@@ -5,6 +5,8 @@ import Finance.*;
 /**
  * @authors Sultan Mira, Hunter Caskey
  *
+ *This state is responsible for setting up the transaction of withdrawal between
+ * 2 different Cash account, current portfolio and a destination one
  */
 public class AskAmountDest extends State {
 

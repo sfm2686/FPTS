@@ -8,6 +8,10 @@ import Finance.Equity;
 /**
  * @authors Sultan Mira, Hunter Caskey
  *
+ *This state prompts the user to input the shares and price of equities to be 
+ *bought, this state also lists the current owned equities. The state's main
+ *purpose is to have the user specifies the details so it can pass them to the
+ *next one.
  */
 public class GetSharesPrice extends State{
 	

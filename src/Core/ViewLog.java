@@ -5,6 +5,10 @@ package Core;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
+ * 
+ * This class lists the logs that contain different transaction types along
+ * with dates. This state prints off so the user is able to view them. The
+ * logs that are displayed belong to the current selected portfolio
  *
  */
 public class ViewLog extends State {

@@ -6,6 +6,10 @@ package Core;
 /**
  * @authors Sultan Mira, Hunter Caskey
  *
+ *This state's main purpose is to have the user specify a holding type
+ *, equity or cash account.
+ *The state as almost all of the other states does some light validation on the
+ *input so they user's input is somewhat restrict.
  */
 public class Subtract extends State {
 	

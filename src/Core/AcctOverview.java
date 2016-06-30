@@ -1,6 +1,3 @@
-/**
- * 
- */
 package Core;
 
 import DataInterface.DBInterface;
@@ -9,6 +6,7 @@ import Finance.Portfolio;
 /**
  * @authors Sultan Mira, Hunter Caskey
  *
+ *This class controls/views the account of the current user.
  */
 public class AcctOverview extends State {
 	
@@ -21,9 +19,6 @@ public class AcctOverview extends State {
 		super(context);
 	}
 
-	/* (non-Javadoc)
-	 * @see Core.State#displayOptions()
-	 */
 	@Override
 	void displayOptions() {
 		System.out.println("Options:");
@@ -33,9 +28,6 @@ public class AcctOverview extends State {
 		System.out.println("\tQuit (enter: 0)");
 	}
 
-	/* (non-Javadoc)
-	 * @see Core.State#execute()
-	 */
 	@Override
 	void execute() {
 		System.out.println("\n------Account Overview-----\n");

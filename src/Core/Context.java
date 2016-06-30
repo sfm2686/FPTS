@@ -12,6 +12,10 @@ import java.util.*;
  * @authors Sultan Mira, Hunter Caskey
  * This class is the main driver of the state machine.
  * It delegates between state and changes them depending on the current state/input.
+ * 
+ * This class also contains all of the members that different states might need to
+ * use, all states have access to the same and only instance of this class while
+ * the app is running.
  *
  */
 public class Context {

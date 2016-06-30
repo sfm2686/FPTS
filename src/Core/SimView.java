@@ -6,6 +6,9 @@ package Core;
 /**
  * @authors Sultan Mira, Hunter Caskey
  *
+ *This state displays the results of the simulation and asks the user if they
+ *wish to view their portfolio or simulate again off the last simulation result
+ *as the init value for the new simulation.
  */
 public class SimView extends State {
 	

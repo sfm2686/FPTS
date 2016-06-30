@@ -1,11 +1,10 @@
-/**
- * 
- */
 package Core;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
  *
+ *This class lists the types of holdings the user could add, and takes input
+ *from the user with slight validation.
  */
 public class Add extends State {
 	

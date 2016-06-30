@@ -6,6 +6,10 @@ package Core;
 /**
  * @authors Sultan Mira, Hunter Caskey
  *
+ * The main purpose of this state is to have the user specify the details
+ * needed to make a brand new Cash Account to be added to the current
+ * portfolio that the user owns. This state like some other few states 
+ * does not use displayOptions since there arent any to display.
  */
 public class GiveCashInfo extends State {
 	
@@ -13,6 +17,7 @@ public class GiveCashInfo extends State {
 
 	/**
 	 * @param context
+	 * 
 	 */
 	public GiveCashInfo(Context context) {
 		super(context);

@@ -5,6 +5,8 @@ import CSV.*;
 /**
  * @authors Sultan Mira, Hunter Caskey
  *
+ *This state prompts the user to select equities for the user create their own
+ *off, and get a number of shares
  */
 public class SpecifyEquity extends State {
 	

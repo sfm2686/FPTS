@@ -6,6 +6,9 @@ package Core;
 /**
  * @authors Sultan Mira, Hunter Caskey
  *
+ *This state doesnt not use dispalyOptions because there arent any options
+ *to display. This state's purpose is to have the user speicfy a new Equity
+ *information for it to be made and added to the current portfolio owned b the user.
  */
 public class GiveEquityInfo extends State {
 	
@@ -13,6 +16,7 @@ public class GiveEquityInfo extends State {
 
 	/**
 	 * @param context
+	 * 
 	 */
 	public GiveEquityInfo(Context context) {
 		super(context);

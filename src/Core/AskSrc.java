@@ -10,6 +10,9 @@ import CSV.*;
 /**
  * @authors Sultan Mira, Hunter Caskey
  *
+ *This state prompts the user to provide the source of an equity to be bought
+ *the funds that are used to buy the equity shares can also be from outside of the 
+ *system.
  */
 public class AskSrc extends State {
 	

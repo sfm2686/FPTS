@@ -6,6 +6,11 @@ import java.io.Serializable;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
+ * 
+ * This class represents the user in the system. The class contains everything
+ * that the user owns, portfolios, username, password. This class doesn not
+ * do much on its own but it is very important for some states and the DBinterface
+ * to write and read data from the database.
  *
  */
 public class User implements Serializable {

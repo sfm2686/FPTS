@@ -8,6 +8,10 @@ import DataInterface.DBInterface;
 /**
  * @authors Sultan Mira, Hunter Caskey
  *
+ *This state displays the holdings of the selected portfolio. The portfolio
+ *is selected in another state. This state also displays the options of which
+ *a user can choose from to move on to another state. If the user saves changes,
+ *the state goes back to AccountOverview, S2.
  */
 public class PortOverview extends State {
 	

@@ -10,6 +10,10 @@ import Simulation.SimulationContext;
 /**
  * @authors Sultan Mira, Hunter Caskey
  *
+ *This state prompts the user to input the information needed to apply a 
+ *simulation on the current portfolio that the user selected in another state.
+ *The state also asks the user for simulation algo type and passes it back to the
+ *SimulationContext in the Context object that it has.
  */
 public class SimSetUp extends State {
 	

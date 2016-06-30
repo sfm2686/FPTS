@@ -1,14 +1,12 @@
-/**
- * 
- */
 package Core;
 
-import Finance.CashAcct;
-import Finance.Equity;
+
 
 /**
  * @authors Sultan Mira, Hunter Caskey
  *
+ *This state prompts the user to select a holding type in order for them to 
+ *create a new, could either be CashAccount or Equity
  */
 public class SpecifyHoldingType extends State {
 	

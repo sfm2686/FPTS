@@ -1,6 +1,3 @@
-/**
- * 
- */
 package Core;
 
 import java.util.ArrayList;
@@ -11,6 +8,8 @@ import Finance.*;
 /**
  * @authors Sultan Mira, Hunter Caskey
  *
+ *This state asks for the number of shares, price per share, and destination of
+ *an Equity to be sold.
  */
 public class AskNumPriceDest extends State {
 	
@@ -50,9 +49,7 @@ public class AskNumPriceDest extends State {
 		System.out.print("Please select an account to retrieve the required funds from (integer): ");
 	}
 
-	/* (non-Javadoc)
-	 * @see Core.State#execute()
-	 */
+
 	@Override
 	void execute() {
 		System.out.println("\n------Equity Selection-----\n");
