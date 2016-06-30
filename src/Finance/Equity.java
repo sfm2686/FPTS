@@ -1,5 +1,6 @@
 package Finance;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import CSV.EquityUtil;
 
@@ -7,7 +8,7 @@ import CSV.EquityUtil;
  * @authors Sultan Mira, Hunter Caskey
  *
  */
-public abstract class Equity implements Holding {
+public abstract class Equity implements Holding, Serializable {
 
 	private int numShares;
 	

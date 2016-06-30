@@ -1,5 +1,6 @@
 package Finance;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import CSV.*;
 
@@ -7,7 +8,7 @@ import CSV.*;
  * @authors Sultan Mira, Hunter Caskey
  * 
  */
-public class Index extends Equity {
+public class Index extends Equity implements Serializable {
 
 	private IndexUtil referenceIndex;
 	

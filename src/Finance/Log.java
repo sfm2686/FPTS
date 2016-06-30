@@ -1,12 +1,13 @@
 package Finance;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
  *
  */
-public class Log {
+public class Log implements Serializable {
 
 	private ArrayList<Transaction> log;
 	private String portfolioName;

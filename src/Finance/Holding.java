@@ -1,5 +1,7 @@
 package Finance;
 
+import java.io.Serializable;
+
 /**
  * @authors Sultan Mira, Hunter Caskey
  *
