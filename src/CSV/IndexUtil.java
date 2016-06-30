@@ -44,6 +44,14 @@ public class IndexUtil extends EquityUtil {
 		return (price/numStocks);
 	}
 	
+	@Override
+	public String toString(){
+		String s = "\n" + this.getName() + ":\n";
+		for ( StockUtil stock : this.stocks )
+			s+= "\t" + stock.toString() + "\n";
+		return s;
+	}
+	
 	
 	public static void main(String[] args){
 		IndexUtil testIndex = new IndexUtil("Tech Companies");
@@ -75,5 +83,6 @@ public class IndexUtil extends EquityUtil {
 		}
 		
 		System.out.println("Conducting unit tests for IndexUtil:\n" + (testNum - failCount) + " out of " + testNum + " tests passed.");
+		System.out.println(testIndex);
 	}
 }

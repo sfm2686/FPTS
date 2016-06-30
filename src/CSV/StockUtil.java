@@ -22,6 +22,11 @@ public class StockUtil extends EquityUtil {
 		return this.tickerSymbol;
 	}
 	
+	@Override
+	public String toString(){
+		return this.tickerSymbol +  ", " + getName() + ", " + this.price;
+	}
+	
 	public static void main(String[] args){
 		StockUtil testStock = new StockUtil("Apple", "APPL", "300");
 		
@@ -38,5 +43,7 @@ public class StockUtil extends EquityUtil {
 			++failCount;
 		}
 		System.out.println("Conducting unit tests for StockUtil:\n" + (testNum - failCount) + " out of " + testNum + " tests passed.");
+		
+		System.out.println(testStock);
 	}
 }
