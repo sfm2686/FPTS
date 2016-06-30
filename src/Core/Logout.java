@@ -49,13 +49,6 @@ public class Logout extends State {
 			setNext(0);
 	}
 
-	/* (non-Javadoc)
-	 * @see Core.State#transition()
-	 */
-	@Override
-	int transition() {
-		return super.getNext();
-	}
 
 	/* (non-Javadoc)
 	 * @see Core.State#getID()

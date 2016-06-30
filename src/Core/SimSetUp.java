@@ -91,11 +91,6 @@ public class SimSetUp extends State {
 		setNext(0);
 	}
 
-	@Override
-	int transition() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 	/* (non-Javadoc)
 	 * @see Core.State#getID()

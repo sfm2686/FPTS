@@ -102,6 +102,10 @@ public class Context {
 		this.current = cur;
 	}
 	
+	protected void setUser(User user){
+		this.user = user;
+	}
+	
 	protected ArrayList<Portfolio> getUserPorts(){
 		return this.user.getPorts();
 	}

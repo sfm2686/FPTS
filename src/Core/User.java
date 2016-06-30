@@ -28,6 +28,10 @@ public class User implements Serializable {
 		return this.username;
 	}
 	
+	protected String getPass(){
+		return this.password;
+	}
+	
 	/**
 	 * @param args
 	 */

@@ -66,14 +66,6 @@ public class PortOverview extends State {
 		super.setNext(super.getContext().getTable()[this.id].length);
 	}
 
-	/* (non-Javadoc)
-	 * @see Core.State#transition()
-	 */
-	@Override
-	int transition() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 	/* (non-Javadoc)
 	 * @see Core.State#getID()
