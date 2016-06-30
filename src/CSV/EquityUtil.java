@@ -1,7 +1,10 @@
 package CSV;
 
 /*
- * @author Hunter Caskey
+ * @author Hunter Caskey, Sultan Mira
+ * 
+ * This class is the super class for the indexUtil and the stockUtil that
+ * populate EquityBin which contains the base market of equities. 
  */
 public abstract class EquityUtil {
 	

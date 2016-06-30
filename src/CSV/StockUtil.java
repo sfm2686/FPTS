@@ -1,7 +1,10 @@
 package CSV;
 
 /*
- * @author Hunter Caskey
+ * @author Hunter Caskey, Sultan Mira
+ * 
+ * This class represents a stock in the market, read from the equities.csv file.
+ * This represents individual stocks along with price, name, ticker symbol, sector/index.
  */
 
 public class StockUtil extends EquityUtil {

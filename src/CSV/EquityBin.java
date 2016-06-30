@@ -5,7 +5,8 @@ import java.util.*;
  * @authors Sultan Mira, Hunter Caskey
  * 
  * EquityBin is responsible for maintaining a listing of all available stocks and 
- * indices within the system.
+ * indices within the system. It can display them, search for them and read them
+ * from the parser class.
  */
 public class EquityBin {
 

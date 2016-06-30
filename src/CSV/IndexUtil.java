@@ -3,7 +3,11 @@ package CSV;
 import java.util.ArrayList;
 
 /*
- * @author Hunter Caskey
+ * @author Hunter Caskey, Sultan Mira
+ * 
+ * This class extends EquityUtil so it implements all of the methods that
+ * abstract class has. This class represents an index/sector. This class is made
+ * off stocks, it has an arraylist of stocks and it can search/display them by name/price..
  */
 public class IndexUtil extends EquityUtil {
  

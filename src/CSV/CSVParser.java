@@ -4,6 +4,11 @@ import java.util.ArrayList;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
+ * 
+ * This class is the parser that reads the equities.csv file and everytime
+ * a field is parsed, it is sent to EquityBin in order for it to be sorted there
+ * into indices and/or stocks. This class replaced the state machine for parsing
+ * the equities.csv file.
  *
  */
 public class CSVParser {
@@ -35,9 +40,7 @@ public class CSVParser {
 		}
 		return true;
 	}
-	
-	
-	
+
 	public static void main(String[] args){
 	}
 }
