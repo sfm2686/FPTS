@@ -29,6 +29,7 @@ public class AcctOverview extends State {
 		System.out.println("Options:");
 		System.out.println("\tMake a new Portfolio (enter: 1)");
 		System.out.println("\tView portfolios (enter: 2)");
+		System.out.println("\tSave changes (enter: 3)");
 		System.out.println("\tQuit (enter: 0)");
 	}
 
@@ -42,7 +43,7 @@ public class AcctOverview extends State {
 		int in;
 		System.out.print("Taking input: ");
 		in = getSc().nextInt();
-		while ( !isValid(0, 2, in) ){
+		while ( !isValid(0, 3, in) ){
 			System.out.println("Invalid input. Please try again");
 			this.displayOptions();
 			in = getSc().nextInt();
@@ -52,13 +53,13 @@ public class AcctOverview extends State {
 		//if input is valid next state is table[2][0] which is S3
 		if ( in == 2 ){
 			this.listPorts();
-			in = getSc().nextInt();
-			while  (isValid(1, getContext().getUserPorts().size() - 1, in)){
+			int input = getSc().nextInt();
+			while  (!isValid(1, getContext().getUserPorts().size(), input)){
 				System.out.println("Invalid ID, please try again");
 				this.listPorts();
-				in = getSc().nextInt();
+				input = getSc().nextInt();
 			}
-			getContext().setPort(in - 1);
+			getContext().setPort(input - 1);
 			setNext(in - 1);
 		}
 		else if ( in == 1 ){
@@ -80,6 +81,12 @@ public class AcctOverview extends State {
 			if(DBInterface.saveUserData(getContext().getUser())){
 				System.out.println("Portfolio saved successfully.");
 			}
+		}
+		else if ( in == 3 ){
+			if ( DBInterface.saveUserData(getContext().getUser()) )
+				System.out.println("Saved successfully");
+			setNext(0);
+			return ;
 		}
 		else //Quiting..
 			super.setNext(getContext().getTable()[this.id].length - 1);

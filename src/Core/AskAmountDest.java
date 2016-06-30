@@ -10,7 +10,7 @@ public class AskAmountDest extends State {
 
 	private int id = 20;
 	private int i = 1;
-	private Portfolio srcPort, destPort;
+	private Portfolio destPort;
 	private CashAcct srcAcct, destAcct;
 	/**
 	 * @param context
@@ -28,29 +28,13 @@ public class AskAmountDest extends State {
 	}
 	//Helper method for selecting portfolios
 	private void selectPorts(){
-		//source portfolio selection
-		this.i = 1;
-		for ( Portfolio port : getContext().getUserPorts() )
-			System.out.println(i++ + ". " + port.getName());
-		System.out.print("Select a source portfolio by their number (integer): ");		
-		int in = getSc().nextInt();
-		
-		while ( !isValid(1, i, in) ){
-			System.out.println("Invalid input, please try again");
-			this.i = 1;
-			for ( Portfolio port : getContext().getUserPorts() )
-				System.out.println(i++ + ". " + port.getName());
-			System.out.print("Select a source portfolio by their number (integer): ");		
-			in = getSc().nextInt();
-		}
-		this.srcPort = getContext().getUserPorts().get(in - 1);
 		
 		//destination portfolio selection
 		this.i = 1;
 		for ( Portfolio port : getContext().getUserPorts() )
 			System.out.println(i++ + ". " + port.getName());
 		System.out.print("Select a destination portfolio by their number (integer): ");		
-		in = getSc().nextInt();
+		int in = getSc().nextInt();
 		
 		while ( !isValid(1, i, in) ){
 			System.out.println("Invalid input, please try again");
@@ -60,14 +44,14 @@ public class AskAmountDest extends State {
 			System.out.print("Select a destination portfolio by their number (integer): ");		
 			in = getSc().nextInt();
 		}
-		this.srcPort = getContext().getUserPorts().get(in - 1);
+		this.destPort = getContext().getUserPorts().get(in - 1);
 	}
 	
 	private void selectCashAcct(){
 		
 		//source CashAcct selection
 		this.i = 1;
-		for ( CashAcct acct : this.srcPort.getCashAccounts() )
+		for ( CashAcct acct : getContext().getPort().getCashAccounts() )
 			System.out.println(i++ + ". " + acct.toString());
 		System.out.print("Select a source Cash Account by their number (integer): ");		
 		int in = getSc().nextInt();
@@ -75,12 +59,12 @@ public class AskAmountDest extends State {
 		while ( !isValid(1, i, in) ){
 			System.out.println("Invalid input, please try again");
 			this.i = 1;
-			for ( CashAcct acct : this.srcPort.getCashAccounts() )
+			for ( CashAcct acct : getContext().getPort().getCashAccounts() )
 				System.out.println(i++ + ". " + acct.toString());
 			System.out.print("Select a source Cash Account by their number (integer): ");		
 			in = getSc().nextInt();
 		}
-		this.srcAcct = this.srcPort.getCashAccounts().get(in - 1);
+		this.srcAcct = getContext().getPort().getCashAccounts().get(in - 1);
 		
 		//destination CashAcct selection
 		this.i = 1;
@@ -121,7 +105,7 @@ public class AskAmountDest extends State {
 				amount = getSc().nextDouble();
 			}
 			
-			getContext().getTransClient().withdrawCash(this.srcPort, 
+			getContext().getTransClient().withdrawCash(getContext().getPort(), 
 					this.srcAcct, amount, this.destPort, this.destAcct);
 			System.out.println("Transfer successful..");
 			setNext(0);

@@ -124,10 +124,11 @@ public class Context {
 	protected void setSim(double growthRate, int timeSteps,
 			String interval, String type){
 		if ( this.sim == null )
-		this.sim = new SimulationContext(growthRate, 
+			this.sim = new SimulationContext(growthRate, 
 				this.portfolio.getPortfolioValue(), timeSteps, interval
 				, type);
-		this.sim.newSim(growthRate, timeSteps, interval, type);
+		else
+			this.sim.newSim(growthRate, timeSteps, interval, type);
 	}
 	
 	protected SimulationContext getSim(){
@@ -143,7 +144,7 @@ public class Context {
 	
 	protected TransactionClient getTransClient(){
 		if(this.transClient == null){
-			this.transClient = new TransactionClient();
+			this.transClient = new TransactionClient(this.user);
 		}
 		return this.transClient;
 	}

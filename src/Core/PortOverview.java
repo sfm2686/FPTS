@@ -3,6 +3,8 @@
  */
 package Core;
 
+import DataInterface.DBInterface;
+
 /**
  * @authors Sultan Mira, Hunter Caskey
  *
@@ -33,6 +35,7 @@ public class PortOverview extends State {
 		System.out.println("\tView Log (enter: 2)");          //S4
 		System.out.println("\tSimulate (enter: 3)");          //S5
 		System.out.println("\tTransaction Menu (enter: 4)");  //S7
+		System.out.println("\tSave changes (enter: 5)");
 		System.out.println("\tQuit (enter: 0)");              //S13
 		System.out.print("Taking input: ");
 	}
@@ -47,17 +50,23 @@ public class PortOverview extends State {
 		int in;
 		in = super.getSc().nextInt();
 		//option bounds [0 , 4]
-		while ( !isValid(0, 4, in) ){
+		while ( !isValid(0, 5, in) ){
 			System.out.println("Invalid input. Please try again");
 			this.displayOptions();
 			
 			in = getSc().nextInt();
 		}
+		if ( in == 5 ){
+			if ( DBInterface.saveUserData(getContext().getUser()) )
+				System.out.println("Saved successfully");
+			setNext(0);
+			return ;
+		}
 		if ( in > 0 ){
 			super.setNext(in - 1);
 			return ;
 		}
-		super.setNext(super.getContext().getTable()[this.id].length);
+		super.setNext(super.getContext().getTable()[this.id].length - 1);
 	}
 
 	@Override

@@ -97,9 +97,6 @@ public class SimulationContext {
 		this.simResults = this.strategy.simulate(this.growthRate, this.currentValue,
 				this.steps, this.intervalNum);
 		this.count = 0;
-		
-		//Testing purposes ..
-		System.out.println(this.simResults);
 	}
 	
 	

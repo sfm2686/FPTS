@@ -76,7 +76,7 @@ public class AskSrc extends State {
 		
 		EquityUtil reference = this.equity.getReference();
 		if(in > 0){ // Conduct a transfer
-			getContext().getTransClient().buyEquity(reference, in, in, getContext().getPort(), this.portfolioMapping.get(in - 1), this.cashAccounts.get(in - 1));
+			getContext().getTransClient().buyEquity(reference, this.shares, this.price, getContext().getPort(), this.portfolioMapping.get(in - 1), this.cashAccounts.get(in - 1));
 		}
 		else{ // Raw Buy
 			getContext().getTransClient().buyEquity(reference, this.shares, this.price, getContext().getPort());

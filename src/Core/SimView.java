@@ -47,11 +47,12 @@ public class SimView extends State {
 			if ( getSc().nextLine().isEmpty() )
 				System.out.print(getContext().getSim().getInterval() + " " + c ++ + ": " + val);
 			else {
-				System.out.println("Stopping simulation result display");
+				System.out.println("Stopping simulation result display\n");
 				break;
 			}
 			val = getContext().getSim().getNextResult();
 		}
+		System.out.println("\n");
 
 		this.displayOptions();
 		int in = getSc().nextInt();

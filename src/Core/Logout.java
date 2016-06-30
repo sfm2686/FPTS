@@ -3,6 +3,8 @@
  */
 package Core;
 
+import DataInterface.DBInterface;
+
 /**
  * @authors Sultan Mira, Hunter Caskey
  *
@@ -43,6 +45,7 @@ public class Logout extends State {
 			input = getSc().next();
 		}
 		if ( input.equalsIgnoreCase("yes") ){
+			DBInterface.saveUserData(getContext().getUser());
 			System.out.println("System exiting....");
 			System.exit(1);
 		}

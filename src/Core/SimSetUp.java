@@ -46,7 +46,7 @@ public class SimSetUp extends State {
 		//Taking interval as a String
 		System.out.print("Please enter time interval(year, month, day): ");
 		interval = input.next();
-		while ( !interval.equalsIgnoreCase("day") || !interval.equalsIgnoreCase("month") ||
+		while ( !interval.equalsIgnoreCase("day") && !interval.equalsIgnoreCase("month") &&
 				!interval.equalsIgnoreCase("year") ){
 			System.out.println("Invalid input, please try again");
 			System.out.print("Please enter time interval(year, month, day): ");
@@ -68,7 +68,7 @@ public class SimSetUp extends State {
 		//Taking simulation type as a String
 		System.out.print("Please enter the type of simulation(Bear, Bull, No-growth): ");
 		type = input.next();
-		while ( !type.equalsIgnoreCase("bear") || !type.equalsIgnoreCase("bull") ||
+		while ( !type.equalsIgnoreCase("bear") && !type.equalsIgnoreCase("bull") &&
 				!type.equalsIgnoreCase("no-growth") ){
 			System.out.println("Invalid input, please try again");
 			System.out.print("Please enter the type of simulation(Bear, Bull, No-growth): ");
@@ -88,6 +88,7 @@ public class SimSetUp extends State {
 			growthRate = 0;
 		
 		getContext().setSim(growthRate, timeSteps, interval, type);
+		getContext().getSim().simulate();
 		setNext(0);
 	}
 
