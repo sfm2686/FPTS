@@ -6,12 +6,13 @@ package Core;
 /**
  * @authors Sultan Mira, Hunter Caskey
  *
- *This state doesnt not use dispalyOptions because there arent any options
- *to display. This state's purpose is to have the user speicfy a new Equity
- *information for it to be made and added to the current portfolio owned b the user.
+ *          This state doesnt not use dispalyOptions because there arent any
+ *          options to display. This state's purpose is to have the user speicfy
+ *          a new Equity information for it to be made and added to the current
+ *          portfolio owned b the user.
  */
 public class GiveEquityInfo extends State {
-	
+
 	private int id = 12;
 
 	/**
@@ -25,7 +26,7 @@ public class GiveEquityInfo extends State {
 	@Override
 	void displayOptions() {
 	}
-	
+
 	@Override
 	void execute() {
 		System.out.println("\n------Specify New Equity Information-----\n");
@@ -33,40 +34,39 @@ public class GiveEquityInfo extends State {
 		int shareNum = 0;
 		double pricePerShare = 0;
 		boolean repeat;
-		
-		do{
+
+		do {
 			repeat = false;
 			System.out.print("Please enter the number of shares for the new equity (integer): ");
 			String shares = getSc().next();
-			try{
+			try {
 				shareNum = Integer.parseInt(shares);
-			}
-			catch(Exception e){
+			} catch (Exception e) {
 				System.out.println("Invalid input, please try again.");
 				repeat = true;
 			}
-		}while(repeat);
-		
-		do{
+		} while (repeat);
+
+		do {
 			repeat = false;
 			System.out.print("Please enter the acquisition price per share (double): ");
 			String price = getSc().next();
-			try{
+			try {
 				pricePerShare = Double.parseDouble(price);
-			}
-			catch(Exception e){
+			} catch (Exception e) {
 				System.out.println("Invalid input, please try again.");
 				repeat = true;
 			}
-		}while(repeat);
+		} while (repeat);
 
 		setNext(0);
-		
-		// This is the hackiest shit ever. 
-		SpecifyEquity next = (SpecifyEquity)getContext().getNextState(0);
+
+		// This is the hackiest shit ever.
+		SpecifyEquity next = (SpecifyEquity) getContext().getNextState(0);
 		next.shares = shareNum;
 		next.price = pricePerShare;
 	}
+
 	@Override
 	int getID() {
 		return this.id;
