@@ -5,6 +5,8 @@
  */
 package GUI;
 
+import java.awt.Dimension;
+
 /**
  *
  * @author muro
@@ -97,12 +99,12 @@ public class Login extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(registerB))
                     .addComponent(FPTSWelcome))
-                .addContainerGap(91, Short.MAX_VALUE))
+                .addContainerGap(80, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(73, Short.MAX_VALUE)
+                .addContainerGap(80, Short.MAX_VALUE)
                 .addComponent(FPTSWelcome)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -116,10 +118,11 @@ public class Login extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(loginB)
                     .addComponent(registerB))
-                .addGap(107, 107, 107))
+                .addGap(100, 100, 100))
         );
 
-        pack();
+        //pack();
+        setSize(new Dimension(400, 400));
     }// </editor-fold>                        
 
     private void usernameFieldActionPerformed(java.awt.event.ActionEvent evt) {                                            

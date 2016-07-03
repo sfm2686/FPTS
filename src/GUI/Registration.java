@@ -1,5 +1,7 @@
 package GUI;
 
+import java.awt.Dimension;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -101,7 +103,8 @@ public class Registration extends javax.swing.JFrame {
                 .addContainerGap(84, Short.MAX_VALUE))
         );
 
-        pack();
+        //pack();
+        setSize(new Dimension(400, 400));
     }// </editor-fold>                        
 
     /**
