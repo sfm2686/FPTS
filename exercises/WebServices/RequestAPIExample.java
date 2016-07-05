@@ -16,7 +16,7 @@ public class RequestAPIExample {
 		;
 	}
 	public static void main(String[] args) throws IOException {
-		String url = "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20(%22AAPL%22)&env=store://datatables.org/alltableswithkeys";
+		String url = "http://query.yahooapis.com/v1/public/yql?q=select%20LastTradePriceOnly%20from%20yahoo.finance.quotes%20where%20symbol%20in%20(%22AAPL%22)&env=store://datatables.org/alltableswithkeys";
 
 	// Create a URL and open a connection
 	URL YahooURL = new URL(url);
@@ -33,7 +33,7 @@ public class RequestAPIExample {
 	String inputLine;
 	StringBuilder response = new StringBuilder();
 	while ((inputLine = in.readLine()) != null) { 
-		response.append(inputLine);
+		response.append(inputLine + "\n");
 	}
 	// MAKE SURE TO CLOSE YOUR CONNECTION
 	in.close();
