@@ -5,11 +5,6 @@ import Core.User;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
- * 
- * This class acts as a driver for transactions. It takes one type of portfolio
- * transaction and delegates between 8 of the concrete commands to have the operation
- * done. Once every command is done with its operation it calls log in order for it to be
- * logged.
  *
  */
 public class TransactionClient {
@@ -24,6 +19,7 @@ public class TransactionClient {
 		double cost = shares * price;
 		Transaction command = new SubtractCash(srcPort, srcCashAcct.getName(), cost);
 		if(command.Execute()){
+			
 			buyEquity(reference, shares, price, destPort);
 		}
 		return false;
