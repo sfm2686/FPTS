@@ -8,7 +8,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.*;
 
-public class RequestAPIExample {
+public class APIInterface {
 	
 	private Map<String, Double> dict = new HashMap<String, Double>();
 	private double dowDivisor = 0.14602128057775;
