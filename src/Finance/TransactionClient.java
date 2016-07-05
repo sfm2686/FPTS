@@ -5,11 +5,14 @@ import Core.User;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
+<<<<<<< HEAD
+=======
  * 
  *          This class acts as a driver for transactions. It takes one type of
  *          portfolio transaction and delegates between 8 of the concrete
  *          commands to have the operation done. Once every command is done with
  *          its operation it calls log in order for it to be logged.
+>>>>>>> f201cca12621467626b000910fa19fc5fb1229f0
  *
  */
 public class TransactionClient {
