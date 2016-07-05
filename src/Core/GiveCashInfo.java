@@ -6,13 +6,13 @@ package Core;
 /**
  * @authors Sultan Mira, Hunter Caskey
  *
- * The main purpose of this state is to have the user specify the details
- * needed to make a brand new Cash Account to be added to the current
- * portfolio that the user owns. This state like some other few states 
- * does not use displayOptions since there arent any to display.
+ *          The main purpose of this state is to have the user specify the
+ *          details needed to make a brand new Cash Account to be added to the
+ *          current portfolio that the user owns. This state like some other few
+ *          states does not use displayOptions since there arent any to display.
  */
 public class GiveCashInfo extends State {
-	
+
 	private int id = 11;
 
 	/**
@@ -24,7 +24,8 @@ public class GiveCashInfo extends State {
 	}
 
 	@Override
-	void displayOptions() {}
+	void displayOptions() {
+	}
 
 	@Override
 	void execute() {
@@ -32,27 +33,26 @@ public class GiveCashInfo extends State {
 		String acctName;
 		double amount = 0;
 		boolean repeat;
-		do{
+		do {
 			System.out.print("Please enter the name of the account: ");
 			acctName = getSc().next();
-			do{
+			do {
 				repeat = false;
 				System.out.print("Please enter the initial balance of the account (double): ");
 				String balance = getSc().next();
-				try{
+				try {
 					amount = Double.parseDouble(balance);
-				}
-				catch(Exception e){
+				} catch (Exception e) {
 					System.out.println("Invalid input, please try again.");
 					repeat = true;
 				}
-			}while(repeat);
+			} while (repeat);
 			repeat = false;
-			if(!getContext().getTransClient().createCash(getContext().getPort(), acctName, amount)){
+			if (!getContext().getTransClient().createCash(getContext().getPort(), acctName, amount)) {
 				repeat = true;
 				System.out.println("An account with that name is already taken, please try again");
 			}
-		}while(repeat);
+		} while (repeat);
 		setNext(0);
 	}
 

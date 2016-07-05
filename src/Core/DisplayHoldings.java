@@ -6,11 +6,11 @@ import java.util.ArrayList;
 /**
  * @authors Sultan Mira, Hunter Caskey
  *
- *This state displays the holdings of a portfolio in order for the user
- *to select one of them to be removed
+ *          This state displays the holdings of a portfolio in order for the
+ *          user to select one of them to be removed
  */
 public class DisplayHoldings extends State {
-	
+
 	private int id = 8;
 	private int i;
 	private ArrayList<Holding> holdings;
@@ -27,33 +27,31 @@ public class DisplayHoldings extends State {
 	void displayOptions() {
 		System.out.println("Cash Accounts:");
 		i = 1;
-		for(CashAcct acct : getContext().getPort().getCashAccounts()){
+		for (CashAcct acct : getContext().getPort().getCashAccounts()) {
 			System.out.println(i + ". " + acct.toString());
 			this.holdings.add(acct);
 		}
-		for(Equity eq : getContext().getPort().getEquities()){
+		for (Equity eq : getContext().getPort().getEquities()) {
 			System.out.println(i + ". " + eq.toString());
 			this.holdings.add(eq);
 		}
 		System.out.print("Please select a holding (integer): ");
 	}
 
-
 	@Override
 	void execute() {
 		System.out.println("\n------Select a Holding to Remove-----\n");
 		this.displayOptions();
 		int input = getSc().nextInt();
-		while (!isValid(1, i, input)){
+		while (!isValid(1, i, input)) {
 			System.out.println("Invalid input, please try again.");
 			displayOptions();
 			input = getSc().nextInt();
 		}
-		if((i-1) > getContext().getPort().getCashAccounts().size()){
-			getContext().getTransClient().removeCash(getContext().getPort(), (CashAcct)this.holdings.get(i-1));
-		}
-		else{
-			getContext().getTransClient().removeEquity(getContext().getPort(), (Equity)this.holdings.get(i-1));
+		if ((i - 1) > getContext().getPort().getCashAccounts().size()) {
+			getContext().getTransClient().removeCash(getContext().getPort(), (CashAcct) this.holdings.get(i - 1));
+		} else {
+			getContext().getTransClient().removeEquity(getContext().getPort(), (Equity) this.holdings.get(i - 1));
 		}
 		super.setNext(0);
 	}

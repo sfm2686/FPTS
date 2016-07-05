@@ -8,11 +8,11 @@ import Finance.CashAcct;
 /**
  * @authors Sultan Mira, Hunter Caskey
  *
- *This state prmopts the user to provide the amount of money they would like
- *to add to a cash account.
+ *          This state prmopts the user to provide the amount of money they
+ *          would like to add to a cash account.
  */
 public class GetAmount extends State {
-	
+
 	private int id = 16;
 
 	/**
@@ -22,12 +22,11 @@ public class GetAmount extends State {
 		super(context);
 	}
 
-
 	@Override
 	void displayOptions() {
 		System.out.println("Cash Accounts:");
 		int i = 1;
-		for(CashAcct acct : getContext().getPort().getCashAccounts()){
+		for (CashAcct acct : getContext().getPort().getCashAccounts()) {
 			System.out.println(i + ". " + acct.toString());
 		}
 		System.out.print("Please select a cash account to add to (integer): ");
@@ -38,36 +37,34 @@ public class GetAmount extends State {
 		System.out.println("\n------Add to Cash Holding-----\n");
 		boolean failure;
 		int acct = 0;
-		do{
+		do {
 			failure = false;
 			displayOptions();
-			try{
+			try {
 				acct = getSc().nextInt();
-			}
-			catch(Exception e){
+			} catch (Exception e) {
 				System.out.println("Invalid input, please try again.");
 				failure = true;
 			}
-		}while(failure || isValid(1, getContext().getPort().getCashAccounts().size(), acct));
-		
+		} while (failure || isValid(1, getContext().getPort().getCashAccounts().size(), acct));
+
 		double input = -1;
-		do{
+		do {
 			failure = false;
 			System.out.print("Please enter the amount you wish to deposit: ");
-			try{
-				 input = getSc().nextDouble();
-				 if(input < 0){
-					 failure = true;
-				 }
-			}
-			catch(Exception e){
+			try {
+				input = getSc().nextDouble();
+				if (input < 0) {
+					failure = true;
+				}
+			} catch (Exception e) {
 				System.out.println("Invalid input, please try again.");
 				failure = true;
 			}
-		}while(failure);
-		
+		} while (failure);
+
 		setNext(0);
-		AskSource next = (AskSource)getContext().getNextState(0);
+		AskSource next = (AskSource) getContext().getNextState(0);
 		next.acct = getContext().getPort().getCashAccounts().get(acct - 1);
 		next.amount = input;
 	}

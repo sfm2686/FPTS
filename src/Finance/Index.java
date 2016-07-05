@@ -7,24 +7,24 @@ import CSV.*;
 /**
  * @authors Sultan Mira, Hunter Caskey
  * 
- * This class represents an index that contains equtieis.
- * An index is the same as a sector. An index can be owned by a portfolio
- * which is owned by a user.
- * An index has a collection of portoflio that it can do some basic operations 
- * on such as display, get total price of the sector/index
+ *          This class represents an index that contains equtieis. An index is
+ *          the same as a sector. An index can be owned by a portfolio which is
+ *          owned by a user. An index has a collection of portoflio that it can
+ *          do some basic operations on such as display, get total price of the
+ *          sector/index
  * 
  */
 public class Index extends Equity implements Serializable {
 
 	private IndexUtil referenceIndex;
-	
-	public Index(int numShares, IndexUtil referenceIndex){
+
+	public Index(int numShares, IndexUtil referenceIndex) {
 		super.setNumShares(numShares);
 		this.referenceIndex = referenceIndex;
 	}
-	
+
 	@Override
-	public double getValue(){
+	public double getValue() {
 		return (super.getNumShares() * this.getPrice());
 	}
 
@@ -34,24 +34,24 @@ public class Index extends Equity implements Serializable {
 	}
 
 	@Override
-	public EquityUtil getReference(){
+	public EquityUtil getReference() {
 		return this.referenceIndex;
 	}
-	
+
 	@Override
-	public String getName(){
+	public String getName() {
 		return this.referenceIndex.getName();
 	}
-	
+
 	@Override
-	public String toString(){
-		return "Index Holding: " + this.getName() +  ", " + this.getNumShares() 
-			+ " shares, current price: $" + this.getPrice() 
-				+ ", current value: " + this.getValue() + ".";
+	public String toString() {
+		return "Index Holding: " + this.getName() + ", " + this.getNumShares() + " shares, current price: $"
+				+ this.getPrice() + ", current value: " + this.getValue() + ".";
 	}
-		
+
 	/**
 	 * Unit Tests for Index
+	 * 
 	 * @param args
 	 */
 	public static void main(String[] args) {
@@ -64,34 +64,35 @@ public class Index extends Equity implements Serializable {
 		indexRef.addStock(stock1);
 		indexRef.addStock(stock2);
 		indexRef.addStock(stock3);
-		
+
 		Index testIndex = new Index(10, indexRef);
-		
+
 		int testCount = 6;
 		int failCount = 0;
-		
-		if (testIndex.getName() != "Tech Companies"){
+
+		if (testIndex.getName() != "Tech Companies") {
 			++failCount;
 		}
-		if (testIndex.getNumShares() != 10){
+		if (testIndex.getNumShares() != 10) {
 			++failCount;
 		}
-		if (testIndex.getPrice() != 500.00){
+		if (testIndex.getPrice() != 500.00) {
 			++failCount;
 		}
-		if (testIndex.getValue() != 5000.00){
+		if (testIndex.getValue() != 5000.00) {
 			++failCount;
 		}
 		testIndex.addShares(10);
-		if (testIndex.getValue() != 10000.00){
+		if (testIndex.getValue() != 10000.00) {
 			++failCount;
 		}
 		testIndex.subtractShares(15);
-		if(testIndex.getValue() != 2500.00){
+		if (testIndex.getValue() != 2500.00) {
 			++failCount;
 		}
-		
-		System.out.println("Conducting unit tests for Index:\n" + (testCount - failCount) + " out of " + testCount + " tests passed.");
+
+		System.out.println("Conducting unit tests for Index:\n" + (testCount - failCount) + " out of " + testCount
+				+ " tests passed.");
 
 	}
 

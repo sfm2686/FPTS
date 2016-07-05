@@ -5,15 +5,15 @@ import CSV.*;
 /**
  * @authors Sultan Mira, Hunter Caskey
  *
- *This state prompts the user to select equities for the user create their own
- *off, and get a number of shares
+ *          This state prompts the user to select equities for the user create
+ *          their own off, and get a number of shares
  */
 public class SpecifyEquity extends State {
-	
+
 	private int id = 14;
 	protected double price;
 	protected int shares;
-	
+
 	/**
 	 * @param context
 	 */
@@ -25,24 +25,24 @@ public class SpecifyEquity extends State {
 	void displayOptions() {
 		System.out.println("Available Equities:");
 		int i = 1;
-		for(EquityUtil equity : getContext().getMarket().displayMarket()){
+		for (EquityUtil equity : getContext().getMarket().displayMarket()) {
 			System.out.println(i++ + ". " + equity.toString());
 		}
 		System.out.print("Please select an equity by the listing number (integer): ");
 	}
-	
+
 	@Override
-	public void execute(){
+	public void execute() {
 		System.out.println("\n------Select a Equity Listing to Create-----\n");
 		displayOptions();
 		int in;
 		in = getSc().nextInt();
-		while(!isValid(1, getContext().getMarket().displayMarket().size(), in)){
+		while (!isValid(1, getContext().getMarket().displayMarket().size(), in)) {
 			System.out.println("Invalid input, please try again.");
 			displayOptions();
 		}
-		EquityUtil reference = getContext().getMarket().displayMarket().get(in -1);
-		getContext().getTransClient().buyEquity(reference, shares, price, getContext().getPort()); 
+		EquityUtil reference = getContext().getMarket().displayMarket().get(in - 1);
+		getContext().getTransClient().buyEquity(reference, shares, price, getContext().getPort());
 	}
 
 	@Override

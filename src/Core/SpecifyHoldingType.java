@@ -1,15 +1,13 @@
 package Core;
 
-
-
 /**
  * @authors Sultan Mira, Hunter Caskey
  *
- *This state prompts the user to select a holding type in order for them to 
- *create a new, could either be CashAccount or Equity
+ *          This state prompts the user to select a holding type in order for
+ *          them to create a new, could either be CashAccount or Equity
  */
 public class SpecifyHoldingType extends State {
-	
+
 	private int id = 10;
 
 	/**
@@ -32,7 +30,7 @@ public class SpecifyHoldingType extends State {
 		System.out.println("\n------Select a Holding Type to Create-----\n");
 		this.displayOptions();
 		int input = getSc().nextInt();
-		while (!isValid(1, 2, input)){
+		while (!isValid(1, 2, input)) {
 			System.out.println("Invalid input, please try again.");
 			displayOptions();
 			input = getSc().nextInt();

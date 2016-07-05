@@ -2,19 +2,21 @@
  * 
  */
 package Simulation;
+
 import java.util.*;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
  * 
- * This class delegates between different stratigies depending on the input/choice
- * of the user. It will set its strategy class reference to what the user has
- * chosen. Once that is done it will simulate and display the results one result at a 
- * time. The client of the class is able to determine what invokes the display of the 
- * next result in the next time step. The class returns the next result everytime the
- * getNextResult method is called. The class is also able to simulate off a simulation result.
- * If the client of the class does not simulate again the current value will be reset to the
- * initial.
+ *          This class delegates between different stratigies depending on the
+ *          input/choice of the user. It will set its strategy class reference
+ *          to what the user has chosen. Once that is done it will simulate and
+ *          display the results one result at a time. The client of the class is
+ *          able to determine what invokes the display of the next result in the
+ *          next time step. The class returns the next result everytime the
+ *          getNextResult method is called. The class is also able to simulate
+ *          off a simulation result. If the client of the class does not
+ *          simulate again the current value will be reset to the initial.
  *
  */
 public class SimulationContext {
@@ -28,80 +30,74 @@ public class SimulationContext {
 	private int count;
 	private int intervalNum;
 	private String interval;
-	
-	
-	//Constructor
-	public SimulationContext(double growthRate, double value, 
-			int timeSteps, String interval, String type){
-		
+
+	// Constructor
+	public SimulationContext(double growthRate, double value, int timeSteps, String interval, String type) {
+
 		this.growthRate = growthRate / 100;
 		this.currentValue = value;
 		this.initValue = value;
 		this.steps = timeSteps;
 		this.intervalNum = 1;
 		this.interval = interval;
-		
-		
-		if ( type.equalsIgnoreCase("bear" ))
+
+		if (type.equalsIgnoreCase("bear"))
 			this.strategy = new BearMarketStrategy();
-		else if ( type.equalsIgnoreCase("bull") )
+		else if (type.equalsIgnoreCase("bull"))
 			this.strategy = new BullMarketStrategy();
-		else if ( type.equalsIgnoreCase("no-growth") )
-			this.strategy = new NoGrowthMarketStrategy();		
+		else if (type.equalsIgnoreCase("no-growth"))
+			this.strategy = new NoGrowthMarketStrategy();
 	}
-	
-	public String getInterval(){
+
+	public String getInterval() {
 		return this.interval;
 	}
-	
-	//Testing purposes..
-	public double getInitValue(){
+
+	// Testing purposes..
+	public double getInitValue() {
 		return this.initValue;
 	}
-	
-	public void restValue(){
+
+	public void restValue() {
 		this.currentValue = this.initValue;
 	}
-	
-	public double getNextResult(){
-		if ( this.count == this.simResults.size() ){
+
+	public double getNextResult() {
+		if (this.count == this.simResults.size()) {
 			this.count = -1;
 			return (double) count;
 		}
 		return (double) this.simResults.get(this.count++);
 	}
-	
-	public void newSim(double growthRate, 
-			int timeSteps, String interval, String type){
+
+	public void newSim(double growthRate, int timeSteps, String interval, String type) {
 		this.growthRate = growthRate / 100;
 		this.steps = timeSteps;
 		this.intervalNum = 1;
 		this.interval = interval;
 		this.currentValue = (double) this.simResults.get(this.simResults.size() - 1);
-		
-		if ( type.equalsIgnoreCase("bear" ))
+
+		if (type.equalsIgnoreCase("bear"))
 			this.strategy = new BearMarketStrategy();
-		else if ( type.equalsIgnoreCase("bull") )
+		else if (type.equalsIgnoreCase("bull"))
 			this.strategy = new BullMarketStrategy();
-		else if ( type.equalsIgnoreCase("no-growth") )
+		else if (type.equalsIgnoreCase("no-growth"))
 			this.strategy = new NoGrowthMarketStrategy();
 	}
-	
-	public void simulate(){
-		this.simResults = this.strategy.simulate(this.growthRate, this.currentValue,
-				this.steps, this.intervalNum);
+
+	public void simulate() {
+		this.simResults = this.strategy.simulate(this.growthRate, this.currentValue, this.steps, this.intervalNum);
 		this.count = 0;
 	}
-	
-	
-	//-------------------------------------------------------------------------
-	//                            MAIN
-	//-------------------------------------------------------------------------
+
+	// -------------------------------------------------------------------------
+	// MAIN
+	// -------------------------------------------------------------------------
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		//Testing .. 
+		// Testing ..
 		int timeSteps;
 		int c;
 		double initValue;
@@ -110,7 +106,7 @@ public class SimulationContext {
 		String interval;
 		String result;
 		String type;
-		
+
 		Scanner input = new Scanner(System.in);
 		System.out.print("Please enter time interval(year, month, day): ");
 		interval = input.next();
@@ -123,28 +119,27 @@ public class SimulationContext {
 		System.out.print("Please enter the growth rate(%): ");
 		growthRate = input.nextDouble();
 		System.out.println("Assuming all of the information provided is correct, starting simulation...");
-		
-		SimulationContext test = new SimulationContext(growthRate, initValue, 
-				timeSteps, interval, type);
+
+		SimulationContext test = new SimulationContext(growthRate, initValue, timeSteps, interval, type);
 		test.simulate();
-		
+
 		System.out.println("\nPlease press 'Enter' to view next value");
 		c = 1;
 		val = test.getNextResult();
-		while ( val != -1 ){
-			if ( input.nextLine().isEmpty() )
-				System.out.print(test.getInterval() + " " + c ++ + ": " + val);
+		while (val != -1) {
+			if (input.nextLine().isEmpty())
+				System.out.print(test.getInterval() + " " + c++ + ": " + val);
 			else {
 				System.out.println("Stopping simulation result display");
 				break;
 			}
 			val = test.getNextResult();
 		}
-		
-		while ( true ){
+
+		while (true) {
 			System.out.print("\nWould you like to simulate again(yes, no): ");
 			result = input.next();
-			if ( result.equalsIgnoreCase("yes") ){
+			if (result.equalsIgnoreCase("yes")) {
 				System.out.print("Please enter time interval(year, month, day): ");
 				interval = input.next();
 				System.out.print("Please enter time steps(integer): ");
@@ -158,19 +153,17 @@ public class SimulationContext {
 				System.out.println("\nPlease press 'Enter' to view next value");
 				c = 1;
 				val = test.getNextResult();
-				while ( val != -1 ){
-					if ( input.nextLine().isEmpty() )
-						System.out.print(test.getInterval() + " " + c ++ + ": " + val);
+				while (val != -1) {
+					if (input.nextLine().isEmpty())
+						System.out.print(test.getInterval() + " " + c++ + ": " + val);
 					else {
 						System.out.println("Stopping simulation result display");
 						break;
 					}
-					//val = test.getNextResult();
+					// val = test.getNextResult();
 				}
-			}
-			else { //Reset value back..
-				System.out.println("Your portfolio's value is reset back to: " +
-						test.getInitValue());
+			} else { // Reset value back..
+				System.out.println("Your portfolio's value is reset back to: " + test.getInitValue());
 				break;
 			}
 		}

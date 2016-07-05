@@ -6,13 +6,13 @@ package Core;
 /**
  * @authors Sultan Mira, Hunter Caskey
  *
- *This state's main purpose is to have the user specify a holding type
- *, equity or cash account.
- *The state as almost all of the other states does some light validation on the
- *input so they user's input is somewhat restrict.
+ *          This state's main purpose is to have the user specify a holding type
+ *          , equity or cash account. The state as almost all of the other
+ *          states does some light validation on the input so they user's input
+ *          is somewhat restrict.
  */
 public class Subtract extends State {
-	
+
 	private int id = 19;
 
 	/**
@@ -35,7 +35,7 @@ public class Subtract extends State {
 		System.out.println("\n------Subtracting from a Holding-----\n");
 		this.displayOptions();
 		int input = getSc().nextInt();
-		while (!isValid(1, 2, input)){
+		while (!isValid(1, 2, input)) {
 			System.out.println("Invalid input, please try again.");
 			displayOptions();
 			input = getSc().nextInt();
