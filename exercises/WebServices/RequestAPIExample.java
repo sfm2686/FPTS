@@ -5,12 +5,20 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.*;
 
 public class RequestAPIExample {
+	
+	private Map<String, Double> dict = new HashMap<String, Double>();
+	
+	
+	private static void parser(){
+		;
+	}
 	public static void main(String[] args) throws IOException {
 		String url = "http://query.yahooapis.com/v1/public/yql?q=select%20LastTradePriceOnly%20from%20yahoo.finance.quotes%20where%20symbol%20in%20(%22AAPL%22)&env=store://datatables.org/alltableswithkeys";
 
-	// Create a URL and open a connecti
+	// Create a URL and open a connection
 	URL YahooURL = new URL(url);
 	HttpURLConnection con = (HttpURLConnection) YahooURL.openConnection();
 	
