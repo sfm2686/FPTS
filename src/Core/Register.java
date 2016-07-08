@@ -4,6 +4,7 @@
 package Core;
 
 import DataInterface.DBInterface;
+import Finance.User;
 
 /**
  * @authors Sultan Mira, Hunter Caskey

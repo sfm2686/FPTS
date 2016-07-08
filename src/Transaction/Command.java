@@ -1,8 +1,9 @@
-package Finance;
+package Transaction;
 
 import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
+import Finance.Portfolio;
 import java.io.Serializable;
 
 /**
@@ -13,12 +14,12 @@ import java.io.Serializable;
  *          operation.
  *
  */
-public abstract class Transaction implements Serializable {
+public abstract class Command implements Serializable {
 
 	private Portfolio receiver;
 	private Date transactionDate;
 
-	public Transaction(Portfolio receiver) {
+	public Command(Portfolio receiver) {
 		this.receiver = receiver;
 		this.transactionDate = Calendar.getInstance(TimeZone.getTimeZone("EST")).getTime();
 	}
@@ -31,5 +32,5 @@ public abstract class Transaction implements Serializable {
 		return this.transactionDate;
 	}
 
-	public abstract boolean Execute();
+	public abstract boolean execute();
 }

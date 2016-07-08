@@ -1,6 +1,8 @@
-package Finance;
+package Transaction;
 
 import java.io.Serializable;
+
+import Finance.Portfolio;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
@@ -11,7 +13,7 @@ import java.io.Serializable;
  *          account.
  *
  */
-public class AddCash extends Transaction implements Serializable {
+public class AddCash extends Command implements Serializable, UndoableRedoable {
 
 	private String acctName;
 	private double deposit;
@@ -22,7 +24,7 @@ public class AddCash extends Transaction implements Serializable {
 		this.deposit = deposit;
 	}
 
-	public boolean Execute() {
+	public boolean execute() {
 		CashAcct acct = super.getReciever().getCashAcct(this.acctName);
 		if (acct != null) {
 			acct.deposit(this.deposit);
@@ -33,7 +35,7 @@ public class AddCash extends Transaction implements Serializable {
 
 	@Override
 	public String toString() {
-		return "\nPortfolio Operated On: " + super.getReciever() + "\n\tAccount: " + this.acctName
+		return "Date: " + this.getTransactionDate() + "\n\tPortfolio Operated On: " + super.getReciever() + "\n\tAccount: " + this.acctName
 				+ "\n\tTransaction: Deposit Cash" + "\n\tAmount: " + this.deposit;
 	}
 
@@ -43,5 +45,24 @@ public class AddCash extends Transaction implements Serializable {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
+	}
+
+	/**
+	 * 
+	 */
+	@Override
+	public void unexecute() {
+		CashAcct acct = super.getReciever().getCashAcct(this.acctName);
+		if (acct != null) {
+			acct.withdraw(this.deposit);
+		}
+	}
+
+	/**
+	 * 
+	 */
+	@Override
+	public UndoableRedoable clone() {
+		return ((UndoableRedoable) new AddCash(super.getReciever(), this.acctName, this.deposit));
 	}
 }

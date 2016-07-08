@@ -1,8 +1,8 @@
-package Core;
+package Finance;
 
 import java.util.ArrayList;
-import Finance.Portfolio;
 import java.io.Serializable;
+import TransactionStorage.Log;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
@@ -18,11 +18,13 @@ public class User implements Serializable {
 	private final String username;
 	private String password;
 	private ArrayList<Portfolio> portfolios;
+	private Log log;
 
 	public User(String username, String password) {
 		this.username = username;
 		this.password = password;
 		this.portfolios = new ArrayList<Portfolio>();
+		this.log = new Log();
 	}
 
 	public ArrayList<Portfolio> getPorts() {

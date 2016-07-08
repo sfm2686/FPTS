@@ -3,14 +3,15 @@ package Finance;
 import java.io.Serializable;
 import java.util.ArrayList;
 import CSV.*;
+import Transaction.CashAcct;
 
 /**
  * @author Sultan Mira & Hunter Caskey
  * 
  *         This class represents a portfolio. A portfolio owns 2 collections of
  *         type holdings, a collection of cash accounts, and a collection of
- *         equities. A portfolio also has a log that it uses to log the
- *         transactions that happen to that log. The portfolio is owned by a
+ *         equities. A portfolio also has a  that it uses to  the
+ *         transactions that happen to that . The portfolio is owned by a
  *         user but the portfolio itself does not know or need to know about its
  *         owner.
  *
@@ -21,19 +22,14 @@ public class Portfolio implements Serializable {
 	private String name;
 	private ArrayList<Equity> equities;
 	private ArrayList<CashAcct> cashAccounts;
-	private Log log;
 
 	public Portfolio(String name) {
 		this.name = name;
 		this.equities = new ArrayList<>();
 		this.cashAccounts = new ArrayList<>();
-		this.log = new Log(name);
 	}
 
-	public Log getLog() {
-		return this.log;
-	}
-
+	
 	public String getName() {
 		return this.name;
 	}
@@ -111,7 +107,7 @@ public class Portfolio implements Serializable {
 		return this.equities;
 	}
 
-	protected void addCashAccount(CashAcct account) {
+	public void addCashAccount(CashAcct account) {
 		this.cashAccounts.add(account);
 	}
 
@@ -134,7 +130,7 @@ public class Portfolio implements Serializable {
 		this.cashAccounts.remove(account);
 	}
 
-	protected boolean hasEquity(EquityUtil equityRef) {
+	public boolean hasEquity(EquityUtil equityRef) {
 		for (Equity equity : this.equities) {
 			if ((equity.getName()).equalsIgnoreCase(equityRef.getName())) {
 				return true;
@@ -143,7 +139,7 @@ public class Portfolio implements Serializable {
 		return false;
 	}
 
-	protected boolean hasCashAccount(String name) {
+	public boolean hasCashAccount(String name) {
 		for (CashAcct account : this.cashAccounts) {
 			if ((account.getName()).equalsIgnoreCase(name)) {
 				return true;

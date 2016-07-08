@@ -2,9 +2,9 @@ package Core;
 
 import java.util.ArrayList;
 
-import Finance.CashAcct;
 import Finance.Equity;
 import Finance.Portfolio;
+import Transaction.CashAcct;
 import CSV.*;
 
 /**

@@ -1,9 +1,13 @@
-package Finance;
+package Transaction;
 
 import java.io.Serializable;
 
 import CSV.EquityUtil;
 import CSV.StockUtil;
+import Finance.Equity;
+import Finance.Index;
+import Finance.Portfolio;
+import Finance.Stock;
 import CSV.IndexUtil;
 
 /**
@@ -13,7 +17,7 @@ import CSV.IndexUtil;
  *          the instance of portfolio that is passed in the constructor
  *
  */
-public class CreateEquity extends Transaction implements Serializable {
+public class CreateEquity extends Command implements Serializable {
 
 	private EquityUtil reference;
 	private int numShares;
@@ -24,7 +28,7 @@ public class CreateEquity extends Transaction implements Serializable {
 		this.numShares = numShares;
 	}
 
-	public boolean Execute() {
+	public boolean execute() {
 		if (super.getReciever().hasEquity(this.reference)) {
 			return false;
 		}

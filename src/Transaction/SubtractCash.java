@@ -1,6 +1,8 @@
-package Finance;
+package Transaction;
 
 import java.io.Serializable;
+
+import Finance.Portfolio;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
@@ -11,7 +13,7 @@ import java.io.Serializable;
  *          passed in the constructor.
  *
  */
-public class SubtractCash extends Transaction implements Serializable {
+public class SubtractCash extends Command implements Serializable {
 
 	private String acctName;
 	private double withdrawal;
@@ -22,7 +24,7 @@ public class SubtractCash extends Transaction implements Serializable {
 		this.withdrawal = withdrawal;
 	}
 
-	public boolean Execute() {
+	public boolean execute() {
 		CashAcct acct = super.getReciever().getCashAcct(this.acctName);
 		if (acct != null) {
 			if (acct.withdraw(this.withdrawal)) {

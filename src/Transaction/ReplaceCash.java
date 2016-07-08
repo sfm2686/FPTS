@@ -1,9 +1,11 @@
 /**
  * 
  */
-package Finance;
+package Transaction;
 
 import java.io.Serializable;
+
+import Finance.Portfolio;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
@@ -14,7 +16,7 @@ import java.io.Serializable;
  *          amount.
  *
  */
-public class ReplaceCash extends Transaction implements Serializable {
+public class ReplaceCash extends Command implements Serializable {
 
 	private String accountName;
 	private double newBalance;
@@ -26,7 +28,7 @@ public class ReplaceCash extends Transaction implements Serializable {
 	}
 
 	@Override
-	public boolean Execute() {
+	public boolean execute() {
 		if (super.getReciever().hasCashAccount(this.accountName)) {
 			super.getReciever().getCashAcct(this.accountName).setBalance(this.newBalance);
 			;

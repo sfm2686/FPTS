@@ -1,4 +1,7 @@
-package Finance;
+package Transaction;
+
+import Finance.Equity;
+import Finance.Portfolio;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
@@ -9,7 +12,7 @@ package Finance;
  *          account like AddCash
  *
  */
-public class AddEquity extends Transaction {
+public class AddEquity extends Command {
 
 	private String equityName;
 	private int numShares;
@@ -20,7 +23,7 @@ public class AddEquity extends Transaction {
 		this.numShares = shares;
 	}
 
-	public boolean Execute() {
+	public boolean execute() {
 		Equity equity = super.getReciever().getEquity(this.equityName);
 		if (equity != null) {
 			equity.addShares(this.numShares);
@@ -31,7 +34,7 @@ public class AddEquity extends Transaction {
 
 	@Override
 	public String toString() {
-		return "\nPortfolio Operated On: " + super.getReciever() + "\n\tEquity: " + this.equityName
+		return "\nDate: " + this.getTransactionDate() + "\n\tPortfolio Operated On: " + super.getReciever() + "\n\tEquity: " + this.equityName
 				+ "\n\tTransaction: Add Equity" + "\n\tShares: " + this.numShares;
 	}
 
