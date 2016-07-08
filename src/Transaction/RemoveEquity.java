@@ -1,6 +1,9 @@
-package Finance;
+package Transaction;
 
 import CSV.EquityUtil;
+import Finance.Equity;
+import Finance.Portfolio;
+
 import java.io.Serializable;
 
 /**
@@ -11,7 +14,7 @@ import java.io.Serializable;
  *          the receiver.
  *
  */
-public class RemoveEquity extends Transaction implements Serializable {
+public class RemoveEquity extends Command implements Serializable {
 
 	private EquityUtil reference;
 
@@ -20,7 +23,7 @@ public class RemoveEquity extends Transaction implements Serializable {
 		this.reference = reference;
 	}
 
-	public boolean Execute() {
+	public boolean execute() {
 		if (super.getReciever().hasEquity(this.reference)) {
 			Equity removal = null;
 			for (Equity equity : super.getReciever().getEquities()) {

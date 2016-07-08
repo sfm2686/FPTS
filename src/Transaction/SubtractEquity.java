@@ -1,9 +1,12 @@
 /**
  * 
  */
-package Finance;
+package Transaction;
 
 import java.io.Serializable;
+
+import Finance.Equity;
+import Finance.Portfolio;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
@@ -13,7 +16,7 @@ import java.io.Serializable;
  *          Also the number of shares is provided.
  *
  */
-public class SubtractEquity extends Transaction implements Serializable {
+public class SubtractEquity extends Command implements Serializable {
 
 	private String equityName;
 	private int numShares;
@@ -24,7 +27,7 @@ public class SubtractEquity extends Transaction implements Serializable {
 		this.numShares = numShares;
 	}
 
-	public boolean Execute() {
+	public boolean execute() {
 		Equity equity = super.getReciever().getEquity(this.equityName);
 		if (equity != null) {
 			equity.subtractShares(this.numShares);

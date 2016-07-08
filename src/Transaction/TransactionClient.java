@@ -1,7 +1,9 @@
-package Finance;
+package Transaction;
 
 import CSV.*;
-import Core.User;
+import Finance.Equity;
+import Finance.Portfolio;
+import Finance.User;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
@@ -26,21 +28,21 @@ public class TransactionClient {
 	public boolean buyEquity(EquityUtil reference, int shares, double price, Portfolio destPort, Portfolio srcPort,
 			CashAcct srcCashAcct) {
 		double cost = shares * price;
-		Transaction command = new SubtractCash(srcPort, srcCashAcct.getName(), cost);
-		if (command.Execute()) {
+		Command command = new SubtractCash(srcPort, srcCashAcct.getName(), cost);
+		if (command.execute()) {
 			buyEquity(reference, shares, price, destPort);
 		}
 		return false;
 	}
 
 	public void buyEquity(EquityUtil reference, int shares, double price, Portfolio destPort) {
-		Transaction command;
+		Command command;
 		if (destPort.hasEquity(reference)) {
 			command = new AddEquity(destPort, reference.getName(), shares);
 		} else {
 			command = new CreateEquity(destPort, reference, shares);
 		}
-		command.Execute();
+		command.execute();
 	}
 
 	public void transferEquity(Portfolio srcPort, Equity equity, int shares, double price, Portfolio destPort,
@@ -53,15 +55,15 @@ public class TransactionClient {
 
 	public boolean transferEquity(Portfolio portfolio, Equity equity, int shares, double price) {
 		if (equity.getNumShares() >= shares) {
-			Transaction command = new SubtractEquity(portfolio, equity.getName(), shares);
-			return (command.Execute());
+			Command command = new SubtractEquity(portfolio, equity.getName(), shares);
+			return (command.execute());
 		}
 		return false;
 	}
 
 	public void removeEquity(Portfolio portfolio, Equity equity) {
-		Transaction command = new RemoveEquity(portfolio, equity.getReference());
-		command.Execute();
+		Command command = new RemoveEquity(portfolio, equity.getReference());
+		command.execute();
 	}
 
 	public void sellOffEquity(Portfolio portfolio, Equity equity, double price, Portfolio destPort,
@@ -72,23 +74,23 @@ public class TransactionClient {
 	}
 
 	public void addCash(Portfolio portfolio, String accountName, double amount) {
-		Transaction command;
+		Command command;
 		if (portfolio.hasCashAccount(accountName)) {
 			command = new CreateCash(portfolio, accountName, amount);
 		} else {
 			command = new AddCash(portfolio, accountName, amount);
 		}
-		command.Execute();
+		command.execute();
 	}
 
 	public boolean createCash(Portfolio portfolio, String accountName, double amount) {
-		Transaction command = new CreateCash(portfolio, accountName, amount);
-		return (command.Execute());
+		Command command = new CreateCash(portfolio, accountName, amount);
+		return (command.execute());
 	}
 
 	public void removeCash(Portfolio srcPort, CashAcct srcCashAccount) {
-		Transaction command = new RemoveCash(srcPort, srcCashAccount.getName());
-		command.Execute();
+		Command command = new RemoveCash(srcPort, srcCashAccount.getName());
+		command.execute();
 	}
 
 	public void removeCash(Portfolio srcPort, CashAcct srcCashAccount, Portfolio destPort, CashAcct destCashAccount) {
@@ -97,8 +99,8 @@ public class TransactionClient {
 	}
 
 	public boolean withdrawCash(Portfolio srcPort, CashAcct srcCashAccount, double amount) {
-		Transaction command = new SubtractCash(srcPort, srcCashAccount.getName(), amount);
-		return (command.Execute());
+		Command command = new SubtractCash(srcPort, srcCashAccount.getName(), amount);
+		return (command.execute());
 	}
 
 	public void withdrawCash(Portfolio srcPort, CashAcct srcCashAccount, double amount, Portfolio destPort,
@@ -128,8 +130,8 @@ public class TransactionClient {
 		if (account.getBalance() < 0)
 			return false;
 		if (destPort.hasCashAccount(account.getName()) && !flag) {
-			Transaction command = new ReplaceCash(destPort, account.getName(), account.getValue());
-			return (command.Execute());
+			Command command = new ReplaceCash(destPort, account.getName(), account.getValue());
+			return (command.execute());
 		}
 		return (importCash(account, destPort));
 	}

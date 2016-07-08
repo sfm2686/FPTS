@@ -1,9 +1,11 @@
 /**
  * 
  */
-package Finance;
+package Transaction;
 
 import java.io.Serializable;
+
+import Finance.Portfolio;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
@@ -12,7 +14,7 @@ import java.io.Serializable;
  *          binding it to the portfolio that is passed in the constructor.
  *
  */
-public class CreateCash extends Transaction implements Serializable {
+public class CreateCash extends Command implements Serializable {
 
 	private String accountName;
 	private double balance;
@@ -23,7 +25,7 @@ public class CreateCash extends Transaction implements Serializable {
 		this.balance = balance;
 	}
 
-	public boolean Execute() {
+	public boolean execute() {
 		Portfolio receiver = super.getReciever();
 		if (receiver.hasCashAccount(this.accountName)) {
 			return false;
@@ -34,16 +36,9 @@ public class CreateCash extends Transaction implements Serializable {
 
 	@Override
 	public String toString() {
-		return "\nPortfolio Operated On: " + super.getReciever() + "\n\tAccount: " + this.accountName
+		return "\nDate: " + this.getTransactionDate() + "\n\tPortfolio Operated On: " + super.getReciever() + "\n\tAccount: " + this.accountName
 				+ "\n\tTransaction: Created Cash Account" + "\n\tInitial Amount: " + this.balance;
 	}
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
 
 }

@@ -1,9 +1,11 @@
 /**
  * 
  */
-package Finance;
+package Transaction;
 
 import java.io.Serializable;
+
+import Finance.Portfolio;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
@@ -13,7 +15,7 @@ import java.io.Serializable;
  *          the receiver.
  *
  */
-public class RemoveCash extends Transaction implements Serializable {
+public class RemoveCash extends Command implements Serializable {
 
 	private String accountName;
 
@@ -22,7 +24,7 @@ public class RemoveCash extends Transaction implements Serializable {
 		this.accountName = accountName;
 	}
 
-	public boolean Execute() {
+	public boolean execute() {
 		if (super.getReciever().hasCashAccount(this.accountName)) {
 			CashAcct removal = null;
 			for (CashAcct account : super.getReciever().getCashAccounts()) {

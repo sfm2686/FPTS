@@ -5,6 +5,7 @@ package Core;
 
 import Finance.*;
 import Simulation.SimulationContext;
+import Transaction.TransactionClient;
 import CSV.*;
 import java.util.*;
 

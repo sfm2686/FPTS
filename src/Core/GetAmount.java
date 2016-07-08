@@ -3,7 +3,7 @@
  */
 package Core;
 
-import Finance.CashAcct;
+import Transaction.CashAcct;
 
 /**
  * @authors Sultan Mira, Hunter Caskey

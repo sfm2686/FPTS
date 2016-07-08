@@ -1,6 +1,7 @@
 package Core;
 
 import Finance.*;
+import Transaction.CashAcct;
 
 /**
  * @authors Sultan Mira, Hunter Caskey

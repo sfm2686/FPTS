@@ -1,8 +1,9 @@
 package DataInterface;
 
 import java.io.*;
-import Core.User;
+
 import Finance.Portfolio;
+import Finance.User;
 
 /**
  * @authors Sultan Mira, Hunter Caskey

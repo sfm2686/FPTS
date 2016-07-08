@@ -1,9 +1,11 @@
-package Finance;
+package Transaction;
 
 import java.util.Date;
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.TimeZone;
+
+import Finance.Holding;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
