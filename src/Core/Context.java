@@ -63,12 +63,12 @@ public class Context {
 		State S21 = new AskNumPriceDest(this);
 
 		State[][] tempTable = { { S1, S2 }, // S0
-				{ S0, S13 }, // S1
-				{ S2, S3, S13 }, // S2
-				{ S2, S4, S5, S7, S13 }, // S3
-				{ S3, S13 }, // S4
-				{ S6 }, // S5
-				{ S3, S5, S13 }, // S6
+				{ S0, S13 },                // S1
+				{ S2, S3, S13 },            // S2
+				{ S2, S4, S5, S7, S13 },    // S3
+				{ S3, S13 },                // S4
+				{ S6 },                         // S5
+				{ S3, S5, S13 },                // S6
 				{ S3, S8, S10, S15, S19, S13 }, // S7
 				{ S3, S13 }, // S8
 				{ S3 }, // S9
