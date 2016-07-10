@@ -4,6 +4,9 @@
 package GUI;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.*;
 
 /**
@@ -22,11 +25,9 @@ public class newRegisteration extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(new Dimension(800, 800));
 		this.setTitle("Registeration Page");
-		
 		this.setLayout(new BorderLayout());
-		
 		this.add(pan(), BorderLayout.CENTER);
-
+		this.assign();
 	}
 
 	private JPanel pan(){
@@ -54,6 +55,44 @@ public class newRegisteration extends JFrame {
 		panel.add(this.clear);
 		
 		return panel;
+	}
+	
+	private void assign(){
+		
+		this.clear.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("Clear Clicked");
+			}
+		});
+		
+		this.done.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("Done CLicked");
+			}
+		});
+		
+		this.pass1.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("Password1: " + e.getActionCommand());
+			}
+		});
+		
+		this.pass2.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("Password2: " + e.getActionCommand());
+			}
+		});
+		
+		this.usernameF.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("Username: " + e.getActionCommand());
+			}
+		});
 	}
 
 	/**
