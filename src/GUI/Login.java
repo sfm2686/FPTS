@@ -43,7 +43,7 @@ public class Login extends JFrame {
 	}
 	
 	private JPanel middle(){
-		JPanel panel = new JPanel(new GridLayout(3, 2));
+		JPanel panel = new JPanel(new GridLayout(20, 2));
 		
 		
 		this.usernameL = new JLabel("Username: ");
