@@ -13,14 +13,14 @@ import javax.swing.*;
  * @authors Sultan Mira, Hunter Caskey
  *
  */
-public class newRegisteration extends JFrame {
+public class Registeration extends JFrame {
 
 	private JButton done, clear;
 	private JPasswordField pass1, pass2;
 	private JTextField usernameF;
 	private JLabel usernameL, passL1, passL2;
 	
-	public newRegisteration() {
+	public Registeration() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(new Dimension(800, 800));
@@ -102,7 +102,7 @@ public class newRegisteration extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					newRegisteration frame = new newRegisteration();
+					Registeration frame = new Registeration();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
