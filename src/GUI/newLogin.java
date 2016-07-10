@@ -1,20 +1,7 @@
 package GUI;
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.EventQueue;
-import java.awt.GridBagConstraints;
-import java.awt.GridLayout;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
-import javax.swing.border.EmptyBorder;
-
-
-import javafx.scene.control.Button;
+import java.awt.*;
+import javax.swing.*;
 
 /**
  * 
@@ -26,7 +13,6 @@ import javafx.scene.control.Button;
  */
 public class newLogin extends JFrame {
 
-	private JPanel panel;
 	private JButton login, register;
 	private JTextField usernameF;
 	private JPasswordField passF;
@@ -37,35 +23,43 @@ public class newLogin extends JFrame {
 	 */
 	public newLogin() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(new Dimension(1000, 1000));
-		GridLayout labels = new GridLayout(3, 1);
-		GridLayout fields = new GridLayout(3, 1);
+		setSize(new Dimension(800, 800));
+		this.setTitle("Login Page");
 		
-		panel = new JPanel(new BorderLayout());
-		panel.setPreferredSize(new Dimension(1000, 1000));
-		GridBagConstraints c = new GridBagConstraints();
-		c.anchor = GridBagConstraints.CENTER;
+		this.setLayout(new BorderLayout());
+		this.add(top(), BorderLayout.NORTH);
+		this.add(middle(), BorderLayout.CENTER);
+	}
+	
+	private JPanel top(){
+		JPanel panel = new JPanel();
+		this.welcomeL = new JLabel("Welcome to FPTS");
+		panel.add(welcomeL);
+		return panel;
+	}
+	
+	private JPanel middle(){
+		JPanel panel = new JPanel(new GridLayout(3, 2));
 		
+		
+		this.usernameL = new JLabel("Username: ");
+		this.usernameF = new JTextField();
+		
+		panel.add(this.usernameL);
+		panel.add(this.usernameF);
+		
+		this.passL = new JLabel("Password: ");
+		this.passF = new JPasswordField();
+		panel.add(this.passL);
+		panel.add(this.passF);
 		
 		this.login = new JButton("Login");
 		this.register = new JButton("Register");
-		this.welcomeL = new JLabel("Welcome to FPTS");
-		this.usernameF = new JTextField();
-		this.usernameL = new JLabel("Username: ");
-		this.passF = new JPasswordField();
-		this.passL = new JLabel("Password: ");
-		
-		this.panel.add(this.welcomeL);
-		this.panel.add(this.login);
-		this.panel.add(this.register);
-		this.panel.add(this.usernameF);
-		this.panel.add(this.usernameL);
-		this.panel.add(this.passF);
-		this.panel.add(this.passL);
-		
-		
-		setContentPane(panel);
+		panel.add(this.login);
+		panel.add(this.register);
+		return panel;
 	}
+	
 	
 	
 	/**
@@ -74,12 +68,8 @@ public class newLogin extends JFrame {
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				try {
 					newLogin frame = new newLogin();
 					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
 			}
 		});
 	}
