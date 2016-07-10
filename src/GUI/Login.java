@@ -1,188 +1,122 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package GUI;
 
-import java.awt.Dimension;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.*;
 
 /**
- *
- * @author muro
+ * 
  */
-public class Login extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Login
-     */
-    public Login() {
-        initComponents();
-    }
+/**
+ * @authors Sultan Mira, Hunter Caskey
+ *
+ */
+public class Login extends JFrame {
 
-    /**
-     * This method is called from within the constructor to initialize the form.
-     */
-    
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
-    private void initComponents() {
+	private JButton login, register;
+	private JTextField usernameF;
+	private JPasswordField passF;
+	private JLabel passL, usernameL, welcomeL;
 
-        passwordF = new javax.swing.JPasswordField();
-        usernameField = new javax.swing.JTextField();
-        usernameLabel = new javax.swing.JLabel();
-        passwordLabel = new javax.swing.JLabel();
-        loginB = new javax.swing.JButton();
-        registerB = new javax.swing.JButton();
-        FPTSWelcome = new javax.swing.JLabel();
-        
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        usernameField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                usernameFieldActionPerformed(evt);
-            }
-        });
-        
-        passwordF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-            	passwordFActionPerformed(evt);
-            }
-        });
-        
-
-        usernameLabel.setText("Username");
-
-        passwordLabel.setText("Password");
-
-        loginB.setText("Login");
-        loginB.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loginBActionPerformed(evt);
-            }
-        });
-        
-        registerB.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                registerBActionPerformed(evt);
-            }
-        });
-        
-        passwordF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loginBActionPerformed(evt);
-            }
-        });
-
-        registerB.setText("Register");
-
-        FPTSWelcome.setText("Welcome to FPTS");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(113, 113, 113)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(passwordLabel)
-                            .addComponent(usernameLabel))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(passwordF, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(loginB, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(registerB))
-                    .addComponent(FPTSWelcome))
-                .addContainerGap(80, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(80, Short.MAX_VALUE)
-                .addComponent(FPTSWelcome)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(usernameLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(passwordLabel)
-                    .addComponent(passwordF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(loginB)
-                    .addComponent(registerB))
-                .addGap(100, 100, 100))
-        );
-
-        //pack();
-        setSize(new Dimension(400, 400));
-    }// </editor-fold>                        
-
-    private void usernameFieldActionPerformed(java.awt.event.ActionEvent evt) {                                            
-    	System.out.println("This was inputted in the username field: " + evt.getActionCommand());
-    }
-
-    private void loginBActionPerformed(java.awt.event.ActionEvent evt) {                                         
-    	System.out.println("LOGIN CLICKED");
-    }
-
-    private void passwordFActionPerformed(java.awt.event.ActionEvent evt) {
-    	System.out.println("This was inputted in the password field: " + evt.getActionCommand());
-    }
-    
-    private void registerBActionPerformed(java.awt.event.ActionEvent evt) {
-    	System.out.println("REGISTER CLICKED");
-    }
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Login().setVisible(true);
-            }
-        });
-    }
-
-    // Variables declaration - do not modify                     
-    private javax.swing.JButton loginB;
-    private javax.swing.JButton registerB;
-    private javax.swing.JLabel usernameLabel;
-    private javax.swing.JLabel passwordLabel;
-    private javax.swing.JLabel FPTSWelcome;
-    private javax.swing.JPasswordField passwordF;
-    private javax.swing.JTextField usernameField;
-    // End of variables declaration                   
+	/**
+	 * Create the frame.
+	 */
+	public Login() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setSize(new Dimension(800, 800));
+		this.setTitle("Login Page");
+		
+		this.setLayout(new BorderLayout());
+		this.add(top(), BorderLayout.NORTH);
+		this.add(middle(), BorderLayout.CENTER);
+		this.assign();
+	}
+	
+	private JPanel top(){
+		JPanel panel = new JPanel();
+		this.welcomeL = new JLabel("Welcome to FPTS");
+		panel.add(welcomeL);
+		return panel;
+	}
+	
+	private JPanel middle(){
+		JPanel panel = new JPanel(new GridLayout(3, 2));
+		
+		
+		this.usernameL = new JLabel("Username: ");
+		this.usernameF = new JTextField();
+		
+		panel.add(this.usernameL);
+		panel.add(this.usernameF);
+		
+		this.passL = new JLabel("Password: ");
+		this.passF = new JPasswordField();
+		panel.add(this.passL);
+		panel.add(this.passF);
+		
+		this.login = new JButton("Login");
+		this.register = new JButton("Register");
+		panel.add(this.login);
+		panel.add(this.register);
+		return panel;
+	}
+	
+	private void assign(){
+		this.usernameF.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				usernameFieldAction(e);
+			}
+		});
+		
+		this.passF.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				passwordFieldAction(e);
+			}
+		});
+		
+		this.login.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("Login button clicked");
+			}
+		});
+		
+		this.register.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("Register button clicked");
+			}
+		});
+	}
+	
+	private void usernameFieldAction(ActionEvent evt){
+		System.out.println("IN USERNAME FIELD :" + evt.getActionCommand());
+	}
+	
+	private void passwordFieldAction(ActionEvent evt){
+		System.out.println("IN PASSWORD FIELD: " + evt.getActionCommand());
+	}
+	
+	
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+					Login frame = new Login();
+					frame.setVisible(true);
+			}
+		});
+	}
 
 }
