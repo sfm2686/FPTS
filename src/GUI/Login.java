@@ -1,10 +1,10 @@
 package GUI;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
+import java.awt.event.*;
 import javax.swing.*;
+import DataInterface.DBInterface;
+import Finance.User;
 
 /**
  * 
@@ -20,7 +20,8 @@ public class Login extends JFrame {
 	private JTextField usernameF;
 	private JPasswordField passF;
 	private JLabel passL, usernameL, welcomeL;
-
+	
+	private final StringBuffer username, password;
 	/**
 	 * Create the frame.
 	 */
@@ -28,6 +29,9 @@ public class Login extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(new Dimension(800, 800));
 		this.setTitle("Login Page");
+		
+		this.username = new StringBuffer();
+		this.password = new StringBuffer();
 		
 		this.setLayout(new BorderLayout());
 		this.add(top(), BorderLayout.NORTH);
@@ -43,7 +47,7 @@ public class Login extends JFrame {
 	}
 	
 	private JPanel middle(){
-		JPanel panel = new JPanel(new GridLayout(20, 2));
+		JPanel panel = new JPanel(new GridLayout(3, 2));
 		
 		
 		this.usernameL = new JLabel("Username: ");
@@ -65,19 +69,32 @@ public class Login extends JFrame {
 	}
 	
 	private void assign(){
-		this.usernameF.addActionListener(new ActionListener() {
+
+		this.usernameF.addFocusListener(new FocusListener() {
 			
 			@Override
-			public void actionPerformed(ActionEvent e) {
-				usernameFieldAction(e);
+			public void focusLost(FocusEvent e) {
+				username.delete(0, username.length());
+				username.append(usernameF.getText());
+			}
+			
+			@Override
+			public void focusGained(FocusEvent e) {
+				; //Empty for now ..
 			}
 		});
 		
-		this.passF.addActionListener(new ActionListener() {
+		this.passF.addFocusListener(new FocusListener() {
 			
 			@Override
-			public void actionPerformed(ActionEvent e) {
-				passwordFieldAction(e);
+			public void focusLost(FocusEvent e) {
+				password.delete(0, password.length());
+				password.append(passF.getPassword());
+			}
+			
+			@Override
+			public void focusGained(FocusEvent e) {
+				; //Empty for now ..
 			}
 		});
 		
@@ -85,7 +102,27 @@ public class Login extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("Login button clicked");
+				String w;
+				if ( username.length() == 0 || password.length() == 0 ){
+					w = "Username or Password fields were empty. Please fill try again";
+					JOptionPane.showMessageDialog(new JFrame(), w, "Empty Field/s",
+							JOptionPane.ERROR_MESSAGE);
+				}
+				boolean valid = true;
+				User user = DBInterface.getUserData(username.toString()); 
+				System.out.println("username: " + username.toString());
+				
+				if ( user == null ){
+					System.out.println(user);
+					w = "Username does not in the system. Please register or try again";
+					JOptionPane.showMessageDialog(new JFrame(), w, "No User",
+							JOptionPane.ERROR_MESSAGE);
+				}
+				else if ( user.getPass().equalsIgnoreCase(password.toString()) ) {
+					w = "You are LOGGED IN !!!!";
+					JOptionPane.showMessageDialog(new JFrame(), w, "Success",
+							JOptionPane.CANCEL_OPTION);
+				}
 			}
 		});
 		
@@ -93,19 +130,11 @@ public class Login extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("Register button clicked");
+				System.out.println("Registration not yet supported :(");
 			}
 		});
 	}
-	
-	private void usernameFieldAction(ActionEvent evt){
-		System.out.println("IN USERNAME FIELD :" + evt.getActionCommand());
-	}
-	
-	private void passwordFieldAction(ActionEvent evt){
-		System.out.println("IN PASSWORD FIELD: " + evt.getActionCommand());
-	}
-	
+
 	
 	/**
 	 * Launch the application.

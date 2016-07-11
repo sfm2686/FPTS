@@ -39,8 +39,16 @@ public class User implements Serializable {
 		return this.username;
 	}
 
-	protected String getPass() {
+	public String getPass() {
 		return this.password;
+	}
+	
+	public String toString(){
+		String str = "\n";
+		str += "Username: " + this.username + "\n";
+		str += "Passowrd: " + this.password + "\n";
+		
+		return str;
 	}
 
 	/**
