@@ -107,6 +107,7 @@ public class Login extends JFrame {
 					w = "Username or Password fields were empty. Please fill try again";
 					JOptionPane.showMessageDialog(new JFrame(), w, "Empty Field/s",
 							JOptionPane.ERROR_MESSAGE);
+					return ;
 				}
 				boolean valid = true;
 				User user = DBInterface.getUserData(username.toString()); 
@@ -117,11 +118,14 @@ public class Login extends JFrame {
 					w = "Username does not in the system. Please register or try again";
 					JOptionPane.showMessageDialog(new JFrame(), w, "No User",
 							JOptionPane.ERROR_MESSAGE);
+					return ;
 				}
 				else if ( user.getPass().equalsIgnoreCase(password.toString()) ) {
+					
+					//Code below should be replaced with transition to main page..
 					w = "You are LOGGED IN !!!!";
 					JOptionPane.showMessageDialog(new JFrame(), w, "Success",
-							JOptionPane.CANCEL_OPTION);
+							JOptionPane.DEFAULT_OPTION);
 				}
 			}
 		});
@@ -130,7 +134,9 @@ public class Login extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("Registration not yet supported :(");
+				dispose();
+				Registeration next = new Registeration();
+				next.setVisible(true);
 			}
 		});
 	}
