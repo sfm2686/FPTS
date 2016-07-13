@@ -2,7 +2,6 @@ package Finance;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import CSV.*;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
@@ -16,11 +15,9 @@ import CSV.*;
  */
 public class Index extends Equity implements Serializable {
 
-	private IndexUtil referenceIndex;
 
-	public Index(int numShares, IndexUtil referenceIndex) {
+	public Index(int numShares) {
 		super.setNumShares(numShares);
-		this.referenceIndex = referenceIndex;
 	}
 
 	@Override
@@ -30,7 +27,9 @@ public class Index extends Equity implements Serializable {
 
 	@Override
 	public double getPrice() {
-		return this.referenceIndex.getPrice();
+		//Price calculation
+		
+		return 0;
 	}
 
 	@Override

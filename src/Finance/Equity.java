@@ -12,9 +12,12 @@ import CSV.EquityUtil;
  *          the Composite was moved to CSV because the intent was needed there.
  *
  */
-public abstract class Equity implements Holding, Serializable {
+public abstract class Equity implements Serializable {
 
 	private int numShares;
+	
+	//Ticker symbol for stocks and name for sectors.
+	private String name;
 
 	protected void setNumShares(int shares) {
 		this.numShares = shares;
@@ -22,6 +25,10 @@ public abstract class Equity implements Holding, Serializable {
 
 	public int getNumShares() {
 		return this.numShares;
+	}
+	
+	public void setName(String name){
+		this.name = name;
 	}
 
 	public boolean subtractShares(int numShares) {
@@ -35,10 +42,12 @@ public abstract class Equity implements Holding, Serializable {
 	public void addShares(int numShares) {
 		this.numShares += numShares;
 	}
+	
+	public abstract void addChild();
+	public abstract void removeChild();
 
-	abstract double getPrice();
-
-	public abstract EquityUtil getReference();
-
+	public abstract double getPrice();
 	public abstract String getName();
+	public abstract double getValue();
+	
 }

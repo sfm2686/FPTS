@@ -1,11 +1,9 @@
-package Transaction;
+package Finance;
 
 import java.util.Date;
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.TimeZone;
-
-import Finance.Holding;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
@@ -17,7 +15,7 @@ import Finance.Holding;
  *          scope to Separate concerns
  *
  */
-public class CashAcct implements Holding, Serializable {
+public class CashAcct implements Serializable {
 
 	private double balance;
 	private String name;
@@ -29,7 +27,7 @@ public class CashAcct implements Holding, Serializable {
 		this.creationDate = Calendar.getInstance(TimeZone.getTimeZone("EST")).getTime();
 	}
 
-	@Override
+
 	public double getValue() {
 		return this.getBalance();
 	}
