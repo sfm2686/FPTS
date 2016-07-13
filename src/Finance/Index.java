@@ -15,39 +15,64 @@ import java.util.ArrayList;
  */
 public class Index extends Equity implements Serializable {
 
-
-	public Index(int numShares) {
+	protected ArrayList<Equity> children;
+	
+	public Index(int numShares, String name) {
 		super.setNumShares(numShares);
+		this.name = name; // name is a protected attributed in Equity 
+		this.children = new ArrayList<Equity>();
 	}
 
-	@Override
-	public double getValue() {
-		return (super.getNumShares() * this.getPrice());
-	}
-
-	@Override
-	public double getPrice() {
-		//Price calculation
-		
-		return 0;
-	}
-
-	@Override
-	public EquityUtil getReference() {
-		return this.referenceIndex;
-	}
-
-	@Override
-	public String getName() {
-		return this.referenceIndex.getName();
-	}
-
+	
 	@Override
 	public String toString() {
 		return "Index Holding: " + this.getName() + ", " + this.getNumShares() + " shares, current price: $"
 				+ this.getPrice() + ", current value: " + this.getValue() + ".";
 	}
 
+	// Implement the Equity interface
+	
+	@Override 
+	public double getPrice(){
+		double totalPrice = 0.0;
+		int numChildren = 0;
+		for(Equity child : this.children){
+			++numChildren;
+			totalPrice += child.getPrice();
+		}
+		if(numChildren != 0){
+			return(totalPrice / numChildren);
+		}
+		return(0.0);	 
+	}
+	
+	@Override
+	public void addChild(Equity node) {
+		boolean present = false;
+		for(Equity child : this.children){
+			if(node.equals(child)){
+				present = true;
+			}
+		}
+		if(!present){
+			this.children.add(node);
+		}
+	}
+
+	@Override
+	public void removeChild(Equity node) {
+		int index = -1;
+		for(int i = 0; i < this.children.size(); i++){
+			if(node.equals(this.children.get(i))){
+				index = i;
+				break;
+			}
+		}
+		if(index != -1){
+			this.children.remove(index);
+		}
+	}
+	
 	/**
 	 * Unit Tests for Index
 	 * 
@@ -92,7 +117,6 @@ public class Index extends Equity implements Serializable {
 
 		System.out.println("Conducting unit tests for Index:\n" + (testCount - failCount) + " out of " + testCount
 				+ " tests passed.");
-
 	}
 
 }

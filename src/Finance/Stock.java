@@ -21,7 +21,7 @@ public class Stock extends Equity implements Serializable, Observer {
 
 	public Stock(int numShares, String name) {
 		this.setNumShares(numShares);
-		this.setName(name);
+		this.name = name; // Ticker symbol
 	}
 
 	public double getValue() {
@@ -36,6 +36,7 @@ public class Stock extends Equity implements Serializable, Observer {
 	@Override
 	public void update(Observable o, Object arg) {
 		//TODO, ONCE CSV IS DONE USE IT TO GET PRICE
+		// this.price = o.getPrice(this.name);
 	}
 	
 	@Override
@@ -50,18 +51,12 @@ public class Stock extends Equity implements Serializable, Observer {
 	}
 	
 	
-	//Child related methods should not be called at all here.
+	//Child related methods should not be implemented at all in lead components.
 	@Override
 	public void addChild(Equity child) { }
 
 	@Override
 	public void removeChild(Equity child) { }
-
-	@Override
-	public String getName() { return null; }
-
-	@Override
-	public Equity getChild(int index) { return null; }
 
 	/**
 	 * Unit tests for Stock.
