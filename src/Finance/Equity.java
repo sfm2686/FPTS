@@ -17,20 +17,13 @@ public abstract class Equity implements Holding, Serializable {
 	private int numShares;
 	private ArrayList<Equity> children;
 	
-	// Operations for manipulating the composite relationships
-	
-	public void add(Equity child){
-		boolean present = false;
-		for(Equity element : this.children){
-			if(element.equals(child)){
-				present = true;
-			}
-		}
-		if(!present){
-			this.children.add(child);
-		}
-	}
-	
+	// Declare inteface operations for manipulating the composite relationships
+	public abstract void add(Equity child);
+	public abstract void remove(Equity child);
+	public abstract Equity getChild(int index);
+	public abstract double getPrice();
+	public abstract String getName();
+	public abstract double getValue();
 
 	// Operations for accessing/manipulating the number of shares
 	protected void setNumShares(int shares) {
@@ -53,11 +46,14 @@ public abstract class Equity implements Holding, Serializable {
 		this.numShares += numShares;
 	}
 	
+	/**
+	 * Method to compare to equities to each other.
+	 * @param comparison
+	 * @return
+	 */
 	public boolean equals(Equity comparison){
 		return(this.name.equals(comparison.getName()));
 	}
 
-	public abstract double getPrice();
-	public abstract String getName();
-	public abstract double getValue();
+
 }
