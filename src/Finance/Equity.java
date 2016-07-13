@@ -23,7 +23,6 @@ public abstract class Equity implements Holding, Serializable {
 	
 	// Declare methods shared between all Equities (stocks and indexes)
 	public abstract double getPrice();
-	public abstract String getName();
 	public abstract double getValue();
 
 	// Operations for accessing/manipulating the number of shares
@@ -46,6 +45,10 @@ public abstract class Equity implements Holding, Serializable {
 
 	public void addShares(int numShares) {
 		this.numShares += numShares;
+	}
+	
+	public String getName(){
+		return this.name;
 	}
 	
 	/**
