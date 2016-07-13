@@ -48,19 +48,32 @@ public class Login extends JFrame {
 	}
 	
 	private JPanel middle(){
-		JPanel panel = new JPanel(new GridLayout(3, 2));
+		JPanel panel = new JPanel(new GridBagLayout());
+		GridBagConstraints gbc = new GridBagConstraints();
+		gbc.gridx = 0;
+		gbc.gridy = 0;
 		
-		
-		this.usernameL = new JLabel("Username: ");
+		this.usernameL = new JLabel("Username ");
 		this.usernameF = new JTextField();
+		this.usernameF.setPreferredSize(new Dimension(200, 20));
 		
-		panel.add(this.usernameL);
-		panel.add(this.usernameF);
+		panel.add(this.usernameL, gbc);
+		gbc.gridx ++;
+		panel.add(this.usernameF, gbc);
 		
-		this.passL = new JLabel("Password: ");
+		gbc.gridy ++;
+		gbc.gridx = 0;
+		
+		panel.add(new JLabel(" "), gbc);
+		gbc.gridy ++;
+		
+		this.passL = new JLabel("Password ");
 		this.passF = new JPasswordField();
-		panel.add(this.passL);
-		panel.add(this.passF);
+		this.passF.setPreferredSize(new Dimension(200, 20));
+		
+		panel.add(this.passL, gbc);
+		gbc.gridx ++;
+		panel.add(this.passF, gbc);
 		
 		return panel;
 	}

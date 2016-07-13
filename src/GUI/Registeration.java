@@ -42,23 +42,45 @@ public class Registeration extends JFrame {
 	}
 
 	private JPanel pan(){
-		JPanel panel = new JPanel(new GridLayout(18, 2));
+		JPanel panel = new JPanel(new GridBagLayout());
 
-		this.usernameL = new JLabel("Username: ");
+		GridBagConstraints gbc = new GridBagConstraints();
+		
+		gbc.gridx = 0;
+		gbc.gridy = 0;
+		this.usernameL = new JLabel("Username ");
 		this.usernameF = new JTextField();
+		this.usernameF.setPreferredSize(new Dimension(200, 20));
 		this.pass1 = new JPasswordField();
+		this.pass1.setPreferredSize(new Dimension(200, 20));
 		this.pass2 = new JPasswordField();
-		this.passL1 = new JLabel("Password: ");
-		this.passL2 = new JLabel("Confirm Password: ");
+		this.pass2.setPreferredSize(new Dimension(200, 20));
+		this.passL1 = new JLabel("Password ");
+		this.passL2 = new JLabel("Confirm Password ");
 		
-		panel.add(this.usernameL);
-		panel.add(this.usernameF);
+		panel.add(this.usernameL, gbc);
+		gbc.gridx ++;
+		panel.add(this.usernameF, gbc);
 		
-		panel.add(this.passL1);
-		panel.add(this.pass1);
+		gbc.gridy ++;
+		gbc.gridx = 0;
 		
-		panel.add(this.passL2);
-		panel.add(this.pass2);
+		panel.add(new JLabel(" "), gbc);
+		gbc.gridy ++;
+		
+		panel.add(this.passL1, gbc);
+		gbc.gridx ++;
+		panel.add(this.pass1, gbc);
+		
+		gbc.gridy ++;
+		gbc.gridx = 0;
+		
+		panel.add(new JLabel(" "), gbc);
+		gbc.gridy ++;
+		
+		panel.add(this.passL2, gbc);
+		gbc.gridx ++;
+		panel.add(this.pass2, gbc);
 
 		
 		return panel;
