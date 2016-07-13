@@ -117,7 +117,6 @@ public class Login extends JFrame {
 							JOptionPane.ERROR_MESSAGE);
 					return ;
 				}
-				boolean valid = true;
 				User user = DBInterface.getUserData(username.toString()); 
 				System.out.println("username: " + username.toString());
 				
@@ -130,7 +129,7 @@ public class Login extends JFrame {
 				}
 				else if ( user.getPass().equalsIgnoreCase(password.toString()) ) {
 					
-					//Code below should be replaced with transition to main page..
+					//Goes to MainFrame
 					MainFrame main = new MainFrame(user);
 					main.setVisible(true);
 					dispose();
