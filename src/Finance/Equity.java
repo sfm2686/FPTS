@@ -13,17 +13,19 @@ import java.util.ArrayList;
  */
 public abstract class Equity implements Holding, Serializable {
 
-	private String name;
+	protected String name;
 	private int numShares;
 	
 	// Declare interface operations for manipulating the composite relationships
-	public abstract void addChild(Equity child);
-	public abstract void removeChild(Equity child);
-	public abstract Equity getChild(int index);
+	public abstract void addChild(Equity node);
+	public abstract void removeChild(Equity node);
 	
-	// Declare methods shared between all Equities (stocks and indexes)
+	// Declare the method to be shared between all Equities (stocks and indexes)
 	public abstract double getPrice();
-	public abstract double getValue();
+	
+	public double getValue(){
+		return(this.getPrice() * this.getNumShares());
+	}
 
 	// Operations for accessing/manipulating the number of shares
 	
