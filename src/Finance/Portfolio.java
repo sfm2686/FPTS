@@ -3,7 +3,6 @@ package Finance;
 import java.io.Serializable;
 import java.util.ArrayList;
 import CSV.*;
-import Transaction.CashAcct;
 
 /**
  * @author Sultan Mira & Hunter Caskey
@@ -182,25 +181,25 @@ public class Portfolio implements Serializable {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		StockUtil stockRef = new StockUtil("Apple", "AAPL", "500.00");
-		Stock testStock = new Stock(100, stockRef);
-		IndexUtil indexRef = new IndexUtil("Tech Companies");
-		StockUtil stock1 = new StockUtil("Apple", "APPL", "300");
-		StockUtil stock2 = new StockUtil("Google", "GOOG", "200");
-		StockUtil stock3 = new StockUtil("Microsoft", "MSFT", "1000");
-		indexRef.addStock(stock1);
-		indexRef.addStock(stock2);
-		indexRef.addStock(stock3);
-		Index testIndex = new Index(10, indexRef);
-		CashAcct testAcct = new CashAcct("Account 1", 500.00);
-
-		Portfolio testPortfolio = new Portfolio("MyPortfolio");
-		testPortfolio.addEquity(testStock);
-		testPortfolio.addEquity(testIndex);
-		testPortfolio.addEquity(testIndex);
-		testPortfolio.addCash(testAcct);
-		testPortfolio.addCash(testAcct);
-		System.out.println(testPortfolio.toString());
+//		StockUtil stockRef = new StockUtil("Apple", "AAPL", "500.00");
+//		Stock testStock = new Stock(100, stockRef);
+//		IndexUtil indexRef = new IndexUtil("Tech Companies");
+//		StockUtil stock1 = new StockUtil("Apple", "APPL", "300");
+//		StockUtil stock2 = new StockUtil("Google", "GOOG", "200");
+//		StockUtil stock3 = new StockUtil("Microsoft", "MSFT", "1000");
+//		indexRef.addStock(stock1);
+//		indexRef.addStock(stock2);
+//		indexRef.addStock(stock3);
+//		Index testIndex = new Index(10, indexRef);
+//		CashAcct testAcct = new CashAcct("Account 1", 500.00);
+//
+//		Portfolio testPortfolio = new Portfolio("MyPortfolio");
+//		testPortfolio.addEquity(testStock);
+//		testPortfolio.addEquity(testIndex);
+//		testPortfolio.addEquity(testIndex);
+//		testPortfolio.addCash(testAcct);
+//		testPortfolio.addCash(testAcct);
+//		System.out.println(testPortfolio.toString());
 	}
 
 }

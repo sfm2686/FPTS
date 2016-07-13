@@ -1,6 +1,7 @@
 package Finance;
 
 import java.io.Serializable;
+import java.util.*;
 import CSV.*;
 
 /**
@@ -14,35 +15,32 @@ import CSV.*;
  *          of stocks without directly changing the owned objects until needed.
  *
  */
-public class Stock extends Equity implements Serializable {
+public class Stock extends Equity implements Serializable, Observer {
 
-	private StockUtil referenceStock;
+	private double price;
 
-	public Stock(int numShares, StockUtil referenceStock) {
-		super.setNumShares(numShares);
-		this.referenceStock = referenceStock;
+	public Stock(int numShares, String name) {
+		this.setNumShares(numShares);
+		this.setName(name);
 	}
 
 	public double getValue() {
-		return (super.getNumShares() * this.getPrice());
+		return (getNumShares() * this.getPrice());
 	}
 
 	public String getTickerSymbol() {
-		return this.referenceStock.getTickerSymbol();
+		return this.getName();
 	}
 
-	public String getName() {
-		return referenceStock.getName();
-	}
 
+	@Override
+	public void update(Observable o, Object arg) {
+		//TODO, ONCE CSV IS DONE USE IT TO GET PRICE
+	}
+	
 	@Override
 	public double getPrice() {
-		return this.referenceStock.getPrice();
-	}
-
-	@Override
-	public EquityUtil getReference() {
-		return this.referenceStock;
+		return this.price;
 	}
 
 	@Override
@@ -50,6 +48,20 @@ public class Stock extends Equity implements Serializable {
 		return "Stock Holding: " + this.getName() + ", " + this.getTickerSymbol() + ", " + this.getNumShares()
 				+ " shares, current price: $" + this.getPrice() + ", current value: " + this.getValue() + ".";
 	}
+	
+	
+	//Child related methods should not be called at all here.
+	@Override
+	public void addChild(Equity child) { }
+
+	@Override
+	public void removeChild(Equity child) { }
+
+	@Override
+	public String getName() { return null; }
+
+	@Override
+	public Equity getChild(int index) { return null; }
 
 	/**
 	 * Unit tests for Stock.
@@ -57,8 +69,7 @@ public class Stock extends Equity implements Serializable {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		StockUtil stockRef = new StockUtil("Apple", "AAPL", "500.00");
-		Stock testStock = new Stock(100, stockRef);
+		Stock testStock = new Stock(100, "Apple");
 
 		int testCount = 6;
 		int failCount = 0;

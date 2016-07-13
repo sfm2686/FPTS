@@ -2,7 +2,6 @@ package Finance;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import CSV.*;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
@@ -22,7 +21,7 @@ public class Index extends Equity implements Serializable {
 		super.setNumShares(numShares);
 		this.name = name; // name is a protected attributed in Equity 
 		this.children = new ArrayList<Equity>();
-	}
+
 	
 	@Override
 	public String toString() {
@@ -31,11 +30,6 @@ public class Index extends Equity implements Serializable {
 	}
 
 	// Implement the Equity interface
-	
-	@Override
-	public double getValue() {
-		return (super.getNumShares() * this.getPrice());
-	}
 	
 	@Override 
 	public double getPrice(){

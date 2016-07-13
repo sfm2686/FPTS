@@ -11,11 +11,12 @@ import java.util.ArrayList;
  *          the Composite was moved to CSV because the intent was needed there.
  *
  */
-public abstract class Equity implements Holding, Serializable {
+public abstract class Equity implements Serializable {
 
 	protected String name;
 	private int numShares;
-	
+
+
 	// Declare interface operations for manipulating the composite relationships
 	public abstract void addChild(Equity node);
 	public abstract void removeChild(Equity node);
@@ -27,6 +28,7 @@ public abstract class Equity implements Holding, Serializable {
 		return(this.getPrice() * this.getNumShares());
 	}
 
+
 	// Operations for accessing/manipulating the number of shares
 	
 	protected void setNumShares(int shares) {
@@ -35,6 +37,10 @@ public abstract class Equity implements Holding, Serializable {
 
 	public int getNumShares() {
 		return this.numShares;
+	}
+	
+	public void setName(String name){
+		this.name = name;
 	}
 
 	public boolean subtractShares(int numShares) {
@@ -61,6 +67,5 @@ public abstract class Equity implements Holding, Serializable {
 	public boolean equals(Equity comparison){
 		return(this.name.equals(comparison.getName()));
 	}
-
 
 }
