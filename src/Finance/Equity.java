@@ -15,12 +15,21 @@ public abstract class Equity implements Serializable {
 
 	private int numShares;
 
-	
 	//Ticker symbol for stocks and name for sectors.
 	private String name;
 
+	// Declare interface operations for manipulating the composite relationships
+	public abstract void addChild(Equity child);
+	public abstract void removeChild(Equity child);
+	public abstract Equity getChild(int index);
+	
+	// Declare methods shared between all Equities (stocks and indexes)
+	public abstract double getPrice();
+	public abstract double getValue();
+
 
 	// Operations for accessing/manipulating the number of shares
+	
 	protected void setNumShares(int shares) {
 		this.numShares = shares;
 	}
