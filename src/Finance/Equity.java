@@ -15,17 +15,19 @@ public abstract class Equity implements Holding, Serializable {
 
 	private String name;
 	private int numShares;
-	private ArrayList<Equity> children;
 	
-	// Declare inteface operations for manipulating the composite relationships
-	public abstract void add(Equity child);
-	public abstract void remove(Equity child);
+	// Declare interface operations for manipulating the composite relationships
+	public abstract void addChild(Equity child);
+	public abstract void removeChild(Equity child);
 	public abstract Equity getChild(int index);
+	
+	// Declare methods shared between all Equities (stocks and indexes)
 	public abstract double getPrice();
 	public abstract String getName();
 	public abstract double getValue();
 
 	// Operations for accessing/manipulating the number of shares
+	
 	protected void setNumShares(int shares) {
 		this.numShares = shares;
 	}
