@@ -2,7 +2,6 @@ package Finance;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import CSV.EquityUtil;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
@@ -15,10 +14,13 @@ import CSV.EquityUtil;
 public abstract class Equity implements Serializable {
 
 	private int numShares;
+
 	
 	//Ticker symbol for stocks and name for sectors.
 	private String name;
 
+
+	// Operations for accessing/manipulating the number of shares
 	protected void setNumShares(int shares) {
 		this.numShares = shares;
 	}
@@ -42,12 +44,14 @@ public abstract class Equity implements Serializable {
 	public void addShares(int numShares) {
 		this.numShares += numShares;
 	}
-	
-	public abstract void addChild();
-	public abstract void removeChild();
 
-	public abstract double getPrice();
-	public abstract String getName();
-	public abstract double getValue();
-	
+	/**
+	 * Method to compare to equities to each other.
+	 * @param comparison
+	 * @return
+	 */
+	public boolean equals(Equity comparison){
+		return(this.name.equals(comparison.getName()));
+	}
+
 }

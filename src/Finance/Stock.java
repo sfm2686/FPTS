@@ -66,7 +66,6 @@ public class Stock extends Equity implements Serializable, Observer {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		StockUtil stockRef = new StockUtil("Apple", "AAPL", "500.00");
 		Stock testStock = new Stock(100, "Apple");
 
 		int testCount = 6;
