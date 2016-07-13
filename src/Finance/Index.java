@@ -15,12 +15,13 @@ import java.util.ArrayList;
  */
 public class Index extends Equity implements Serializable {
 
-	private ArrayList<Equity> children;
+	protected ArrayList<Equity> children;
 	
 	public Index(int numShares, String name) {
 		super.setNumShares(numShares);
 		this.name = name; // name is a protected attributed in Equity 
 		this.children = new ArrayList<Equity>();
+	}
 
 	
 	@Override
@@ -42,8 +43,7 @@ public class Index extends Equity implements Serializable {
 		if(numChildren != 0){
 			return(totalPrice / numChildren);
 		}
-		return(0.0);
-		 
+		return(0.0);	 
 	}
 	
 	@Override
