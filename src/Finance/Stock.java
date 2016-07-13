@@ -1,9 +1,7 @@
 package Finance;
 
 import java.io.Serializable;
-import java.util.Observable;
-import java.util.Observer;
-
+import java.util.*;
 import CSV.*;
 
 /**
@@ -27,7 +25,7 @@ public class Stock extends Equity implements Serializable, Observer {
 	}
 
 	public double getValue() {
-		return (super.getNumShares() * this.getPrice());
+		return (getNumShares() * this.getPrice());
 	}
 
 	public String getTickerSymbol() {
@@ -37,7 +35,7 @@ public class Stock extends Equity implements Serializable, Observer {
 
 	@Override
 	public void update(Observable o, Object arg) {
-		
+		//TODO, ONCE CSV IS DONE USE IT TO GET PRICE
 	}
 	
 	@Override
@@ -51,14 +49,19 @@ public class Stock extends Equity implements Serializable, Observer {
 				+ " shares, current price: $" + this.getPrice() + ", current value: " + this.getValue() + ".";
 	}
 	
+	
+	//Child related methods should not be called at all here.
 	@Override
-	public void addChild() {}
+	public void addChild(Equity child) { }
 
 	@Override
-	public void removeChild() {}
+	public void removeChild(Equity child) { }
 
 	@Override
 	public String getName() { return null; }
+
+	@Override
+	public Equity getChild(int index) { return null; }
 
 	/**
 	 * Unit tests for Stock.
@@ -96,5 +99,4 @@ public class Stock extends Equity implements Serializable, Observer {
 				+ " tests passed.");
 
 	}
-
 }
