@@ -53,7 +53,11 @@ public abstract class Equity implements Serializable {
 	public void addShares(int numShares) {
 		this.numShares += numShares;
 	}
-
+	
+	public String getName(){
+		return this.name;
+	}
+	
 	/**
 	 * Method to compare to equities to each other.
 	 * @param comparison
