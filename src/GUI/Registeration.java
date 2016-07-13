@@ -29,7 +29,6 @@ public class Registeration extends JFrame {
 	
 	public Registeration() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(new Dimension(800, 800));
 		this.usernameV = new StringBuffer();
 		this.passwordV1 = new StringBuffer();
@@ -38,14 +37,13 @@ public class Registeration extends JFrame {
 		this.setTitle("Registeration Page");
 		this.setLayout(new BorderLayout());
 		this.add(pan(), BorderLayout.CENTER);
+		this.add(bottom(), BorderLayout.SOUTH);
 		this.assign();
 	}
 
 	private JPanel pan(){
 		JPanel panel = new JPanel(new GridLayout(18, 2));
-		
-		this.done = new JButton("Done");
-		this.clear = new JButton("Clear Fields");
+
 		this.usernameL = new JLabel("Username: ");
 		this.usernameF = new JTextField();
 		this.pass1 = new JPasswordField();
@@ -61,10 +59,18 @@ public class Registeration extends JFrame {
 		
 		panel.add(this.passL2);
 		panel.add(this.pass2);
+
+		
+		return panel;
+	}
+	
+	private JPanel bottom(){
+		JPanel panel = new JPanel();
+		this.done = new JButton("Register");
+		this.clear = new JButton("Clear Fields");
 		
 		panel.add(this.done);
 		panel.add(this.clear);
-		
 		return panel;
 	}
 	
