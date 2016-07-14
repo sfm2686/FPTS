@@ -67,7 +67,7 @@ public class Portfolio implements Serializable {
 	 * Adds an equity to the collection of equities.
 	 * @param equity: the equity to be added to the collection
 	 */
-	protected void addEquity(Equity equity) {
+	public void addEquity(Equity equity) {
 		this.equities.add(equity);
 	}
 
@@ -83,7 +83,7 @@ public class Portfolio implements Serializable {
 	 * Removes an equity from the portfolio, so it is no longer owned.
 	 * @param equity: the equity to be removed
 	 */
-	protected void removeEquity(Equity equity) {
+	public void removeEquity(Equity equity) {
 		this.equities.remove(equity);
 	}
 	
@@ -127,9 +127,9 @@ public class Portfolio implements Serializable {
 	 * @return: true if the portfolio has an equity with the same name,
 	 * 	false otherwise.
 	 */
-	public boolean hasEquity(Equity s) {
+	public boolean hasEquity(String str) {
 		for (Equity equity : this.equities) {
-			if ((equity.getName()).equalsIgnoreCase(s.getName())) {
+			if ((equity.getName()).equalsIgnoreCase(str)) {
 				return true;
 			}
 		}

@@ -46,7 +46,7 @@ public class WithdrawCash extends Command implements Serializable, UndoableRedoa
 	}
 	
 	public UndoableRedoable copy(){
-		return(new WithdrawCash(this.getReciever(), this.acctName, this.withdrawal)); 
+		return((UndoableRedoable)new WithdrawCash(this.getReciever(), this.acctName, this.withdrawal)); 
 	}
 
 	@Override

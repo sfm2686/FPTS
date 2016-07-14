@@ -13,7 +13,7 @@ public class BuyEquity extends Command implements Serializable, UndoableRedoable
 	private ArrayList<Command> children;
 	private String cashAcct;
 	
-	public BuyEquity(Portfolio receiver, AddEquity addition, String cashAcct){
+	public BuyEquity(Portfolio receiver, AddShares addition, String cashAcct){
 		super(receiver);
 		this.children = new ArrayList<Command>();
 		this.children.add(new WithdrawCash(receiver, cashAcct, addition.getTransactionValue()));
@@ -40,7 +40,7 @@ public class BuyEquity extends Command implements Serializable, UndoableRedoable
 
 	@Override
 	public UndoableRedoable copy() {
-		return (new BuyEquity(this.getReciever(), (AddEquity)this.children.get(0), this.cashAcct));
+		return (new BuyEquity(this.getReciever(), (AddShares)this.children.get(0), this.cashAcct));
 	}
 
 	@Override

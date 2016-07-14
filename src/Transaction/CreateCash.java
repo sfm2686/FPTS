@@ -42,7 +42,7 @@ public class CreateCash extends Command implements Serializable {
 				+ "\n\tTransaction: Created Cash Account" + "\n\tInitial Amount: " + this.balance;
 	}
 
-	/****** Lead Commands do not Implement Composite Behaviors ******/
+	/****** Leaf Commands do not Implement Composite Behaviors ******/
 	
 	@Override
 	public void addChild(Command node) {}

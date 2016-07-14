@@ -1,10 +1,9 @@
 package Transaction;
 
-import Finance.Equity;
-import Finance.Portfolio;
+import Finance.*;
 import Market.EquityUtil;
-
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
@@ -16,18 +15,18 @@ import java.io.Serializable;
  */
 public class RemoveEquity extends Command implements Serializable {
 
-	private EquityUtil reference;
-
-	public RemoveEquity(Portfolio receiver, EquityUtil reference) {
+	private String equityName;
+	
+	public RemoveEquity(Portfolio receiver, String equityName) {
 		super(receiver);
-		this.reference = reference;
+		this.equityName = equityName;
 	}
 
 	public boolean execute() {
-		if (super.getReciever().hasEquity(this.reference)) {
+		if (super.getReciever().hasEquity(this.equityName)) {
 			Equity removal = null;
 			for (Equity equity : super.getReciever().getEquities()) {
-				if (equity.getName().equalsIgnoreCase(this.reference.getName())) {
+				if (equity.getName().equalsIgnoreCase(this.equityName)) {
 					removal = equity;
 					break;
 				}
@@ -40,16 +39,20 @@ public class RemoveEquity extends Command implements Serializable {
 
 	@Override
 	public String toString() {
-		return "\nPortfolio Operated On: " + super.getReciever() + "\n\tEquity: " + this.reference
+		return "\nPortfolio Operated On: " + super.getReciever() + "\n\tEquity: " + this.equityName
 				+ "\n\tTransaction: Removed Equity";
 	}
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+	/****** Lead Commands do not Implement Composite Behaviors ******/
+	
+	@Override
+	public void addChild(Command node) {}
 
-	}
+
+	@Override
+	public void removeChild(Command node) {}
+
+	@Override
+	public ArrayList<Command> getChildren() { return null; }
 
 }
