@@ -48,6 +48,11 @@ public class Index extends Equity implements Serializable {
 	}
 	
 	@Override
+	public ArrayList<Equity> getChildren() {
+		return this.children;
+	}
+	
+	@Override
 	public void addChild(Equity node) {
 		boolean present = false;
 		for(Equity child : this.children){
@@ -72,5 +77,5 @@ public class Index extends Equity implements Serializable {
 		if(index != -1){
 			this.children.remove(index);
 		}
-	}	
+	}
 }

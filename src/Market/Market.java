@@ -52,11 +52,33 @@ public class Market extends Observable {
 	 * Adds a stock object to the list of stocks to be updated.
 	 * @param s the stock to be added.
 	 */
-	public void addStock(Stock s){
-		this.obStocks.add(s);
-		this.addObserver(s);
+	public void addEquity(Equity s){
+		//If stock is not in market
+		if ( !this.stocks.containsKey(s.getName()) ||
+				!this.indices.containsKey(s.getName()) )
+			return ;
+		
+		if ( s instanceof Stock ){
+			this.obStocks.add( (Stock) s);
+			this.addObserver( (Stock) s);
+			return ;
+		}
+		//s must be an index..
+		s = (Index) s;
+
+		for ( Equity p : s.getChildren() ){
+			if ( this.stocks.containsKey(p.getName()) )
+				this.obStocks.add( (Stock) p);
+		}
 	}
 	
+	/**
+	 * Getter for the obStocks collection
+	 * @return: obStocks arraylist
+	 */
+	protected ArrayList<Stock> getObStocks(){
+		return this.obStocks;
+	}
 
 	/**
 	 * 
@@ -144,10 +166,11 @@ public class Market extends Observable {
 	public static void main(String[] args) {
 		Market market = Market.getMarketInstance();
 		String index;
+		Scanner sc = new Scanner(System.in);
+		
 		System.out.println("Indices:");
 		for ( String key : indices.keySet() )
 			System.out.println("\t" + key);
-		Scanner sc = new Scanner(System.in);
 		System.out.print("Please enter Index name to calc price: ");
 		index = sc.nextLine();
 		

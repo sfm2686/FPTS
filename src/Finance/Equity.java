@@ -20,6 +20,8 @@ public abstract class Equity implements Serializable {
 	// Declare interface operations for manipulating the composite relationships
 	public abstract void addChild(Equity node);
 	public abstract void removeChild(Equity node);
+	public abstract ArrayList<Equity> getChildren();
+
 	
 	// Declare the method to be shared between all Equities (stocks and indexes)
 	public abstract double getPrice();
