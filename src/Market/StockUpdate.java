@@ -9,6 +9,8 @@ import Finance.Stock;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
+ * 
+ * CALLED BY THE CONTROL NOT MARKET
  *
  */
 public class StockUpdate extends Thread {
