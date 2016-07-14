@@ -59,6 +59,9 @@ public class Stock extends Equity implements Serializable, Observer {
 
 	@Override
 	public void removeChild(Equity child) { }
+	
+	@Override
+	public ArrayList<Equity> getChildren() { return null; }
 
 	/**
 	 * Unit tests for Stock.
@@ -96,4 +99,5 @@ public class Stock extends Equity implements Serializable, Observer {
 				+ " tests passed.");
 
 	}
+
 }

@@ -48,6 +48,11 @@ public class Index extends Equity implements Serializable {
 	}
 	
 	@Override
+	public ArrayList<Equity> getChildren() {
+		return this.children;
+	}
+	
+	@Override
 	public void addChild(Equity node) {
 		boolean present = false;
 		for(Equity child : this.children){
@@ -80,44 +85,43 @@ public class Index extends Equity implements Serializable {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-
-		IndexUtil indexRef = new IndexUtil("Tech Companies");
-		StockUtil stock1 = new StockUtil("Apple", "APPL", "300");
-		StockUtil stock2 = new StockUtil("Google", "GOOG", "200");
-		StockUtil stock3 = new StockUtil("Microsoft", "MSFT", "1000");
-
-		indexRef.addStock(stock1);
-		indexRef.addStock(stock2);
-		indexRef.addStock(stock3);
-
-		Index testIndex = new Index(10, indexRef);
-
-		int testCount = 6;
-		int failCount = 0;
-
-		if (testIndex.getName() != "Tech Companies") {
-			++failCount;
-		}
-		if (testIndex.getNumShares() != 10) {
-			++failCount;
-		}
-		if (testIndex.getPrice() != 500.00) {
-			++failCount;
-		}
-		if (testIndex.getValue() != 5000.00) {
-			++failCount;
-		}
-		testIndex.addShares(10);
-		if (testIndex.getValue() != 10000.00) {
-			++failCount;
-		}
-		testIndex.subtractShares(15);
-		if (testIndex.getValue() != 2500.00) {
-			++failCount;
-		}
-
-		System.out.println("Conducting unit tests for Index:\n" + (testCount - failCount) + " out of " + testCount
-				+ " tests passed.");
+//
+//		IndexUtil indexRef = new IndexUtil("Tech Companies");
+//		StockUtil stock1 = new StockUtil("Apple", "APPL", "300");
+//		StockUtil stock2 = new StockUtil("Google", "GOOG", "200");
+//		StockUtil stock3 = new StockUtil("Microsoft", "MSFT", "1000");
+//
+//		indexRef.addStock(stock1);
+//		indexRef.addStock(stock2);
+//		indexRef.addStock(stock3);
+//
+//		Index testIndex = new Index(10, indexRef);
+//
+//		int testCount = 6;
+//		int failCount = 0;
+//
+//		if (testIndex.getName() != "Tech Companies") {
+//			++failCount;
+//		}
+//		if (testIndex.getNumShares() != 10) {
+//			++failCount;
+//		}
+//		if (testIndex.getPrice() != 500.00) {
+//			++failCount;
+//		}
+//		if (testIndex.getValue() != 5000.00) {
+//			++failCount;
+//		}
+//		testIndex.addShares(10);
+//		if (testIndex.getValue() != 10000.00) {
+//			++failCount;
+//		}
+//		testIndex.subtractShares(15);
+//		if (testIndex.getValue() != 2500.00) {
+//			++failCount;
+//		}
+//
+//		System.out.println("Conducting unit tests for Index:\n" + (testCount - failCount) + " out of " + testCount
+//				+ " tests passed.");
 	}
-
 }
