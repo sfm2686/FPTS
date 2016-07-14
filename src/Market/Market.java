@@ -1,6 +1,9 @@
  package Market;
 
 import java.util.*;
+
+import javax.swing.plaf.synth.SynthSpinnerUI;
+
 import Finance.*; // for testing
 
 
@@ -62,17 +65,20 @@ public class Market extends Observable {
 	 * @return: any stocks that have the same name as the passed string,
 	 * 	same ticker symbol as the passed string or the passed string as a substring.
 	 */
-	public ArrayList<ArrayList<String>> getStock(String s){
+	public HashMap<String, ArrayList<String>> searchStock(String s){
+		HashMap<String, ArrayList<String>> result = new HashMap<String, ArrayList<String>>();
 		
-		ArrayList<ArrayList<String>> result = new ArrayList<ArrayList<String>>();
-		//Search for ticker symbols
+		//Search for exact ticker symbols
 		if ( this.stocks.containsKey(s) )
-			result.add(this.stocks.get(s));
+			result.put(s, this.stocks.get(s));
 		
-		//Search for subStrings in Stock names
+		
+		//Search for subStrings in Stock names and their ticker symbols
 		for ( String key : this.stocks.keySet() ){
 			if ( this.stocks.get(key).get(nameIndex).toLowerCase().contains(s.toLowerCase()) )
-				result.add(this.stocks.get(key));
+				result.put(key, this.stocks.get(key));
+			if ( key.toLowerCase().contains(s.toLowerCase()) )
+				result.put(key, this.stocks.get(key));
 		}
 		return result;
 	}
@@ -83,19 +89,28 @@ public class Market extends Observable {
 	 * @param s: the string that is going to be used for the search.
 	 * @return: an arraylist of indices if they are in the collection 
 	 */
-	public ArrayList<ArrayList<String>> getIndex(String s){
-		ArrayList<ArrayList<String>> result = new ArrayList<ArrayList<String>>();
+	public HashMap<String, ArrayList<String>> searchIndex(String s){
+		HashMap<String, ArrayList<String>> result = new HashMap<String, ArrayList<String>>();
 		
 		//Exact match.
 		if ( this.indices.containsKey(s) )
-			result.add(this.indices.get(s));
+			result.put(s, this.indices.get(s));
 		
 		//Substring in the name.
 		for ( String key : this.indices.keySet() )
 			if ( key.toLowerCase().contains(s.toLowerCase()) )
-				result.add(this.indices.get(key));
+				result.put(key, this.indices.get(key));
 		
 		return result;
+	}
+	
+	public HashMap<String, ArrayList<String>> searchEquity(String s){
+		HashMap<String, ArrayList<String>> result = new HashMap<String, ArrayList<String>>();
+		result.putAll(this.searchStock(s));
+		result.putAll(this.searchIndex(s));
+		
+		return result;
+		
 	}
 	
 	/**
@@ -222,25 +237,37 @@ public class Market extends Observable {
 		String index;
 		Scanner sc = new Scanner(System.in);
 		
-		System.out.println("Indices:");
-		for ( String key : indices.keySet() )
-			System.out.println("\t" + key);
-		System.out.print("Please enter Index name to calc price: ");
-		index = sc.nextLine();
-		
-		Index indexTest;
-		if(index.equals("DOW")){
-			indexTest = new DJIA(1);
-		}
-		else{
-			indexTest = new Index(1, index);
-		}
-		for(String key : indices.get(index)){
-			indexTest.addChild(new Stock(1, key));
+		while ( true ) {
+			//Testing searches..
+			System.out.print("Search for a stock: ");
+			String stock = sc.nextLine();
+			
+			HashMap<String, ArrayList<String>> r = Market.getMarketInstance().searchEquity(stock); 
+			System.out.println("Results: ");
+			for ( String key : r.keySet() )
+				System.out.print("\t" + "Name: " + key + ", Value: " + r.get(key) + "\n");
 		}
 		
-		System.out.println("The price for " + index + " is: " + indexTest.getPrice());
-		System.out.println("done..");
+		
+//		System.out.println("Indices:");
+//		for ( String key : indices.keySet() )
+//			System.out.println("\t" + key);
+//		System.out.print("Please enter Index name to calc price: ");
+//		index = sc.nextLine();
+//		
+//		Index indexTest;
+//		if(index.equals("DOW")){
+//			indexTest = new DJIA(1);
+//		}
+//		else{
+//			indexTest = new Index(1, index);
+//		}
+//		for(String key : indices.get(index)){
+//			indexTest.addChild(new Stock(1, key));
+//		}
+//		
+//		System.out.println("The price for " + index + " is: " + indexTest.getPrice());
+//		System.out.println("done..");
 
 	}
 }
