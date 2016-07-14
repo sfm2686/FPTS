@@ -52,8 +52,13 @@ public class SubtractEquity extends Command implements Serializable, UndoableRed
 		return(new SubtractEquity(this.getReciever(), this.equityName, this.numShares));
 	}
 	
-	public double transactionValue(){
-		return(numShares * )
+	public double getTransactionValue(){
+		if (Market.getMarketInstance().isStock(this.equityName))
+			return(this.numShares * Market.getMarketInstance().getPrice(this.equityName));
+		else if(Market.getMarketInstance().isIndex(this.equityName))
+			return(this.numShares * Market.getMarketInstance().getIndexPrice(this.equityName));
+		else
+			return(0.0);
 	}
 	
 	@Override
@@ -73,8 +78,4 @@ public class SubtractEquity extends Command implements Serializable, UndoableRed
 
 	@Override
 	public ArrayList<Command> getChildren() { return null; }
-
-
-	}
-
 }

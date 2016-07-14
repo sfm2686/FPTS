@@ -1,6 +1,3 @@
-/**
- * 
- */
 package Transaction;
 
 import java.util.ArrayList;
@@ -11,16 +8,16 @@ import Finance.*;
  * @authors Sultan Mira, Hunter Caskey
  *
  */
-public class SellEquity extends Command implements Serializable, UndoableRedoable {
+public class BuyEquity extends Command implements Serializable, UndoableRedoable {
 	
 	private ArrayList<Command> children;
 	private String cashAcct;
 	
-	public SellEquity(Portfolio receiver, SubtractEquity subtraction, String cashAcct){
+	public BuyEquity(Portfolio receiver, AddEquity addition, String cashAcct){
 		super(receiver);
 		this.children = new ArrayList<Command>();
-		this.children.add(subtraction);
-		this.children.add(new DepositCash(receiver, cashAcct, subtraction.getTransactionValue()));
+		this.children.add(new WithdrawCash(receiver, cashAcct, addition.getTransactionValue()));
+		this.children.add(addition);
 		this.cashAcct = cashAcct;
 	}
 	
@@ -43,7 +40,7 @@ public class SellEquity extends Command implements Serializable, UndoableRedoabl
 
 	@Override
 	public UndoableRedoable copy() {
-		return (new SellEquity(this.getReciever(), (SubtractEquity)this.children.get(0), this.cashAcct));
+		return (new BuyEquity(this.getReciever(), (AddEquity)this.children.get(0), this.cashAcct));
 	}
 
 	@Override

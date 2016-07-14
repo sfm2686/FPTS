@@ -1,4 +1,4 @@
-package Market;
+ package Market;
 
 import java.util.*;
 import Finance.*; // for testing
@@ -118,7 +118,9 @@ public class Market extends Observable {
 	 * @return the price of the passed ticker symbol.
 	 */
 	public double getPrice(String ticker){
-		return Double.parseDouble(this.stocks.get(ticker).get(priceIndex));
+		if(this.stocks.containsKey(ticker))
+			return Double.parseDouble(this.stocks.get(ticker).get(priceIndex));
+		return 0.0;
 	}
 	
 	public double getIndexPrice(String name){
