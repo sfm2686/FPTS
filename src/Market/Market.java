@@ -33,6 +33,10 @@ public class Market extends Observable {
 	//A list of stocks to update.
 	private static ArrayList<Stock> obStocks;
 
+	/**
+	 * Singleton instance getter. To ensure there is only one.
+	 * @return: instance of Market.
+	 */
 	public static Market getMarketInstance(){
 		if(instance == null){
 			instance = new Market();
@@ -40,12 +44,58 @@ public class Market extends Observable {
 		return instance;
 	}
 	
+	/**
+	 * Singleton private constructor
+	 */
 	private Market() {
 		
 		this.obStocks = new ArrayList<Stock>();
 		this.stocks = new HashMap<String, ArrayList<String>>();
 		this.indices = new HashMap<String, ArrayList<String>>();
 		CSVParser.read();
+	}
+	
+	/**
+	 * Returns all stocks that have the same ticker symbol, name, or
+	 * 	contains the passed string as a substring.
+	 * @param s: the string that is going to be checked in the stocks collection
+	 * @return: any stocks that have the same name as the passed string,
+	 * 	same ticker symbol as the passed string or the passed string as a substring.
+	 */
+	public ArrayList<ArrayList<String>> getStock(String s){
+		
+		ArrayList<ArrayList<String>> result = new ArrayList<ArrayList<String>>();
+		//Search for ticker symbols
+		if ( this.stocks.containsKey(s) )
+			result.add(this.stocks.get(s));
+		
+		//Search for subStrings in Stock names
+		for ( String key : this.stocks.keySet() ){
+			if ( this.stocks.get(key).get(nameIndex).toLowerCase().contains(s.toLowerCase()) )
+				result.add(this.stocks.get(key));
+		}
+		return result;
+	}
+	
+	/**
+	 * This method returns all of the indices that have the same name of 
+	 * 	the passed string
+	 * @param s: the string that is going to be used for the search.
+	 * @return: an arraylist of indices if they are in the collection 
+	 */
+	public ArrayList<ArrayList<String>> getIndex(String s){
+		ArrayList<ArrayList<String>> result = new ArrayList<ArrayList<String>>();
+		
+		//Exact match.
+		if ( this.indices.containsKey(s) )
+			result.add(this.indices.get(s));
+		
+		//Substring in the name.
+		for ( String key : this.indices.keySet() )
+			if ( key.toLowerCase().contains(s.toLowerCase()) )
+				result.add(this.indices.get(key));
+		
+		return result;
 	}
 	
 	/**
@@ -108,8 +158,12 @@ public class Market extends Observable {
 	protected void setPrice(String ticker, double price){
 		if ( this.stocks.containsKey(ticker) ) {
 			this.stocks.get(ticker).set(priceIndex, Double.toString(price));
-			setChanged();
 		}
+	}
+	
+	protected void doneUpdating(){
+		setChanged();
+		notifyObservers();
 	}
 	
 	/**

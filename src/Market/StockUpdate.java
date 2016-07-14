@@ -5,6 +5,8 @@ package Market;
 
 import java.util.Scanner;
 
+import Finance.Stock;
+
 /**
  * @authors Sultan Mira, Hunter Caskey
  *
@@ -25,7 +27,10 @@ public class StockUpdate extends Thread {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			for 
+			for (Stock s : Market.getMarketInstance().getObStocks()){
+				Market.getMarketInstance().setPrice(s.getName(), YahooAPI.getPrice(s.getName()));
+			}
+			Market.getMarketInstance().doneUpdating();
 		}
 		
 	}

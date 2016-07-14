@@ -37,8 +37,7 @@ public class Stock extends Equity implements Serializable, Observer {
 
 	@Override
 	public void update(Observable o, Object arg) {
-		//TODO, ONCE CSV IS DONE USE IT TO GET PRICE
-		// this.price = o.getPrice(this.name);
+		this.price = Market.getMarketInstance().getPrice(this.name);
 	}
 	
 	@Override
