@@ -87,6 +87,18 @@ public class Market extends Observable {
 			this.stocks.get(ticker).set(priceIndex, Double.toString(price));
 	}
 	
+	public boolean isIndex(String s){
+		if ( this.indices.containsKey(s) )
+			return true;
+		return false;
+	}
+	
+	public boolean isStock(String s){
+		if ( this.stocks.containsKey(s) )
+			return true;
+		return false;
+	}
+	
 	/**
 	 * This method returns the price of the given ticker symbol
 	 * @param ticker passed to get the price for.
