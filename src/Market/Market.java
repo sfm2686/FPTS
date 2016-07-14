@@ -56,6 +56,7 @@ public class Market extends Observable {
 		this.obStocks.add(s);
 		this.addObserver(s);
 	}
+	
 
 	/**
 	 * 
@@ -83,16 +84,28 @@ public class Market extends Observable {
 	}
 	
 	protected void setPrice(String ticker, double price){
-		if ( this.stocks.containsKey(ticker) )
+		if ( this.stocks.containsKey(ticker) ) {
 			this.stocks.get(ticker).set(priceIndex, Double.toString(price));
+			setChanged();
+		}
 	}
 	
+	/**
+	 * This method checks if the string passed is an index.
+	 * @param s the name of the index.
+	 * @return true if s is a name of an index, false otherwise
+	 */
 	public boolean isIndex(String s){
 		if ( this.indices.containsKey(s) )
 			return true;
 		return false;
 	}
 	
+	/**
+	 * This method checks if the passed string is a stock.
+	 * @param s the name of the stock
+	 * @return true if s is a stock, false otherwise
+	 */
 	public boolean isStock(String s){
 		if ( this.stocks.containsKey(s) )
 			return true;

@@ -18,11 +18,20 @@ import Market.*;
  */
 public class Portfolio implements Serializable {
 
-	// private User owner; //Commented out until User class is made
+
+	//Portfolio's name
 	private String name;
+	
+	//A collection of the equities that a portoflio own
 	private ArrayList<Equity> equities;
+	
+	//A collection of cash accounts owned by the portfolio
 	private ArrayList<CashAcct> cashAccounts;
 
+	/**
+	 * Constructor
+	 * @param name: the name for the portfolio to have
+	 */
 	public Portfolio(String name) {
 		this.name = name;
 		this.equities = new ArrayList<>();
@@ -30,10 +39,18 @@ public class Portfolio implements Serializable {
 	}
 
 	
+	/**
+	 * Getter for the name
+	 * @return: the name of the portfolio
+	 */
 	public String getName() {
 		return this.name;
 	}
 
+	/**
+	 * Getter for the portfolio's value
+	 * @return: the value of the portfolio
+	 */
 	public double getPortfolioValue() {
 		double value = 0;
 		for (Equity equity : this.equities) {
@@ -45,102 +62,86 @@ public class Portfolio implements Serializable {
 		return value;
 	}
 
-	// protected boolean createEquity(int numShares, EquityUtil equityRef){
-	// if (this.hasEquity(equityRef)){
-	// return false;
-	// }
-	// Equity equity;
-	// try{
-	// StockUtil stockRef = (StockUtil)equityRef;
-	// equity = new Stock(numShares, stockRef);
-	// }
-	// catch(Exception e){
-	// IndexUtil indexRef = (IndexUtil)equityRef;
-	// equity = new Index(numShares, indexRef);
-	// }
-	// this.equities.add(equity);
-	// return true;
-	// }
 
+	/**
+	 * Adds an equity to the collection of equities.
+	 * @param equity: the equity to be added to the collection
+	 */
 	protected void addEquity(Equity equity) {
 		this.equities.add(equity);
 	}
 
+	/**
+	 * Adds a cash account to the collection of cash accounts
+	 * @param cash: the cash account to be stored
+	 */
 	protected void addCash(CashAcct cash) {
 		this.cashAccounts.add(cash);
 	}
-
-	// protected boolean removeEquity(EquityUtil equityRef){
-	// if (this.hasEquity(equityRef)){
-	// Equity removal = null;
-	// for(Equity equity : this.equities){
-	// if (equity.getName().equalsIgnoreCase(equityRef.getName())){
-	// removal = equity;
-	// break;
-	// }
-	// }
-	// this.equities.remove(removal);
-	// return true;
-	// }
-	// return false;
-	// }
-
+	
+	/**
+	 * Removes an equity from the portfolio, so it is no longer owned.
+	 * @param equity: the equity to be removed
+	 */
 	protected void removeEquity(Equity equity) {
 		this.equities.remove(equity);
 	}
-
-	// protected boolean createCashAcct(String name, double balance){
-	// for(CashAcct account : this.cashAccounts){
-	// if (this.hasCashAccount(name)){
-	// return false;
-	// }
-	// }
-	// this.cashAccounts.add(new CashAcct(name, balance));
-	// return true;
-	// }
-
+	
+	/**
+	 * Returns a list of all cash accounts a portfolio owns
+	 * @return: an arraylist of cash accounts
+	 */
 	public ArrayList<CashAcct> getCashAccounts() {
 		return this.cashAccounts;
 	}
 
+	/**
+	 * Returns a list of all equities a portfolio owns
+	 * @return: an arraylist of all equities
+	 */
 	public ArrayList<Equity> getEquities() {
 		return this.equities;
 	}
 
+	/**
+	 * Adds a cash account to a portfolio to be owned.
+	 * @param account: the account to be stored
+	 */
 	public void addCashAccount(CashAcct account) {
 		this.cashAccounts.add(account);
 	}
 
-	// protected boolean removeCashAcct(String name){
-	// if (this.hasCashAccount(name)){
-	// CashAcct removal = null;
-	// for(CashAcct account : this.cashAccounts){
-	// if (account.getName().equalsIgnoreCase(name)){
-	// removal = account;
-	// break;
-	// }
-	// }
-	// this.cashAccounts.remove(removal);
-	// return true;
-	// }
-	// return false;
-	// }
-
+	/**
+	 * Removes a cash account from the collection of cash accounts
+	 * @param account: the cash account to be removed
+	 */
 	public void removeCashAccount(CashAcct account) {
 		if(this.cashAccounts.contains(account)){
 			this.cashAccounts.remove(account);
 		}
 	}
 
-	public boolean hasEquity(EquityUtil equityRef) {
+	/**
+	 * checks if the portfolio has an equity with the same name
+	 * @param s: the equity to be checked against
+	 * @return: true if the portfolio has an equity with the same name,
+	 * 	false otherwise.
+	 */
+	public boolean hasEquity(Equity s) {
 		for (Equity equity : this.equities) {
-			if ((equity.getName()).equalsIgnoreCase(equityRef.getName())) {
+			if ((equity.getName()).equalsIgnoreCase(s.getName())) {
 				return true;
 			}
 		}
 		return false;
 	}
 
+	/**
+	 * This method checks if the portfolio has a cash account with the same name
+	 * @param name: the name to check
+	 * @return: true if the portfolio already has a cash account with the same name,
+	 * 	false otherwise
+	 */
 	public boolean hasCashAccount(String name) {
 		for (CashAcct account : this.cashAccounts) {
 			if ((account.getName()).equalsIgnoreCase(name)) {
@@ -150,6 +151,12 @@ public class Portfolio implements Serializable {
 		return false;
 	}
 
+	/**
+	 * returns an equity that has the passed string as its name
+	 * @param name: the name of the equity to be returned
+	 * @return: the equity with the passed name, null if the portfolio
+	 * 	does not have it
+	 */
 	public Equity getEquity(String name) {
 		for (Equity equity : this.equities) {
 			if (equity.getName().equalsIgnoreCase(name)) {
@@ -159,6 +166,12 @@ public class Portfolio implements Serializable {
 		return null;
 	}
 
+	/**
+	 * Returns the cash account object that is owned by the portfolio
+	 * that has the same name as the passed string
+	 * @param name: the name of the desired cash account
+	 * @return: the cash account object that has the same name, false otherwise
+	 */
 	public CashAcct getCashAcct(String name) {
 		for (CashAcct account : this.cashAccounts) {
 			if (account.getName().equalsIgnoreCase(name)) {
@@ -168,6 +181,10 @@ public class Portfolio implements Serializable {
 		return null;
 	}
 
+	/**
+	 * toString method for the portfolio
+	 * @return: a string that represents the portfolio
+	 */
 	@Override
 	public String toString() {
 		String string = "Portfolio: " + this.name + "\n\tHoldings:";
