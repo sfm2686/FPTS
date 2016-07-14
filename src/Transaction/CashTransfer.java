@@ -28,7 +28,6 @@ public class CashTransfer extends Command implements Serializable, UndoableRedoa
 	
 	@Override
 	public boolean execute() {
-		
 		for(Command c : this.children){
 			if(!c.execute()){
 				return false;

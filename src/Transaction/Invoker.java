@@ -16,15 +16,27 @@ public class Invoker {
 	// Class attributes
 	private Log log;
 	private UndoRedo undoRedo;
+	private static Invoker instance = null;
 	
 	/**
-	 * Constructor for an Invoker object.
+	 * Private constructor for an Invoker object.
 	 * @param log The log in which non-undoableredoable commands will be stored.
 	 * @param undoRedo The object in which undoableredoable commands will be stored.
 	 */
-	public Invoker(Log log, UndoRedo undoRedo){
-		this.log = log;
-		this.undoRedo = undoRedo;
+	private Invoker(){
+		this.log = new Log();
+		this.undoRedo = new UndoRedo();
+	}
+	
+	/**
+	 * Provide global point of access for the Singleton invoker object.
+	 * @return The one and only instance of Invoker.
+	 */
+	public static Invoker getInvoker(){
+		if (instance == null){
+			instance = new Invoker();
+		}
+		return instance;
 	}
 	
 	/**
