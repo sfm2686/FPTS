@@ -40,6 +40,14 @@ public class Invoker {
 	}
 	
 	/**
+	 * Extension of the Singleton pattern.
+	 * Clear the instance, aids in resetting the user session upon logout.
+	 */
+	public static void clearInvoker(){
+		instance = null;
+	}
+	
+	/**
 	 * invoke simply executes a command, checks the comman's type, 
 	 * and passed it on to the appropriate command storage object.
 	 * @param c The command to be invoked.
