@@ -42,6 +42,7 @@ public class AddShares extends Command implements Serializable, UndoableRedoable
 				equity = new Stock(this.numShares, this.equityName);
 			if(equity != null){
 				this.getReciever().addEquity(equity);
+				Market.getMarketInstance().addEquity(equity);
 				return true;
 			}
 		}

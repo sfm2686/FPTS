@@ -1,7 +1,6 @@
 package Transaction;
 
 import Finance.*;
-import Market.EquityUtil;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -43,7 +42,7 @@ public class RemoveEquity extends Command implements Serializable {
 				+ "\n\tTransaction: Removed Equity";
 	}
 
-	/****** Lead Commands do not Implement Composite Behaviors ******/
+	/****** Leaf Commands do not Implement Composite Behaviors ******/
 	
 	@Override
 	public void addChild(Command node) {}
