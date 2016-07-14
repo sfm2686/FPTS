@@ -1,32 +1,26 @@
 package Transaction;
 
-import CSV.*;
-import Finance.Equity;
-import Finance.Portfolio;
-import Finance.User;
+import Finance.*;
+import Market.*;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
-<<<<<<< HEAD
-=======
  * 
  *          This class acts as a driver for transactions. It takes one type of
  *          portfolio transaction and delegates between 8 of the concrete
  *          commands to have the operation done. Once every command is done with
  *          its operation it calls log in order for it to be logged.
->>>>>>> f201cca12621467626b000910fa19fc5fb1229f0
  *
  */
-public class TransactionClient {
+public class Client {
 
 	private User user;
 
-	public TransactionClient(User user) {
+	public Client(User user) {
 		this.user = user;
 	}
 
-	public boolean buyEquity(EquityUtil reference, int shares, double price, Portfolio destPort, Portfolio srcPort,
-			CashAcct srcCashAcct) {
+	public boolean buyEquity(EquityUtil reference, int shares, double price, Portfolio destPort, Portfolio srcPort, CashAcct srcCashAcct){
 		double cost = shares * price;
 		Command command = new SubtractCash(srcPort, srcCashAcct.getName(), cost);
 		if (command.execute()) {

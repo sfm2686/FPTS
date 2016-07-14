@@ -9,8 +9,8 @@ package Transaction;
  */
 public interface UndoableRedoable {
 	
-	public void unexecute();
+	public abstract void unexecute();
 	
-	public UndoableRedoable clone();
+	public abstract UndoableRedoable copy();
 
 }

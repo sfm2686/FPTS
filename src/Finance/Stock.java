@@ -2,7 +2,8 @@ package Finance;
 
 import java.io.Serializable;
 import java.util.*;
-import CSV.*;
+
+import Market.*;
 
 /**
  * @authors Sultan Mira, Hunter Caskey

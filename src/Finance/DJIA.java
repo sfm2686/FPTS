@@ -6,7 +6,7 @@ import java.util.*;
  * @authors Sultan Mira, Hunter Caskey
  *
  */
-public class DJIA extends Index{
+public class DJIA extends Index {
 
 	private double dowDivisor = 0.14602128057775; // Could not find an API to retrieve this dynamically
 

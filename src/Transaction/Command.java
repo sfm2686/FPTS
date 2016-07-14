@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.TimeZone;
 import Finance.Portfolio;
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
@@ -33,4 +34,7 @@ public abstract class Command implements Serializable {
 	}
 
 	public abstract boolean execute();
+	public abstract void addChild(Command node);
+	public abstract void removeChild(Command node);
+	public abstract ArrayList<Command> getChildren();
 }

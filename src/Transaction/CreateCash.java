@@ -4,8 +4,10 @@
 package Transaction;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 import Finance.Portfolio;
+import Finance.CashAcct;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
@@ -36,9 +38,19 @@ public class CreateCash extends Command implements Serializable {
 
 	@Override
 	public String toString() {
-		return "\nDate: " + this.getTransactionDate() + "\n\tPortfolio Operated On: " + super.getReciever() + "\n\tAccount: " + this.accountName
+		return "\nPortfolio Operated On: " + super.getReciever() + "\n\tAccount: " + this.accountName
 				+ "\n\tTransaction: Created Cash Account" + "\n\tInitial Amount: " + this.balance;
 	}
 
+	/****** Lead Commands do not Implement Composite Behaviors ******/
+	
+	@Override
+	public void addChild(Command node) {}
 
+
+	@Override
+	public void removeChild(Command node) {}
+
+	@Override
+	public ArrayList<Command> getChildren() { return null; }
 }

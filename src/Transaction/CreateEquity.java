@@ -2,13 +2,13 @@ package Transaction;
 
 import java.io.Serializable;
 
-import CSV.EquityUtil;
-import CSV.StockUtil;
 import Finance.Equity;
 import Finance.Index;
 import Finance.Portfolio;
 import Finance.Stock;
-import CSV.IndexUtil;
+import Market.EquityUtil;
+import Market.IndexUtil;
+import Market.StockUtil;
 
 /**
  * @authors Sultan Mira, Hunter Caskey

@@ -4,9 +4,10 @@
 package Core;
 
 import Finance.*;
+import Market.*;
 import Simulation.SimulationContext;
-import Transaction.TransactionClient;
-import CSV.*;
+import Transaction.Client;
+
 import java.util.*;
 
 /**
@@ -26,7 +27,7 @@ public class Context {
 	private Portfolio portfolio;
 	private State current;
 	private User user;
-	private TransactionClient transClient = null;
+	private Client transClient = null;
 	private SimulationContext sim = null;
 	private EquityBin market;
 
@@ -142,9 +143,9 @@ public class Context {
 		}
 	}
 
-	protected TransactionClient getTransClient() {
+	protected Client getTransClient() {
 		if (this.transClient == null) {
-			this.transClient = new TransactionClient(this.user);
+			this.transClient = new Client(this.user);
 		}
 		return this.transClient;
 	}

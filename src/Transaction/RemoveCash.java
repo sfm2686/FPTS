@@ -4,8 +4,9 @@
 package Transaction;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
-import Finance.Portfolio;
+import Finance.*;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
@@ -45,12 +46,16 @@ public class RemoveCash extends Command implements Serializable {
 				+ "\n\tTransaction: Removed Cash Account";
 	}
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+	/****** Lead Commands do not Implement Composite Behaviors ******/
+	
+	@Override
+	public void addChild(Command node) {}
 
-	}
+
+	@Override
+	public void removeChild(Command node) {}
+
+	@Override
+	public ArrayList<Command> getChildren() { return null; }
 
 }

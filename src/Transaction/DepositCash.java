@@ -1,8 +1,10 @@
 package Transaction;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 import Finance.Portfolio;
+import Finance.CashAcct;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
@@ -13,17 +15,18 @@ import Finance.Portfolio;
  *          account.
  *
  */
-public class AddCash extends Command implements Serializable, UndoableRedoable {
+public class DepositCash extends Command implements Serializable, UndoableRedoable {
 
 	private String acctName;
 	private double deposit;
 
-	public AddCash(Portfolio receiver, String name, double deposit) {
+	public DepositCash(Portfolio receiver, String name, double deposit) {
 		super(receiver);
 		this.acctName = name;
 		this.deposit = deposit;
 	}
 
+	@Override
 	public boolean execute() {
 		CashAcct acct = super.getReciever().getCashAcct(this.acctName);
 		if (acct != null) {
@@ -31,6 +34,14 @@ public class AddCash extends Command implements Serializable, UndoableRedoable {
 			return true;
 		}
 		return false;
+	}
+
+	@Override
+	public void unexecute() {
+		CashAcct acct = super.getReciever().getCashAcct(this.acctName);
+		if (acct != null) {
+			acct.withdraw(this.deposit);
+		}
 	}
 
 	@Override
@@ -47,22 +58,21 @@ public class AddCash extends Command implements Serializable, UndoableRedoable {
 
 	}
 
-	/**
-	 * 
-	 */
 	@Override
-	public void unexecute() {
-		CashAcct acct = super.getReciever().getCashAcct(this.acctName);
-		if (acct != null) {
-			acct.withdraw(this.deposit);
-		}
+	public UndoableRedoable copy() {
+		return (new DepositCash(super.getReciever(), this.acctName, this.deposit));
 	}
+	
+	/****** Lead Commands do not Implement Composite Behaviors ******/
+	
+	@Override
+	public void addChild(Command node) {}
 
-	/**
-	 * 
-	 */
+
 	@Override
-	public UndoableRedoable clone() {
-		return ((UndoableRedoable) new AddCash(super.getReciever(), this.acctName, this.deposit));
-	}
+	public void removeChild(Command node) {}
+
+	@Override
+	public ArrayList<Command> getChildren() { return null; }
+
 }

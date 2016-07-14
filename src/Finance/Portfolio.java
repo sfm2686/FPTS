@@ -2,7 +2,8 @@ package Finance;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import CSV.*;
+
+import Market.*;
 
 /**
  * @author Sultan Mira & Hunter Caskey
@@ -125,8 +126,10 @@ public class Portfolio implements Serializable {
 	// return false;
 	// }
 
-	protected void removeCashAccount(CashAcct account) {
-		this.cashAccounts.remove(account);
+	public void removeCashAccount(CashAcct account) {
+		if(this.cashAccounts.contains(account)){
+			this.cashAccounts.remove(account);
+		}
 	}
 
 	public boolean hasEquity(EquityUtil equityRef) {

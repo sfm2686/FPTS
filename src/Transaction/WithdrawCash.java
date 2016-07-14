@@ -1,8 +1,10 @@
 package Transaction;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 import Finance.Portfolio;
+import Finance.CashAcct;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
@@ -13,12 +15,12 @@ import Finance.Portfolio;
  *          passed in the constructor.
  *
  */
-public class SubtractCash extends Command implements Serializable {
+public class WithdrawCash extends Command implements Serializable, UndoableRedoable {
 
 	private String acctName;
 	private double withdrawal;
 
-	public SubtractCash(Portfolio receiver, String acctName, double withdrawal) {
+	public WithdrawCash(Portfolio receiver, String acctName, double withdrawal) {
 		super(receiver);
 		this.acctName = acctName;
 		this.withdrawal = withdrawal;
@@ -35,6 +37,17 @@ public class SubtractCash extends Command implements Serializable {
 		}
 		return false;
 	}
+	
+	public void unexecute(){
+		CashAcct acct = super.getReciever().getCashAcct(this.acctName);
+		if (acct != null) {
+			acct.deposit(this.withdrawal);
+		}
+	}
+	
+	public UndoableRedoable copy(){
+		return(new WithdrawCash(this.getReciever(), this.acctName, this.withdrawal)); 
+	}
 
 	@Override
 	public String toString() {
@@ -42,12 +55,16 @@ public class SubtractCash extends Command implements Serializable {
 				+ "\n\tTransaction: Cash Withdrawal" + "\n\tAmount withdrew: " + this.withdrawal;
 	}
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+	/****** Lead Commands do not Implement Composite Behaviors ******/
+	
+	@Override
+	public void addChild(Command node) {}
 
-	}
+
+	@Override
+	public void removeChild(Command node) {}
+
+	@Override
+	public ArrayList<Command> getChildren() { return null; }
 
 }

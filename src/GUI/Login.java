@@ -129,7 +129,6 @@ public class Login extends JFrame {
 					return ;
 				}
 				else if ( user.getPass().equalsIgnoreCase(password.toString()) ) {
-					
 					//Code below should be replaced with transition to main page..
 					MainFrame main = new MainFrame(user);
 					main.setVisible(true);

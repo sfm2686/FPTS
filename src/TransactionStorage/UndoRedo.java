@@ -2,7 +2,7 @@ package TransactionStorage;
 
 import Transaction.*;
 import java.util.*;
-import Finance.Portfolio;
+import Finance.*;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
@@ -52,7 +52,7 @@ public class UndoRedo {
 	public void redo(){
 		if (this.stack.isEmpty())
 			return;
-		Command clone = (Command)this.stack.peek().clone();
+		Command clone = (Command)this.stack.peek().copy();
 		clone.execute();
 		this.stack.add((UndoableRedoable)clone);
 	}
@@ -93,10 +93,10 @@ public class UndoRedo {
 		CashAcct account1 = new CashAcct("Cash Account1", 50.0);
 		CashAcct account2 = new CashAcct("Cash Account2", 100.0);
 
-		UndoableRedoable c1 = new AddCash(port1, "Cash Account1", 50.0);
-		UndoableRedoable c2 = new AddCash(port1, "Cash Account2", 100.0);
-		UndoableRedoable c3 = new AddCash(port1, "Cash Account1", 500.0);
-		UndoableRedoable c4 = new AddCash(port1, "Cash Account2", 1000.0);
+		UndoableRedoable c1 = new DepositCash(port1, "Cash Account1", 50.0);
+		UndoableRedoable c2 = new DepositCash(port1, "Cash Account2", 100.0);
+		UndoableRedoable c3 = new DepositCash(port1, "Cash Account1", 500.0);
+		UndoableRedoable c4 = new DepositCash(port1, "Cash Account2", 1000.0);
 		
 		UndoRedo test = new UndoRedo();
 		Log log = new Log();

@@ -4,6 +4,7 @@
 package Transaction;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 import Finance.Equity;
 import Finance.Portfolio;
@@ -16,7 +17,7 @@ import Finance.Portfolio;
  *          Also the number of shares is provided.
  *
  */
-public class SubtractEquity extends Command implements Serializable {
+public class SubtractEquity extends Command implements Serializable, UndoableRedoable {
 
 	private String equityName;
 	private int numShares;
@@ -27,6 +28,7 @@ public class SubtractEquity extends Command implements Serializable {
 		this.numShares = numShares;
 	}
 
+	@Override
 	public boolean execute() {
 		Equity equity = super.getReciever().getEquity(this.equityName);
 		if (equity != null) {
@@ -37,16 +39,36 @@ public class SubtractEquity extends Command implements Serializable {
 	}
 
 	@Override
+	public void unexecute() {
+		Equity equity = super.getReciever().getEquity(this.equityName);
+		if (equity != null) {
+			equity.addShares(this.numShares);
+		}
+	}
+	
+	@Override
+	public UndoableRedoable copy() {
+		return(new SubtractEquity(this.getReciever(), this.equityName, this.numShares));
+	}
+	
+	@Override
 	public String toString() {
 		return "\nPortfolio Operated On: " + super.getReciever() + "\n\tEquity: " + this.equityName
-				+ "\n\tTransaction: Remove Shares" + "\n\tShares Removed: " + this.numShares;
+				+ "\n\tTransaction: Subtract Equity Shares" + "\n\tShares Removed: " + this.numShares;
 	}
+	
+	/****** Leaf Commands do not Implement Composite Behaviors ******/
+	
+	@Override
+	public void addChild(Command node) {}
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+
+	@Override
+	public void removeChild(Command node) {}
+
+	@Override
+	public ArrayList<Command> getChildren() { return null; }
+
 
 	}
 
