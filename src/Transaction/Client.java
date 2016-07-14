@@ -2,28 +2,38 @@ package Transaction;
 
 import java.util.ArrayList;
 import java.util.Date;
-
 import Finance.*;
 import Market.*;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
  * 
- *          This class acts as a driver for transactions. It takes one type of
- *          portfolio transaction and delegates between 8 of the concrete
- *          commands to have the operation done. Once every command is done with
- *          its operation it calls log in order for it to be logged.
+ *          This class acts as a driver for transactions. It takes GUI-supplied date
+ *          and delegates the operation to be gone to one eight of the concrete
+ *          commands. Once a command is created is it passed to Invoker for execution.
  *
  */
 public class Client {
 
-	private User user;
-	private Invoker invoker;
+	private User user; // The current user logged into FPTS
+	private Invoker invoker; // An invoker (singleton) we use to pass commands.
 
+	/**
+	 * Constructor for the Client class.
+	 * @param user The current user logged into FPTS
+	 */
 	public Client(User user) {
 		this.user = user;
-		invoker = Invoker.getInvoker();
+		invoker = Invoker.getInvoker(user.getLog());
 	}
+	
+	/**
+	 * TODO: FINISH
+	 * DepositCash takes GUI-supplied information
+	 * @param port
+	 * @param name
+	 * @param deposit
+	 */
 	public void depositCash(Portfolio port, String name, double deposit){
 		Command c = new DepositCash(port, name, deposit);
 		invoker.invoke(c);

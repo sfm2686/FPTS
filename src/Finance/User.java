@@ -43,6 +43,10 @@ public class User implements Serializable {
 		return this.password;
 	}
 	
+	public Log getLog(){
+		return this.log;
+	}
+	
 	public String toString(){
 		String str = "\n";
 		str += "Username: " + this.username + "\n";

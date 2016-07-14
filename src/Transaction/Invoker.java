@@ -23,8 +23,8 @@ public class Invoker {
 	 * @param log The log in which non-undoableredoable commands will be stored.
 	 * @param undoRedo The object in which undoableredoable commands will be stored.
 	 */
-	private Invoker(){
-		this.log = new Log();
+	private Invoker(Log log){
+		this.log = log;
 		this.undoRedo = new UndoRedo();
 	}
 	
@@ -32,9 +32,13 @@ public class Invoker {
 	 * Provide global point of access for the Singleton invoker object.
 	 * @return The one and only instance of Invoker.
 	 */
-	public static Invoker getInvoker(){
+	public static Invoker getInvoker(Log log){
 		if (instance == null){
-			instance = new Invoker();
+			instance = new Invoker(log);
+		}
+		if(instance.log != log){ // Ensure that the invoker is passing to the correct log
+			instance.undoRedo.clean(instance.log); // If we had to change logs, then clean undoRedo;
+			instance.log = log;
 		}
 		return instance;
 	}
