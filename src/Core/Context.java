@@ -4,9 +4,10 @@
 package Core;
 
 import Finance.*;
+import Market.*;
 import Simulation.SimulationContext;
 import Transaction.TransactionClient;
-import CSV.*;
+
 import java.util.*;
 
 /**
@@ -28,14 +29,14 @@ public class Context {
 	private User user;
 	private TransactionClient transClient = null;
 	private SimulationContext sim = null;
-	private EquityBin market;
+	private Market market;
 
 	public Context() {
 		// STARTS ALL OTHER SUBSYSTEMS HERE..
 		// CVS
 		// DBINTERFACE
 		// ..
-		this.market = new EquityBin();
+		this.market = new Market();
 		this.market.readEquities();
 	}
 
@@ -96,7 +97,7 @@ public class Context {
 		return this.table;
 	}
 
-	protected EquityBin getMarket() {
+	protected Market getMarket() {
 		return this.market;
 	}
 

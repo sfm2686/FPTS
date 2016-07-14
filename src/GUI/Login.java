@@ -135,7 +135,7 @@ public class Login extends JFrame {
 				
 				if ( user == null ){
 					System.out.println(user);
-					w = "Username does not in the system. Please register or try again";
+					w = "Username is not in the system. Please register or try again";
 					JOptionPane.showMessageDialog(new JFrame(), w, "No User",
 							JOptionPane.ERROR_MESSAGE);
 					return ;

@@ -1,9 +1,9 @@
 package Transaction;
 
-import CSV.*;
 import Finance.Equity;
 import Finance.Portfolio;
 import Finance.User;
+import Market.*;
 
 /**
  * @authors Sultan Mira, Hunter Caskey

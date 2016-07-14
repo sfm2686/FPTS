@@ -1,8 +1,8 @@
 package Transaction;
 
-import CSV.EquityUtil;
 import Finance.Equity;
 import Finance.Portfolio;
+import Market.EquityUtil;
 
 import java.io.Serializable;
 

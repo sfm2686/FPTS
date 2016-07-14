@@ -2,8 +2,8 @@ package Core;
 
 import java.util.ArrayList;
 
-import CSV.EquityUtil;
 import Finance.*;
+import Market.EquityUtil;
 import Transaction.CashAcct;
 
 /**
