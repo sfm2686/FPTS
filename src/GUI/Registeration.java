@@ -110,9 +110,15 @@ public class Registeration extends JFrame {
 		this.done.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
-				User user = DBInterface.getUserData(usernameV.toString());
 				String w = "";
+				if ( usernameV.toString().equals("") || pass1.equals("") || pass2.equals("") ){
+					w = "One or more fields are empty. Please try again";
+					JOptionPane.showMessageDialog(new JFrame(), w, "Bad Password",
+							JOptionPane.ERROR_MESSAGE);
+					return ;
+				}
+					
+				User user = DBInterface.getUserData(usernameV.toString());
 				if ( user != null ){
 					w = "Username is already in the system. Please try another one";
 					JOptionPane.showMessageDialog(new JFrame(), w, "Username Exists",

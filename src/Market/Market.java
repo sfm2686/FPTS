@@ -42,16 +42,20 @@ public class Market extends Observable {
 	
 	private Market() {
 		
+		this.obStocks = new ArrayList<Stock>();
 		this.stocks = new HashMap<String, ArrayList<String>>();
 		this.indices = new HashMap<String, ArrayList<String>>();
 		CSVParser.read();
-		
-		//TODO
-		//Add Observers here..
-		//addObserver();
-		
 	}
 	
+	/**
+	 * Adds a stock object to the list of stocks to be updated.
+	 * @param s the stock to be added.
+	 */
+	public void addStock(Stock s){
+		this.obStocks.add(s);
+		this.addObserver(s);
+	}
 
 	/**
 	 * 
