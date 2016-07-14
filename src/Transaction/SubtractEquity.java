@@ -53,7 +53,13 @@ public class SubtractEquity extends Command implements Serializable, UndoableRed
 	}
 	
 	public double transactionValue(){
-		return(numShares * )
+		if (Market.getMarketInstance().isStock(this.equityName))
+			return(this.numShares * Market.getMarketInstance().getPrice(this.equityName))
+		elif(Market.getMarketInstance().isIndex(this.equityName))
+			return(this.numShares * Market.getMarketInstance().getIndexPrice(this.equityName))
+		else
+			return(0.0);
+			
 	}
 	
 	@Override
