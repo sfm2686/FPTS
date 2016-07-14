@@ -15,7 +15,6 @@ import Transaction.*;
  */
 public class MainFrame extends JFrame {
 
-	private JPanel contentPane;
 	private User user;
 	
 
@@ -28,12 +27,18 @@ public class MainFrame extends JFrame {
 		this.setTitle("Main View");
 		this.user = user;
 		
-		this.setLayout(new GridLayout(2, 2));
+		this.setLayout(new GridBagLayout());
+		GridBagConstraints c = new GridBagConstraints();
+		c.anchor = GridBagConstraints.NORTHWEST;
+		c.weightx = 1;
+		c.weighty = 1;
 		
-		this.add(topLeft());
-		this.add(topRight());
+		this.add(topLeft(), c);
+		
+		c.anchor = GridBagConstraints.NORTH;
+		this.add(topRight(), c);
 		this.add(mainView());
-		this.add(watchList());
+		this.add(new WatchList());
 	}
 	
 	private JPanel topLeft(){
@@ -55,16 +60,7 @@ public class MainFrame extends JFrame {
 		
 		return panel;
 	}
-	
-	private JPanel watchList(){
-		JPanel panel = new JPanel();
-		
-		TextArea area = new TextArea(30, 5);
-		JScrollPane list = new JScrollPane(area);
-		
-		panel.add(list);
-		return panel;
-	}
+
 	
 	private JPanel mainView(){
 		JPanel panel = new JPanel();

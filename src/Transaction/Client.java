@@ -22,7 +22,7 @@ public class Client {
 
 	public boolean buyEquity(EquityUtil reference, int shares, double price, Portfolio destPort, Portfolio srcPort, CashAcct srcCashAcct){
 		double cost = shares * price;
-		Command command = new SubtractCash(srcPort, srcCashAcct.getName(), cost);
+		Command command = new WithdrawCash(srcPort, srcCashAcct.getName(), cost);
 		if (command.execute()) {
 			buyEquity(reference, shares, price, destPort);
 		}
@@ -72,7 +72,7 @@ public class Client {
 		if (portfolio.hasCashAccount(accountName)) {
 			command = new CreateCash(portfolio, accountName, amount);
 		} else {
-			command = new AddCash(portfolio, accountName, amount);
+			command = new DepositCash(portfolio, accountName, amount);
 		}
 		command.execute();
 	}
@@ -93,7 +93,7 @@ public class Client {
 	}
 
 	public boolean withdrawCash(Portfolio srcPort, CashAcct srcCashAccount, double amount) {
-		Command command = new SubtractCash(srcPort, srcCashAccount.getName(), amount);
+		Command command = new WithdrawCash(srcPort, srcCashAccount.getName(), amount);
 		return (command.execute());
 	}
 

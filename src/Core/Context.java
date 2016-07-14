@@ -8,6 +8,7 @@ import Market.*;
 import Simulation.SimulationContext;
 import Transaction.Client;
 
+
 import java.util.*;
 
 /**
@@ -29,14 +30,14 @@ public class Context {
 	private User user;
 	private Client transClient = null;
 	private SimulationContext sim = null;
-	private EquityBin market;
+	private Market market;
 
 	public Context() {
 		// STARTS ALL OTHER SUBSYSTEMS HERE..
 		// CVS
 		// DBINTERFACE
 		// ..
-		this.market = new EquityBin();
+		this.market = new Market();
 		this.market.readEquities();
 	}
 
@@ -97,7 +98,7 @@ public class Context {
 		return this.table;
 	}
 
-	protected EquityBin getMarket() {
+	protected Market getMarket() {
 		return this.market;
 	}
 

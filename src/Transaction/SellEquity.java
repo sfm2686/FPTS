@@ -20,12 +20,13 @@ public class SellEquity extends Command implements Serializable, UndoableRedoabl
 		super(receiver);
 		this.subtraction = subtraction;
 		this.cashAcct = cashAcct;
-		
 	}
 	
 	@Override
 	public boolean execute() {
-		// TODO Auto-generated method stub
+		if(this.subtraction.execute()){
+			Command deposit = new DepositCash(this.getReciever(), this.cashAcct, this.subtraction.)
+		}
 		return false;
 	}
 	

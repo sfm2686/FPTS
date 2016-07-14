@@ -41,7 +41,8 @@ public class Index extends Equity implements Serializable {
 			totalPrice += child.getPrice();
 		}
 		if(numChildren != 0){
-			return(totalPrice / numChildren);
+			double result = totalPrice / numChildren;
+			return Math.round(result * 100.0) / 100.0;
 		}
 		return(0.0);	 
 	}

@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import Finance.Equity;
 import Finance.Portfolio;
+import Market.Market;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
@@ -49,6 +50,10 @@ public class SubtractEquity extends Command implements Serializable, UndoableRed
 	@Override
 	public UndoableRedoable copy() {
 		return(new SubtractEquity(this.getReciever(), this.equityName, this.numShares));
+	}
+	
+	public double transactionValue(){
+		return(numShares * )
 	}
 	
 	@Override

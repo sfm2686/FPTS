@@ -36,7 +36,6 @@ public class Login extends JFrame {
 		this.setLayout(new BorderLayout());
 		this.add(top(), BorderLayout.NORTH);
 		this.add(middle(), BorderLayout.CENTER);
-		this.add(bottom(), BorderLayout.SOUTH);
 		this.assign();
 	}
 	
@@ -62,17 +61,10 @@ public class Login extends JFrame {
 		panel.add(this.passL);
 		panel.add(this.passF);
 		
-		return panel;
-	}
-	
-	private JPanel bottom(){
-		JPanel panel = new JPanel();
-		
 		this.login = new JButton("Login");
 		this.register = new JButton("Register");
 		panel.add(this.login);
 		panel.add(this.register);
-		
 		return panel;
 	}
 	
@@ -129,10 +121,11 @@ public class Login extends JFrame {
 					return ;
 				}
 				else if ( user.getPass().equalsIgnoreCase(password.toString()) ) {
+					
 					//Code below should be replaced with transition to main page..
-					MainFrame main = new MainFrame(user);
-					main.setVisible(true);
-					dispose();
+					w = "You are LOGGED IN !!!!";
+					JOptionPane.showMessageDialog(new JFrame(), w, "Success",
+							JOptionPane.DEFAULT_OPTION);
 				}
 			}
 		});

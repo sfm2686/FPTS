@@ -12,29 +12,22 @@ import java.util.ArrayList;
  *          the state machine for parsing the equities.csv file.
  *
  */
-public class CSVParser {
+public final class CSVParser {
 
-	private String name = "./equities.csv";
-	private EquityBin bin;
+	private final static String name = "./equities.csv";
 
-	public CSVParser() {
-	}
+	private CSVParser() {}
 
-	public boolean init(EquityBin bin) {
-		this.bin = bin;
-		return this.startReading();
-	}
-
-	private boolean startReading() {
+	public static boolean read() {
 		ArrayList<String> fields;
-		try (FileInputStream fi = new FileInputStream(this.name)) {
+		try (FileInputStream fi = new FileInputStream(name)) {
 			InputStreamReader in = new InputStreamReader(fi);
 			BufferedReader br = new BufferedReader(in);
 			for (String row; (row = br.readLine()) != null;) {
 				fields = new ArrayList<String>();
 				for (String field : row.split("\",\""))
 					fields.add(field.replace("\"", "").replace(" ", ""));
-				this.bin.addEquity(fields);
+				Market.addEquity(fields);
 			}
 		} catch (IOException e) {
 			return false;
@@ -43,5 +36,6 @@ public class CSVParser {
 	}
 
 	public static void main(String[] args) {
+		System.out.println(CSVParser.read());
 	}
 }

@@ -23,6 +23,7 @@ public class Stock extends Equity implements Serializable, Observer {
 	public Stock(int numShares, String name) {
 		this.setNumShares(numShares);
 		this.name = name; // Ticker symbol
+		this.price = Market.getMarketInstance().getPrice(name);
 	}
 
 	public double getValue() {
