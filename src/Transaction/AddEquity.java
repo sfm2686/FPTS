@@ -2,6 +2,7 @@ package Transaction;
 
 import Finance.Equity;
 import Finance.Portfolio;
+import Market.Market;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
@@ -30,6 +31,15 @@ public class AddEquity extends Command {
 			return true;
 		}
 		return false;
+	}
+	
+	public double getTransactionValue(){
+		if (Market.getMarketInstance().isStock(this.equityName))
+			return(this.numShares * Market.getMarketInstance().getPrice(this.equityName));
+		else if(Market.getMarketInstance().isIndex(this.equityName))
+			return(this.numShares * Market.getMarketInstance().getIndexPrice(this.equityName));
+		else
+			return(0.0);
 	}
 
 	@Override
