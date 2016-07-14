@@ -42,16 +42,20 @@ public class Market extends Observable {
 	
 	private Market() {
 		
+		this.obStocks = new ArrayList<Stock>();
 		this.stocks = new HashMap<String, ArrayList<String>>();
 		this.indices = new HashMap<String, ArrayList<String>>();
 		CSVParser.read();
-		
-		//TODO
-		//Add Observers here..
-		//addObserver();
-		
 	}
 	
+	/**
+	 * Adds a stock object to the list of stocks to be updated.
+	 * @param s the stock to be added.
+	 */
+	public void addStock(Stock s){
+		this.obStocks.add(s);
+		this.addObserver(s);
+	}
 
 	/**
 	 * 
@@ -81,6 +85,18 @@ public class Market extends Observable {
 	protected void setPrice(String ticker, double price){
 		if ( this.stocks.containsKey(ticker) )
 			this.stocks.get(ticker).set(priceIndex, Double.toString(price));
+	}
+	
+	public boolean isIndex(String s){
+		if ( this.indices.containsKey(s) )
+			return true;
+		return false;
+	}
+	
+	public boolean isStock(String s){
+		if ( this.stocks.containsKey(s) )
+			return true;
+		return false;
 	}
 	
 	/**

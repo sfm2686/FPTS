@@ -36,6 +36,7 @@ public class Login extends JFrame {
 		this.setLayout(new BorderLayout());
 		this.add(top(), BorderLayout.NORTH);
 		this.add(middle(), BorderLayout.CENTER);
+		this.add(bottom(), BorderLayout.SOUTH);
 		this.assign();
 	}
 	
@@ -74,10 +75,17 @@ public class Login extends JFrame {
 		gbc.gridx ++;
 		panel.add(this.passF, gbc);
 		
+		return panel;
+	}
+	
+	private JPanel bottom(){
+		JPanel panel = new JPanel();
+		
 		this.login = new JButton("Login");
 		this.register = new JButton("Register");
 		panel.add(this.login);
 		panel.add(this.register);
+		
 		return panel;
 	}
 	
