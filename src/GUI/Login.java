@@ -47,19 +47,32 @@ public class Login extends JFrame {
 	}
 	
 	private JPanel middle(){
-		JPanel panel = new JPanel(new GridLayout(3, 2));
+		JPanel panel = new JPanel(new GridBagLayout());
+		GridBagConstraints gbc = new GridBagConstraints();
+		gbc.gridx = 0;
+		gbc.gridy = 0;
 		
-		
-		this.usernameL = new JLabel("Username: ");
+		this.usernameL = new JLabel("Username ");
 		this.usernameF = new JTextField();
+		this.usernameF.setPreferredSize(new Dimension(200, 20));
 		
-		panel.add(this.usernameL);
-		panel.add(this.usernameF);
+		panel.add(this.usernameL, gbc);
+		gbc.gridx ++;
+		panel.add(this.usernameF, gbc);
 		
-		this.passL = new JLabel("Password: ");
+		gbc.gridy ++;
+		gbc.gridx = 0;
+		
+		panel.add(new JLabel(" "), gbc);
+		gbc.gridy ++;
+		
+		this.passL = new JLabel("Password ");
 		this.passF = new JPasswordField();
-		panel.add(this.passL);
-		panel.add(this.passF);
+		this.passF.setPreferredSize(new Dimension(200, 20));
+		
+		panel.add(this.passL, gbc);
+		gbc.gridx ++;
+		panel.add(this.passF, gbc);
 		
 		this.login = new JButton("Login");
 		this.register = new JButton("Register");
@@ -109,23 +122,21 @@ public class Login extends JFrame {
 							JOptionPane.ERROR_MESSAGE);
 					return ;
 				}
-				boolean valid = true;
 				User user = DBInterface.getUserData(username.toString()); 
 				System.out.println("username: " + username.toString());
 				
 				if ( user == null ){
 					System.out.println(user);
-					w = "Username does not in the system. Please register or try again";
+					w = "Username is not in the system. Please register or try again";
 					JOptionPane.showMessageDialog(new JFrame(), w, "No User",
 							JOptionPane.ERROR_MESSAGE);
 					return ;
 				}
 				else if ( user.getPass().equalsIgnoreCase(password.toString()) ) {
-					
-					//Code below should be replaced with transition to main page..
-					w = "You are LOGGED IN !!!!";
-					JOptionPane.showMessageDialog(new JFrame(), w, "Success",
-							JOptionPane.DEFAULT_OPTION);
+					//Goes to MainFrame
+					MainFrame main = new MainFrame(user);
+					main.setVisible(true);
+					dispose();
 				}
 			}
 		});
