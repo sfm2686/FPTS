@@ -5,8 +5,13 @@
 package GUI;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.HashMap;
+
 import javax.swing.*;
 
+import DataInterface.DBInterface;
 import Finance.*;
 import Transaction.*;
 
@@ -18,6 +23,12 @@ public class MainFrame extends JFrame {
 
 	private User user;
 	private JButton watchList, undo, redo, logout;
+	private JPanel mainPanel = new AcctOverview();
+	
+	//Menu attrs
+	private JComboBox<String> menu;
+	private final String[] menuItems = {"Account Overview", "Simulation", "Transaction Menu",
+			"View Log", "View Recent Transactions"};
 	
 
 	/**
@@ -29,36 +40,21 @@ public class MainFrame extends JFrame {
 		this.setTitle("Main View");
 		this.user = user;
 		
-//		this.setLayout(new GridBagLayout());
-//		GridBagConstraints c = new GridBagConstraints();
-//		
-//		c.weightx = 1;
-//		c.weighty = 1;
-//		c.anchor = GridBagConstraints.NORTH;
-//		this.add(top(), c);
-//		
-//		
-//		c.anchor = GridBagConstraints.NORTHEAST;
-//		
-//		c.anchor = GridBagConstraints.CENTER;
-//		this.add(mainView(), c);
-//		
-//		c.anchor = GridBagConstraints.EAST;
-//		this.add(new WatchList(), c);
-		
 		this.setLayout(new BorderLayout());
 		
 		this.add(top(), BorderLayout.NORTH);
-		this.add(mainView(), BorderLayout.CENTER);
+		this.add(this.mainPanel, BorderLayout.CENTER);
+//		this.add(mainView(), BorderLayout.CENTER);
 		this.add(new WatchList(), BorderLayout.EAST);
+		this.assign();
+
 	}
+
 	
 	private JPanel top(){
 		JPanel panel = new JPanel(new FlowLayout());
-		String[] items = {"Account Overview", "Simulation", "Transaction Menu", "View Log"
-		                  , "View Recent Transaction"};
 		
-		JComboBox<String> menu = new JComboBox<>(items);
+		this.menu = new JComboBox<>(this.menuItems);
 		panel.add(menu);
 		panel.setBorder(BorderFactory.createEtchedBorder());
 		
@@ -77,16 +73,81 @@ public class MainFrame extends JFrame {
 		//panel.setBackground(new Color(50000));
 		return panel;
 	}
-
 	
 	private JPanel mainView(){
 		JPanel panel = new JPanel();
 		JTextPane acctOverview = new JTextPane();
 		acctOverview.setText("TESTING ACCOUNT OVERVIEW RIGHT NOW");
 		panel.add(acctOverview);
-		//panel.setBackground(new Color(12000));
+		panel.setBackground(new Color(12000));
 		panel.setSize(new Dimension(500, 700));
 		return panel;
+	}
+	
+	private void refresh(){
+		SwingUtilities.updateComponentTreeUI(this);
+	}
+	
+	private void assign(){
+		
+		//Drop-down menu
+		this.menu.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				switch(menu.getSelectedIndex()) {
+				case 0: mainPanel = new AcctOverview();
+						System.out.println("GOING TO ACCT OVERVIEW");
+					break;
+				case 1: mainPanel = new SimulationSettings();
+						System.out.println("GOING TO SIM SETTINGS");
+					break;
+				case 2: mainPanel = new TransactionMenu();
+						System.out.println("GOING TO TRANS. MENU");
+					break;
+				case 3: mainPanel = new LogView();
+						System.out.println("GOING TO LOG VIEW");
+					break;
+				case 4: mainPanel = new RecentTransactions();
+						System.out.println("GOING TO RECENT TRANS.");
+					break;
+				}
+				//End case
+				refresh();
+			}
+		});
+		
+		//Logout
+		this.logout.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String w = "Are you sure you want to save changes and logout?";
+				if (JOptionPane.showConfirmDialog(null, w, "Logout", 
+					    JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE)
+					    == JOptionPane.YES_OPTION){
+					
+						DBInterface.saveUserData(user);
+						//TODO
+						// CLOSE USER SESSION
+						Login main = new Login();
+						main.setVisible(true);
+						dispose();
+					}
+					else
+						return ;
+			}
+		});
+		
+		this.watchList.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 	}
 
 	/**
@@ -96,7 +157,7 @@ public class MainFrame extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MainFrame frame = new MainFrame(new User("testing..", "nono"));
+					MainFrame frame = new MainFrame(new User("TESTING", "nono"));
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
