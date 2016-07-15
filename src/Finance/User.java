@@ -3,6 +3,7 @@ package Finance;
 import java.util.ArrayList;
 import java.io.Serializable;
 import TransactionStorage.Log;
+import WatchList.WatchListItem;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
@@ -19,6 +20,7 @@ public class User implements Serializable {
 	private String password;
 	private ArrayList<Portfolio> portfolios;
 	private Log log;
+	private WatchListItem wList;
 
 	public User(String username, String password) {
 		this.username = username;

@@ -4,7 +4,7 @@
 package WatchList;
 
 import java.io.Serializable;
-
+import Market.Market;
 import Finance.Equity;
 
 
@@ -31,6 +31,7 @@ public class WatchListItem implements Serializable{
 	
 	public WatchListItem(Equity eq){
 		this.eq = eq;
+		Market.getMarketInstance().addEquity(eq);
 	}
 	
 	public void setHighBound(double n){
@@ -59,6 +60,18 @@ public class WatchListItem implements Serializable{
 	
 	public void clearHighBound(){
 		this.highBound = null;
+	}
+	
+	public Equity getEq(){
+		return this.eq;
+	}
+	
+	public void setState(State state){
+		this.state = state;
+	}
+	
+	public State getState(){
+		return(this.state);
 	}
 	
 	

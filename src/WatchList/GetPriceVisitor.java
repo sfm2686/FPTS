@@ -1,4 +1,7 @@
 package WatchList;
+
+import Market.Market;
+
 /**
  * 
  */
@@ -9,4 +12,8 @@ package WatchList;
  */
 public class GetPriceVisitor implements Visitor {
 
+	@Override
+	public Object visit(WatchListItem w) {
+		return (w.getEq().getPrice());
+	}
 }

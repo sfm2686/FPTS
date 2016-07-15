@@ -6,9 +6,8 @@ package WatchList;
 import java.io.Serializable;
 import java.util.*;
 
-import Finance.Stock;
-import Market.Market;
-import Market.YahooAPI;
+import Finance.*;
+import Market.*;
 
 
 /**
@@ -35,7 +34,21 @@ public class WatchList extends Observable implements Serializable{
 		this.items.remove(n);
 	}
 	
+	
+	public WLPriorityIterator getIterator(){
+		return new WLPriorityIterator();
+	}
+	
 	public void refresh(){
+		
+		Iterator iter = this.getIterator();
+		Visitor v1 = new SetStateVisitor();
+		
+		while (!iter.isDone()){
+			iter.currentItem().accept(v1);
+			iter.next();
+		}
+		
 		setChanged();
 		notifyObservers();
 	}
@@ -63,6 +76,45 @@ public class WatchList extends Observable implements Serializable{
 		
 	}
 	//----------------------------------ALARM-----------------------------------//
+	
+	
+	//----------------------------------ITERATOR-----------------------------------//
+	private class WLPriorityIterator implements Iterator{
+
+		private int currentIndex = 0;
+		private ArrayList<WatchListItem> sorted;
+		
+		public WLPriorityIterator() {
+			sorted = new ArrayList<WatchListItem>();
+		}
+		
+		@Override
+		public WatchListItem first() {
+			return this.sorted.get(0);
+		}
+
+
+		@Override
+		public void next() {
+			this.currentIndex ++;
+		}
+
+
+		@Override
+		public WatchListItem currentItem() {
+			if ( !isDone() )
+				return this.sorted.get(this.currentIndex);
+			return null;
+		}
+
+		@Override
+		public boolean isDone() {
+			return ( this.currentIndex == this.sorted.size() );
+		}
+		
+	}
+	//----------------------------------ITERATOR-----------------------------------//
+
 	
 	
 	/**

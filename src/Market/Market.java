@@ -18,6 +18,11 @@ public class Market extends Observable {
 
 	private final int nameIndex = 0;
 	private final int priceIndex = 1;
+	private int updateInterval = 60; // Default to updating the thread every minute
+
+	public void setUpdateInterval(int time){
+		this.updateInterval = time;
+	}
 	
 	//The key of the HashMap is the ticker symbol.
 	//Value by index:
@@ -51,11 +56,12 @@ public class Market extends Observable {
 	 * Singleton private constructor
 	 */
 	private Market() {
-		
 		this.obStocks = new ArrayList<Stock>();
 		this.stocks = new HashMap<String, ArrayList<String>>();
 		this.indices = new HashMap<String, ArrayList<String>>();
 		CSVParser.read();
+		StockUpdate thread = new StockUpdate();
+		thread.run();
 	}
 	
 	/**
@@ -228,6 +234,28 @@ public class Market extends Observable {
 		System.out.println("SIZOE OF " + name + " is: " + this.indices.get(name).size() );
 		return Math.round( result * 100.0 ) / 100.0;
 	}
+	
+	/******************************** StockUpdate ********************************/
+	private class StockUpdate extends Thread {
+		
+		private StockUpdate(){}
+		
+		@Override
+		public void run(){
+			while ( true ){
+				try {
+					sleep(updateInterval * 1000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				for (Stock s : obStocks){
+					setPrice(s.getName(), YahooAPI.getPrice(s.getName()));
+				}
+				doneUpdating();
+			}
+		}
+	}
+	/******************************** StockUpdate ********************************/
 
 	/**
 	 * @param args

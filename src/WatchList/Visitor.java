@@ -9,5 +9,5 @@ package WatchList;
  */
 public interface Visitor {
 
-	public void visit(WatchListItem w);
+	public Object visit(WatchListItem w);
 }
