@@ -23,7 +23,7 @@ public class MainFrame extends JFrame {
 
 	private User user;
 	private JButton watchList, undo, redo, logout;
-	private JPanel mainPanel = new AcctOverview();
+	private JPanel mainPanel, watchListPanel;
 	
 	//Menu attrs
 	private JComboBox<String> menu;
@@ -34,18 +34,22 @@ public class MainFrame extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public MainFrame(User user) {
+	public MainFrame(User user, JPanel mainPanel) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(new Dimension(800, 800));
 		this.setTitle("Main View");
 		this.user = user;
+		this.mainPanel = mainPanel;
 		
 		this.setLayout(new BorderLayout());
 		
 		this.add(top(), BorderLayout.NORTH);
 		this.add(this.mainPanel, BorderLayout.CENTER);
 //		this.add(mainView(), BorderLayout.CENTER);
-		this.add(new WatchList(), BorderLayout.EAST);
+		
+		//Testing..
+		this.watchListPanel = new WatchListGUI();
+		this.add(this.watchListPanel, BorderLayout.EAST);
 		this.assign();
 
 	}
@@ -85,7 +89,9 @@ public class MainFrame extends JFrame {
 	}
 	
 	private void refresh(){
-		SwingUtilities.updateComponentTreeUI(this);
+		MainFrame main = new MainFrame(this.user, this.mainPanel);
+		main.setVisible(true);
+		this.dispose();
 	}
 	
 	private void assign(){
@@ -98,7 +104,7 @@ public class MainFrame extends JFrame {
 				
 				switch(menu.getSelectedIndex()) {
 				case 0: mainPanel = new AcctOverview();
-						System.out.println("GOING TO ACCT OVERVIEW");
+						
 					break;
 				case 1: mainPanel = new SimulationSettings();
 						System.out.println("GOING TO SIM SETTINGS");
@@ -131,6 +137,7 @@ public class MainFrame extends JFrame {
 						DBInterface.saveUserData(user);
 						//TODO
 						// CLOSE USER SESSION
+						user = null;
 						Login main = new Login();
 						main.setVisible(true);
 						dispose();
@@ -157,7 +164,7 @@ public class MainFrame extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MainFrame frame = new MainFrame(new User("TESTING", "nono"));
+					MainFrame frame = new MainFrame(new User("TESTING", "nono"), new AcctOverview());
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
