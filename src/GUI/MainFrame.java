@@ -17,6 +17,7 @@ import Transaction.*;
 public class MainFrame extends JFrame {
 
 	private User user;
+	private JButton watchList, undo, redo, logout;
 	
 
 	/**
@@ -28,37 +29,52 @@ public class MainFrame extends JFrame {
 		this.setTitle("Main View");
 		this.user = user;
 		
-		this.setLayout(new GridBagLayout());
-		GridBagConstraints c = new GridBagConstraints();
-		c.anchor = GridBagConstraints.NORTHWEST;
-		c.weightx = 1;
-		c.weighty = 1;
+//		this.setLayout(new GridBagLayout());
+//		GridBagConstraints c = new GridBagConstraints();
+//		
+//		c.weightx = 1;
+//		c.weighty = 1;
+//		c.anchor = GridBagConstraints.NORTH;
+//		this.add(top(), c);
+//		
+//		
+//		c.anchor = GridBagConstraints.NORTHEAST;
+//		
+//		c.anchor = GridBagConstraints.CENTER;
+//		this.add(mainView(), c);
+//		
+//		c.anchor = GridBagConstraints.EAST;
+//		this.add(new WatchList(), c);
 		
-		this.add(topLeft(), c);
+		this.setLayout(new BorderLayout());
 		
-		c.anchor = GridBagConstraints.NORTH;
-		this.add(topRight(), c);
-		this.add(mainView());
-		this.add(new WatchList());
+		this.add(top(), BorderLayout.NORTH);
+		this.add(mainView(), BorderLayout.CENTER);
+		this.add(new WatchList(), BorderLayout.EAST);
 	}
 	
-	private JPanel topLeft(){
+	private JPanel top(){
 		JPanel panel = new JPanel(new FlowLayout());
 		String[] items = {"Account Overview", "Simulation", "Transaction Menu", "View Log"
-		                  , "View Recent Transaction", "Logout"};
+		                  , "View Recent Transaction"};
 		
 		JComboBox<String> menu = new JComboBox<>(items);
 		panel.add(menu);
-		
-		return panel;
-	}
-	
-	private JPanel topRight(){
-		JPanel panel = new JPanel();
+		panel.setBorder(BorderFactory.createEtchedBorder());
 		
 		JLabel currentUser = new JLabel("Logged in as: " + this.user.getUserName());
 		panel.add(currentUser);
 		
+		this.watchList = new JButton("Watch List");
+		this.logout = new JButton("Logout");
+		this.undo = new JButton("Undo");
+		this.redo = new JButton("Redo");
+
+		panel.add(this.undo);
+		panel.add(this.redo);
+		panel.add(this.watchList);
+		panel.add(this.logout);
+		//panel.setBackground(new Color(50000));
 		return panel;
 	}
 
@@ -68,6 +84,8 @@ public class MainFrame extends JFrame {
 		JTextPane acctOverview = new JTextPane();
 		acctOverview.setText("TESTING ACCOUNT OVERVIEW RIGHT NOW");
 		panel.add(acctOverview);
+		//panel.setBackground(new Color(12000));
+		panel.setSize(new Dimension(500, 700));
 		return panel;
 	}
 
