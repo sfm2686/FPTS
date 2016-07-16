@@ -84,7 +84,7 @@ public class Log implements Serializable { // Serializable in order to be persis
 		this.sort(); // Sort before ever outputting
 		String str = "\n";
 		for(Command command : this.history){
-			str += "\t" + command.toString() + "\n\n";
+			str += "\t" + command.toString() + ".\n";
 		}
 		return str;
 	}
@@ -94,18 +94,41 @@ public class Log implements Serializable { // Serializable in order to be persis
 	 * @param args
 	 */
 	public static void main(String[] args) throws Exception {
+//		Portfolio port1 = new Portfolio("Port 1");
+//		Portfolio port2 = new Portfolio("Port 2");
+//		Command c1 = new CreateCash(port2, "cash 1", 10.0);
+//		Thread.sleep(1000);
+//		Command c2 = new CreateCash(port2, "cash 2", 10.0);
+//		Thread.sleep(1000);
+//		Command c3 = new CreateCash(port1, "cash 3", 10.0);
+//		Thread.sleep(1000);
+//		Command c4 = new CreateCash(port1, "cash 4", 10.0);
+//		Thread.sleep(1000);
+//		Command c5 = new CreateCash(port1, "cash 5", 10.0);
+//		Thread.sleep(1000);
+//		Command c6 = new CreateCash(port1, "cash 6", 10.0);
+//		
+//		Collection<Command> coll = new Stack<Command>();
+//		coll.add(c5);
+//		coll.add(c6);
+//		
+//		Log log = new Log();
+//		log.add(c3);
+//		log.add(c4);
+//		log.add(c1);
+//		log.add(c2);
+//		
+//		System.out.println(log.toString());
+//		log.sort();
+//		System.out.println(log.toString());	
+		
 		Portfolio port1 = new Portfolio("Port 1");
 		Portfolio port2 = new Portfolio("Port 2");
 		Command c1 = new CreateCash(port2, "cash 1", 10.0);
-		Thread.sleep(1000);
 		Command c2 = new CreateCash(port2, "cash 2", 10.0);
-		Thread.sleep(1000);
 		Command c3 = new CreateCash(port1, "cash 3", 10.0);
-		Thread.sleep(1000);
 		Command c4 = new CreateCash(port1, "cash 4", 10.0);
-		Thread.sleep(1000);
 		Command c5 = new CreateCash(port1, "cash 5", 10.0);
-		Thread.sleep(1000);
 		Command c6 = new CreateCash(port1, "cash 6", 10.0);
 		
 		Collection<Command> coll = new Stack<Command>();
@@ -120,6 +143,10 @@ public class Log implements Serializable { // Serializable in order to be persis
 		
 		System.out.println(log.toString());
 		log.sort();
-		System.out.println(log.toString());		
+		System.out.println(log.toString());	
+		
+		String[] logA = log.toString().split(".");
+		
+		System.out.println(logA);
 	}
 }

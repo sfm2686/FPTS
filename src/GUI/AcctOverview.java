@@ -6,6 +6,8 @@ package GUI;
 import java.awt.*;
 import javax.swing.*;
 
+import Transaction.*;
+
 import Finance.CashAcct;
 import Finance.Portfolio;
 import Finance.User;
@@ -46,11 +48,6 @@ public class AcctOverview extends JPanel {
 		testingPorts();
 		if ( this.user.getPorts().size() == 0 )
 			return panel;
-//		JList list = new JList(user.getPorts().toArray()); //data has type Object[]
-//		list.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
-//		list.setLayoutOrientation(JList.HORIZONTAL_WRAP);
-//		list.setVisibleRowCount(-1);
-//		list.setSize(new Dimension(450, 600));
 		
 		DefaultListModel model = new DefaultListModel();
 		
@@ -79,10 +76,14 @@ public class AcctOverview extends JPanel {
 	}
 	
 	private void testingPorts(){
+		Client c = new Client(this.user);
 		for ( int i = 0; i < 5; i ++ ){
 			this.user.addPort(new Portfolio("port" + i));
-			this.user.getPorts().get(i).addCashAccount(new CashAcct("cash" + i, ( i + 2 ) * 4));
-			this.user.getPorts().get(i).addCashAccount(new CashAcct("cash" + i + 1, ( i + 2 ) * 4));
 		}
+		
+		for ( int i = 0; i < 5; i ++ )
+			c.createCash(user.getPorts().get(i), "cash" + i, ( i + 2 ) * 4);
+		
+		System.out.println(this.user.getLog());
 	}
 }
