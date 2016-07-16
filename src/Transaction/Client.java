@@ -43,7 +43,7 @@ public class Client {
 		invoker.invoke(c);
 	}
 	public void createCash(Portfolio port, String name, double balance){
-		Command c = new WithdrawCash(port, name, balance);
+		Command c = new CreateCash(port, name, balance);
 		invoker.invoke(c);
 	}
 	public void removeCash(Portfolio port, String accountName){

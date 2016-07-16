@@ -11,13 +11,14 @@ import java.util.Observable;
 import java.util.Observer;
 import javax.swing.*;
 
+import WatchList.WatchList;
 import javafx.scene.control.ScrollBar;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
  *
  */
-public class WatchList extends JPanel implements Observer {
+public class WatchListGUI extends JPanel implements Observer {
 
 	private ArrayList<WItemLabel> witems = new ArrayList<WItemLabel>();
 	private JList labels = new JList();
@@ -25,7 +26,7 @@ public class WatchList extends JPanel implements Observer {
 	/**
 	 * Create the panel.
 	 */
-	public WatchList() {
+	public WatchListGUI(WatchList watch) {
 		this.setBorder(
 	            BorderFactory.createTitledBorder("Watch List"));
 		
@@ -41,8 +42,6 @@ public class WatchList extends JPanel implements Observer {
 		scrollPane.setViewportView(this.labels);
 		scrollPane.setPreferredSize(new Dimension(120, 700));
 		this.add(scrollPane);
-
-		//this.setBackground(new Color(00));
 
 		this.setPreferredSize(new Dimension(140, 600));
 	}

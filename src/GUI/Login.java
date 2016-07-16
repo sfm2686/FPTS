@@ -142,7 +142,8 @@ public class Login extends JFrame {
 				}
 				else if ( user.getPass().equalsIgnoreCase(password.toString()) ) {
 					//Goes to MainFrame
-					MainFrame main = new MainFrame(user);
+					MainFrame main = new MainFrame(user, new AcctOverview(user), 
+							new WatchListGUI(user.getWatchList()));
 					main.setVisible(true);
 					dispose();
 				}

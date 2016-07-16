@@ -69,6 +69,10 @@ public class SimulationContext {
 		}
 		return (double) this.simResults.get(this.count++);
 	}
+	
+	public int howManyLeft(){
+		return this.simResults.size() - count;
+	}
 
 	public void newSim(double growthRate, int timeSteps, String interval, String type) {
 		this.growthRate = growthRate / 100;

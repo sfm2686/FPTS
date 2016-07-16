@@ -1,7 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * 
  */
 package GUI;
 
@@ -11,16 +9,19 @@ import java.awt.Dimension;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-/**
- *
- * @author muro
- */
-public class PortOverview extends JPanel {
+import Finance.User;
 
-    /**
-     * Creates new form PortOverview
-     */
-    public PortOverview() {
+/**
+ * @authors Sultan Mira, Hunter Caskey
+ *
+ */
+public class RecentTransactions extends JPanel {
+
+	private User user;
+	/**
+	 * Create the panel.
+	 */
+	public RecentTransactions(User user) {
 		this.setSize(new Dimension(500, 700));
 		this.setLayout(new BorderLayout());
 		
