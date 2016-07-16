@@ -4,23 +4,33 @@ import Finance.*;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.ArrayList;
-
-
 import Market.Market;
 
 /**
+ * AddShares has functionality for adding shares to an existing equity as well as creating a new
+ * equity into a portfolio.
+ *          
  * @authors Sultan Mira, Hunter Caskey
- * 
- *          AddShares has functionality for adding shares to an existing equity as well as creating a new
- *          equity into a portfolio.
- *
  */
+@SuppressWarnings("serial")
 public class AddShares extends Command implements Serializable, UndoableRedoable {
 
+	/****** Class Attributes *****/
+	
 	private String equityName;
 	private int numShares;
 	private Date date;
 
+	/****** Class Mehods *****/
+	
+	/**
+	 * Constructor for an AddShares command object.
+	 * 
+	 * @param receiver The portfolio that we the command is operating on.
+	 * @param name The name of the equity being added to.
+	 * @param shares The number of shares to add to the given equity.
+	 * @param acquitionDate The date that the equity shares were acquired.
+	 */
 	public AddShares(Portfolio receiver, String name, int shares, Date acquitionDate) {
 		super(receiver);
 		this.equityName = name;
@@ -28,13 +38,24 @@ public class AddShares extends Command implements Serializable, UndoableRedoable
 		this.date = acquitionDate;
 	}
 
+	/**
+	 * execute is defined by the Command interface.
+	 * 
+	 * execute will add the number of shares to the given equity in the 
+	 * given portfolio. If the equity does not yet exist within the portfolio
+	 * then one will be created with the specified number of shares.
+	 * 
+	 * @return A boolean indicating the success of the command.
+	 */
 	@Override
 	public boolean execute() {
 		Equity equity = super.getReciever().getEquity(this.equityName);
+		// If the equity is already in the portfolio, add to it.
 		if (equity != null) {
 			equity.addShares(this.numShares);
 			return true;
 		}
+		// Otherwise create an appropriate equity using Market
 		else{
 			if(Market.getMarketInstance().isIndex(this.equityName))
 				equity = new Index(this.numShares, this.equityName);
@@ -42,13 +63,18 @@ public class AddShares extends Command implements Serializable, UndoableRedoable
 				equity = new Stock(this.numShares, this.equityName);
 			if(equity != null){
 				this.getReciever().addEquity(equity);
-				Market.getMarketInstance().addEquity(equity);
+				Market.getMarketInstance().addUpdateEquity(equity);
 				return true;
 			}
 		}
 		return false;
 	}
 	
+	/**
+	 * unexcute is defined by the UndoableRedoable interface.
+	 * 
+	 * unexecute simply reverses the operations performed in execute. 
+	 */
 	@Override
 	public void unexecute() {
 		Equity equity = super.getReciever().getEquity(this.equityName);
@@ -60,11 +86,24 @@ public class AddShares extends Command implements Serializable, UndoableRedoable
 		}
 	}
 
+	/**
+	 * copy is defined by the UndoableRedoable interface.
+	 * 
+	 * copy returns a 'clone' of the command.
+	 * 
+	 * @return A copy of this command.
+	 */
 	@Override
 	public UndoableRedoable copy() {
 		return(new AddShares(this.getReciever(), this.equityName, this.numShares, this.date));
 	}
 	
+	/**
+	 * getTransactionValue is used by macro command that are
+	 * comprised of AddShare commands.
+	 * 
+	 * @return The total cost of performing this command.
+	 */
 	public double getTransactionValue(){
 		if (Market.getMarketInstance().isStock(this.equityName))
 			return(this.numShares * Market.getMarketInstance().getPrice(this.equityName));
@@ -74,13 +113,17 @@ public class AddShares extends Command implements Serializable, UndoableRedoable
 			return(0.0);
 	}
 	
+	/**
+	 * Generic toString method.
+	 */
 	@Override
 	public String toString() {
 		return "\nDate: " + this.getTransactionDate() + "\n\tPortfolio Operated On: " + super.getReciever() + "\n\tEquity: " + this.equityName
-				+ "\n\tTransaction: Add Equity" + "\n\tShares: " + this.numShares;
+				+ "\n\tTransaction: Add Equity" + "\n\tShares: " + this.numShares
+				+ "\n\tAcquisition Date: " + this.date;
 	}
 
-	/****** Lead Commands do not Implement Composite Behaviors ******/
+	/****** Leaf Commands do not Implement Composite Behaviors ******/
 	
 	@Override
 	public void addChild(Command node) {}
@@ -91,7 +134,5 @@ public class AddShares extends Command implements Serializable, UndoableRedoable
 
 	@Override
 	public ArrayList<Command> getChildren() { return null; }
-
-
 
 }
