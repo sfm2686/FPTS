@@ -11,6 +11,7 @@ import java.util.Observable;
 import java.util.Observer;
 import javax.swing.*;
 
+import WatchList.WatchList;
 import javafx.scene.control.ScrollBar;
 
 /**
@@ -25,7 +26,7 @@ public class WatchListGUI extends JPanel implements Observer {
 	/**
 	 * Create the panel.
 	 */
-	public WatchListGUI() {
+	public WatchListGUI(WatchList watch) {
 		this.setBorder(
 	            BorderFactory.createTitledBorder("Watch List"));
 		

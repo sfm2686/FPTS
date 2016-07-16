@@ -5,15 +5,15 @@
 package GUI;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.HashMap;
+import java.awt.event.*;
+import java.util.*;
 
 import javax.swing.*;
 
 import DataInterface.DBInterface;
 import Finance.*;
 import Transaction.*;
+import WatchList.WatchList;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
@@ -34,7 +34,7 @@ public class MainFrame extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public MainFrame(User user, JPanel mainPanel) {
+	public MainFrame(User user, JPanel mainPanel, JPanel watch) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(new Dimension(800, 800));
 		this.setTitle("Main View");
@@ -47,8 +47,7 @@ public class MainFrame extends JFrame {
 		this.add(this.mainPanel, BorderLayout.CENTER);
 //		this.add(mainView(), BorderLayout.CENTER);
 		
-		//Testing..
-		this.watchListPanel = new WatchListGUI();
+		this.watchListPanel = watch;
 		this.add(this.watchListPanel, BorderLayout.EAST);
 		this.assign();
 
@@ -89,7 +88,7 @@ public class MainFrame extends JFrame {
 	}
 	
 	private void refresh(){
-		MainFrame main = new MainFrame(this.user, this.mainPanel);
+		MainFrame main = new MainFrame(this.user, this.mainPanel, this.watchListPanel);
 		main.setVisible(true);
 		this.dispose();
 	}
@@ -164,7 +163,8 @@ public class MainFrame extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MainFrame frame = new MainFrame(new User("TESTING", "nono"), new AcctOverview());
+					MainFrame frame = new MainFrame(new User("TESTING", "nono"), new AcctOverview(),
+							new WatchListGUI(new WatchList(0)));
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();

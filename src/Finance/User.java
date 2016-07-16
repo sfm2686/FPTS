@@ -3,6 +3,7 @@ package Finance;
 import java.util.ArrayList;
 import java.io.Serializable;
 import TransactionStorage.Log;
+import WatchList.WatchList;
 import WatchList.WatchListItem;
 
 /**
@@ -20,7 +21,7 @@ public class User implements Serializable {
 	private String password;
 	private ArrayList<Portfolio> portfolios;
 	private Log log;
-	private WatchListItem wList;
+	private WatchList wList;
 
 	public User(String username, String password) {
 		this.username = username;
@@ -47,6 +48,10 @@ public class User implements Serializable {
 	
 	public Log getLog(){
 		return this.log;
+	}
+	
+	public WatchList getWatchList(){
+		return this.wList;
 	}
 	
 	public String toString(){
