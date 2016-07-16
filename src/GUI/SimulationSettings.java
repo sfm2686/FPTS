@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+import Finance.Portfolio;
 import Finance.User;
 import Simulation.*;
 
@@ -26,10 +27,13 @@ public class SimulationSettings extends JPanel {
 	private final String[] types = {"Bear", "Bull", "No-growth"};
 	private final String[] intervals = {"Year", "Month", "Day"};
 	private JComboBox<String> type = new JComboBox<>(this.types);
+	private JComboBox<String> timeInterval = new JComboBox<>(this.intervals);
+	JComboBox<String> ports = null;
 	private JButton simulate;
 	private User user;
+	private double value = -1;
 	
-	private JSpinner timeS, stepS, gRateS, typeS;
+	private JSpinner stepS, gRateS;
 	
 	/**
 	 * Create the panel.
@@ -39,6 +43,17 @@ public class SimulationSettings extends JPanel {
 		this.setLayout(new BorderLayout());
 		this.user = u;
 	
+		this.add(top(), BorderLayout.NORTH);
+		this.add(middle(), BorderLayout.CENTER);
+		this.add(bottom(), BorderLayout.SOUTH);
+		this.assign();
+	}
+	
+	public SimulationSettings(double value) {
+		this.setSize(new Dimension(500, 700));
+		this.setLayout(new BorderLayout());
+		this.value = value;
+		
 		this.add(top(), BorderLayout.NORTH);
 		this.add(middle(), BorderLayout.CENTER);
 		this.add(bottom(), BorderLayout.SOUTH);
@@ -62,9 +77,7 @@ public class SimulationSettings extends JPanel {
 		SpinnerModel t;
 		
 		Dimension spinD = new Dimension(100, 20);
-		t = new SpinnerListModel(this.intervals);
-		this.timeS = new JSpinner(t);
-		this.timeS.setPreferredSize(spinD);
+
 		
 		t = new SpinnerNumberModel(2, 0, 100, 1);
 		this.stepS = new JSpinner(t);
@@ -74,24 +87,40 @@ public class SimulationSettings extends JPanel {
 		this.gRateS = new JSpinner(t);
 		this.gRateS.setPreferredSize(spinD);
 		
-		t = new SpinnerListModel(this.types);
-		this.typeS = new JSpinner(t);
-		this.typeS.setPreferredSize(spinD);
-		
 		GridBagConstraints c = new GridBagConstraints();
 		c.anchor = c.WEST;
 		c.gridx = 0;
 		c.gridy = 0;
 		
+		if ( this.value == -1 ){
+			
+			JLabel port  = new JLabel("Portfolio ");
+			String[] portsA = new String[this.user.getPorts().size()];
+			for (int p = 0; p < this.user.getPorts().size(); p ++)
+				portsA[p] = this.user.getPorts().get(p).getName() + ", Value: " 
+				+ this.user.getPorts().get(p).getPortfolioValue();
+			this.ports = new JComboBox<>(portsA);
+			
+			panel.add(port, c);
+			c.gridx ++;
+			panel.add(ports, c);
+			c.gridx = 0;
+			c.gridy ++;
+		}
+		else {
+			panel.add(new JLabel("Starting value: " + this.value), c);
+			c.gridy ++;
+		}
+		
 		panel.add(type, c);
 		c.gridx ++;
-		panel.add(this.typeS, c);
+		panel.add(this.type, c);
 		c.gridx = 0;
 		c.gridy ++;
 		
 		panel.add(time, c);
 		c.gridx ++;
-		panel.add(this.timeS, c);
+		panel.add(this.timeInterval, c);
 		c.gridx = 0;
 		c.gridy ++;
 		
@@ -122,10 +151,28 @@ public class SimulationSettings extends JPanel {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//public SimulationContext(double growthRate, double value, int timeSteps, String interval, String type) {
-				String w = "SIMULATION RESULTS SHOULD POP UP INSTEAD OF DIS";
-				JOptionPane.showMessageDialog(new JFrame(), w, "Empty Field/s",
-						JOptionPane.ERROR_MESSAGE);
+//				String w = "SIMULATION RESULTS SHOULD POP UP INSTEAD OF DIS";
+//				JOptionPane.showMessageDialog(new JFrame(), w, "Empty Field/s",
+//						JOptionPane.ERROR_MESSAGE);
+				
+				double initValue, growthRate;
+				int timeSteps;
+				String timeInt, simType;
+				if ( value == -1 ){
+					initValue = user.getPorts().get(ports.getSelectedIndex()).getPortfolioValue();
+				}
+				else {
+					initValue = value;
+				}
+				growthRate = (Integer) gRateS.getValue();
+				timeSteps = (Integer) stepS.getValue();
+				timeInt = (String) timeInterval.getSelectedItem();
+				simType = (String) type.getSelectedItem();
+				
+				SimulationContext simCon = new SimulationContext(
+						growthRate, initValue, timeSteps, timeInt, simType);
+				simCon.simulate();
+				SimulationResults sim = new SimulationResults(simCon);
 			}
 		});
 	}

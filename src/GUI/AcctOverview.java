@@ -79,11 +79,11 @@ public class AcctOverview extends JPanel {
 		Client c = new Client(this.user);
 		for ( int i = 0; i < 5; i ++ ){
 			this.user.addPort(new Portfolio("port" + i));
+			//System.out.println("i == " + i);
 		}
+	//	System.out.println("user.getPorts().size() == " + this.user.getPorts().size());
 		
 		for ( int i = 0; i < 5; i ++ )
-			c.createCash(user.getPorts().get(i), "cash" + i, ( i + 2 ) * 4);
-		
-		System.out.println(this.user.getLog());
+			c.createCash(user.getPorts().get(i), "cash" + i, ( i + 2 ) * 4);		
 	}
 }
