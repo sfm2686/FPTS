@@ -6,6 +6,7 @@ package GUI;
 import java.awt.*;
 import javax.swing.*;
 
+import Finance.CashAcct;
 import Finance.Portfolio;
 import Finance.User;
 
@@ -40,7 +41,7 @@ public class AcctOverview extends JPanel {
 		JPanel panel = new JPanel();
 		panel.setLayout(new BorderLayout());
 		
-		panel.add(new JLabel("Portfolio list: "), BorderLayout.NORTH);
+		panel.add(new JLabel("Portfolios: "), BorderLayout.NORTH);
 		
 		testingPorts();
 		if ( this.user.getPorts().size() == 0 )
@@ -53,15 +54,16 @@ public class AcctOverview extends JPanel {
 		
 		DefaultListModel model = new DefaultListModel();
 		
-		for ( Portfolio port : user.getPorts() )
+		for ( Portfolio port : user.getPorts() ){
 			model.addElement(port);
+			model.addElement(" ");
+		}
 
 		JList list = new JList(model);
-		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setViewportView(list);
-		scrollPane.setPreferredSize(new Dimension(450, 600));
-		panel.add(list, BorderLayout.CENTER);
+		scrollPane.setPreferredSize(new Dimension(650, 650));
+		panel.add(scrollPane, BorderLayout.CENTER);
 		
 		return panel;
 	}
@@ -79,6 +81,8 @@ public class AcctOverview extends JPanel {
 	private void testingPorts(){
 		for ( int i = 0; i < 5; i ++ ){
 			this.user.addPort(new Portfolio("port" + i));
+			this.user.getPorts().get(i).addCashAccount(new CashAcct("cash" + i, ( i + 2 ) * 4));
+			this.user.getPorts().get(i).addCashAccount(new CashAcct("cash" + i + 1, ( i + 2 ) * 4));
 		}
 	}
 }
