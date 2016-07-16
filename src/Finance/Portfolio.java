@@ -187,14 +187,14 @@ public class Portfolio implements Serializable {
 	 */
 	@Override
 	public String toString() {
-		String string = "Portfolio: " + this.name + "\n\tHoldings:";
+		String string = "\n" + this.name + "\n\tHoldings:";
 		for (CashAcct account : this.cashAccounts) {
 			string += "\n\t\t" + account.toString();
 		}
 		for (Equity equity : this.equities) {
 			string += "\n\t\t" + equity.toString();
 		}
-		return string;
+		return string + "\n";
 	}
 
 	/**

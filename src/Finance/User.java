@@ -34,7 +34,7 @@ public class User implements Serializable {
 		return this.portfolios;
 	}
 
-	protected void addPort(Portfolio port) {
+	public void addPort(Portfolio port) {
 		this.portfolios.add(port);
 	}
 

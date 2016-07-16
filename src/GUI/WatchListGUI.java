@@ -43,8 +43,6 @@ public class WatchListGUI extends JPanel implements Observer {
 		scrollPane.setPreferredSize(new Dimension(120, 700));
 		this.add(scrollPane);
 
-		//this.setBackground(new Color(00));
-
 		this.setPreferredSize(new Dimension(140, 600));
 	}
 

@@ -9,9 +9,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.scene.control.ComboBox;
+import Finance.User;
+import Simulation.*;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
@@ -28,16 +27,17 @@ public class SimulationSettings extends JPanel {
 	private final String[] intervals = {"Year", "Month", "Day"};
 	private JComboBox<String> type = new JComboBox<>(this.types);
 	private JButton simulate;
+	private User user;
 	
 	private JSpinner timeS, stepS, gRateS, typeS;
 	
 	/**
 	 * Create the panel.
 	 */
-	public SimulationSettings() {
-		setBorder(BorderFactory.createEtchedBorder());
+	public SimulationSettings(User u) {
 		this.setSize(new Dimension(500, 700));
 		this.setLayout(new BorderLayout());
+		this.user = u;
 	
 		this.add(top(), BorderLayout.NORTH);
 		this.add(middle(), BorderLayout.CENTER);
@@ -122,7 +122,10 @@ public class SimulationSettings extends JPanel {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				//public SimulationContext(double growthRate, double value, int timeSteps, String interval, String type) {
+				String w = "SIMULATION RESULTS SHOULD POP UP INSTEAD OF DIS";
+				JOptionPane.showMessageDialog(new JFrame(), w, "Empty Field/s",
+						JOptionPane.ERROR_MESSAGE);
 			}
 		});
 	}

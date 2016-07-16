@@ -1,8 +1,11 @@
 package GUI;
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import Finance.User;
 
 /**
  * 
@@ -14,12 +17,39 @@ import javax.swing.JPanel;
  */
 public class TransactionMenu extends JPanel {
 
+	private User user;
 	/**
 	 * Create the panel.
 	 */
-	public TransactionMenu() {
-		this.add(new JLabel("TRANS. MENU"));
+	public TransactionMenu(User user) {
 		this.setSize(new Dimension(500, 700));
+		this.setLayout(new BorderLayout());
+		
+		this.add(top(), BorderLayout.NORTH);
+		this.add(middle(), BorderLayout.CENTER);
+		this.add(bottom(), BorderLayout.SOUTH);
+		this.assign();
+	}
+	
+	private JPanel top(){
+		JPanel panel = new JPanel();
+		panel.add(new JLabel("PANEL NAME"));
+		return panel;
+	}
+	
+	private JPanel middle(){
+		JPanel panel = new JPanel();
+		
+		return panel;
 	}
 
+	private JPanel bottom(){
+		JPanel panel = new JPanel();
+		
+		return panel;
+	}
+	
+	private void assign(){
+		
+	}
 }

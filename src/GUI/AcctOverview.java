@@ -3,10 +3,11 @@
  */
 package GUI;
 
-import java.awt.Dimension;
+import java.awt.*;
+import javax.swing.*;
 
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import Finance.Portfolio;
+import Finance.User;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
@@ -14,12 +15,70 @@ import javax.swing.JPanel;
  */
 public class AcctOverview extends JPanel {
 
+	private User user;
 	/**
 	 * Create the panel.
 	 */
-	public AcctOverview() {
-		this.add(new JLabel("ACCOUNT OVERVIEW"));
+	public AcctOverview(User user) {
 		this.setSize(new Dimension(500, 700));
+		this.setLayout(new BorderLayout());
+		
+		this.user = user;
+		this.add(top(), BorderLayout.NORTH);
+		this.add(middle(), BorderLayout.WEST);
+		this.add(bottom(), BorderLayout.SOUTH);
+		this.assign();
+	}
+	
+	private JPanel top(){
+		JPanel panel = new JPanel();
+		panel.add(new JLabel("Account Overview"));
+		return panel;
+	}
+	
+	private JPanel middle(){
+		JPanel panel = new JPanel();
+		panel.setLayout(new BorderLayout());
+		
+		panel.add(new JLabel("Portfolio list: "), BorderLayout.NORTH);
+		
+		testingPorts();
+		if ( this.user.getPorts().size() == 0 )
+			return panel;
+//		JList list = new JList(user.getPorts().toArray()); //data has type Object[]
+//		list.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+//		list.setLayoutOrientation(JList.HORIZONTAL_WRAP);
+//		list.setVisibleRowCount(-1);
+//		list.setSize(new Dimension(450, 600));
+		
+		DefaultListModel model = new DefaultListModel();
+		
+		for ( Portfolio port : user.getPorts() )
+			model.addElement(port);
+
+		JList list = new JList(model);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setViewportView(list);
+		scrollPane.setPreferredSize(new Dimension(450, 600));
+		panel.add(list, BorderLayout.CENTER);
+		
+		return panel;
 	}
 
+	private JPanel bottom(){
+		JPanel panel = new JPanel();
+		
+		return panel;
+	}
+	
+	private void assign(){
+		
+	}
+	
+	private void testingPorts(){
+		for ( int i = 0; i < 5; i ++ ){
+			this.user.addPort(new Portfolio("port" + i));
+		}
+	}
 }

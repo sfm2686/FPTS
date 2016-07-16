@@ -102,20 +102,15 @@ public class MainFrame extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				switch(menu.getSelectedIndex()) {
-				case 0: mainPanel = new AcctOverview();
-						
+				case 0: mainPanel = new AcctOverview(user);
 					break;
-				case 1: mainPanel = new SimulationSettings();
-						System.out.println("GOING TO SIM SETTINGS");
+				case 1: mainPanel = new SimulationSettings(user);
 					break;
-				case 2: mainPanel = new TransactionMenu();
-						System.out.println("GOING TO TRANS. MENU");
+				case 2: mainPanel = new TransactionMenu(user);
 					break;
-				case 3: mainPanel = new LogView();
-						System.out.println("GOING TO LOG VIEW");
+				case 3: mainPanel = new LogView(user);
 					break;
-				case 4: mainPanel = new RecentTransactions();
-						System.out.println("GOING TO RECENT TRANS.");
+				case 4: mainPanel = new RecentTransactions(user);
 					break;
 				}
 				//End case
@@ -163,7 +158,8 @@ public class MainFrame extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MainFrame frame = new MainFrame(new User("TESTING", "nono"), new AcctOverview(),
+					User user = new User("TESTING", "nono");
+					MainFrame frame = new MainFrame(user, new AcctOverview(user),
 							new WatchListGUI(new WatchList(0)));
 					frame.setVisible(true);
 				} catch (Exception e) {
