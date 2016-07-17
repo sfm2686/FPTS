@@ -13,12 +13,12 @@ import Finance.*;
  * @authors Sultan Mira, Hunter Caskey
  *
  */
-public class TransAdd extends MainPanel {
+public class TransAddCashAccount extends MainPanel {
 
 	/**
 	 * Create the panel.
 	 */
-	public TransAdd(MainFrame mainFrame, User user, Portfolio port) {
+	public TransAddCashAccount(MainFrame mainFrame, User user, Portfolio port) {
 		super(mainFrame, user);
 		
 		this.add(top(), BorderLayout.NORTH);

@@ -18,6 +18,9 @@ import Transaction.*;
  */
 public class TransactionMenu extends MainPanel {
 
+	
+	
+	
 	private final String[] tranTypes = {"Create Cash Account", "Add Equity", "Deposit Cash", 
 			"Withdraw Cash", "Remove Cash Account", "Remove Equity", "Transfer between Cash Account",
 			"Subtract Shares", "Buy Equity", "Sell Equity"};
@@ -87,19 +90,7 @@ public class TransactionMenu extends MainPanel {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Portfolio selectedPort = getUser().getPorts().get(ports.getSelectedIndex());
-				MainPanel nextPanel = new TransactionMenu(getFrame(), getUser());
-				switch(trans.getSelectedIndex()){
-					case 0 : nextPanel = new TransCreate(getFrame(), getUser(), selectedPort);
-						break;
-					case 1 : nextPanel = new TransRemove(getFrame(), getUser(), selectedPort);
-						break;
-					case 2 : nextPanel = new TransAdd(getFrame(), getUser(), selectedPort);
-						break;
-					case 3 : nextPanel = new TransWithdraw(getFrame(), getUser(), selectedPort);
-						break;
-				}
-				transition(nextPanel);
+				transition((MainPanel) trans.getSelectedItem());
 			}
 		});
 	}
