@@ -1,7 +1,7 @@
 package Core;
 
 import Finance.Portfolio;
-import Transaction.CashAcct;
+import Finance.CashAcct;
 
 import java.util.ArrayList;
 

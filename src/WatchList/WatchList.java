@@ -1,44 +1,65 @@
-/**
- * 
- */
 package WatchList;
 
 import java.io.Serializable;
-import java.util.*;
-
-import Finance.*;
-import Market.*;
-
+import java.util.Observable;
+import java.util.ArrayList;
 
 /**
+ * The WatchList class maintains a collection of Equities and associated trigger 
+ * values for each Equity, encapsulated as WatchListItems. Upon instantiation of this
+ * class, a time interval (supplied by the user) is given to an inner thread class, whose
+ * only responsibility is to alert the WatchList to update. This class also has a
+ * custom iterator implemented, which traverses the collection in priority order.
+ * 
  * @authors Sultan Mira, Hunter Caskey
- *
  */
+@SuppressWarnings("serial")
 public class WatchList extends Observable implements Serializable{
 
-
+	// Maintain a collection of WatchListItems
 	private ArrayList<WatchListItem> items;
 	
+	/**
+	 * Constructor for the WatchList class. Upon instantiation it runs a thread
+	 * responsible for timing updates. 
+	 * 
+	 * @param time The user-specified time-interval for updating the WatchList.
+	 */
 	public WatchList(int time){
-		//THREAD START..
+		items = new ArrayList<WatchListItem>();
+		// Start the thread
 		Alarm alarm = new Alarm(time);
 		alarm.start();
-		items = new ArrayList<WatchListItem>();
 	}
 	
+	/**
+	 * Mutator method for adding a WatchListItem to the WatchList.
+	 * @param n The element to add to the WatchList.
+	 */
 	public void addWatchListItem(WatchListItem n){
 		this.items.add(n);
 	}
 	
+	/**
+	 * Mutator method for removing a WatchListItem from the WatchList.
+	 * @param n The element to remove from the WatchList.
+	 */
 	public void removeWatchListItem(WatchListItem n){
 		this.items.remove(n);
 	}
 	
-	
+	/**
+	 * Pseudo-factory method for obtaining a WatchList's iterator.
+	 * @return The iterator for WatchList.
+	 */
 	public WLPriorityIterator getIterator(){
 		return new WLPriorityIterator();
 	}
 	
+	/**
+	 * refresh is called by an Alaram thread to instruct the WatchList to update the 
+	 * state of it's WatchListItems.
+	 */
 	public void refresh(){
 		
 		Iterator iter = this.getIterator();
@@ -49,24 +70,41 @@ public class WatchList extends Observable implements Serializable{
 			iter.next();
 		}
 		
+		// Notify the GUI that the WatchListItems have updated.
 		setChanged();
 		notifyObservers();
 	}
 	
 	//----------------------------------ALARM-----------------------------------//
+	
+	/**
+	 * Private inner class whose responsibility is to update 
+	 * the WatchList at the user defined interval.
+	 * 
+	 * @authors Sultan Mira, Hunter Caskey
+	 */
 	private class Alarm extends Thread {
 
 		private int timeInterval;
 		
+		/**
+		 * Constructor for the Alarm class.
+		 * 
+		 * @param timeInterval The interval that specifies how often the thread
+		 * 					   should update the WatchList object.
+		 */
 		public Alarm(int timeInterval){
 			this.timeInterval = timeInterval;
 		}
 		
+		/**
+		 * Specified by extending the thread class. 
+		 */
 		@Override
 		public void run(){
 			while ( true ){
 				try {
-					sleep(this.timeInterval * 1000);
+					sleep(this.timeInterval * 1000); // Sleep for however many seconds the user specified.
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
@@ -100,6 +138,7 @@ public class WatchList extends Observable implements Serializable{
 		 * Initializes this class's private 'copy' of the data being iterated over, 
 		 * and then uses the WatchList's items collection to populated the sorted variable.
 		 */
+		@SuppressWarnings(value = { "unchecked" })
 		public WLPriorityIterator() {
 			sorted = new ArrayList<WatchListItem>();
 			this.sort((ArrayList<WatchListItem>) items.clone());

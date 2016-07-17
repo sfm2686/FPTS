@@ -12,6 +12,7 @@ import Finance.*;
  *          invoked onto the user's portfolios. This class stores a collection of type Command
  *          and lists (by date) them when needed. 
  */
+@SuppressWarnings("serial")
 public class Log implements Serializable { // Serializable in order to be persisted in the database.
 
 	// Maintain a history of all of the (transaction) commands that a user invokes on their portfolios. 
@@ -26,7 +27,7 @@ public class Log implements Serializable { // Serializable in order to be persis
 
 	/**
 	 * Selection sort algorithm for ordering the log's collection of commands by
-	 * their  dates in descending order. 
+	 * their dates in descending (most recent first) order. 
 	 * 
 	 * Algorithm skeleton looked up from Wikipedia.
 	 */

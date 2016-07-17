@@ -87,6 +87,7 @@ public class UndoRedo {
 	 * Unit tests for UndoRedo
 	 * @param args
 	 */
+	@SuppressWarnings("unused") 
 	public static void main(String[] args) throws Exception {
 		Portfolio port1 = new Portfolio("Port 1");
 		

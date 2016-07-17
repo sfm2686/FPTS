@@ -123,7 +123,7 @@ public class Market extends Observable {
 	 * Adds a stock object to the list of stocks to be updated.
 	 * @param s the stock to be added.
 	 */
-	public void addEquity(Equity s){
+	public void addUpdateEquity(Equity s){
 		//If stock is not in market
 		if ( !this.stocks.containsKey(s.getName()) ||
 				!this.indices.containsKey(s.getName()) )
