@@ -1,7 +1,5 @@
 package WatchList;
 
-import Market.Market;
-
 /**
  * Concrete Visitor to access the price of an equity within the WatchListItem class.
  * 

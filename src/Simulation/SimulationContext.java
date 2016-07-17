@@ -1,28 +1,23 @@
-/**
- * 
- */
 package Simulation;
 
 import java.util.*;
 
 /**
- * @authors Sultan Mira, Hunter Caskey
+ * SimulationContext delegates between different strategies depending on the
+ * input/choice of the user. Once that is done it will simulate and
+ * display the results one result at a time. The client of the class is
+ * able to determine what invokes the display of the next result in the
+ * next time step. The class returns the next result every time the
+ * getNextResult method is called. The class is also able to simulate
+ * off a simulation result. If the client of the class does not
+ * simulate again the current value will be reset to the initial.
  * 
- *          This class delegates between different stratigies depending on the
- *          input/choice of the user. It will set its strategy class reference
- *          to what the user has chosen. Once that is done it will simulate and
- *          display the results one result at a time. The client of the class is
- *          able to determine what invokes the display of the next result in the
- *          next time step. The class returns the next result everytime the
- *          getNextResult method is called. The class is also able to simulate
- *          off a simulation result. If the client of the class does not
- *          simulate again the current value will be reset to the initial.
- *
+ * @authors Sultan Mira, Hunter Caskey
  */
 public class SimulationContext {
 
 	private SimulationStrategy strategy;
-	private ArrayList simResults;
+	private ArrayList<Double> simResults;
 	private double growthRate;
 	private double initValue;
 	private double currentValue;
@@ -94,11 +89,10 @@ public class SimulationContext {
 		this.count = 0;
 	}
 
-	// -------------------------------------------------------------------------
-	// MAIN
-	// -------------------------------------------------------------------------
 	/**
-	 * @param args
+	 * main method to test functionality of subsystem.
+	 * 
+	 * @param args Command line arguments
 	 */
 	public static void main(String[] args) {
 		// Testing ..
@@ -172,5 +166,6 @@ public class SimulationContext {
 			}
 		}
 		System.out.println("End of testing for simulationContext");
+		input.close();
 	}
 }

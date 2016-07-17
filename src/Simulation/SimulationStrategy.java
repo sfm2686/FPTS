@@ -1,43 +1,70 @@
-/**
- * 
- */
 package Simulation;
 
 import java.util.*;
 
 /**
- * @authors Sultan Mira, Hunter Caskey
+ * SimulationStrategy defines the methods that all strategy classes must
+ * implement or could use from their super, this class.
  * 
- *          This class defines the methods that all strategy classes should
- *          implement or could use from their super, this class.
- *
+ * @authors Sultan Mira, Hunter Caskey
  */
 abstract class SimulationStrategy {
 
+	/****** Class Attributes ******/
 	private double initValue;
 	private double currentValue;
 
-	public SimulationStrategy() {
-	}
+	/****** Class Methods ******/
+	
+	
+	public SimulationStrategy() {}
 
-	// Getters, setters
+	/**
+	 * Accessor for the initial value of a simulation.
+	 * 
+	 * @return A double value as the total value of a portfolio to simulate.
+	 */
 	protected double getInitValue() {
 		return this.initValue;
 	}
 
+	/**
+	 * Accessor for the current value of a portfolio, during or after a simulation.
+	 * 
+	 * @return The current value of the portfolio in the simulation.
+	 */
 	protected double getCurrentValue() {
 		return this.currentValue;
 	}
 
+	/**
+	 * Mutator for the initial value of a portfolio.
+	 * 
+	 * @param n The new initial value of a portfolio to use in a simulation.
+	 */
 	protected void setInitValue(double n) {
 		this.initValue = n;
 	}
 
+	/**
+	 * Mutator for the current value of a portfolio.
+	 * 
+	 * @param n The new, current value of a portfolio assigned during a simulation.
+	 */
 	protected void setCurrentValue(double n) {
 		this.currentValue = n;
 	}
 
-	// Abstract methods
+	/**
+	 * Given the supplied parameters, simulate the growth/decay of a portfolio
+	 * and return the simulation results as a collection of points.
+	 * 
+	 * @param growthRate
+	 * @param value
+	 * @param timeSteps
+	 * @param interval
+	 * @return An ArrayList containing the value of the portfolio for each time step in a simulation.
+	 */
 	public abstract ArrayList<Double> simulate(double growthRate, double value, int timeSteps, int interval);
 
 }
