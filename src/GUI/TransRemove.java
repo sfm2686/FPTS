@@ -129,4 +129,9 @@ public class TransRemove extends MainPanel {
 			}
 		});
 	}
+	
+	@Override
+	public String toString(){
+		return "Remove Cash Account";
+	}
 }

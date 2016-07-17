@@ -18,15 +18,15 @@ import Transaction.*;
  */
 public class TransactionMenu extends MainPanel {
 
+//	private final String[] tranTypes = {"Create Cash Account", "Add Equity", "Deposit Cash", 
+//			"Withdraw Cash", "Remove Cash Account", "Remove Equity", "Transfer between Cash Account",
+//			"Subtract Shares", "Buy Equity", "Sell Equity"};
 	
-	
-	
-	private final String[] tranTypes = {"Create Cash Account", "Add Equity", "Deposit Cash", 
-			"Withdraw Cash", "Remove Cash Account", "Remove Equity", "Transfer between Cash Account",
-			"Subtract Shares", "Buy Equity", "Sell Equity"};
+	private final MainPanel[] tranTypes = { new TransRemove(getFrame(), getUser(),getUser().getPorts().get(0))};
+
 	private JButton next;
 	private JComboBox<String> ports;
-	private JComboBox<String> trans;
+	private JComboBox<MainPanel> trans;
 	
 	/**
 	 * Create the panel.
@@ -54,19 +54,7 @@ public class TransactionMenu extends MainPanel {
 		c.anchor = c.EAST;
 		c.gridx = 0;
 		c.gridy = 0;
-		
-		String[] portsA = new String[getUser().getPorts().size()];
-		for (int p = 0; p < getUser().getPorts().size(); p ++)
-			portsA[p] = getUser().getPorts().get(p).getName();
-		this.ports = new JComboBox<>(portsA);
-		
-		panel.add(new JLabel("Portfolio "), c);
-		c.gridx ++;
-		panel.add(this.ports, c);
-		c.gridx = 0;
-		c.gridy ++;
-		
-		this.trans = new JComboBox<>(this.tranTypes);
+
 		panel.add(new JLabel("Transaction "), c);
 		c.gridx ++;
 		panel.add(trans, c);
@@ -90,7 +78,7 @@ public class TransactionMenu extends MainPanel {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				transition((MainPanel) trans.getSelectedItem());
+				transition((MainPanel) trans.getSelectedItem()); 
 			}
 		});
 	}
