@@ -18,7 +18,9 @@ import Transaction.*;
  */
 public class TransactionMenu extends MainPanel {
 
-	private final String[] tranTypes = {"Create", "Remove", "Add", "Withdraw"};
+	private final String[] tranTypes = {"Create Cash Account", "Add Equity", "Deposit Cash", 
+			"Withdraw Cash", "Remove Cash Account", "Remove Equity", "Transfer between Cash Account",
+			"Subtract Shares", "Buy Equity", "Sell Equity"};
 	private JButton next;
 	private JComboBox<String> ports;
 	private JComboBox<String> trans;
