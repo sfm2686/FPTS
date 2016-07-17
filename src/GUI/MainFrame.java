@@ -34,7 +34,7 @@ public class MainFrame extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public MainFrame(User user, JPanel mainPanel, JPanel watch) {
+	private MainFrame(User user, JPanel mainPanel) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(new Dimension(800, 800));
 		this.setTitle("Main View");
@@ -47,13 +47,13 @@ public class MainFrame extends JFrame {
 		this.add(this.mainPanel, BorderLayout.CENTER);
 //		this.add(mainView(), BorderLayout.CENTER);
 		
-		this.watchListPanel = watch;
+		//FOR NOW MAKING A NEW WATCHLIST INSTEAD OF USING THE USER'S ..
+		this.watchListPanel = new WatchListGUI((new WatchList(0)));
 		this.add(this.watchListPanel, BorderLayout.EAST);
 		this.assign();
 
 	}
 
-	
 	private JPanel top(){
 		JPanel panel = new JPanel(new FlowLayout());
 		
@@ -87,8 +87,8 @@ public class MainFrame extends JFrame {
 		return panel;
 	}
 	
-	private void refresh(){
-		MainFrame main = new MainFrame(this.user, this.mainPanel, this.watchListPanel);
+	public void refresh(JPanel panel){
+		MainFrame main = new MainFrame(this.user, panel);
 		main.setVisible(true);
 		this.dispose();
 	}
@@ -104,7 +104,7 @@ public class MainFrame extends JFrame {
 				switch(menu.getSelectedIndex()) {
 				case 0: mainPanel = new AcctOverview(user);
 					break;
-				case 1: mainPanel = new SimulationSettings(user);
+				case 1: mainPanel = new SimulationSettings(MainFrame.this, user);
 					break;
 				case 2: mainPanel = new TransactionMenu(user);
 					break;
@@ -114,7 +114,7 @@ public class MainFrame extends JFrame {
 					break;
 				}
 				//End case
-				refresh();
+				refresh(mainPanel);
 			}
 		});
 		
@@ -132,8 +132,8 @@ public class MainFrame extends JFrame {
 						//TODO
 						// CLOSE USER SESSION
 						user = null;
-						Login main = new Login();
-						main.setVisible(true);
+						Login login = new Login();
+						login.setVisible(true);
 						dispose();
 					}
 					else
@@ -159,13 +159,17 @@ public class MainFrame extends JFrame {
 			public void run() {
 				try {
 					User user = new User("TESTING", "nono");
-					MainFrame frame = new MainFrame(user, new AcctOverview(user),
-							new WatchListGUI(new WatchList(0)));
+					MainFrame frame = new MainFrame(user, new AcctOverview(user));
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 		});
+	}
+	
+	@Override
+	public String toString(){
+		return "MainFrame";
 	}
 }

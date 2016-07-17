@@ -16,26 +16,28 @@ import Simulation.SimulationContext;
  * @authors Sultan Mira, Hunter Caskey
  *
  */
-public class SimulationResults extends JFrame {
+public class SimulationResults extends JPanel {
 
-	private JButton next, done, simulateAgain;
+	private JButton next, simulateAgain;
 	private SimulationContext sim;
 	private DefaultListModel model;
 	private JList results;
 	private int count = 1;
 	private JScrollPane sPane;
 	private User user;
+	private double lastValue;
+	private MainFrame mainFrame;
 	
 	/**
 	 * Create the frame.
 	 */
-	public SimulationResults(SimulationContext sim, User user) {
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(new Dimension(600, 600));
+	public SimulationResults(MainFrame mainFrame, SimulationContext sim, User user) {
+		this.setSize(new Dimension(500, 700));
 		this.setVisible(true);
 		this.setLayout(new BorderLayout());
 		this.sim = sim;
 		this.user = user;
+		this.mainFrame = mainFrame;
 		
 		this.add(top(), BorderLayout.NORTH);
 		this.add(middle(), BorderLayout.CENTER);
@@ -60,7 +62,7 @@ public class SimulationResults extends JFrame {
 		this.results = new JList(model);
 		sPane = new JScrollPane();
 		sPane.setViewportView(results);
-		sPane.setPreferredSize(new Dimension(400, 200));
+		sPane.setPreferredSize(new Dimension(500, 650));
 		panel.add(sPane, BorderLayout.WEST);
 		return panel;
 	}
@@ -70,13 +72,11 @@ public class SimulationResults extends JFrame {
 		panel.setLayout(new FlowLayout());
 		
 		this.next = new JButton("Next");
-		this.done = new JButton("Close Window");
 		this.simulateAgain = new JButton("Simulate Again");
 		this.simulateAgain.setVisible(false);
 		
 		panel.add(this.next);
 		panel.add(this.simulateAgain);
-		panel.add(this.done);
 		
 		return panel;
 	}
@@ -86,8 +86,12 @@ public class SimulationResults extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
+				double temp = sim.getNextResult();
 				model.addElement(sim.getInterval() + ++count +
-						": " + sim.getNextResult());
+						": " + temp);
+				
+				lastValue = temp;
 				
 				results.setModel(model);
 				sPane.setViewportView(results);
@@ -98,11 +102,11 @@ public class SimulationResults extends JFrame {
 			}
 		});
 		
-		this.done.addActionListener(new ActionListener() {
+		this.simulateAgain.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				dispose();
+				mainFrame.refresh(new SimulationSettings(mainFrame, lastValue, user));
 			}
 		});
 	}

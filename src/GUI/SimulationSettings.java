@@ -28,20 +28,21 @@ public class SimulationSettings extends JPanel {
 	private final String[] intervals = {"Year", "Month", "Day"};
 	private JComboBox<String> type = new JComboBox<>(this.types);
 	private JComboBox<String> timeInterval = new JComboBox<>(this.intervals);
-	JComboBox<String> ports = null;
+	private JComboBox<String> ports = null;
 	private JButton simulate;
 	private User user;
 	private double value = -1;
-	
+	private MainFrame mainFrame;
 	private JSpinner stepS, gRateS;
 	
 	/**
 	 * Create the panel.
 	 */
-	public SimulationSettings(User u) {
+	public SimulationSettings(MainFrame mainFrame, User u) {
 		this.setSize(new Dimension(500, 700));
 		this.setLayout(new BorderLayout());
 		this.user = u;
+		this.mainFrame = mainFrame;
 	
 		this.add(top(), BorderLayout.NORTH);
 		this.add(middle(), BorderLayout.CENTER);
@@ -49,10 +50,12 @@ public class SimulationSettings extends JPanel {
 		this.assign();
 	}
 	
-	public SimulationSettings(double value) {
+	public SimulationSettings(MainFrame mainFrame, double value, User u) {
 		this.setSize(new Dimension(500, 700));
 		this.setLayout(new BorderLayout());
 		this.value = value;
+		this.user = u;
+		this.mainFrame = mainFrame;
 		
 		this.add(top(), BorderLayout.NORTH);
 		this.add(middle(), BorderLayout.CENTER);
@@ -172,8 +175,14 @@ public class SimulationSettings extends JPanel {
 				SimulationContext simCon = new SimulationContext(
 						growthRate, initValue, timeSteps, timeInt, simType);
 				simCon.simulate();
-				SimulationResults sim = new SimulationResults(simCon);
+				SimulationResults sim = new SimulationResults(mainFrame, simCon, user);
+				SimulationSettings.this.mainFrame.refresh(sim);
 			}
 		});
+	}
+	
+	@Override
+	public String toString(){
+		return "Simulation Settings";
 	}
 }
