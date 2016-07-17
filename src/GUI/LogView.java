@@ -20,17 +20,13 @@ import Finance.User;
  * @authors Sultan Mira, Hunter Caskey
  *
  */
-public class LogView extends JPanel {
+public class LogView extends MainPanel {
 
-	private User user;
 	/**
 	 * Create the panel.
 	 */
 	public LogView(User user) {
-		this.setSize(new Dimension(500, 700));
-		this.setLayout(new BorderLayout());
-		
-		this.user = user;
+		super(null, user);
 		
 		this.add(top(), BorderLayout.NORTH);
 		this.add(middle(), BorderLayout.CENTER);
@@ -38,19 +34,19 @@ public class LogView extends JPanel {
 		this.assign();
 	}
 	
-	private JPanel top(){
+	protected JPanel top(){
 		JPanel panel = new JPanel();
 		panel.add(new JLabel("Log View"));
 		return panel;
 	}
 	
-	private JPanel middle(){
+	protected JPanel middle(){
 		JPanel panel = new JPanel();
 		
-		if ( user.getLog() == null )
+		if ( getUser().getLog() == null )
 			return panel;
 		DefaultListModel model = new DefaultListModel();
-		String[] logA = user.getLog().toString().split("Portfolio Operated On: ");
+		String[] logA = getUser().getLog().toString().split("Portfolio Operated On:");
 		
 		for ( String s : logA ){
 			model.addElement(s);
@@ -64,13 +60,13 @@ public class LogView extends JPanel {
 		return panel;
 	}
 
-	private JPanel bottom(){
+	protected JPanel bottom(){
 		JPanel panel = new JPanel();
 		
 		return panel;
 	}
 	
-	private void assign(){
+	protected void assign(){
 		
 	}
 

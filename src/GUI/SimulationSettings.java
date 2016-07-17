@@ -17,7 +17,7 @@ import Simulation.*;
  * @authors Sultan Mira, Hunter Caskey
  *
  */
-public class SimulationSettings extends JPanel {
+public class SimulationSettings extends MainPanel {
 	
 	/*
 	 * Bear - Negative
@@ -30,59 +30,47 @@ public class SimulationSettings extends JPanel {
 	private JComboBox<String> timeInterval = new JComboBox<>(this.intervals);
 	private JComboBox<String> ports = null;
 	private JButton simulate;
-	private User user;
 	private double value = -1;
-	private MainFrame mainFrame;
 	private JSpinner stepS, gRateS;
 	
 	/**
 	 * Create the panel.
 	 */
-	public SimulationSettings(MainFrame mainFrame, User u) {
-		this.setSize(new Dimension(500, 700));
-		this.setLayout(new BorderLayout());
-		this.user = u;
-		this.mainFrame = mainFrame;
-	
-		this.add(top(), BorderLayout.NORTH);
-		this.add(middle(), BorderLayout.CENTER);
-		this.add(bottom(), BorderLayout.SOUTH);
-		this.assign();
-	}
-	
-	public SimulationSettings(MainFrame mainFrame, double value, User u) {
-		this.setSize(new Dimension(500, 700));
-		this.setLayout(new BorderLayout());
-		this.value = value;
-		this.user = u;
-		this.mainFrame = mainFrame;
+	public SimulationSettings(MainFrame mainFrame, User user) {
+		super(mainFrame, user);
 		
-		this.add(top(), BorderLayout.NORTH);
-		this.add(middle(), BorderLayout.CENTER);
-		this.add(bottom(), BorderLayout.SOUTH);
+		this.add(this.top(), BorderLayout.NORTH);
+		this.add(this.middle(), BorderLayout.CENTER);
+		this.add(this.bottom(), BorderLayout.SOUTH);
 		this.assign();
 	}
 	
-	private JPanel top(){
+	public SimulationSettings(MainFrame mainFrame, double value, User user) {
+		super(mainFrame, user);
+		this.value = value;
+		
+		this.add(this.top(), BorderLayout.NORTH);
+		this.add(this.middle(), BorderLayout.CENTER);
+		this.add(this.bottom(), BorderLayout.SOUTH);
+		this.assign();
+	}
+	
+	protected JPanel top(){
 		JPanel panel = new JPanel();
 		panel.add(new JLabel("Simulation Setup"));
 		return panel;
 	}
 	
-	private JPanel middle(){
+	protected JPanel middle(){
 		JPanel panel = new JPanel(new GridBagLayout());
-		
-		JLabel time  = new JLabel("Time-interval ");
-		JLabel steps = new JLabel("Steps ");
-		JLabel gRate = new JLabel("Growth-rate ");
-		JLabel type  = new JLabel("Simulation type ");
+
 		
 		SpinnerModel t;
 		
 		Dimension spinD = new Dimension(100, 20);
 
 		
-		t = new SpinnerNumberModel(2, 0, 100, 1);
+		t = new SpinnerNumberModel(2, 1, 100, 1);
 		this.stepS = new JSpinner(t);
 		this.stepS.setPreferredSize(spinD);
 		
@@ -91,17 +79,17 @@ public class SimulationSettings extends JPanel {
 		this.gRateS.setPreferredSize(spinD);
 		
 		GridBagConstraints c = new GridBagConstraints();
-		c.anchor = c.WEST;
+		c.anchor = c.EAST;
 		c.gridx = 0;
 		c.gridy = 0;
 		
 		if ( this.value == -1 ){
 			
 			JLabel port  = new JLabel("Portfolio ");
-			String[] portsA = new String[this.user.getPorts().size()];
-			for (int p = 0; p < this.user.getPorts().size(); p ++)
-				portsA[p] = this.user.getPorts().get(p).getName() + ", Value: " 
-				+ this.user.getPorts().get(p).getPortfolioValue();
+			String[] portsA = new String[getUser().getPorts().size()];
+			for (int p = 0; p < getUser().getPorts().size(); p ++)
+				portsA[p] = getUser().getPorts().get(p).getName() + ", Value: " 
+				+ getUser().getPorts().get(p).getPortfolioValue();
 			this.ports = new JComboBox<>(portsA);
 			
 			panel.add(port, c);
@@ -115,32 +103,32 @@ public class SimulationSettings extends JPanel {
 			c.gridy ++;
 		}
 		
-		panel.add(type, c);
+		panel.add(new JLabel("Simulation type "), c);
 		c.gridx ++;
 		panel.add(this.type, c);
 		c.gridx = 0;
 		c.gridy ++;
 		
-		panel.add(time, c);
+		panel.add(new JLabel("Time-interval "), c);
 		c.gridx ++;
 		panel.add(this.timeInterval, c);
 		c.gridx = 0;
 		c.gridy ++;
 		
-		panel.add(steps, c);
+		panel.add(new JLabel("Steps "), c);
 		c.gridx ++;
 		panel.add(this.stepS, c);
 		c.gridx = 0;
 		c.gridy ++;
 		
-		panel.add(gRate, c);
+		panel.add(new JLabel("Growth-rate "), c);
 		c.gridx ++;
 		panel.add(this.gRateS, c);
 		
 		return panel;
 	}
 	
-	private JPanel bottom(){
+	protected JPanel bottom(){
 		JPanel panel = new JPanel();
 		
 		this.simulate = new JButton("Simulate");
@@ -149,7 +137,7 @@ public class SimulationSettings extends JPanel {
 		return panel;
 	}
 	
-	private void assign(){
+	protected void assign(){
 		this.simulate.addActionListener(new ActionListener() {
 			
 			@Override
@@ -162,7 +150,7 @@ public class SimulationSettings extends JPanel {
 				int timeSteps;
 				String timeInt, simType;
 				if ( value == -1 ){
-					initValue = user.getPorts().get(ports.getSelectedIndex()).getPortfolioValue();
+					initValue = getUser().getPorts().get(ports.getSelectedIndex()).getPortfolioValue();
 				}
 				else {
 					initValue = value;
@@ -175,8 +163,8 @@ public class SimulationSettings extends JPanel {
 				SimulationContext simCon = new SimulationContext(
 						growthRate, initValue, timeSteps, timeInt, simType);
 				simCon.simulate();
-				SimulationResults sim = new SimulationResults(mainFrame, simCon, user);
-				SimulationSettings.this.mainFrame.refresh(sim);
+				SimulationResults sim = new SimulationResults(getFrame(), simCon, getUser());
+				transition(sim);
 			}
 		});
 	}

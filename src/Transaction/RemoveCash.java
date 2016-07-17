@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import Finance.*;
 
 /**
- * RemoveCash is a concrete command responsible for removing a cash accoutn from a 
+ * RemoveCash is a concrete command responsible for removing a cash account from a 
  * specified portfolio.
  * 
  * @authors Sultan Mira, Hunter Caskey
@@ -38,16 +38,27 @@ public class RemoveCash extends Command implements Serializable {
 	 * @return A boolean indicating the success of the command.
 	 */
 	public boolean execute() {
+//		if (super.getReceiver().hasCashAccount(this.accountName)) {
+//			CashAcct removal = null;
+//			for (CashAcct account : super.getReceiver().getCashAccounts()) {
+//				if (account.getName().equalsIgnoreCase(this.accountName)) {
+//					removal = account;
+//					break;
+//				}
+//			}
+//			super.getReceiver().removeCashAccount(removal);
+//			return true;
+//		}
+//		return false;
+		
 		if (super.getReceiver().hasCashAccount(this.accountName)) {
 			CashAcct removal = null;
 			for (CashAcct account : super.getReceiver().getCashAccounts()) {
 				if (account.getName().equalsIgnoreCase(this.accountName)) {
-					removal = account;
-					break;
+					super.getReceiver().removeCashAccount(account);
+					return true;
 				}
 			}
-			super.getReceiver().removeCashAccount(removal);
-			return true;
 		}
 		return false;
 	}
@@ -59,7 +70,7 @@ public class RemoveCash extends Command implements Serializable {
 	 */
 	@Override
 	public String toString() {
-		return "\nPortfolio Operated On: " + super.getReceiver() + "\n\tAccount: " + this.accountName
+		return "\nPortfolio Operated On: " + super.getReceiver().getName() + "\n\tAccount: " + this.accountName
 				+ "\n\tTransaction: Removed Cash Account";
 	}
 

@@ -34,7 +34,18 @@ public class User implements Serializable {
 		return this.portfolios;
 	}
 
+	/**
+	 * This methods adds a portfolio to the user's collection of portfolios
+	 * 
+	 * This method will not add the passed portfolio if the user already owns
+	 * a portfolio with the same name.
+	 * 
+	 * @param port: portfolio to be added to the user's collection.
+	 */
 	public void addPort(Portfolio port) {
+		for ( Portfolio p : this.portfolios )
+			if ( p.getName().equalsIgnoreCase(port.getName()) )
+				return ;
 		this.portfolios.add(port);
 	}
 

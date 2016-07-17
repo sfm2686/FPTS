@@ -24,6 +24,7 @@ public class RecentTransactions extends JPanel {
 	public RecentTransactions(User user) {
 		this.setSize(new Dimension(500, 700));
 		this.setLayout(new BorderLayout());
+		this.user = user;
 		
 		this.add(top(), BorderLayout.NORTH);
 		this.add(middle(), BorderLayout.CENTER);

@@ -106,7 +106,7 @@ public class MainFrame extends JFrame {
 					break;
 				case 1: mainPanel = new SimulationSettings(MainFrame.this, user);
 					break;
-				case 2: mainPanel = new TransactionMenu(user);
+				case 2: mainPanel = new TransactionMenu(MainFrame.this, user);
 					break;
 				case 3: mainPanel = new LogView(user);
 					break;
