@@ -47,16 +47,13 @@ public class LogView extends JPanel {
 	private JPanel middle(){
 		JPanel panel = new JPanel();
 		
-		System.out.println("USER.GETLOG()");
-		System.out.println(user.getLog());
 		if ( user.getLog() == null )
 			return panel;
 		DefaultListModel model = new DefaultListModel();
-		String[] logA = user.getLog().toString().split(".");
+		String[] logA = user.getLog().toString().split("Portfolio Operated On: ");
 		
 		for ( String s : logA ){
 			model.addElement(s);
-			model.addElement(" ");
 		}
 
 		JList list = new JList(model);
