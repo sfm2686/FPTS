@@ -49,7 +49,7 @@ public class AddShares extends Command implements Serializable, UndoableRedoable
 	 */
 	@Override
 	public boolean execute() {
-		Equity equity = super.getReciever().getEquity(this.equityName);
+		Equity equity = super.getReceiver().getEquity(this.equityName);
 		// If the equity is already in the portfolio, add to it.
 		if (equity != null) {
 			equity.addShares(this.numShares);
@@ -62,7 +62,7 @@ public class AddShares extends Command implements Serializable, UndoableRedoable
 			else if(Market.getMarketInstance().isStock(this.equityName))
 				equity = new Stock(this.numShares, this.equityName);
 			if(equity != null){
-				this.getReciever().addEquity(equity);
+				this.getReceiver().addEquity(equity);
 				Market.getMarketInstance().addUpdateEquity(equity);
 				return true;
 			}
@@ -77,11 +77,11 @@ public class AddShares extends Command implements Serializable, UndoableRedoable
 	 */
 	@Override
 	public void unexecute() {
-		Equity equity = super.getReciever().getEquity(this.equityName);
+		Equity equity = super.getReceiver().getEquity(this.equityName);
 		if (equity != null) {
 			equity.subtractShares(this.numShares);
 			if(equity.getNumShares() == 0){
-				this.getReciever().removeEquity(equity);
+				this.getReceiver().removeEquity(equity);
 			}
 		}
 	}
@@ -95,7 +95,7 @@ public class AddShares extends Command implements Serializable, UndoableRedoable
 	 */
 	@Override
 	public UndoableRedoable copy() {
-		return(new AddShares(this.getReciever(), this.equityName, this.numShares, this.date));
+		return(new AddShares(this.getReceiver(), this.equityName, this.numShares, this.date));
 	}
 	
 	/**
@@ -118,9 +118,19 @@ public class AddShares extends Command implements Serializable, UndoableRedoable
 	 */
 	@Override
 	public String toString() {
-		return "\nDate: " + this.getTransactionDate() + "\n\tPortfolio Operated On: " + super.getReciever() + "\n\tEquity: " + this.equityName
+		return "\nDate: " + this.getTransactionDate() + "\n\tPortfolio Operated On: " + super.getReceiver() + "\n\tEquity: " + this.equityName
 				+ "\n\tTransaction: Add Equity" + "\n\tShares: " + this.numShares
 				+ "\n\tAcquisition Date: " + this.date;
+	}
+	
+	/**
+	 * Specialized toString method for depositing cash.
+	 * 
+	 *  @return The String representation of this leaf command.
+	 */
+	public String leafToString(){
+		return("Add Shares Transaction, Portfolio: " + this.getReceiver() + ", "
+				+ "Equity: " + this.equityName + ", Number of Shares: " + this.numShares);
 	}
 
 	/****** Leaf Commands do not Implement Composite Behaviors ******/

@@ -5,40 +5,60 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- * @authors Sultan Mira, Hunter Caskey
+ * RemoveEquity is responsible for removing a specified equity from a given portfolio.
  * 
- *          This class takes a portfolio as a receiver and removes all of the
- *          shares of equities that has the passed in string as their name in
- *          the receiver.
- *
+ * @authors Sultan Mira, Hunter Caskey
  */
+@SuppressWarnings("serial")
 public class RemoveEquity extends Command implements Serializable {
 
+	/****** Class Attributes ******/
 	private String equityName;
 	
+	/****** Class Methods ******/
+	
+	/**
+	 * Constructor for a RemoveEquity command object.
+	 * 
+	 * @param receiver The portfolio to remove the specified equity from.
+	 * @param equityName The name of the equity to be removed.
+	 */
 	public RemoveEquity(Portfolio receiver, String equityName) {
 		super(receiver);
 		this.equityName = equityName;
 	}
 
+	/**
+	 * execute if defined by the Command interface.
+	 * 
+	 * Command simply retrieves the specified equity object, if it exists, from the given
+	 * portfolio and removes it.
+	 * 
+	 * @return A boolean indicatin the success of this command.
+	 */
 	public boolean execute() {
-		if (super.getReciever().hasEquity(this.equityName)) {
+		if (super.getReceiver().hasEquity(this.equityName)) {
 			Equity removal = null;
-			for (Equity equity : super.getReciever().getEquities()) {
+			for (Equity equity : super.getReceiver().getEquities()) {
 				if (equity.getName().equalsIgnoreCase(this.equityName)) {
 					removal = equity;
 					break;
 				}
 			}
-			super.getReciever().removeEquity(removal);
+			super.getReceiver().removeEquity(removal);
 			return true;
 		}
 		return false;
 	}
 
+	/**
+	 * A generic toString method.
+	 * 
+	 * @return The string representation of this command object.
+	 */
 	@Override
 	public String toString() {
-		return "\nPortfolio Operated On: " + super.getReciever() + "\n\tEquity: " + this.equityName
+		return "\nPortfolio Operated On: " + super.getReceiver() + "\n\tEquity: " + this.equityName
 				+ "\n\tTransaction: Removed Equity";
 	}
 

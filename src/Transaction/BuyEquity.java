@@ -40,6 +40,8 @@ public class BuyEquity extends Command implements Serializable, UndoableRedoable
 	 * 
 	 * Cycles through the collection of (leaf) commands,
 	 * executing them all upon success of the previous.
+	 * 
+	 * @return A boolean value indicating the success of the command.
 	 */
 	@Override
 	public boolean execute() {
@@ -70,9 +72,21 @@ public class BuyEquity extends Command implements Serializable, UndoableRedoable
 	 */
 	@Override
 	public UndoableRedoable copy() {
-		return (new BuyEquity(this.getReciever(), (AddShares)this.children.get(0), this.cashAcct));
+		return (new BuyEquity(this.getReceiver(), (AddShares)this.children.get(0), this.cashAcct));
 	}
-
+	
+	/**
+	 * Generic toString method.
+	 * 
+	 * @return A string representation of this BuyEquity command object.
+	 */
+	@Override
+	public String toString(){
+		return "Date: " + this.getTransactionDate() + "\n\tTransaction: Equity Bought with a Cash Account, " + 
+						 ((WithdrawCash)this.children.get(0)).leafToString() + 
+						 ((AddShares)this.children.get(1)).leafToString();
+	}
+	
 	/**
 	 * Defined by the Command interface.
 	 * 

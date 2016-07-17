@@ -1,48 +1,65 @@
-/**
- * 
- */
 package Transaction;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-
 import Finance.*;
 
 /**
- * @authors Sultan Mira, Hunter Caskey
+ * RemoveCash is a concrete command responsible for removing a cash accoutn from a 
+ * specified portfolio.
  * 
- *          This concerete command is responsible for removing the cash account
- *          that has the passed String as a name from the portfolio passed as
- *          the receiver.
- *
+ * @authors Sultan Mira, Hunter Caskey
  */
+@SuppressWarnings("serial")
 public class RemoveCash extends Command implements Serializable {
 
+	/****** Class Attributes ******/
 	private String accountName;
 
+	/****** Class Methods ******/
+	
+	/**
+	 * Constructor for a RemoveCash command object.
+	 * 
+	 * @param receiver The portfolio containing the cash account to remove. 
+	 * @param accountName The cash account to remove.
+	 */
 	public RemoveCash(Portfolio receiver, String accountName) {
 		super(receiver);
 		this.accountName = accountName;
 	}
 
+	/**
+	 * execute is defined by the Command interface.
+	 * 
+	 * execute simply retrieves the specified cash account, if it exists, and 
+	 * removes it from the portfolio of which it is a holding of.
+	 * 
+	 * @return A boolean indicating the success of the command.
+	 */
 	public boolean execute() {
-		if (super.getReciever().hasCashAccount(this.accountName)) {
+		if (super.getReceiver().hasCashAccount(this.accountName)) {
 			CashAcct removal = null;
-			for (CashAcct account : super.getReciever().getCashAccounts()) {
+			for (CashAcct account : super.getReceiver().getCashAccounts()) {
 				if (account.getName().equalsIgnoreCase(this.accountName)) {
 					removal = account;
 					break;
 				}
 			}
-			super.getReciever().removeCashAccount(removal);
+			super.getReceiver().removeCashAccount(removal);
 			return true;
 		}
 		return false;
 	}
 
+	/**
+	 * Generic toString method.
+	 * 
+	 * @return The string representation of this command object.
+	 */
 	@Override
 	public String toString() {
-		return "\nPortfolio Operated On: " + super.getReciever() + "\n\tAccount: " + this.accountName
+		return "\nPortfolio Operated On: " + super.getReceiver() + "\n\tAccount: " + this.accountName
 				+ "\n\tTransaction: Removed Cash Account";
 	}
 
@@ -50,7 +67,6 @@ public class RemoveCash extends Command implements Serializable {
 	
 	@Override
 	public void addChild(Command node) {}
-
 
 	@Override
 	public void removeChild(Command node) {}
