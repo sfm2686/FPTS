@@ -34,7 +34,7 @@ public class MainFrame extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	private MainFrame(User user, JPanel mainPanel) {
+	public MainFrame(User user, JPanel mainPanel) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(new Dimension(800, 800));
 		this.setTitle("Main View");
