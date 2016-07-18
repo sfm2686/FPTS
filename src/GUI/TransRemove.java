@@ -49,6 +49,7 @@ public class TransRemove extends MainPanel {
 	
 	protected JPanel middle(){
 		JPanel panel = new JPanel();
+		
 		panel.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
 		
