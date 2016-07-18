@@ -15,8 +15,7 @@ abstract class SimulationStrategy {
 	private double currentValue;
 
 	/****** Class Methods ******/
-	
-	
+
 	public SimulationStrategy() {}
 
 	/**

@@ -16,6 +16,8 @@ import java.util.*;
  */
 public class SimulationContext {
 
+	/****** Class Attributes ******/
+	
 	private SimulationStrategy strategy;
 	private ArrayList<Double> simResults;
 	private double growthRate;
@@ -26,7 +28,17 @@ public class SimulationContext {
 	private int intervalNum;
 	private String interval;
 
-	// Constructor
+	/****** Class Methods ******/
+	
+	/**
+	 * Constrcutor for a SimulationContext object.
+	 * 
+	 * @param growthRate The desired market growth rate condition to be used in the simulation.
+	 * @param value The value of the portfolio to simulate on.
+	 * @param timeSteps The number of steps to be simulated.
+	 * @param interval The 'value' of each step to be simulated.
+	 * @param type The type of simulations to choose: bear, bull, or no-growth.
+	 */
 	public SimulationContext(double growthRate, double value, int timeSteps, String interval, String type) {
 
 		this.growthRate = growthRate / 100;
@@ -44,19 +56,39 @@ public class SimulationContext {
 			this.strategy = new NoGrowthMarketStrategy();
 	}
 
+	/**
+	 * getInterval simply returns the String representation of the chosen time interval. 
+	 * These value include: year, month, and day.
+	 * 
+	 * @return The String representation of the chosen time interval. 
+	 */
 	public String getInterval() {
 		return this.interval;
 	}
 
-	// Testing purposes..
+	/**
+	 * Accessor for the initial value of the portfolio passed in. 
+	 * Primarily used in testing of this subsystem.
+	 * 
+	 * @return The initial value of the portfolio supplied upon creation of this object.
+	 */
 	public double getInitValue() {
 		return this.initValue;
 	}
 
-	public void restValue() {
+	/**
+	 * resetValue simply rolls the simulated value of the portfolio back to the 
+	 * originally supplied value.
+	 */
+	public void resetValue() {
 		this.currentValue = this.initValue;
 	}
 
+	/**
+	 * getNextResult allows for walking through the steps of a simulation.
+	 * 
+	 * @return The next point (portfolio value) in the simulation.
+	 */
 	public double getNextResult() {
 		if (this.count == this.simResults.size()) {
 			this.count = -1;
@@ -65,10 +97,24 @@ public class SimulationContext {
 		return (double) this.simResults.get(this.count++);
 	}
 	
+	/**
+	 * howManyLeft simply determines how many time steps are left in the simulation
+	 * when walking through it step by step.
+	 * 
+	 * @return The number of simulation steps not yet walked through.
+	 */
 	public int howManyLeft(){
 		return this.simResults.size() - count;
 	}
 
+	/**
+	 * newSim allows for further simulation of a portfolio but with new input values.
+	 * 
+	 * @param growthRate The new growth rate to simulate the market with.
+	 * @param timeSteps The new time steps to simulate with.
+	 * @param interval The new time interval to simulate with.
+	 * @param type The chosen strategy algorithm to simulate using.
+	 */
 	public void newSim(double growthRate, int timeSteps, String interval, String type) {
 		this.growthRate = growthRate / 100;
 		this.steps = timeSteps;
@@ -84,13 +130,17 @@ public class SimulationContext {
 			this.strategy = new NoGrowthMarketStrategy();
 	}
 
+	/**
+	 * simulate populates the attribute meant for containing simulation results
+	 * with the chosen strategy object. 
+	 */
 	public void simulate() {
 		this.simResults = this.strategy.simulate(this.growthRate, this.currentValue, this.steps, this.intervalNum);
 		this.count = 0;
 	}
 
 	/**
-	 * main method to test functionality of subsystem.
+	 * Testing for Subsystem functionality.
 	 * 
 	 * @param args Command line arguments
 	 */
