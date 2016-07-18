@@ -76,7 +76,7 @@ public class TransWithdraw extends MainPanel {
 		this.amount = new JTextField();
 		this.amount.setPreferredSize(TEXTD);
 		
-		panel.add(new JLabel("Portfolio "), c);
+		panel.add(new JLabel("Cash Account "), c);
 		c.gridx ++;
 		panel.add(this.src, c);
 		c.gridx = 0;
