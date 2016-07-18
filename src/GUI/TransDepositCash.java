@@ -101,7 +101,8 @@ public class TransDepositCash extends MainPanel {
 		String label;
 		for(Portfolio port : this.getUser().getPorts()){
 			for(CashAcct acct : port.getCashAccounts()){
-				label = port.getName() + ": " + acct.getName();
+				label = port.getName() + ": " + acct.getName() + ", Balace: " 
+						+ acct.getBalance();
 				this.map.put(label, new Object[]{port, acct});
 			}
 		}
