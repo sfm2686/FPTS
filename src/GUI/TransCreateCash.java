@@ -5,10 +5,12 @@ package GUI;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.HashMap;
 
 import javax.swing.*;
 
 import Finance.*;
+import Transaction.Client;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
@@ -16,17 +18,14 @@ import Finance.*;
  */
 public class TransCreateCash extends MainPanel {
 
-	private Portfolio workingPort;
-	private ButtonGroup holdingType;
-	private JButton create;
-	private JRadioButton ca, eq;
-	private JLabel typeSelected;
-	private JPanel selectionPanel;
-	private JComboBox<String> ports;
-	private CardLayout cards = new CardLayout();
-	
-	//Only cash accounts for now
+	/****** Class Attributes ******/
+
 	private JTextField name, initialAmount;
+	private JComboBox<String> ports;
+	private JButton create;
+	
+	
+	/****** Class Methods ******/
 	
 	/**
 	 * Create the panel.
@@ -39,150 +38,105 @@ public class TransCreateCash extends MainPanel {
 		this.add(bottom(), BorderLayout.SOUTH);
 		this.assign();
 	}
-	
-	protected JPanel top(){
+
+
+	@Override
+	protected JPanel top() {
 		JPanel panel = new JPanel();
-		panel.add(new JLabel("Creation"));
+		panel.add(new JLabel("Create Cash Account in a Selected Portfolio"));
 		return panel;
 	}
-	
-	private JPanel caPanel(){
-		JPanel panel = new JPanel();
-		
-		return panel;
-	}
-	
-	private JPanel eqPanel(){
-		JPanel panel = new JPanel();
-		
-		return panel;
-	}
-	
-	private JPanel innerTop(){
+
+	@Override
+	protected JPanel middle() {
 		JPanel panel = new JPanel();
 		panel.setLayout(new GridBagLayout());
-
 		GridBagConstraints c = new GridBagConstraints();
-		c.anchor = c.WEST;
+		c.anchor = c.EAST;
 		c.gridx = 0;
 		c.gridy = 0;
 		
-		this.holdingType = new ButtonGroup();
-		this.ca = new JRadioButton("Cash Account");
-		this.eq = new JRadioButton("Equity");
-		this.holdingType.add(ca);
-		this.holdingType.add(eq);
-		
-		panel.add(ca, c);
-		c.gridy ++;
-		panel.add(eq, c);
-		c.gridy ++;
-		
-		String[] portsA = new String[getUser().getPorts().size()];
-		for (int p = 0; p < getUser().getPorts().size(); p ++)
-			portsA[p] = getUser().getPorts().get(p).getName();
-		this.ports = new JComboBox<>(portsA);
+
+		this.name = new JTextField();
+		this.name.setPreferredSize(TEXTD);
+		this.initialAmount = new JTextField();
+		this.initialAmount.setPreferredSize(TEXTD);
+		this.ports = getPortDropdown();
 		
 		panel.add(new JLabel("Destination Portfolio "), c);
 		c.gridx ++;
 		panel.add(this.ports, c);
-
-		return panel;
-	}
-	
-	private void innerMiddle(){
-		this.selectionPanel = new JPanel();
-		this.selectionPanel.setLayout(cards);
-		Dimension fieldD = new Dimension(200, 20);
-		
-		JPanel temp = new JPanel();
-		temp.setLayout(new GridBagLayout());
-		GridBagConstraints c = new GridBagConstraints();
-		c.anchor = c.WEST;
-		c.gridx = 0;
-		c.gridy = 0;
-		
-		this.name = new JTextField();
-		this.initialAmount = new JTextField();
-		this.name.setPreferredSize(fieldD);
-		this.initialAmount.setPreferredSize(fieldD);
-		
-		temp.add(new JLabel("Name "), c);
-		c.gridx ++;
-		temp.add(this.name, c);
 		c.gridx = 0;
 		c.gridy ++;
 		
-		temp.add(new JLabel(" "), c);
+		panel.add(new JLabel("Name "), c);
+		c.gridx ++;
+		panel.add(this.name, c);
+		c.gridx = 0;
 		c.gridy ++;
 		
-		temp.add(new JLabel("Initial Amount"), c);
+		panel.add(new JLabel("Amount "), c);
 		c.gridx ++;
-		temp.add(this.initialAmount, c);
-		
-		this.selectionPanel.add(temp, "CA");
-		
-		temp.removeAll();
+		panel.add(this.initialAmount, c);
 		c.gridx = 0;
-		c.gridy = 0;
-		temp.add(new JLabel("EQUITY SELECTED, UNDER CONSTRUCTION :P"), c);
-		
-		this.selectionPanel.add(temp, "EQ");
-		
-	}
-	
-	protected JPanel middle(){
-		JPanel panel = new JPanel();
-		panel.setLayout(new BorderLayout());
-		panel.add(this.innerTop(), BorderLayout.NORTH);
-		this.innerMiddle();
-		panel.add(this.selectionPanel, BorderLayout.CENTER);
+		c.gridy ++;
 		
 		return panel;
 	}
 
-	protected JPanel bottom(){
+	@Override
+	protected JPanel bottom() {
 		JPanel panel = new JPanel();
-		
 		this.create = new JButton("Create");
 		panel.add(this.create);
-		
 		return panel;
 	}
-	
-	protected void assign(){
-		
-		this.ca.addActionListener(new ActionListener() {
-			
-			@SuppressWarnings("deprecation")
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				cards.show(selectionPanel, "CA");
-				selectionPanel.invalidate();
-				selectionPanel.validate();
-				selectionPanel.repaint();
-			}
-		});
-		
-		this.eq.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				cards.show(selectionPanel, "EQ");				
-			}
-		});
-		
+
+
+	@Override
+	protected void assign() {
 		this.create.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
+				String w;
+				Double d = null;
+				Portfolio port = getUser().getPorts().get(ports.getSelectedIndex());
+				try{
+					d = Double.parseDouble(initialAmount.getText());
+				}
+				catch(Exception exc){
+					w = "You must enter a numeric value.";
+					JOptionPane.showMessageDialog(new JFrame(), w, "Invalid Input", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+				finally{
+					if(d != null){
+						if(d <= 0){
+							w = "You must enter a positive value.";
+							JOptionPane.showMessageDialog(new JFrame(), w, "Invalid Input", JOptionPane.ERROR_MESSAGE);
+							return;
+						}
+					}
+					for ( CashAcct cash : port.getCashAccounts() )
+						if ( name.getText().equalsIgnoreCase(cash.getName()) ){
+							w = "A cash account with the same name is already owned.";
+							JOptionPane.showMessageDialog(new JFrame(), w, "Invalid Input", JOptionPane.ERROR_MESSAGE);
+							return;
+						}
+				}
+				
+				Client client = new Client(getUser());
+				client.createCash(port, name.getText(), d);
+				transition(new AcctOverview(getUser()));
 			}
 		});
+		
 	}
 	
-	public String toStrign(){
-		return("Create Cash Account");
+	@Override
+	public String toString(){
+		return "Create Cash Account";
 	}
-	
+
 }

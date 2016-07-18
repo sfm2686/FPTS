@@ -65,7 +65,7 @@ public class TransCashTransfer extends MainPanel {
 		
 		panel.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
-		c.anchor = c.WEST;
+		c.anchor = c.EAST;
 		c.gridx = 0;
 		c.gridy = 0;
 		
