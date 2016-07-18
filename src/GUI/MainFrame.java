@@ -24,7 +24,7 @@ import WatchList.WatchList;
 public class MainFrame extends JFrame {
 
 	private User user;
-	private JButton watchList, undo, redo, logout;
+	private JButton save, undo, redo, logout;
 	private JPanel mainPanel, watchListPanel;
 	
 	//Menu attrs
@@ -47,7 +47,7 @@ public class MainFrame extends JFrame {
 //		this.add(mainView(), BorderLayout.CENTER);
 		
 		//FOR NOW MAKING A NEW WATCHLIST INSTEAD OF USING THE USER'S ..
-		this.watchListPanel = new WatchListGUI((new WatchList(0)));
+		this.watchListPanel = new WatchListGUI(this, this.user);
 		this.add(this.watchListPanel, BorderLayout.EAST);
 		this.assign();
 
@@ -76,15 +76,15 @@ public class MainFrame extends JFrame {
 		JLabel currentUser = new JLabel("Logged in as: " + this.user.getUserName());
 		panel.add(currentUser);
 		
-		this.watchList = new JButton("Watch List");
-		this.logout = new JButton("Logout");
+		this.save = new JButton("Save");
 		this.undo = new JButton("Undo");
 		this.redo = new JButton("Redo");
+		this.logout = new JButton("Logout");
 
 
+		panel.add(this.save);
 		panel.add(this.undo);
 		panel.add(this.redo);
-		panel.add(this.watchList);
 		panel.add(this.logout);
 		//panel.setBackground(new Color(50000));
 		return panel;
@@ -124,21 +124,50 @@ public class MainFrame extends JFrame {
 					// CLOSE USER SESSION
 					user = null;
 					Login login = new Login();
-					login.setVisible(true);
 					dispose();
+					login.setVisible(true);
 				}
 				else
 					return ;
 			}
 		});
-
 		
-		this.watchList.addActionListener(new ActionListener() {
+		this.undo.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				
+				Invoker.getInvoker(user.getLog()).getUndoRedoStack().undo();
+				if ( mainPanel instanceof AcctOverview )
+					refresh(new AcctOverview(user));
+			}
+		});
+		
+		this.redo.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Invoker.getInvoker(user.getLog()).getUndoRedoStack().redo();
+				if ( mainPanel instanceof AcctOverview )
+					refresh(new AcctOverview(user));
+			}
+		});
+		
+		this.save.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String w = "Are you sure you want to save all changes and update the log?";
+				if (JOptionPane.showConfirmDialog(null, w, "Save", JOptionPane.YES_NO_OPTION, 
+						JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION){
+		
+					UndoRedo stack = Invoker.getInvoker(user.getLog()).getUndoRedoStack();
+					stack.clean(user.getLog());	
+					DBInterface.saveUserData(user);
+					if ( mainPanel instanceof LogView )
+						refresh(new LogView(user));
+				}
+				else
+					return ;
 			}
 		});
 	}

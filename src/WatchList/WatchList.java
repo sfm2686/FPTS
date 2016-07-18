@@ -126,7 +126,7 @@ public class WatchList extends Observable implements Serializable{
 	 * 
 	 * @authors Sultan Mira, Hunter Caskey
 	 */
-	private class WLPriorityIterator implements Iterator{
+	public class WLPriorityIterator implements Iterator{
 
 		//**** Class Attributes ****//
 		private int currentIndex = 0;
