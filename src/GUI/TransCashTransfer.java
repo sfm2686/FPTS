@@ -114,7 +114,6 @@ public class TransCashTransfer extends MainPanel {
 		}
 	}
 	
-	//Did not test equity removal yet ..
 	protected void assign(){
 		this.transfer.addActionListener(new ActionListener() {
 			
@@ -147,6 +146,8 @@ public class TransCashTransfer extends MainPanel {
 							return;
 						}
 					}
+					else
+						return ;
 					srcCash = (CashAcct)(map.get(src.getSelectedItem())[1]);
 					if (srcCash.getBalance() < d){
 						w = "Insufficient funds in source cash account.";
