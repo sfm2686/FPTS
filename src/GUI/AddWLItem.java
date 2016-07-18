@@ -1,16 +1,12 @@
-/**
- * 
- */
 package GUI;
 
 import javax.swing.JPanel;
-
 import Finance.User;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
- *
  */
+@SuppressWarnings("serial")
 public class AddWLItem extends MainPanel {
 
 	/**
@@ -19,7 +15,6 @@ public class AddWLItem extends MainPanel {
 	 */
 	public AddWLItem(MainFrame mainFrame, User user) {
 		super(mainFrame, user);
-		// TODO Auto-generated constructor stub
 	}
 
 	/* (non-Javadoc)
