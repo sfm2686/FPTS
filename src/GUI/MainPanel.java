@@ -38,7 +38,6 @@ abstract class MainPanel extends JPanel{
 	abstract protected void assign();
 	
 	protected JComboBox getPortDropdown(){
-		
 		String[] ports = new String[this.user.getPorts().size()];
 		
 		for (int p = 0; p < getUser().getPorts().size(); p ++)
