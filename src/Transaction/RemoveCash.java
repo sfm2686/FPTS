@@ -38,27 +38,16 @@ public class RemoveCash extends Command implements Serializable {
 	 * @return A boolean indicating the success of the command.
 	 */
 	public boolean execute() {
-//		if (super.getReceiver().hasCashAccount(this.accountName)) {
-//			CashAcct removal = null;
-//			for (CashAcct account : super.getReceiver().getCashAccounts()) {
-//				if (account.getName().equalsIgnoreCase(this.accountName)) {
-//					removal = account;
-//					break;
-//				}
-//			}
-//			super.getReceiver().removeCashAccount(removal);
-//			return true;
-//		}
-//		return false;
-		
 		if (super.getReceiver().hasCashAccount(this.accountName)) {
 			CashAcct removal = null;
 			for (CashAcct account : super.getReceiver().getCashAccounts()) {
 				if (account.getName().equalsIgnoreCase(this.accountName)) {
-					super.getReceiver().removeCashAccount(account);
-					return true;
+					removal = account;
+					break;
 				}
 			}
+			super.getReceiver().removeCashAccount(removal);
+			return true;
 		}
 		return false;
 	}
