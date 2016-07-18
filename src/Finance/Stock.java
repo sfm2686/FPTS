@@ -9,6 +9,7 @@ import Market.Market;
  * stock. A stock is owned by a portfolio which is owned by a user. All stocks
  * observe the Market.Market singleton for price updates. Stocks also implement
  * the java.io.Serializable interface so that they can be persisted within the database.
+ * Index serves as the 'leaf' element in the GOF Composite pattern.
  *          
  * @authors Sultan Mira, Hunter Caskey
  */
