@@ -125,22 +125,23 @@ public class Market extends Observable {
 	 */
 	public void addUpdateEquity(Equity s){
 		//If stock is not in market
-		if ( !this.stocks.containsKey(s.getName()) ||
-				!this.indices.containsKey(s.getName()) )
-			return ;
-		
-		if ( s instanceof Stock ){
-			this.obStocks.add( (Stock) s);
-			this.addObserver( (Stock) s);
-			return ;
-		}
-		//s must be an index..
-		s = (Index) s;
+		if ( Market.stocks.containsKey(s.getName()) || Market.indices.containsKey(s.getName()) ){
+			if ( s instanceof Stock ){
+				this.obStocks.add( (Stock) s);
+				this.addObserver( (Stock) s);
+				return ;
+			}
+			//s must be an index..
+			s = (Index) s;
 
-		for ( Equity p : s.getChildren() ){
-			if ( this.stocks.containsKey(p.getName()) )
-				this.obStocks.add( (Stock) p);
+			for ( Equity p : s.getChildren() ){
+				if ( this.stocks.containsKey(p.getName()) )
+					this.obStocks.add( (Stock) p);
+			}
 		}
+		return;
+		
+
 	}
 	
 	/**
@@ -248,6 +249,15 @@ public class Market extends Observable {
 		return(merged);
 	}
 	
+	public String getStockDescriptor(String stock){
+		String str = "";
+		try{
+			str = Market.stocks.get(stock).get(nameIndex);
+		}
+		catch(Exception e){}
+		return (str);
+	}
+	
 	/******************************** StockUpdate ********************************/
 	private class StockUpdate extends Thread {
 		
@@ -288,27 +298,5 @@ public class Market extends Observable {
 			for ( String key : r.keySet() )
 				System.out.print("\t" + "Name: " + key + ", Value: " + r.get(key) + "\n");
 		}
-		
-		
-//		System.out.println("Indices:");
-//		for ( String key : indices.keySet() )
-//			System.out.println("\t" + key);
-//		System.out.print("Please enter Index name to calc price: ");
-//		index = sc.nextLine();
-//		
-//		Index indexTest;
-//		if(index.equals("DOW")){
-//			indexTest = new DJIA(1);
-//		}
-//		else{
-//			indexTest = new Index(1, index);
-//		}
-//		for(String key : indices.get(index)){
-//			indexTest.addChild(new Stock(1, key));
-//		}
-//		
-//		System.out.println("The price for " + index + " is: " + indexTest.getPrice());
-//		System.out.println("done..");
-
 	}
 }

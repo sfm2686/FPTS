@@ -55,8 +55,8 @@ public class YahooAPI {
 	
 			// Set the HTTP Request type method to GET (Default: GET)
 			con.setRequestMethod("GET");
-			con.setConnectTimeout(10000);
-			con.setReadTimeout(10000);
+			con.setConnectTimeout(15000);
+			con.setReadTimeout(15000);
 	
 			// Created a BufferedReader to read the contents of the request.
 			in = new BufferedReader(
