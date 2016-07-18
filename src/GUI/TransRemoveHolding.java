@@ -139,6 +139,6 @@ public class TransRemoveHolding extends MainPanel {
 	
 	@Override
 	public String toString(){
-		return "Remove Cash Account";
+		return "Remove Holding";
 	}
 }
