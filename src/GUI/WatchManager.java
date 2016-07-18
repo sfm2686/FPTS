@@ -70,9 +70,7 @@ public class WatchManager extends MainPanel {
 		return panel;
 	}
 
-	/* (non-Javadoc)
-	 * @see GUI.MainPanel#assign()
-	 */
+
 	@Override
 	protected void assign() {
 		// TODO Auto-generated method stub

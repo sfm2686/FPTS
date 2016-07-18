@@ -4,20 +4,26 @@ import java.io.*;
 import java.util.ArrayList;
 
 /**
+ * CSVPareser is designed to read equities in from a constant CSV file and then supply
+ * the Market class with that information, equity by equity.
+ *          
  * @authors Sultan Mira, Hunter Caskey
- * 
- *          This class is the parser that reads the equities.csv file and
- *          everytime a field is parsed, it is sent to EquityBin in order for it
- *          to be sorted there into indices and/or stocks. This class replaced
- *          the state machine for parsing the equities.csv file.
- *
  */
 public final class CSVParser {
 
+	/****** Class Attributes ******/
 	private final static String name = "./equities.csv";
+
+	/****** Class Methods ******/
 
 	private CSVParser() {}
 
+	/**
+	 * read simply parses the CSV file line by line, and initializes the Market class 
+	 * based on that information.
+	 * 
+	 * @return true if the file was parsed without any error, false otherwise.
+	 */
 	public static boolean read() {
 		ArrayList<String> fields;
 		try (FileInputStream fi = new FileInputStream(name)) {
@@ -27,15 +33,11 @@ public final class CSVParser {
 				fields = new ArrayList<String>();
 				for (String field : row.split("\",\""))
 					fields.add(field.replace("\"", "").replace(" ", ""));
-				Market.addEquity(fields);
+				Market.addEquity(fields); // Initialize the equity to Market.
 			}
 		} catch (IOException e) {
 			return false;
 		}
 		return true;
-	}
-
-	public static void main(String[] args) {
-		System.out.println(CSVParser.read());
 	}
 }

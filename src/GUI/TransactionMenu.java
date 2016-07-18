@@ -23,7 +23,8 @@ public class TransactionMenu extends MainPanel {
 //			"Withdraw Cash", "Remove Cash Account", "Remove Equity", "Transfer between Cash Account",
 //			"Subtract Shares", "Buy Equity", "Sell Equity"};
 	
-	private final MainPanel[] tranTypes = { new TransDepositCash(getFrame(), getUser()),
+	private final MainPanel[] tranTypes = { new TransSubEquity(getFrame(), getUser()),
+											new TransDepositCash(getFrame(), getUser()),
 											new TransSellEquity(getFrame(), getUser()),
 											new TransWithdraw(getFrame(), getUser()),
 											new TransBuyEquity(getFrame(), getUser()),

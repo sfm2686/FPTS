@@ -16,9 +16,12 @@ import java.util.ArrayList;
 @SuppressWarnings("serial")
 public class WatchList extends Observable implements Serializable{
 
-	// Maintain a collection of WatchListItems
+	/****** Class Attributes ******/
 	private ArrayList<WatchListItem> items;
+	private int timeInterval;
 	
+	/****** Class Methods ******/
+
 	/**
 	 * Constructor for the WatchList class. Upon instantiation it runs a thread
 	 * responsible for timing updates. 
@@ -27,8 +30,8 @@ public class WatchList extends Observable implements Serializable{
 	 */
 	public WatchList(int time){
 		items = new ArrayList<WatchListItem>();
-		// Start the thread
-		Alarm alarm = new Alarm(time);
+		this.timeInterval = time;
+		Alarm alarm = new Alarm();
 		alarm.start();
 	}
 	
@@ -84,18 +87,6 @@ public class WatchList extends Observable implements Serializable{
 	 * @authors Sultan Mira, Hunter Caskey
 	 */
 	private class Alarm extends Thread {
-
-		private int timeInterval;
-		
-		/**
-		 * Constructor for the Alarm class.
-		 * 
-		 * @param timeInterval The interval that specifies how often the thread
-		 * 					   should update the WatchList object.
-		 */
-		public Alarm(int timeInterval){
-			this.timeInterval = timeInterval;
-		}
 		
 		/**
 		 * Specified by extending the thread class. 
@@ -104,7 +95,7 @@ public class WatchList extends Observable implements Serializable{
 		public void run(){
 			while ( true ){
 				try {
-					sleep(this.timeInterval * 1000); // Sleep for however many seconds the user specified.
+					sleep(timeInterval * 1000); // Sleep for however many seconds the user specified.
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}

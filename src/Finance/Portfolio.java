@@ -3,34 +3,28 @@ package Finance;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import Market.*;
-
 /**
- * @author Sultan Mira & Hunter Caskey
+ * Portfolio represents a collection of equities and cash accounts that is 
+ * owned by a user. A portfolio is responsible for maintaining its own collections, 
+ * via design by encapsulation, and it implements the java.io.Serializable interface
+ * so that it can be persisted as user data. Portfolio names are unique.
  * 
- *         This class represents a portfolio. A portfolio owns 2 collections of
- *         type holdings, a collection of cash accounts, and a collection of
- *         equities. A portfolio also has a  that it uses to  the
- *         transactions that happen to that . The portfolio is owned by a
- *         user but the portfolio itself does not know or need to know about its
- *         owner.
- *
+ * @author Sultan Mira & Hunter Caskey
  */
+@SuppressWarnings("serial")
 public class Portfolio implements Serializable {
 
-
-	//Portfolio's name
+	/****** Class Attributes ******/
 	private String name;
-	
-	//A collection of the equities that a portoflio own
 	private ArrayList<Equity> equities;
-	
-	//A collection of cash accounts owned by the portfolio
 	private ArrayList<CashAcct> cashAccounts;
 
+	/****** Class Methods ******/
+	
 	/**
-	 * Constructor
-	 * @param name: the name for the portfolio to have
+	 * Constructor for a Portfolio object.
+	 * 
+	 * @param name The String representation of a portoflio's identifier.
 	 */
 	public Portfolio(String name) {
 		this.name = name;
@@ -40,16 +34,18 @@ public class Portfolio implements Serializable {
 
 	
 	/**
-	 * Getter for the name
-	 * @return: the name of the portfolio
+	 * Accessor for the portfolio's name.
+	 * 
+	 * @return The name of the portfolio.
 	 */
 	public String getName() {
 		return this.name;
 	}
 
 	/**
-	 * Getter for the portfolio's value
-	 * @return: the value of the portfolio
+	 * Accessor for the portfolio's total wealth value.
+	 * 
+	 * @return The value of the portfolio.
 	 */
 	public double getPortfolioValue() {
 		double value = 0;
@@ -62,70 +58,78 @@ public class Portfolio implements Serializable {
 		return value;
 	}
 
-
 	/**
-	 * Adds an equity to the collection of equities.
-	 * @param equity: the equity to be added to the collection
+	 * addEquity simply adds an equity object to the collection of equities.
+	 * 
+	 * @param equity The equity to be added to the collection.
 	 */
 	public void addEquity(Equity equity) {
 		this.equities.add(equity);
 	}
 
+
 	/**
-	 * Adds a cash account to the collection of cash accounts
-	 * @param cash: the cash account to be stored
+	 * addCashAccount simply adds a cash account to the collection of cash accounts.
+	 * 
+	 * @param account The cash account to be stored in the portfolio.
+	 */
+	public void addCashAccount(CashAcct account) {
+		this.cashAccounts.add(account);
+	}
+	
+	/**
+	 * addCash simply adds a cash account to the collection of cash accounts.
+	 * 
+	 * @param cash The cash account to be stored.
 	 */
 	protected void addCash(CashAcct cash) {
 		this.cashAccounts.add(cash);
 	}
+
 	
 	/**
-	 * Removes an equity from the portfolio, so it is no longer owned.
-	 * @param equity: the equity to be removed
+	 * removeEquity removes an equity from the portfolio, so it is no longer owned.
+	 * 
+	 * @param equity The equity to be removed from the portfolio.
 	 */
 	public void removeEquity(Equity equity) {
 		this.equities.remove(equity);
 	}
 	
 	/**
-	 * Returns a list of all cash accounts a portfolio owns
-	 * @return: an arraylist of cash accounts
-	 */
-	public ArrayList<CashAcct> getCashAccounts() {
-		return this.cashAccounts;
-	}
-
-	/**
-	 * Returns a list of all equities a portfolio owns
-	 * @return: an arraylist of all equities
-	 */
-	public ArrayList<Equity> getEquities() {
-		return this.equities;
-	}
-
-	/**
-	 * Adds a cash account to a portfolio to be owned.
-	 * @param account: the account to be stored
-	 */
-	public void addCashAccount(CashAcct account) {
-		this.cashAccounts.add(account);
-	}
-
-	/**
-	 * Removes a cash account from the collection of cash accounts
-	 * @param account: the cash account to be removed
+	 * removeCashAccount removes a cash account from the collection of cash accounts.
+	 * 
+	 * @param account The cash account to be removed from the portfolio.
 	 */
 	public void removeCashAccount(CashAcct account) {
 		if(this.cashAccounts.contains(account)){
 			this.cashAccounts.remove(account);
 		}
 	}
+	
+	/**
+	 * Accessor for the portfolio's collection of cash accounts.
+	 * 
+	 * @return An ArrayList of the portfolio's cash accounts.
+	 */
+	public ArrayList<CashAcct> getCashAccounts() {
+		return this.cashAccounts;
+	}
 
 	/**
-	 * checks if the portfolio has an equity with the same name
-	 * @param s: the equity to be checked against
-	 * @return: true if the portfolio has an equity with the same name,
-	 * 	false otherwise.
+	 * Accessor for the portfolio's collection of equities
+	 * 
+	 * @return An ArrayList of the portfolio's equities.
+	 */
+	public ArrayList<Equity> getEquities() {
+		return this.equities;
+	}
+
+	/**
+	 * hasEquity checks if the portfolio has an equity with the same name.
+	 * 
+	 * @param s The equity to be checked against.
+	 * @return true if the portfolio has an equity with the same name, false otherwise.
 	 */
 	public boolean hasEquity(String str) {
 		for (Equity equity : this.equities) {
@@ -137,10 +141,10 @@ public class Portfolio implements Serializable {
 	}
 
 	/**
-	 * This method checks if the portfolio has a cash account with the same name
-	 * @param name: the name to check
-	 * @return: true if the portfolio already has a cash account with the same name,
-	 * 	false otherwise
+	 * hasCashAccount  checks if the portfolio has a cash account with the same name
+	 * 
+	 * @param name The name of the cash account to check against.
+	 * @return true if the portfolio already has a cash account with the same name, false otherwise
 	 */
 	public boolean hasCashAccount(String name) {
 		for (CashAcct account : this.cashAccounts) {
@@ -152,10 +156,10 @@ public class Portfolio implements Serializable {
 	}
 
 	/**
-	 * returns an equity that has the passed string as its name
-	 * @param name: the name of the equity to be returned
-	 * @return: the equity with the passed name, null if the portfolio
-	 * 	does not have it
+	 * Accessor for a specific equity within the portfolio.
+	 * 
+	 * @param name The name of the equity to be returned.
+	 * @return The equity with the passed name, null if the portfolio does not have it.
 	 */
 	public Equity getEquity(String name) {
 		for (Equity equity : this.equities) {
@@ -167,10 +171,10 @@ public class Portfolio implements Serializable {
 	}
 
 	/**
-	 * Returns the cash account object that is owned by the portfolio
-	 * that has the same name as the passed string
-	 * @param name: the name of the desired cash account
-	 * @return: the cash account object that has the same name, false otherwise
+	 * Accessor for a specific cash account within the portfolio.
+	 * 
+	 * @param name The name of the cash account to be returned.
+	 * @return The cash account with the passed name, null if the portfolio does not have it.
 	 */
 	public CashAcct getCashAcct(String name) {
 		for (CashAcct account : this.cashAccounts) {
@@ -182,8 +186,9 @@ public class Portfolio implements Serializable {
 	}
 
 	/**
-	 * toString method for the portfolio
-	 * @return: a string that represents the portfolio
+	 * Generic toString method.
+	 * 
+	 * @return: A String representation of this portfolio.
 	 */
 	@Override
 	public String toString() {
@@ -196,30 +201,4 @@ public class Portfolio implements Serializable {
 		}
 		return string + "\n";
 	}
-
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-//		StockUtil stockRef = new StockUtil("Apple", "AAPL", "500.00");
-//		Stock testStock = new Stock(100, stockRef);
-//		IndexUtil indexRef = new IndexUtil("Tech Companies");
-//		StockUtil stock1 = new StockUtil("Apple", "APPL", "300");
-//		StockUtil stock2 = new StockUtil("Google", "GOOG", "200");
-//		StockUtil stock3 = new StockUtil("Microsoft", "MSFT", "1000");
-//		indexRef.addStock(stock1);
-//		indexRef.addStock(stock2);
-//		indexRef.addStock(stock3);
-//		Index testIndex = new Index(10, indexRef);
-//		CashAcct testAcct = new CashAcct("Account 1", 500.00);
-//
-//		Portfolio testPortfolio = new Portfolio("MyPortfolio");
-//		testPortfolio.addEquity(testStock);
-//		testPortfolio.addEquity(testIndex);
-//		testPortfolio.addEquity(testIndex);
-//		testPortfolio.addCash(testAcct);
-//		testPortfolio.addCash(testAcct);
-//		System.out.println(testPortfolio.toString());
-	}
-
 }

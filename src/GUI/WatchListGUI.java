@@ -29,6 +29,8 @@ public class WatchListGUI extends JPanel {
 	private JButton manage;
 	private MainFrame mainFrame;
 	private User user;
+	private JComboBox<MainPanel> menu;
+	private MainPanel[] menuItems;
 	
 	/**
 	 * Create the panel.
@@ -47,7 +49,7 @@ public class WatchListGUI extends JPanel {
 			model.addElement(new WItemLabel("GOOG"));
 		}
 
-		this.manage = new JButton("Manage");
+		this.manage = new JButton("Add New");
 		
 		this.labels = new JList(model);
 		
@@ -57,7 +59,7 @@ public class WatchListGUI extends JPanel {
 		this.add(this.manage, BorderLayout.NORTH);
 		this.add(scrollPane, BorderLayout.CENTER);
 
-		this.setPreferredSize(new Dimension(140, 600));
+		this.setPreferredSize(new Dimension(140, 500));
 		
 		this.assign();
 	}
