@@ -227,11 +227,9 @@ public class Market extends Observable {
 		double sum = 0;
 		for ( String key : this.indices.get(name) ) {
 			sum += Double.parseDouble(this.stocks.get(key).get(priceIndex));
-			System.out.println("THE SUM IS: " + sum);
 		}
 		
 		double result = sum / (this.indices.get(name).size());
-		System.out.println("SIZOE OF " + name + " is: " + this.indices.get(name).size() );
 		return Math.round( result * 100.0 ) / 100.0;
 	}
 	

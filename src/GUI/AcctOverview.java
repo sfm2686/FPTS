@@ -90,4 +90,9 @@ public class AcctOverview extends MainPanel {
 			c.createCash(getUser().getPorts().get(i), "cash" + i + 1, ( i + 2 ) * 4);
 		}
 	}
+	
+	@Override
+	public String toString(){
+		return "Account Overview";
+	}
 }

@@ -26,10 +26,10 @@ public class TransactionMenu extends MainPanel {
 	private final MainPanel[] tranTypes = { new TransCreateCash(getFrame(), getUser()),
 											new TransCashTransfer(getFrame(), getUser()), 
 											new TransAddShares(getFrame(), getUser()), 
-											new TransRemoveHolding(getFrame(), getUser())};
+											new TransRemoveHolding(getFrame(), getUser())
+											};
 
 	private JButton next;
-	private JComboBox<String> ports;
 	private JComboBox<MainPanel> trans;
 	
 	/**
@@ -86,5 +86,10 @@ public class TransactionMenu extends MainPanel {
 				transition((MainPanel) trans.getSelectedItem()); 
 			}
 		});
+	}
+	
+	@Override
+	public String toString(){
+		return "Transaction Menu";
 	}
 }
