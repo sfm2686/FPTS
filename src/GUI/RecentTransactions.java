@@ -53,4 +53,9 @@ public class RecentTransactions extends JPanel {
 	private void assign(){
 		
 	}
+	
+	@Override
+	public String toString(){
+		return "Recent Transactions";
+	}
 }

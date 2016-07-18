@@ -104,5 +104,10 @@ public class SimulationResults extends MainPanel {
 			}
 		});
 	}
+	
+	@Override
+	public String toString(){
+		return "Simulation Results";
+	}
 
 }

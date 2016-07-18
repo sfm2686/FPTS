@@ -13,6 +13,7 @@ import Market.Market;
 import DataInterface.DBInterface;
 import Finance.*;
 import Transaction.*;
+import TransactionStorage.Log;
 import TransactionStorage.UndoRedo;
 import WatchList.WatchList;
 
@@ -27,11 +28,8 @@ public class MainFrame extends JFrame {
 	private JPanel mainPanel, watchListPanel;
 	
 	//Menu attrs
-	private JComboBox<String> menu;
-	private final String[] menuItems = {"Account Overview", "Simulation", "Transaction Menu",
-			"View Log", "View Recent Transactions"};
-	
-
+	private JComboBox<MainPanel> menu;
+	private ArrayList<MainPanel> menuItems;
 	/**
 	 * Create the frame.
 	 */
@@ -41,7 +39,7 @@ public class MainFrame extends JFrame {
 		this.setTitle("Main View");
 		this.user = user;
 		this.mainPanel = mainPanel;
-		
+		this.fillMenu();
 		this.setLayout(new BorderLayout());
 		
 		this.add(top(), BorderLayout.NORTH);
@@ -54,11 +52,24 @@ public class MainFrame extends JFrame {
 		this.assign();
 
 	}
+	
+	private void fillMenu(){
+		this.menuItems = new ArrayList<MainPanel>();
+		this.menuItems.add(new AcctOverview(this.user));
+		this.menuItems.add(new SimulationSettings(this, user));
+		this.menuItems.add(new TransactionMenu(this, user));
+		this.menuItems.add(new LogView(this.user));
+		this.menuItems.add(new CreatePortfolio(this, user));
+	}
 
 	private JPanel top(){
 		JPanel panel = new JPanel(new FlowLayout());
 		
-		this.menu = new JComboBox<>(this.menuItems);
+		MainPanel[] temp = new MainPanel[this.menuItems.size()];
+		
+		for ( int i = 0; i < temp.length; i ++ )
+			temp[i] = this.menuItems.get(i);
+		this.menu = new JComboBox<MainPanel>(temp);
 		panel.add(menu);
 		panel.setBorder(BorderFactory.createEtchedBorder());
 		
@@ -70,21 +81,12 @@ public class MainFrame extends JFrame {
 		this.undo = new JButton("Undo");
 		this.redo = new JButton("Redo");
 
+
 		panel.add(this.undo);
 		panel.add(this.redo);
 		panel.add(this.watchList);
 		panel.add(this.logout);
 		//panel.setBackground(new Color(50000));
-		return panel;
-	}
-	
-	private JPanel mainView(){
-		JPanel panel = new JPanel();
-		JTextPane acctOverview = new JTextPane();
-		acctOverview.setText("TESTING ACCOUNT OVERVIEW RIGHT NOW");
-		panel.add(acctOverview);
-		panel.setBackground(new Color(12000));
-		panel.setSize(new Dimension(500, 700));
 		return panel;
 	}
 	
@@ -101,21 +103,7 @@ public class MainFrame extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
-				switch(menu.getSelectedIndex()) {
-				case 0: mainPanel = new AcctOverview(user);
-					break;
-				case 1: mainPanel = new SimulationSettings(MainFrame.this, user);
-					break;
-				case 2: mainPanel = new TransactionMenu(MainFrame.this, user);
-					break;
-				case 3: mainPanel = new LogView(user);
-					break;
-				case 4: mainPanel = new RecentTransactions(user);
-					break;
-				}
-				//End case
-				refresh(mainPanel);
+				refresh((MainPanel)menu.getSelectedItem());
 			}
 		});
 		
@@ -143,6 +131,7 @@ public class MainFrame extends JFrame {
 					return ;
 			}
 		});
+
 		
 		this.watchList.addActionListener(new ActionListener() {
 			
@@ -152,6 +141,11 @@ public class MainFrame extends JFrame {
 				
 			}
 		});
+	}
+	
+	@Override
+	public String toString(){
+		return "Main Frame";
 	}
 
 	/**
@@ -171,10 +165,5 @@ public class MainFrame extends JFrame {
 				}
 			}
 		});
-	}
-	
-	@Override
-	public String toString(){
-		return "MainFrame";
 	}
 }

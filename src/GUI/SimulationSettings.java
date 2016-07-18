@@ -171,6 +171,6 @@ public class SimulationSettings extends MainPanel {
 	
 	@Override
 	public String toString(){
-		return "Simulation Settings";
+		return "Simulation";
 	}
 }

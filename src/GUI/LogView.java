@@ -69,5 +69,10 @@ public class LogView extends MainPanel {
 	protected void assign(){
 		
 	}
+	
+	@Override
+	public String toString(){
+		return "View Log";
+	}
 
 }
