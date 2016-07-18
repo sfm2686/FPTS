@@ -9,10 +9,11 @@ import java.awt.event.*;
 import java.util.*;
 
 import javax.swing.*;
-
+import Market.Market;
 import DataInterface.DBInterface;
 import Finance.*;
 import Transaction.*;
+import TransactionStorage.UndoRedo;
 import WatchList.WatchList;
 
 /**
@@ -36,7 +37,7 @@ public class MainFrame extends JFrame {
 	 */
 	public MainFrame(User user, JPanel mainPanel) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(new Dimension(800, 800));
+		setSize(new Dimension(1100, 850));
 		this.setTitle("Main View");
 		this.user = user;
 		this.mainPanel = mainPanel;
@@ -124,20 +125,22 @@ public class MainFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String w = "Are you sure you want to save changes and logout?";
-				if (JOptionPane.showConfirmDialog(null, w, "Logout", 
-					    JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE)
-					    == JOptionPane.YES_OPTION){
+				if (JOptionPane.showConfirmDialog(null, w, "Logout", JOptionPane.YES_NO_OPTION, 
+						JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION){
+		
+					UndoRedo stack = Invoker.getInvoker(user.getLog()).getUndoRedoStack();
+					stack.clean(user.getLog());
 					
-						DBInterface.saveUserData(user);
-						//TODO
-						// CLOSE USER SESSION
-						user = null;
-						Login login = new Login();
-						login.setVisible(true);
-						dispose();
-					}
-					else
-						return ;
+					DBInterface.saveUserData(user);
+					//TODO
+					// CLOSE USER SESSION
+					user = null;
+					Login login = new Login();
+					login.setVisible(true);
+					dispose();
+				}
+				else
+					return ;
 			}
 		});
 		
@@ -155,6 +158,8 @@ public class MainFrame extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		Market.getMarketInstance();
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {

@@ -26,7 +26,7 @@ abstract class MainPanel extends JPanel{
 	public MainPanel(MainFrame mainFrame, User user){
 		this.mainFrame = mainFrame;
 		this.user = user;
-		this.setSize(new Dimension(500, 700));
+		this.setPreferredSize(new Dimension(1000, 750));;
 		this.setLayout(new BorderLayout());
 	}
 	
@@ -43,6 +43,7 @@ abstract class MainPanel extends JPanel{
 			ports[p] = getUser().getPorts().get(p).getName();
 		return new JComboBox<>(ports);
 	}
+
 	
 	protected MainFrame getFrame(){
 		return this.mainFrame;

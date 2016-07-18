@@ -49,7 +49,14 @@ public class Invoker {
 		}
 		return instance;
 	}
-
+	
+	/**
+	 * Accessor for the invoker's undoRedo stack.
+	 * @return The invoker's undoRedo stack.
+	 */
+	public UndoRedo getUndoRedoStack(){
+		return (this.undoRedo);
+	}
 	
 	/**
 	 * invoke simply executes a command, checks the command's type, 

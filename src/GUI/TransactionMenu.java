@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import Finance.*;
 import Transaction.*;
+import sun.net.ftp.FtpClient.TransferType;
 
 /**
  * 
@@ -22,7 +23,7 @@ public class TransactionMenu extends MainPanel {
 //			"Withdraw Cash", "Remove Cash Account", "Remove Equity", "Transfer between Cash Account",
 //			"Subtract Shares", "Buy Equity", "Sell Equity"};
 	
-	private final MainPanel[] tranTypes = { new TransRemove(getFrame(), getUser(),getUser().getPorts().get(0))};
+	private final MainPanel[] tranTypes = { new TransAddShares(getFrame(), getUser()), new TransRemoveHolding(getFrame(), getUser())};
 
 	private JButton next;
 	private JComboBox<String> ports;
@@ -57,6 +58,7 @@ public class TransactionMenu extends MainPanel {
 
 		panel.add(new JLabel("Transaction "), c);
 		c.gridx ++;
+		this.trans = new JComboBox<>(tranTypes);
 		panel.add(trans, c);
 		c.gridx = 0;
 		c.gridy ++;

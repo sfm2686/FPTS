@@ -59,10 +59,10 @@ abstract class SimulationStrategy {
 	 * Given the supplied parameters, simulate the growth/decay of a portfolio
 	 * and return the simulation results as a collection of points.
 	 * 
-	 * @param growthRate
-	 * @param value
-	 * @param timeSteps
-	 * @param interval
+	 * @param growthRate The desired growth rate for a portfolio.
+	 * @param value The initial value of the portfolio to simulate.
+	 * @param timeSteps The total number of steps for the simulation to run.
+	 * @param interval The value of each time step, ex. a day, month, or year.
 	 * @return An ArrayList containing the value of the portfolio for each time step in a simulation.
 	 */
 	public abstract ArrayList<Double> simulate(double growthRate, double value, int timeSteps, int interval);

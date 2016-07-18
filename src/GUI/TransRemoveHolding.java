@@ -6,6 +6,8 @@ package GUI;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.swing.*;
 
@@ -17,21 +19,23 @@ import Finance.*;
  * @authors Sultan Mira, Hunter Caskey
  *
  */
-public class TransRemove extends MainPanel {
+@SuppressWarnings("serial")
+public class TransRemoveHolding extends MainPanel {
 
-	private Portfolio workingPort;
-	private String[] CashAcctsList;
-	private String[] equitiesList;
-	private JCheckBox[] checkBoxesCash, checkBoxesEq;
+	private ArrayList<JCheckBox> checkBoxesCash, checkBoxesEq;
 	private JButton remove;
-
+	private HashMap<String, Object[]> cashMap, eqMap;
 	
 	/**
 	 * Create the panel.
 	 */
-	public TransRemove(MainFrame mainFrame, User user, Portfolio port) {
+	public TransRemoveHolding(MainFrame mainFrame, User user) {
 		super(mainFrame, user);
-		this.workingPort = port;
+		
+		this.checkBoxesCash = new ArrayList<>();
+		this.checkBoxesEq = new ArrayList<>();
+		this.cashMap = new HashMap<>();
+		this.eqMap = new HashMap<>();
 		
 		this.fill();
 		
@@ -48,6 +52,7 @@ public class TransRemove extends MainPanel {
 	}
 	
 	protected JPanel middle(){
+		
 		JPanel panel = new JPanel();
 		panel.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
@@ -55,19 +60,14 @@ public class TransRemove extends MainPanel {
 		c.anchor = c.WEST;
 		c.gridx = 0;
 		c.gridy = 0;
-		
-		int size = this.CashAcctsList.length;
-		this.checkBoxesCash = new JCheckBox[size];
 
 		//Filling cash accounts first
-		for ( int i = 0; i < size; i ++ )
-			this.checkBoxesCash[i] = new JCheckBox(this.CashAcctsList[i]);
-		
-		size = this.equitiesList.length;
-		this.checkBoxesEq = new JCheckBox[size];
+		for ( String key : this.cashMap.keySet())
+			this.checkBoxesCash.add(new JCheckBox(key));
+	
 		//Filling equities
-		for ( int i = 0; i < size; i ++ )
-			this.checkBoxesEq[i] = new JCheckBox(this.equitiesList[i]);
+		for ( String key : this.eqMap.keySet())
+			this.checkBoxesEq.add(new JCheckBox(key));
 		
 		for ( JCheckBox j : this.checkBoxesCash ){
 			panel.add(j, c);
@@ -92,18 +92,17 @@ public class TransRemove extends MainPanel {
 	}
 	
 	private void fill(){
-		int size = workingPort.getCashAccounts().size();
-		this.CashAcctsList = new String[size];
-
-		for ( int c = 0; c < size; c ++ )
-			this.CashAcctsList[c] = workingPort.getCashAccounts().get(c).getName();
-			
-		size = workingPort.getEquities().size();
-		this.equitiesList = new String[size];
-		
-		for ( int e = 0; e < size; e ++ )
-			this.equitiesList[e] = workingPort.getEquities().get(e).getName();
-			
+		String label;
+		for(Portfolio port : this.getUser().getPorts()){
+			for(CashAcct acct : port.getCashAccounts()){
+				label = port.getName() + ": " + acct.getName();
+				this.cashMap.put(label, new Object[]{port, acct});
+			}
+			for(Equity eq : port.getEquities()){
+				label = port.getName() + ": " + eq.getName();
+				this.eqMap.put(label, new Object[]{port, eq});
+			}
+		}
 	}
 	
 	//Did not test equity removal yet ..
@@ -115,17 +114,24 @@ public class TransRemove extends MainPanel {
 			public void actionPerformed(ActionEvent e) {
 
 				Client client = new Client(getUser());
-				
-				for ( int c = 0; c < checkBoxesCash.length; c ++ )
-					if ( checkBoxesCash[c].isSelected() )
-						client.removeCash(workingPort, checkBoxesCash[c].getLabel());
-				
-				for ( int a = 0; a < checkBoxesEq.length; a ++ )
-					if ( checkBoxesEq[a].isSelected() )
-						client.removeEquity(workingPort, checkBoxesEq[a].getLabel());
-				
+				Portfolio port;
+				CashAcct cash;
+				Equity eq;
+				for ( JCheckBox box : checkBoxesCash) {
+					if ( box.isSelected() ){
+						port = (Portfolio)(cashMap.get(box.getLabel())[0]);
+						cash = (CashAcct)(cashMap.get(box.getLabel())[1]);
+						client.removeCash(port, cash.getName());
+					}	
+				}
+				for ( JCheckBox box : checkBoxesEq) {
+					if ( box.isSelected() ){
+						port = (Portfolio)(cashMap.get(box.getLabel())[0]);
+						eq = (Equity)(cashMap.get(box.getLabel())[1]);
+						client.removeCash(port, eq.getName());
+					}	
+				}
 				transition(new AcctOverview(getUser()));
-
 			}
 		});
 	}

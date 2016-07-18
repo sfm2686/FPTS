@@ -60,7 +60,7 @@ public class AcctOverview extends MainPanel {
 		JList list = new JList(model);
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setViewportView(list);
-		scrollPane.setPreferredSize(new Dimension(650, 650));
+		scrollPane.setPreferredSize(new Dimension(950, 700));
 		panel.add(scrollPane, BorderLayout.CENTER);
 		
 		return panel;

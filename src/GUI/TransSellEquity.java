@@ -3,57 +3,64 @@
  */
 package GUI;
 
-import java.awt.BorderLayout;
-
 import javax.swing.JPanel;
 
-import Finance.*;
+import Finance.User;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
  *
  */
-public class TransWithdraw extends MainPanel {
+public class TransSellEquity extends MainPanel {
 
 	/**
-	 * Create the panel.
+	 * @param mainFrame
+	 * @param user
 	 */
-	public TransWithdraw(MainFrame mainFrame, User user, Portfolio port) {
+	public TransSellEquity(MainFrame mainFrame, User user) {
 		super(mainFrame, user);
-		
-		this.add(top(), BorderLayout.NORTH);
-		this.add(middle(), BorderLayout.CENTER);
-		this.add(bottom(), BorderLayout.SOUTH);
-		this.assign();
+		// TODO Auto-generated constructor stub
 	}
 
+	/* (non-Javadoc)
+	 * @see GUI.MainPanel#top()
+	 */
 	@Override
 	protected JPanel top() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	/* (non-Javadoc)
+	 * @see GUI.MainPanel#middle()
+	 */
 	@Override
 	protected JPanel middle() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	/* (non-Javadoc)
+	 * @see GUI.MainPanel#bottom()
+	 */
 	@Override
 	protected JPanel bottom() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	/* (non-Javadoc)
+	 * @see GUI.MainPanel#assign()
+	 */
 	@Override
 	protected void assign() {
 		// TODO Auto-generated method stub
-		
+
 	}
 	
 	@Override
 	public String toString(){
-		return "Withdraw Cash";
+		return "Sell Equity Shares";
 	}
 
 }
