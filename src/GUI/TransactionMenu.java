@@ -24,7 +24,7 @@ public class TransactionMenu extends MainPanel {
 //			"Subtract Shares", "Buy Equity", "Sell Equity"};
 	
 	private final MainPanel[] tranTypes = { new TransSubEquity(getFrame(), getUser()),
-											//new TransDepositCash(getFrame(), getUser()),
+											new TransDepositCash(getFrame(), getUser()),
 											new TransSellEquity(getFrame(), getUser()),
 											new TransWithdraw(getFrame(), getUser()),
 											new TransBuyEquity(getFrame(), getUser()),
