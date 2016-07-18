@@ -31,10 +31,8 @@ public class TransCreateCash extends MainPanel {
 	/**
 	 * Create the panel.
 	 */
-	public TransCreateCash(MainFrame mainFrame, User user, Portfolio port) {
+	public TransCreateCash(MainFrame mainFrame, User user) {
 		super(mainFrame, user);
-		
-		this.workingPort = port;
 		
 		this.add(top(), BorderLayout.NORTH);
 		this.add(middle(), BorderLayout.CENTER);

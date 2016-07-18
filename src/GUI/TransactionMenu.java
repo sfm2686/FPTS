@@ -23,7 +23,9 @@ public class TransactionMenu extends MainPanel {
 //			"Withdraw Cash", "Remove Cash Account", "Remove Equity", "Transfer between Cash Account",
 //			"Subtract Shares", "Buy Equity", "Sell Equity"};
 	
-	private final MainPanel[] tranTypes = { new TransAddShares(getFrame(), getUser()), new TransRemoveHolding(getFrame(), getUser())};
+	private final MainPanel[] tranTypes = { new TransCashTransfer(getFrame(), getUser()), 
+											new TransAddShares(getFrame(), getUser()), 
+											new TransRemoveHolding(getFrame(), getUser())};
 
 	private JButton next;
 	private JComboBox<String> ports;

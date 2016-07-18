@@ -23,7 +23,7 @@ public class TransAddShares extends MainPanel {
 
 	/****** Class Attributes ******/
 	private JButton add;
-	private JComboBox ports, equities;
+	private JComboBox<String> ports, equities;
 	private JSpinner shareS, dateS;
 	private HashMap<String, String> map;
 	

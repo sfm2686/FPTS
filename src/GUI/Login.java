@@ -131,10 +131,8 @@ public class Login extends JFrame {
 					return ;
 				}
 				User user = DBInterface.getUserData(username.toString()); 
-				System.out.println("username: " + username.toString());
 				
 				if ( user == null ){
-					System.out.println(user);
 					w = "Username is not in the system. Please register or try again";
 					JOptionPane.showMessageDialog(new JFrame(), w, "No User",
 							JOptionPane.ERROR_MESSAGE);

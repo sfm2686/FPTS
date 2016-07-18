@@ -20,6 +20,8 @@ import Finance.Portfolio;
  */
 abstract class MainPanel extends JPanel{
 
+	protected final Dimension TEXTD = new Dimension(120, 20);
+	
 	private MainFrame mainFrame;
 	private User user;
 	
