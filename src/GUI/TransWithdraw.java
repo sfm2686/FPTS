@@ -5,6 +5,7 @@ package GUI;
 
 import java.awt.BorderLayout;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import Finance.*;
@@ -18,7 +19,7 @@ public class TransWithdraw extends MainPanel {
 	/**
 	 * Create the panel.
 	 */
-	public TransWithdraw(MainFrame mainFrame, User user, Portfolio port) {
+	public TransWithdraw(MainFrame mainFrame, User user) {
 		super(mainFrame, user);
 		
 		this.add(top(), BorderLayout.NORTH);
@@ -29,20 +30,23 @@ public class TransWithdraw extends MainPanel {
 
 	@Override
 	protected JPanel top() {
-		// TODO Auto-generated method stub
-		return null;
+		JPanel panel = new JPanel();
+		panel.add(new JLabel("Withdraw money from a cash account"));
+		return panel;
 	}
 
 	@Override
 	protected JPanel middle() {
-		// TODO Auto-generated method stub
-		return null;
+		JPanel panel = new JPanel();
+		panel.add(new JLabel("Remove a Holding from a Portfolio"));
+		return panel;
 	}
 
 	@Override
 	protected JPanel bottom() {
-		// TODO Auto-generated method stub
-		return null;
+		JPanel panel = new JPanel();
+		panel.add(new JLabel("Remove a Holding from a Portfolio"));
+		return panel;
 	}
 
 	@Override

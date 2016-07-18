@@ -47,7 +47,7 @@ public class TransRemoveHolding extends MainPanel {
 	
 	protected JPanel top(){
 		JPanel panel = new JPanel();
-		panel.add(new JLabel("Removal"));
+		panel.add(new JLabel("Remove a Holding from a Portfolio"));
 		return panel;
 	}
 	
