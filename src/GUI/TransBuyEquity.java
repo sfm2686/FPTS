@@ -148,7 +148,7 @@ public class TransBuyEquity extends MainPanel {
 		this.cashMap = new HashMap<String, Object[]>();
 		for (Portfolio port : getUser().getPorts()){
 			for (CashAcct cash : port.getCashAccounts()){
-				str = port.getName() + ": " + cash.getName();
+				str = port.getName() + ": " + cash.getName() + ", Balance: " + cash.getBalance();
 				this.cashMap.put(str, new Object[]{port, cash});
 			}
 		}
@@ -163,7 +163,6 @@ public class TransBuyEquity extends MainPanel {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("FKJSFKJDSBFJKDSB");
 				Client client = new Client(getUser());
 				
 				String equity = eqMap.get(equities.getSelectedItem());
