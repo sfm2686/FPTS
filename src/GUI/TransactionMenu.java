@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import Finance.*;
 import Transaction.*;
+import sun.net.ftp.FtpClient.TransferType;
 
 /**
  * 
@@ -22,14 +23,10 @@ public class TransactionMenu extends MainPanel {
 //			"Withdraw Cash", "Remove Cash Account", "Remove Equity", "Transfer between Cash Account",
 //			"Subtract Shares", "Buy Equity", "Sell Equity"};
 	
-	private final MainPanel[] tranTypes = { new TransRemove(getFrame(), getUser(),getUser().getPorts().get(0)),
-			new TransRemove(getFrame(), getUser(),getUser().getPorts().get(0))};
-	
-	private final int CreateCash = 0;
-	private final int AddEq = 1;
-	private final int DepositeCash = 2;
-//	private final 
-	
+	private final MainPanel[] tranTypes = { new TransCashTransfer(getFrame(), getUser()), 
+											new TransAddShares(getFrame(), getUser()), 
+											new TransRemoveHolding(getFrame(), getUser())};
+
 	private JButton next;
 	private JComboBox<String> ports;
 	private JComboBox<MainPanel> trans;
@@ -60,21 +57,10 @@ public class TransactionMenu extends MainPanel {
 		c.anchor = c.EAST;
 		c.gridx = 0;
 		c.gridy = 0;
-		
-		String[] portsA = new String[getUser().getPorts().size()];
-		for (int p = 0; p < getUser().getPorts().size(); p ++)
-			portsA[p] = getUser().getPorts().get(p).getName();
-		this.ports = new JComboBox<>(portsA);
-		
-		panel.add(new JLabel("Portfolio "), c);
-		c.gridx ++;
-		panel.add(this.ports, c);
-		c.gridx = 0;
-		c.gridy ++;
-		
-		this.trans = new JComboBox<>(this.tranTypes);
+
 		panel.add(new JLabel("Transaction "), c);
 		c.gridx ++;
+		this.trans = new JComboBox<>(tranTypes);
 		panel.add(trans, c);
 		c.gridx = 0;
 		c.gridy ++;
@@ -96,19 +82,6 @@ public class TransactionMenu extends MainPanel {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-//				Portfolio selectedPort = getUser().getPorts().get(ports.getSelectedIndex());
-//				MainPanel nextPanel = new TransactionMenu(getFrame(), getUser());
-//				switch(trans.getSelectedIndex()){
-//					case 0 : nextPanel = new TransCreate(getFrame(), getUser(), selectedPort);
-//						break;
-//					case 1 : nextPanel = new TransRemove(getFrame(), getUser(), selectedPort);
-//						break;
-//					case 2 : nextPanel = new TransAdd(getFrame(), getUser(), selectedPort);
-//						break;
-//					case 3 : nextPanel = new TransWithdraw(getFrame(), getUser(), selectedPort);
-//						break;
-//				}
-//				transition(nextPanel);
 				transition((MainPanel) trans.getSelectedItem()); 
 			}
 		});

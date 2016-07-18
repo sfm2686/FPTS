@@ -14,7 +14,7 @@ import Finance.*;
  * @authors Sultan Mira, Hunter Caskey
  *
  */
-public class TransCreate extends MainPanel {
+public class TransCreateCash extends MainPanel {
 
 	private Portfolio workingPort;
 	private ButtonGroup holdingType;
@@ -31,10 +31,8 @@ public class TransCreate extends MainPanel {
 	/**
 	 * Create the panel.
 	 */
-	public TransCreate(MainFrame mainFrame, User user, Portfolio port) {
+	public TransCreateCash(MainFrame mainFrame, User user) {
 		super(mainFrame, user);
-		
-		this.workingPort = port;
 		
 		this.add(top(), BorderLayout.NORTH);
 		this.add(middle(), BorderLayout.CENTER);
@@ -182,4 +180,9 @@ public class TransCreate extends MainPanel {
 			}
 		});
 	}
+	
+	public String toStrign(){
+		return("Create Cash Account");
+	}
+	
 }

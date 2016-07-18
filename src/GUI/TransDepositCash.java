@@ -13,12 +13,12 @@ import Finance.*;
  * @authors Sultan Mira, Hunter Caskey
  *
  */
-public class TransAdd extends MainPanel {
+public class TransDepositCash extends MainPanel {
 
 	/**
 	 * Create the panel.
 	 */
-	public TransAdd(MainFrame mainFrame, User user, Portfolio port) {
+	public TransDepositCash(MainFrame mainFrame, User user) {
 		super(mainFrame, user);
 		
 		this.add(top(), BorderLayout.NORTH);
@@ -51,6 +51,11 @@ public class TransAdd extends MainPanel {
 	protected void assign() {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	@Override
+	public String toString(){
+		return "Deposit Cash";
 	}
 
 }

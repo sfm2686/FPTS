@@ -18,7 +18,7 @@ public class Market extends Observable {
 
 	private final int nameIndex = 0;
 	private final int priceIndex = 1;
-	private int updateInterval = 60; // Default to updating the thread every minute
+	private int updateInterval = 02; // Default to updating the thread every two seconds
 
 	public void setUpdateInterval(int time){
 		this.updateInterval = time;
@@ -61,7 +61,7 @@ public class Market extends Observable {
 		this.indices = new HashMap<String, ArrayList<String>>();
 		CSVParser.read();
 		StockUpdate thread = new StockUpdate();
-		thread.run();
+		thread.start();
 	}
 	
 	/**
@@ -235,6 +235,21 @@ public class Market extends Observable {
 		return Math.round( result * 100.0 ) / 100.0;
 	}
 	
+	public HashMap<String, ArrayList<String>> getStocks(){
+		return Market.stocks;
+	}
+	
+	public HashMap<String, ArrayList<String>> getIndices(){
+		return Market.indices;
+	}
+	
+	public HashMap<String, ArrayList<String>> getEquities(){
+		HashMap<String, ArrayList<String>> merged = new HashMap<String, ArrayList<String>>();
+		merged.putAll(Market.stocks);
+		merged.putAll(Market.indices);
+		return(merged);
+	}
+	
 	/******************************** StockUpdate ********************************/
 	private class StockUpdate extends Thread {
 		
@@ -244,7 +259,7 @@ public class Market extends Observable {
 		public void run(){
 			while ( true ){
 				try {
-					sleep(updateInterval * 1000);
+					this.sleep(updateInterval * 1000);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
