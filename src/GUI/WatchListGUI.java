@@ -23,7 +23,7 @@ import javafx.scene.control.ScrollBar;
  * @authors Sultan Mira, Hunter Caskey
  *
  */
-public class WatchListGUI extends JPanel {
+public class WatchListGUI extends JPanel implements Observer{
 
 	private ArrayList<WItemLabel> witems = new ArrayList<WItemLabel>();
 	private JList labels = new JList();
@@ -47,6 +47,7 @@ public class WatchListGUI extends JPanel {
 		this.setLayout(new BorderLayout());
 		
 		DefaultListModel model = new DefaultListModel();
+		this.user.getWatchList().addObserver(this);
 //		for ( int i = 0; i < 40; i ++ ){
 //			model.addElement(new WItemLabel("APPLE"));
 //			model.addElement(new WItemLabel("GOOG"));
@@ -60,14 +61,23 @@ public class WatchListGUI extends JPanel {
 		}
 		
 		this.addButton = new JButton("Add New");
+		
 		this.menu   = new JComboBox<>(temp);
 		this.labels = new JList(model);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setViewportView(this.labels);
-		scrollPane.setPreferredSize(new Dimension(120, 700));
+		scrollPane.setPreferredSize(new Dimension(120, 680));
+
 		this.add(this.addButton, BorderLayout.NORTH);
-		this.add(this.menu, BorderLayout.CENTER);
+		
+		JPanel temp2 = new JPanel();
+		temp2.setLayout(new BorderLayout());
+		temp2.add(new JLabel("Manage:"), BorderLayout.NORTH);
+		temp2.add(this.menu, BorderLayout.CENTER);
+		
+		this.add(temp2, BorderLayout.CENTER);
+		
 		this.add(scrollPane, BorderLayout.SOUTH);
 
 		this.setPreferredSize(new Dimension(140, 500));
@@ -78,10 +88,17 @@ public class WatchListGUI extends JPanel {
 	private void fill(){
 		Iterator it = user.getWatchList().getIterator();
 		String s;
+		WatchListItem item;
+		SetStateVisitor v = new SetStateVisitor();
 		while ( !it.isDone() ){
+			item = it.currentItem();
+			item.accept(v);
+			
 			s = it.currentItem().getEq().getName() +
-					": " + it.currentItem().getEq().getPrice();
+					": " + it.currentItem().getEq().getPrice() + "\n" +
+					it.currentItem().getState();
 			this.map.put(s, it.currentItem());
+			
 			it.next();
 		}
 	}
@@ -103,5 +120,16 @@ public class WatchListGUI extends JPanel {
 						map.get(menu.getSelectedItem())));
 			}
 		});
+	}
+
+	/**
+	 * Everytime the model tells the GUI to update, refresh the look.
+	 */
+	@Override
+	public void update(Observable o, Object arg) {
+		fill();
+		this.repaint();
+		this.setVisible(true);
+		this.mainFrame.add(this, BorderLayout.EAST);
 	}
 }

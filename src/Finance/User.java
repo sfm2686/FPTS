@@ -35,7 +35,7 @@ public class User implements Serializable {
 		this.password = password;
 		this.portfolios = new ArrayList<Portfolio>();
 		this.log = new Log();
-		this.watchList = new WatchList(60); // Default the watchlist to update every minute.
+		this.watchList = new WatchList(10); // Default the watchlist to update every ten seconds.
 	}
 
 	/**

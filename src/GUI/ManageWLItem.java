@@ -1,6 +1,9 @@
 package GUI;
 
 import javax.swing.*;
+
+import DataInterface.DBInterface;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,6 +16,8 @@ import Finance.Index;
 import Finance.Stock;
 import Finance.User;
 import Market.Market;
+import Transaction.Invoker;
+import TransactionStorage.UndoRedo;
 
 /**
  * @authors Sultan Mira, Hunter Caskey
@@ -102,10 +107,10 @@ public class ManageWLItem extends MainPanel {
 		
 		Double d;
 		String s = "High Trigger: ";
-		
+
 		try {
 			d = new Double(item.getHighBound());
-			s += d;
+			s += d.toString();
 		}
 		catch(NullPointerException e) {
 			s += "Not assigned";
@@ -180,9 +185,30 @@ public class ManageWLItem extends MainPanel {
 				}
 				if ( h != null )
 					item.setHighBound(h);
+				else
+					item.clearHighBound();
 				if ( l != null )
 					item.setLowBound(l);
+				else
+					item.clearLowBound();
+				
 				transition(new AcctOverview(getUser()));
+			}
+		});
+		
+		this.remove.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String w = "Are you sure you want to remove the watch list item:" +
+						item.getEq().getName() + " ?";
+				if (JOptionPane.showConfirmDialog(null, w, "Save", JOptionPane.YES_NO_OPTION, 
+						JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION){
+					getUser().getWatchList().removeWatchListItem(item);
+					transition(new AcctOverview(getUser()));
+				}
+				else
+					return ;
 			}
 		});
 	}

@@ -17,6 +17,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import com.sun.org.apache.bcel.internal.classfile.Visitor;
+
 import Finance.CashAcct;
 import Finance.Equity;
 import Finance.Index;
@@ -25,6 +27,7 @@ import Finance.Stock;
 import Finance.User;
 import Market.Market;
 import Transaction.Client;
+import WatchList.SetStateVisitor;
 import WatchList.WatchListItem;
 
 /**
@@ -126,6 +129,7 @@ public class AddWLItem extends MainPanel {
 	    	info.add(str);
 	    	this.map.put(str, key);
 	    }
+
 		Collections.sort(info);
 		for(String st : info){
 			this.equities.addItem(st);
@@ -163,8 +167,14 @@ public class AddWLItem extends MainPanel {
 					
 					Equity equity = null;
 					String selected = map.get((String)equities.getSelectedItem());
-					if(Market.getMarketInstance().isIndex(selected))
-						equity = new Index(0, selected);
+					if(Market.getMarketInstance().isIndex(selected)){
+						if(selected.equalsIgnoreCase("DOW")){
+							equity = Market.getMarketInstance().getDow(0);
+						}
+						else{
+							equity = new Index(0, selected);
+						}
+					}
 					else if(Market.getMarketInstance().isStock(selected))
 						equity = new Stock(0, selected);
 
@@ -175,6 +185,8 @@ public class AddWLItem extends MainPanel {
 					if(l != null)
 						item.setLowBound(l);
 					Market.getMarketInstance().addUpdateEquity(equity);
+					SetStateVisitor v =  new SetStateVisitor();
+					item.accept(v);
 					getUser().getWatchList().addWatchListItem(item);
 				}
 				transition(new AcctOverview(getUser()));

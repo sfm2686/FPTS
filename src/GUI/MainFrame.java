@@ -46,11 +46,9 @@ public class MainFrame extends JFrame {
 		this.add(this.mainPanel, BorderLayout.CENTER);
 //		this.add(mainView(), BorderLayout.CENTER);
 		
-		//FOR NOW MAKING A NEW WATCHLIST INSTEAD OF USING THE USER'S ..
 		this.watchListPanel = new WatchListGUI(this, this.user);
 		this.add(this.watchListPanel, BorderLayout.EAST);
 		this.assign();
-
 	}
 	
 	private void fillMenu(){

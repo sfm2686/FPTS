@@ -56,31 +56,21 @@ public class WatchListItem implements Serializable{
 	}
 	
 	/**
-	 * Setter methods for the high price bound. Set only if the new value is higher than
-	 * the low bound, if any exists.
+	 * Setter methods for the high price bound.
 	 * 
 	 * @param n The new value of the high price bound.
 	 */
 	public void setHighBound(double n){
-		if(this.lowBound != null){
-			if (n > this.lowBound){
-				this.highBound = n;
-			}
-		}
+		this.highBound = n;
 	}
 	
 	/**
-	 * Setter methods for the low price bound. Set only if the new value is lower than
-	 * the high bound, if any exists.
+	 * Setter methods for the low price bound.
 	 * 
 	 * @param n The new value of the low price bound.
 	 */
 	public void setLowBound(double n){
-		if(this.highBound != null){
-			if(n < this.highBound){
-				this.lowBound = n;
-			}
-		}
+		this.lowBound = n;
 	}
 	
 	/**
@@ -91,7 +81,7 @@ public class WatchListItem implements Serializable{
 	 * 
 	 * @param v A visitor that will perform operations upon the WatchListItem.
 	 */
-	protected void accept(Visitor v){
+	public void accept(Visitor v){
 		v.visit(this);
 	}
 	
