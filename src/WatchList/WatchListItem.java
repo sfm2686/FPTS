@@ -62,7 +62,7 @@ public class WatchListItem implements Serializable{
 	 * @param n The new value of the high price bound.
 	 */
 	public void setHighBound(double n){
-		if(!this.lowBound.equals(null)){
+		if(this.lowBound != null){
 			if (n > this.lowBound){
 				this.highBound = n;
 			}
@@ -76,7 +76,7 @@ public class WatchListItem implements Serializable{
 	 * @param n The new value of the low price bound.
 	 */
 	public void setLowBound(double n){
-		if(!this.highBound.equals(null)){
+		if(this.highBound != null){
 			if(n < this.highBound){
 				this.lowBound = n;
 			}

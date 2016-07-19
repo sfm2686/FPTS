@@ -79,7 +79,7 @@ public class SimulationSettings extends MainPanel {
 		this.gRateS.setPreferredSize(spinD);
 		
 		GridBagConstraints c = new GridBagConstraints();
-		c.anchor = c.EAST;
+		c.anchor = c.WEST;
 		c.gridx = 0;
 		c.gridy = 0;
 		
@@ -138,13 +138,11 @@ public class SimulationSettings extends MainPanel {
 	}
 	
 	protected void assign(){
+		
 		this.simulate.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-//				String w = "SIMULATION RESULTS SHOULD POP UP INSTEAD OF DIS";
-//				JOptionPane.showMessageDialog(new JFrame(), w, "Empty Field/s",
-//						JOptionPane.ERROR_MESSAGE);
 				
 				double initValue, growthRate;
 				int timeSteps;

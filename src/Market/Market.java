@@ -338,7 +338,7 @@ public class Market extends Observable {
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-				for (Stock s : obStocks){
+				for (Stock s : new ArrayList<Stock>(obStocks)){
 					setPrice(s.getName(), YahooAPI.getPrice(s.getName()));
 				}
 				doneUpdating();
