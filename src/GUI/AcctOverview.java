@@ -1,6 +1,3 @@
-/**
- * 
- */
 package GUI;
 
 import java.awt.*;
@@ -12,14 +9,24 @@ import Finance.Portfolio;
 import Finance.User;
 
 /**
+ * This class is a representation of the Account overview 
+ * functionality.
+ * This class extends MainPanel.
+ * 
  * @authors Sultan Mira, Hunter Caskey
- *
  */
 public class AcctOverview extends MainPanel {
 
 	
+	/****** Class Methods ******/
+	
 	/**
-	 * Create the panel.
+	 * Create the panel. Store the user in the parent class.
+	 * The class passes null for the main frame to its parent class
+	 * because it does not go anywhere.
+	 * 
+	 * @param user: the user to be stored in the parent class and used
+	 * 				to extract information to display/use.
 	 */
 	public AcctOverview(User user) {
 		super(null, user);
@@ -30,21 +37,29 @@ public class AcctOverview extends MainPanel {
 		this.assign();
 	}
 	
+	/**
+	 * Helper method returns a panel that contains the
+	 * components of the top or NORTH side of this main panel.
+	 * 
+	 * @return Populated panel.
+	 */
 	protected JPanel top(){
 		JPanel panel = new JPanel();
 		panel.add(new JLabel("Account Overview"));
 		return panel;
 	}
 	
+	/**
+	 * Helper method returns a panel that contains the
+	 * components of the middle or CENTER side of this main panel.
+	 * 
+	 * @return Populated panel.
+	 */
 	protected JPanel middle(){
 		JPanel panel = new JPanel();
 		panel.setLayout(new BorderLayout());
 		
 		panel.add(new JLabel("Portfolios: "), BorderLayout.NORTH);
-		
-
-		//TESTING .. 
-		testingPorts();
 		
 		if ( getUser().getPorts().size() == 0 )
 			return panel;
@@ -65,31 +80,31 @@ public class AcctOverview extends MainPanel {
 		return panel;
 	}
 
+	/**
+	 * Helper method returns a panel that contains the
+	 * components of the bottom or SOUTH side of this main panel.
+	 * 
+	 * @return Populated panel.
+	 */
 	protected JPanel bottom(){
 		JPanel panel = new JPanel();
 		
 		return panel;
 	}
 	
+	/**
+	 * This method contains any action listeners for any components
+	 * in this class that might need one.
+	 */
 	protected void assign(){
 		
 	}
 	
-	private void testingPorts(){
-
-		Client c = new Client(getUser());
-		for ( int i = 0; i < 5; i ++ ){
-			getUser().addPort(new Portfolio("port" + i));
-			//System.out.println("i == " + i);
-		}
-	//	System.out.println("user.getPorts().size() == " + this.user.getPorts().size());
-		
-		for ( int i = 0; i < 5; i ++ ){
-			c.createCash(getUser().getPorts().get(i), "cash" + i, ( i + 2 ) * 4);
-			c.createCash(getUser().getPorts().get(i), "cash" + i + 1, ( i + 2 ) * 4);
-		}
-	}
-	
+	/**
+	 * The toString for this class.
+	 * 
+	 * @return: A string representation of this class.
+	 */
 	@Override
 	public String toString(){
 		return "Account Overview";

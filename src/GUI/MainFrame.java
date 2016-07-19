@@ -44,11 +44,13 @@ public class MainFrame extends JFrame {
 		
 		this.add(top(), BorderLayout.NORTH);
 		this.add(this.mainPanel, BorderLayout.CENTER);
-//		this.add(mainView(), BorderLayout.CENTER);
 		
 		this.watchListPanel = new WatchListGUI(this, this.user);
 		this.add(this.watchListPanel, BorderLayout.EAST);
 		this.assign();
+		
+		//TODO
+		//PORMPT USER FOR TIME INTERVAL FOR UPDATING STOCKS
 	}
 	
 	private void fillMenu(){

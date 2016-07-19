@@ -154,14 +154,14 @@ public class TransAddShares extends MainPanel {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Client client = new Client(getUser());
+				Client c = new Client(getUser());
 				
 				Portfolio port = getUser().getPorts().get(ports.getSelectedIndex());
 				String eq = map.get(equities.getSelectedItem());
 				int shares = (int)shareS.getValue();
 				Date date = (Date)dateS.getValue();
 				
-				client.addShares(port, eq, shares, date);
+				c.addShares(port, eq, shares, date);
 				transition(new AcctOverview(getUser()));
 			}
 		});

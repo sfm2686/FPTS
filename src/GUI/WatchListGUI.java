@@ -48,10 +48,7 @@ public class WatchListGUI extends JPanel implements Observer{
 		
 		DefaultListModel model = new DefaultListModel();
 		this.user.getWatchList().addObserver(this);
-//		for ( int i = 0; i < 40; i ++ ){
-//			model.addElement(new WItemLabel("APPLE"));
-//			model.addElement(new WItemLabel("GOOG"));
-//		}
+
 		
 		String[] temp = new String[this.map.keySet().size()];
 		int i = 0;
@@ -61,6 +58,7 @@ public class WatchListGUI extends JPanel implements Observer{
 		}
 		
 		this.addButton = new JButton("Add New");
+
 		
 		this.menu   = new JComboBox<>(temp);
 		this.labels = new JList(model);
@@ -95,7 +93,7 @@ public class WatchListGUI extends JPanel implements Observer{
 			item.accept(v);
 			
 			s = it.currentItem().getEq().getName() +
-					": " + it.currentItem().getEq().getPrice() + "\n" +
+					": " + it.currentItem().getEq().getPrice() + ": " +
 					it.currentItem().getState();
 			this.map.put(s, it.currentItem());
 			
@@ -116,8 +114,8 @@ public class WatchListGUI extends JPanel implements Observer{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				mainFrame.refresh(new ManageWLItem(mainFrame, user, 
-						map.get(menu.getSelectedItem())));
+				WatchListItem item = map.get(menu.getSelectedItem());
+				mainFrame.refresh(new ManageWLItem(mainFrame, user, item));
 			}
 		});
 	}
@@ -128,7 +126,6 @@ public class WatchListGUI extends JPanel implements Observer{
 	@Override
 	public void update(Observable o, Object arg) {
 		fill();
-		this.repaint();
 		this.setVisible(true);
 		this.mainFrame.add(this, BorderLayout.EAST);
 	}

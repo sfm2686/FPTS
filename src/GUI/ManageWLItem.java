@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import WatchList.*;
+import WatchList.WatchListItem.State;
 import Finance.Equity;
 import Finance.Index;
 import Finance.Stock;
@@ -36,6 +37,7 @@ public class ManageWLItem extends MainPanel {
 	public ManageWLItem(MainFrame mainFrame, User user, WatchListItem item) {
 		super(mainFrame, user);
 		this.item = item;
+
 		
 		this.add(this.top(), BorderLayout.NORTH);
 		this.add(this.middle(), BorderLayout.CENTER);
@@ -53,8 +55,8 @@ public class ManageWLItem extends MainPanel {
 	@Override
 	protected JPanel middle() {
 		JPanel panel = new JPanel();
-		panel.setLayout(new BorderLayout());
 		
+		panel.setLayout(new BorderLayout());
 		panel.add(this.InfoPanel(), BorderLayout.NORTH);
 		panel.add(this.editPanel(), BorderLayout.CENTER);
 		
@@ -63,7 +65,8 @@ public class ManageWLItem extends MainPanel {
 	
 	private JPanel editPanel(){
 		JPanel panel = new JPanel();
-		panel.setLayout(new GridLayout());
+		
+		panel.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
 		c.anchor = c.WEST;
 		c.gridx = 0;
@@ -73,6 +76,7 @@ public class ManageWLItem extends MainPanel {
 		this.highB.setPreferredSize(TEXTD);
 		this.lowB = new JTextField();
 		this.lowB.setPreferredSize(TEXTD);
+		
 		
 		panel.add(new JLabel("Set High Trigger Price "), c);
 		c.gridx ++;
@@ -85,7 +89,7 @@ public class ManageWLItem extends MainPanel {
 		panel.add(this.lowB, c);
 		c.gridx = 0;
 		c.gridy ++;
-		
+				
 		return panel;
 	}
 	
@@ -209,6 +213,15 @@ public class ManageWLItem extends MainPanel {
 				}
 				else
 					return ;
+			}
+		});
+		
+		this.resetState.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				item.setState(State.Normal);
+				transition(new AcctOverview(getUser()));
 			}
 		});
 	}

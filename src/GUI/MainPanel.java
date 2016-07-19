@@ -22,7 +22,7 @@ abstract class MainPanel extends JPanel{
 	public MainPanel(MainFrame mainFrame, User user){
 		this.mainFrame = mainFrame;
 		this.user = user;
-		this.setPreferredSize(new Dimension(1000, 750));;
+		this.setPreferredSize(new Dimension(1000, 750));
 		this.setLayout(new BorderLayout());
 	}
 	

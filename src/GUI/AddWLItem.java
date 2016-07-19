@@ -189,6 +189,8 @@ public class AddWLItem extends MainPanel {
 					item.accept(v);
 					getUser().getWatchList().addWatchListItem(item);
 				}
+				
+
 				transition(new AcctOverview(getUser()));
 			}
 		});
