@@ -3,7 +3,7 @@ package Finance;
 import java.util.ArrayList;
 import java.io.Serializable;
 import TransactionStorage.Log;
-import WatchList.WatchList;
+import WatchList.*;
 
 /**
  *  The User class represents a user's account within the system. All of the user's persisted

@@ -31,7 +31,7 @@ public class Index extends Equity implements Serializable {
 		super.setNumShares(numShares);
 		this.name = name; // name is a protected attributed in Equity 
 		this.children = new ArrayList<Equity>();
-		for(String child : Market.getMarketInstance().getIndices().get(this.name)){
+		for(String child : Market.getIndices().get(this.name)){
 			this.addChild(new Stock(0, child));
 		}
 		Market.getMarketInstance().addUpdateEquity(this); // Dynamically update prices of owned equities

@@ -36,6 +36,7 @@ public class TransAddShares extends MainPanel {
 	public TransAddShares(MainFrame mainFrame, User user) {
 		super(mainFrame, user);
 		map = new HashMap<String, String>();
+		
 		this.add(top(), BorderLayout.NORTH);
 		this.add(middle(), BorderLayout.CENTER);
 		this.add(bottom(), BorderLayout.SOUTH);

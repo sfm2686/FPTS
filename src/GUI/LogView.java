@@ -6,6 +6,8 @@ package GUI;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JLabel;
@@ -42,7 +44,7 @@ public class LogView extends MainPanel {
 	
 	protected JPanel middle(){
 		JPanel panel = new JPanel();
-		
+		panel.setLayout(new BorderLayout());
 		if ( getUser().getLog() == null )
 			return panel;
 		DefaultListModel model = new DefaultListModel();
@@ -53,6 +55,7 @@ public class LogView extends MainPanel {
 		}
 
 		JList list = new JList(model);
+
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setViewportView(list);
 		scrollPane.setPreferredSize(new Dimension(650, 650));
@@ -74,5 +77,4 @@ public class LogView extends MainPanel {
 	public String toString(){
 		return "View Log";
 	}
-
 }

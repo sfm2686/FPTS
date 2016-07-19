@@ -62,7 +62,7 @@ public class WatchListItem implements Serializable{
 	 * @param n The new value of the high price bound.
 	 */
 	public void setHighBound(double n){
-		if(!this.lowBound.equals(null)){
+		if(this.lowBound != null){
 			if (n > this.lowBound){
 				this.highBound = n;
 			}
@@ -76,7 +76,7 @@ public class WatchListItem implements Serializable{
 	 * @param n The new value of the low price bound.
 	 */
 	public void setLowBound(double n){
-		if(!this.highBound.equals(null)){
+		if(this.highBound != null){
 			if(n < this.highBound){
 				this.lowBound = n;
 			}
@@ -151,5 +151,30 @@ public class WatchListItem implements Serializable{
 	 */
 	public State getState(){
 		return(this.state);
+	}
+	
+	
+	/**
+	 * Generic toString method.
+	 * 
+	 * @return A string representation of a WatchListItem.
+	 */
+	@Override
+	public String toString(){
+		String str = this.eq.getName() + ", " + this.eq.getPrice();
+		
+		if ( this.highBound == null )
+			str += ", High Bound Not Defined";
+		else
+			str += ", High Bound: " + this.highBound;
+		
+		if ( this.lowBound == null )
+			str += ", Low Bound Not Defined";
+		else
+			str += ", Low Bound: " + this.lowBound;
+		
+		str += ", State: " + this.state;
+		
+		return str;
 	}
 }

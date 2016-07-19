@@ -34,7 +34,7 @@ public class SimulationResults extends MainPanel {
 		this.sim = sim;
 		
 		this.add(this.top(), BorderLayout.NORTH);
-		this.add(this.middle(), BorderLayout.WEST);
+		this.add(this.middle(), BorderLayout.CENTER);
 		this.add(this.bottom(), BorderLayout.SOUTH);
 		this.assign();
 	}
@@ -47,7 +47,7 @@ public class SimulationResults extends MainPanel {
 	
 	protected JPanel middle(){
 		JPanel panel = new JPanel();
-		panel.setLayout(new BorderLayout());
+		//panel.setLayout(new BorderLayout());
 		
 		this.model = new DefaultListModel();
 		model.addElement(sim.getInterval() + count +
@@ -55,9 +55,9 @@ public class SimulationResults extends MainPanel {
 		
 		this.results = new JList(model);
 		sPane = new JScrollPane();
-		sPane.setViewportView(results);
-		sPane.setPreferredSize(new Dimension(500, 650));
-		panel.add(sPane, BorderLayout.WEST);
+		sPane.setViewportView(this.results);
+		sPane.setPreferredSize(new Dimension(650, 650));
+		panel.add(sPane, BorderLayout.CENTER);
 		return panel;
 	}
 	

@@ -18,14 +18,26 @@ public class SetStateVisitor implements Visitor {
 	 */
 	@Override
 	public Object visit(WatchListItem w) {
-		
+		Double high;
+		Double low;
 		WatchListItem.State state = w.getState();
-		Double high = w.getHighBound();
-		Double low = w.getLowBound();
+		try{
+			high = w.getHighBound();
+		}
+		catch(NullPointerException e){
+			high = null;
+		}
+		try{
+			low = w.getLowBound();
+		}
+		catch(NullPointerException e){
+			low = null;
+		}
+		
 		Double price = w.getEq().getPrice();
 		
 		// If there is both a high and low trigger defined
-		if(!high.equals(null) && !low.equals(null)){
+		if(high != null && low != null){
 			if (price > high)
 				w.setState(WatchListItem.State.NowHigh);
 			else if (price < low)
@@ -38,7 +50,7 @@ public class SetStateVisitor implements Visitor {
 				w.setState(WatchListItem.State.Normal);
 		}
 		// If there is just a high trigger defines
-		else if (!high.equals(null) && low.equals(null)){
+		else if (high != null && low == null){
 			if (price > high){
 				w.setState(WatchListItem.State.NowHigh);
 			}
@@ -50,7 +62,7 @@ public class SetStateVisitor implements Visitor {
 			}
 		}
 		// If there is just a low trigger defines
-		else if (!low.equals(null) && high.equals(null)){
+		else if (low != null && high == null){
 			if (price < low){
 				w.setState(WatchListItem.State.NowLow);
 			}

@@ -291,7 +291,7 @@ public class Market extends Observable {
 	 * 
 	 * @return The static mapping of stocks to their respective fields.
 	 */
-	private static HashMap<String, ArrayList<String>> getStocks(){
+	public static HashMap<String, ArrayList<String>> getStocks(){
 		return Market.stocks;
 	}
 	
@@ -300,7 +300,7 @@ public class Market extends Observable {
 	 * 
 	 * @return The static mapping of indices to their respective fields.
 	 */
-	private static HashMap<String, ArrayList<String>> getIndices(){
+	public static HashMap<String, ArrayList<String>> getIndices(){
 		return Market.indices;
 	}
 	
@@ -357,7 +357,7 @@ public class Market extends Observable {
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-				for (Stock s : obStocks){
+				for (Stock s : new ArrayList<Stock>(obStocks)){
 					setPrice(s.getName(), YahooAPI.getPrice(s.getName()));
 				}
 				doneUpdating();
