@@ -43,10 +43,6 @@ public class MainFrame extends JFrame {
 	 * 					 of the main frame.
 	 */
 	public MainFrame(User user, JPanel mainPanel) {
-		reinit(user, mainPanel);
-	}
-	
-	private void reinit(User user, JPanel mainPanel){
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(new Dimension(1100, 850));
 		this.setTitle("Main View");

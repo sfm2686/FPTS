@@ -5,7 +5,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 import Finance.*;
-import Transaction.CreateCash;
 
 /**
  * 
@@ -121,41 +120,6 @@ public class TransactionMenu extends MainPanel {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String w;
-				if ( getUser().getPorts().size() == 0 ) {
-					w = "You need to own at least 1 portfolio before performing this transactions.";
-					JOptionPane.showMessageDialog(new JFrame(), w, "No Portfolio",
-								JOptionPane.ERROR_MESSAGE);
-						return ;
-				}
-				MainPanel panel = (MainPanel) trans.getSelectedItem();
-				int totalCashs = 0;
-				for ( Portfolio port : getUser().getPorts() )
-					totalCashs += port.getCashAccounts().size();
-				
-				if ( totalCashs == 0 &&
-						!(panel instanceof TransCreateCash) ){
-					w = "You need to own at least 1 cash account before performing this transactions.";
-					JOptionPane.showMessageDialog(new JFrame(), w, "No Cash Account",
-								JOptionPane.ERROR_MESSAGE);
-						return ;
-					}
-				
-				if ( !(panel instanceof TransCreateCash) ){
-					int totalEqs = 0;
-					for ( Portfolio port : getUser().getPorts() )
-						totalEqs += port.getEquities().size();
-					
-					if ( totalEqs == 0 && (
-							!(panel instanceof TransBuyEquity) ||
-							!(panel instanceof TransAddShares)) ){
-						w = "You need to own at least 1 equity before performing this transactions.";
-						JOptionPane.showMessageDialog(new JFrame(), w, "No Equity",
-									JOptionPane.ERROR_MESSAGE);
-							return ;
-						}
-				}
-				
 				transition((MainPanel) trans.getSelectedItem()); 
 			}
 		});
