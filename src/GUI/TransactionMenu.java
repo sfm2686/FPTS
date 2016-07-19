@@ -3,26 +3,24 @@ package GUI;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.*;
 import Finance.*;
-import Transaction.*;
-import sun.net.ftp.FtpClient.TransferType;
 
 /**
  * 
  */
 
 /**
+ * This panel is the menu display of all transaction types that
+ * the user is able to select from.
+ * 
  * @authors Sultan Mira, Hunter Caskey
  *
  */
+@SuppressWarnings("serial")
 public class TransactionMenu extends MainPanel {
-
-//	private final String[] tranTypes = {"Create Cash Account", "Add Equity", "Deposit Cash", 
-//			"Withdraw Cash", "Remove Cash Account", "Remove Equity", "Transfer between Cash Account",
-//			"Subtract Shares", "Buy Equity", "Sell Equity"};
 	
+	/****** Class Attributes ******/
 	private final MainPanel[] tranTypes = { new TransSubEquity(getFrame(), getUser()),
 											new TransDepositCash(getFrame(), getUser()),
 											new TransSellEquity(getFrame(), getUser()),
@@ -37,8 +35,15 @@ public class TransactionMenu extends MainPanel {
 	private JButton next;
 	private JComboBox<MainPanel> trans;
 	
+	/****** Class Methods ******/
+	
 	/**
-	 * Create the panel.
+	 * Constructor of this class. Calls the constructor of the super
+	 * then it calls helper methods to initiate its components.
+	 * 
+	 * @param mainFrame: main frame instance to be passed and stored by the super.
+	 * @param user: the user to be stored in the parent class and used
+	 * 				to extract information to display/use.
 	 */
 	public TransactionMenu(MainFrame mainFrame, User user) {
 		super(mainFrame, user);
@@ -49,18 +54,33 @@ public class TransactionMenu extends MainPanel {
 		this.assign();
 	}
 	
+	/**
+	 * Helper method returns a panel that contains the
+	 * components of the top or NORTH side of this main panel.
+	 * 
+	 * @return Populated panel.
+	 */
+	@Override
 	protected JPanel top(){
 		JPanel panel = new JPanel();
 		panel.add(new JLabel("Transaction Menu"));
 		return panel;
 	}
 	
+	/**
+	 * Helper method returns a panel that contains the
+	 * components of the middle or CENTER side of this main panel.
+	 * 
+	 * @return Populated panel.
+	 */
+	@SuppressWarnings("static-access")
+	@Override
 	protected JPanel middle(){
 		JPanel panel = new JPanel();
 		panel.setLayout(new GridBagLayout());
 		
 		GridBagConstraints c = new GridBagConstraints();
-		c.anchor = c.EAST;
+		c.anchor = c.WEST;
 		c.gridx = 0;
 		c.gridy = 0;
 
@@ -74,6 +94,13 @@ public class TransactionMenu extends MainPanel {
 		return panel;
 	}
 
+	/**
+	 * Helper method returns a panel that contains the
+	 * components of the bottom or SOUTH side of this main panel.
+	 * 
+	 * @return Populated panel.
+	 */
+	@Override
 	protected JPanel bottom(){
 		JPanel panel = new JPanel();
 		
@@ -83,6 +110,11 @@ public class TransactionMenu extends MainPanel {
 		return panel;
 	}
 	
+	/**
+	 * This method contains any action listeners for any components
+	 * in this class that might need one.
+	 */
+	@Override
 	protected void assign(){
 		this.next.addActionListener(new ActionListener() {
 			
@@ -93,6 +125,11 @@ public class TransactionMenu extends MainPanel {
 		});
 	}
 	
+	/**
+	 * The toString for this class.
+	 * 
+	 * @return: A string representation of this class.
+	 */
 	@Override
 	public String toString(){
 		return "Transaction Menu";

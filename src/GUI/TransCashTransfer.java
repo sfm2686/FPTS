@@ -13,9 +13,15 @@ import Transaction.Client;
 
 
 /**
+ * This panel is the GUI representation of the cash transfer transaction.
+ * The panel validates all of the user input before creating a new Client
+ * from the Transaction package in order to complete the cash transfer
+ * transaction.
+ * 
  * @authors Sultan Mira, Hunter Caskey
  *
  */
+@SuppressWarnings("serial")
 public class TransCashTransfer extends MainPanel {
 
 	/****** Class Attributes ******/
@@ -27,8 +33,12 @@ public class TransCashTransfer extends MainPanel {
 	/****** Class Methods ******/
 	
 	/**
-	 * @param mainFrame
-	 * @param user
+	 * Constructor of this class. Calls the constructor of the super
+	 * then it calls helper methods to initiate its components.
+	 * 
+	 * @param mainFrame: main frame instance to be passed and stored by the super.
+	 * @param user: the user to be stored in the parent class and used
+	 * 				to extract information to display/use.
 	 */
 	public TransCashTransfer(MainFrame mainFrame, User user) {
 		super(mainFrame, user);
@@ -41,7 +51,10 @@ public class TransCashTransfer extends MainPanel {
 	}
 
 	/**
+	 * Helper method returns a panel that contains the
+	 * components of the top or NORTH side of this main panel.
 	 * 
+	 * @return Populated panel.
 	 */
 	@Override
 	protected JPanel top() {
@@ -50,9 +63,13 @@ public class TransCashTransfer extends MainPanel {
 		return panel;
 	}
 
-	/* (non-Javadoc)
-	 * @see GUI.MainPanel#middle()
+	/**
+	 * Helper method returns a panel that contains the
+	 * components of the middle or CENTER side of this main panel.
+	 * 
+	 * @return Populated panel.
 	 */
+	@SuppressWarnings("static-access")
 	@Override
 	protected JPanel middle() {
 		JPanel panel = new JPanel();
@@ -65,7 +82,7 @@ public class TransCashTransfer extends MainPanel {
 		
 		panel.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
-		c.anchor = c.EAST;
+		c.anchor = c.WEST;
 		c.gridx = 0;
 		c.gridy = 0;
 		
@@ -92,8 +109,11 @@ public class TransCashTransfer extends MainPanel {
 		return panel;
 	}
 
-	/* (non-Javadoc)
-	 * @see GUI.MainPanel#bottom()
+	/**
+	 * Helper method returns a panel that contains the
+	 * components of the bottom or SOUTH side of this main panel.
+	 * 
+	 * @return Populated panel.
 	 */
 	@Override
 	protected JPanel bottom() {
@@ -103,7 +123,9 @@ public class TransCashTransfer extends MainPanel {
 		return panel;
 	}
 
-	
+	/**
+	 * This is a private helper method that fills and sorts the HashMap variable.
+	 */
 	private void fill(){
 		String label;
 		for(Portfolio port : this.getUser().getPorts()){
@@ -114,6 +136,10 @@ public class TransCashTransfer extends MainPanel {
 		}
 	}
 	
+	/**
+	 * This method contains any action listeners for any components
+	 * in this class that might need one.
+	 */
 	protected void assign(){
 		this.transfer.addActionListener(new ActionListener() {
 			
@@ -168,6 +194,11 @@ public class TransCashTransfer extends MainPanel {
 		});
 	}
 	
+	/**
+	 * The toString for this class.
+	 * 
+	 * @return: A string representation of this class.
+	 */
 	@Override
 	public String toString(){
 		return "Transfer Cash";

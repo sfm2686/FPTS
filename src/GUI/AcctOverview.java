@@ -2,9 +2,6 @@ package GUI;
 
 import java.awt.*;
 import javax.swing.*;
-
-import Transaction.*;
-
 import Finance.Portfolio;
 import Finance.User;
 
@@ -15,11 +12,12 @@ import Finance.User;
  * 
  * @authors Sultan Mira, Hunter Caskey
  */
+@SuppressWarnings("serial")
 public class AcctOverview extends MainPanel {
 
 	
 	/****** Class Methods ******/
-	
+
 	/**
 	 * Create the panel. Store the user in the parent class.
 	 * The class passes null for the main frame to its parent class
@@ -55,6 +53,7 @@ public class AcctOverview extends MainPanel {
 	 * 
 	 * @return Populated panel.
 	 */
+	@SuppressWarnings("unchecked")
 	protected JPanel middle(){
 		JPanel panel = new JPanel();
 		panel.setLayout(new BorderLayout());
@@ -64,6 +63,7 @@ public class AcctOverview extends MainPanel {
 		if ( getUser().getPorts().size() == 0 )
 			return panel;
 		
+		@SuppressWarnings("rawtypes")
 		DefaultListModel model = new DefaultListModel();
 		
 		for ( Portfolio port : getUser().getPorts() ){
@@ -71,6 +71,7 @@ public class AcctOverview extends MainPanel {
 			model.addElement(" ");
 		}
 
+		@SuppressWarnings("rawtypes")
 		JList list = new JList(model);
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setViewportView(list);

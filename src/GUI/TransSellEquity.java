@@ -5,18 +5,26 @@ import java.awt.event.*;
 import java.util.*;
 import javax.swing.*;
 import Finance.*;
-import Market.Market;
 import Transaction.Client;
 
 /**
+ * This panel enables the user to sell an equity that they own.
+ * The user is able to select how many shares of the selected equity
+ * they would like to sell.
+ * The panel validates all of the user input before completing the transaction.
+ * The cash that results from selling equity shares in this panel goes to an owned
+ * cash account by the current user.
+ * 
  * @authors Sultan Mira, Hunter Caskey
  *
  */
+@SuppressWarnings("serial")
 public class TransSellEquity extends MainPanel {
 
 	/****** Class Attributes ******/
 	private HashMap<String, Object[]> cashMap;
 	private HashMap<String, Object[]> eqMap;
+	@SuppressWarnings("rawtypes")
 	private JComboBox equities, cashAccts;
 	private JSpinner shareS;
 	private JButton sell;
@@ -24,8 +32,12 @@ public class TransSellEquity extends MainPanel {
 	/****** Class Methods ******/
 	
 	/**
-	 * @param mainFrame
-	 * @param user
+	 * Constructor of this class. Calls the constructor of the super
+	 * then it calls helper methods to initiate its components.
+	 * 
+	 * @param mainFrame: main frame instance to be passed and stored by the super.
+	 * @param user: the user to be stored in the parent class and used
+	 * 				to extract information to display/use.
 	 */
 	public TransSellEquity(MainFrame mainFrame, User user) {
 		super(mainFrame, user);
@@ -38,8 +50,11 @@ public class TransSellEquity extends MainPanel {
 		this.assign();
 	}
 
-	/* (non-Javadoc)
-	 * @see GUI.MainPanel#top()
+	/**
+	 * Helper method returns a panel that contains the
+	 * components of the top or NORTH side of this main panel.
+	 * 
+	 * @return Populated panel.
 	 */
 	@Override
 	protected JPanel top() {
@@ -48,16 +63,20 @@ public class TransSellEquity extends MainPanel {
 		return panel;
 	}
 
-	/* (non-Javadoc)
-	 * @see GUI.MainPanel#middle()
+	/**
+	 * Helper method returns a panel that contains the
+	 * components of the middle or CENTER side of this main panel.
+	 * 
+	 * @return Populated panel.
 	 */
+	@SuppressWarnings({ "static-access", "unchecked", "rawtypes" })
 	@Override
 	protected JPanel middle() {
 		// Initial panel setup
 		JPanel panel = new JPanel();
 		panel.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
-		c.anchor = c.EAST;
+		c.anchor = c.WEST;
 		c.gridx = 0;
 		c.gridy = 0;
 		
@@ -99,8 +118,11 @@ public class TransSellEquity extends MainPanel {
 		return panel;
 	}
 
-	/* (non-Javadoc)
-	 * @see GUI.MainPanel#bottom()
+	/**
+	 * Helper method returns a panel that contains the
+	 * components of the bottom or SOUTH side of this main panel.
+	 * 
+	 * @return Populated panel.
 	 */
 	@Override
 	protected JPanel bottom() {
@@ -110,6 +132,9 @@ public class TransSellEquity extends MainPanel {
 		return (panel);
 	}
 
+	/**
+	 * This is a private helper method that fills and sortsthe HashMap variable.
+	 */
 	private void fill(){
 		String str;
 
@@ -125,8 +150,9 @@ public class TransSellEquity extends MainPanel {
 		}
 	}
 	
-	/* (non-Javadoc)
-	 * @see GUI.MainPanel#assign()
+	/**
+	 * This method contains any action listeners for any components
+	 * in this class that might need one.
 	 */
 	@Override
 	protected void assign() {
@@ -155,6 +181,11 @@ public class TransSellEquity extends MainPanel {
 		
 	}
 	
+	/**
+	 * The toString for this class.
+	 * 
+	 * @return: A string representation of this class.
+	 */
 	@Override
 	public String toString(){
 		return "Sell Equity";

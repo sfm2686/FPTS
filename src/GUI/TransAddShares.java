@@ -15,6 +15,10 @@ import javax.swing.*;
 import Finance.*;
 
 /**
+ * This panel represents the views and controls of the add shares
+ * to an equity transaction type. The panel validates the input of the
+ * user, once all of the user input is valid, the panel creates a client
+ * from the transaction package in order to complete the transaction.
  * 
  * @authors Sultan Mira, Hunter Caskey
  */
@@ -27,11 +31,15 @@ public class TransAddShares extends MainPanel {
 	private JSpinner shareS, dateS;
 	private HashMap<String, String> map;
 	
-	
+	/****** Class Methods ******/
 	
 	/**
-	 * @param mainFrame
-	 * @param user
+	 * Constructor of this class. Calls the constructor of the super
+	 * then it calls helper methods to initiate its components.
+	 * 
+	 * @param mainFrame: main frame instance to be passed and stored by the super.
+	 * @param user: the user to be stored in the parent class and used
+	 * 				to extract information to display/use.
 	 */
 	public TransAddShares(MainFrame mainFrame, User user) {
 		super(mainFrame, user);
@@ -44,7 +52,10 @@ public class TransAddShares extends MainPanel {
 	}
 
 	/**
-	 * Add the label
+	 * Helper method returns a panel that contains the
+	 * components of the top or NORTH side of this main panel.
+	 * 
+	 * @return Populated panel.
 	 */
 	@Override
 	protected JPanel top() {
@@ -54,8 +65,12 @@ public class TransAddShares extends MainPanel {
 	}
 
 	/**
-	 * Actual components of panel
+	 * Helper method returns a panel that contains the
+	 * components of the middle or CENTER side of this main panel.
+	 * 
+	 * @return Populated panel.
 	 */
+	@SuppressWarnings({ "static-access", "unchecked", "rawtypes" })
 	@Override
 	protected JPanel middle() {
 		JPanel panel = new JPanel();
@@ -135,7 +150,10 @@ public class TransAddShares extends MainPanel {
 	}
 
 	/**
-	 * Buttons of the panel
+	 * Helper method returns a panel that contains the
+	 * components of the bottom or SOUTH side of this main panel.
+	 * 
+	 * @return Populated panel.
 	 */
 	@Override
 	protected JPanel bottom() {
@@ -146,7 +164,8 @@ public class TransAddShares extends MainPanel {
 	}
 
 	/**
-	 * Any action listener assignments
+	 * This method contains any action listeners for any components
+	 * in this class that might need one.
 	 */
 	@Override
 	protected void assign() {
@@ -167,6 +186,11 @@ public class TransAddShares extends MainPanel {
 		});
 	}
 	
+	/**
+	 * The toString for this class.
+	 * 
+	 * @return: A string representation of this class.
+	 */
 	@Override
 	public String toString(){
 		return("Add Equity Shares");

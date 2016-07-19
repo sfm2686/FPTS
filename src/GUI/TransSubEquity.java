@@ -7,7 +7,6 @@ import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.*;
-import Market.Market;
 import Transaction.Client;
 
 import javax.swing.*;
@@ -15,6 +14,12 @@ import javax.swing.*;
 import Finance.*;
 
 /**
+ * This panel enables the user to sell an equity that they own.
+ * The user is able to select how many shares of the selected equity
+ * they would like to sell.
+ * The panel validates all of the user input before completing the transaction.
+ * The cash that results from selling equity shares in this panel goes to outside
+ * FPTS.
  * 
  * @authors Sultan Mira, Hunter Caskey
  */
@@ -30,8 +35,12 @@ public class TransSubEquity extends MainPanel {
 	/****** Class Methods ******/
 	
 	/**
-	 * @param mainFrame
-	 * @param user
+	 * Constructor of this class. Calls the constructor of the super
+	 * then it calls helper methods to initiate its components.
+	 * 
+	 * @param mainFrame: main frame instance to be passed and stored by the super.
+	 * @param user: the user to be stored in the parent class and used
+	 * 				to extract information to display/use.
 	 */
 	public TransSubEquity(MainFrame mainFrame, User user) {
 		super(mainFrame, user);
@@ -44,7 +53,10 @@ public class TransSubEquity extends MainPanel {
 	}
 
 	/**
-	 * Add the label
+	 * Helper method returns a panel that contains the
+	 * components of the top or NORTH side of this main panel.
+	 * 
+	 * @return Populated panel.
 	 */
 	@Override
 	protected JPanel top() {
@@ -54,8 +66,12 @@ public class TransSubEquity extends MainPanel {
 	}
 
 	/**
-	 * Actual components of panel
+	 * Helper method returns a panel that contains the
+	 * components of the middle or CENTER side of this main panel.
+	 * 
+	 * @return Populated panel.
 	 */
+	@SuppressWarnings({ "static-access", "unchecked", "rawtypes" })
 	@Override
 	protected JPanel middle() {
 		// Initial setup of the panel
@@ -93,7 +109,10 @@ public class TransSubEquity extends MainPanel {
 	}
 
 	/**
-	 * Buttons of the panel
+	 * Helper method returns a panel that contains the
+	 * components of the bottom or SOUTH side of this main panel.
+	 * 
+	 * @return Populated panel.
 	 */
 	@Override
 	protected JPanel bottom() {
@@ -113,7 +132,8 @@ public class TransSubEquity extends MainPanel {
 	}
 
 	/**
-	 * Any action listener assignments
+	 * This method contains any action listeners for any components
+	 * in this class that might need one.
 	 */
 	@Override
 	protected void assign() {
@@ -139,6 +159,11 @@ public class TransSubEquity extends MainPanel {
 		});
 	}
 	
+	/**
+	 * The toString for this class.
+	 * 
+	 * @return: A string representation of this class.
+	 */
 	@Override
 	public String toString(){
 		return("Subtract Equity Shares");

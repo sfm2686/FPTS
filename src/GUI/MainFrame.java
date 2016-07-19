@@ -1,37 +1,46 @@
-
-/**
- * 
- */
 package GUI;
 
 import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
-
 import javax.swing.*;
 import Market.Market;
 import DataInterface.DBInterface;
 import Finance.*;
 import Transaction.*;
-import TransactionStorage.Log;
 import TransactionStorage.UndoRedo;
-import WatchList.WatchList;
 
 /**
+ * This class represents the main frame that contains everything
+ * the user can do/see in the whole app. The main frame does not use
+ * the java built in method to "repaint" itself. Instead it does it by
+ * making a new instance of itself and replacing the old window with the
+ * new refreshed one. The class also contains the controls that go to different
+ * mainPanel panels that contain the main functionality of the current page or the
+ * state of the Main Frame. This class also contains watch list panel on the side
+ * that is somewhat interactive with the user at all times.
+ * 
  * @authors Sultan Mira, Hunter Caskey
  *
  */
+@SuppressWarnings("serial")
 public class MainFrame extends JFrame {
 
+	/****** Class Attributes ******/
 	private User user;
 	private JButton save, undo, redo, logout;
 	private JPanel mainPanel, watchListPanel;
-	
-	//Menu attrs
 	private JComboBox<MainPanel> menu;
 	private ArrayList<MainPanel> menuItems;
+	
+	/****** Class Methods ******/
+	
 	/**
-	 * Create the frame.
+	 * Create the frame. Constructor for this class.
+	 * 
+	 * @param user: current logged in user.
+	 * @param mainPanel: the main panel to be drawn in the main area 
+	 * 					 of the main frame.
 	 */
 	public MainFrame(User user, JPanel mainPanel) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -53,6 +62,10 @@ public class MainFrame extends JFrame {
 		//PORMPT USER FOR TIME INTERVAL FOR UPDATING STOCKS
 	}
 	
+	/**
+	 * Private helper method to fill the menu variable
+	 * that contains what the main menu of the app displays.
+	 */
 	private void fillMenu(){
 		this.menuItems = new ArrayList<MainPanel>();
 		this.menuItems.add(new AcctOverview(this.user));
@@ -62,6 +75,12 @@ public class MainFrame extends JFrame {
 		this.menuItems.add(new CreatePortfolio(this, user));
 	}
 
+	/**
+	 * Helper method returns a panel that contains the
+	 * components of the top or NORTH side of this main panel.
+	 * 
+	 * @return Populated panel.
+	 */
 	private JPanel top(){
 		JPanel panel = new JPanel(new FlowLayout());
 		
@@ -90,12 +109,25 @@ public class MainFrame extends JFrame {
 		return panel;
 	}
 	
+	/**
+	 * This method contains the refresh functionality.
+	 * The method creates a new instance of the MainFrame class that has
+	 * a new panel. Sets the new instance to visible and disposes the old one.
+	 * When this method is called the main window of the app appears to be
+	 * flashing as it refreshes.
+	 * 
+	 * @param panel: The new main panel to replace the old one in the refresh.
+	 */
 	public void refresh(JPanel panel){
 		MainFrame main = new MainFrame(this.user, panel);
 		main.setVisible(true);
 		this.dispose();
 	}
 	
+	/**
+	 * This method contains any action listeners for any components
+	 * in this class that might need one.
+	 */
 	private void assign(){
 		
 		//Drop-down menu
@@ -103,6 +135,13 @@ public class MainFrame extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				if ( user.getPorts().size() == 0 && 
+						menu.getSelectedItem() instanceof SimulationSettings ){
+					String w = "You have to own at least 1 portfolio to simulate.";
+					JOptionPane.showMessageDialog(new JFrame(), w, "No Portfolio",
+								JOptionPane.ERROR_MESSAGE);
+						return ;
+					}
 				refresh((MainPanel)menu.getSelectedItem());
 			}
 		});
@@ -172,13 +211,18 @@ public class MainFrame extends JFrame {
 		});
 	}
 	
+	/**
+	 * The toString for this class.
+	 * 
+	 * @return: A string representation of this class.
+	 */
 	@Override
 	public String toString(){
 		return "Main Frame";
 	}
 
 	/**
-	 * Launch the application.
+	 * Testing purposes.
 	 */
 	public static void main(String[] args) {
 		Market.getMarketInstance();

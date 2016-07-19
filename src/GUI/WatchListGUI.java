@@ -1,31 +1,35 @@
-/**
- * 
- */
 package GUI;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.TextArea;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.*;
-
 import Finance.User;
 import WatchList.*;
-import javafx.scene.control.ScrollBar;
 
 /**
+ * This is the Watch List panel on the right side of the main app window.
+ * This panel contains 3 main components. A button that takes the user to a new
+ * main panel to add a new watch list item.
+ * The second main component in this panel is the drop-down menu that enables
+ * the user to manage the selected watch list item.
+ * The third main component is the display list of the current watch list items
+ * along with their states.
+ * This class implements Observer, the Observable is the watch list object
+ * that is owned by the current logged in user.
+ * 
  * @authors Sultan Mira, Hunter Caskey
  *
  */
+@SuppressWarnings("serial")
 public class WatchListGUI extends JPanel implements Observer{
 
-	private ArrayList<WItemLabel> witems = new ArrayList<WItemLabel>();
+	/****** Class Attributes ******/
+	@SuppressWarnings("rawtypes")
 	private JList labels = new JList();
 	private JButton addButton;
 	private MainFrame mainFrame;
@@ -33,9 +37,17 @@ public class WatchListGUI extends JPanel implements Observer{
 	private JComboBox<String> menu;
 	private HashMap<String, WatchListItem> map;
 	
+	/****** Class Methods ******/
+	
 	/**
-	 * Create the panel.
+	 * Constructor of this class. Calls the constructor of the super
+	 * then it calls helper methods to initiate its components.
+	 * 
+	 * @param mainFrame: main frame instance to be passed and stored by the super.
+	 * @param user: the user to be stored in the parent class and used
+	 * 				to extract information to display/use.
 	 */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public WatchListGUI(MainFrame mainFrame, User user) {
 		this.mainFrame = mainFrame;
 		this.user = user;
@@ -83,6 +95,11 @@ public class WatchListGUI extends JPanel implements Observer{
 		this.assign();
 	}
 
+	/**
+	 * This is a private helper method that fills and sorts the HashMap variable.
+	 * This method also uses the Visitor and the Iterators patterns that are defined
+	 * in the WatchList Subsystem.
+	 */
 	private void fill(){
 		Iterator it = user.getWatchList().getIterator();
 		String s;
@@ -101,6 +118,10 @@ public class WatchListGUI extends JPanel implements Observer{
 		}
 	}
 	
+	/**
+	 * This method contains any action listeners for any components
+	 * in this class that might need one.
+	 */
 	private void assign(){
 		this.addButton.addActionListener(new ActionListener() {
 			
@@ -122,6 +143,9 @@ public class WatchListGUI extends JPanel implements Observer{
 
 	/**
 	 * Everytime the model tells the GUI to update, refresh the look.
+	 * 
+	 * @param o: The subject of this observer(Not used).
+	 * @param arg: Used to parameterizing(Not used).
 	 */
 	@Override
 	public void update(Observable o, Object arg) {

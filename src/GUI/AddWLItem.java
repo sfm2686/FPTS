@@ -8,7 +8,6 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -16,34 +15,38 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-
-import com.sun.org.apache.bcel.internal.classfile.Visitor;
-
-import Finance.CashAcct;
 import Finance.Equity;
 import Finance.Index;
-import Finance.Portfolio;
 import Finance.Stock;
 import Finance.User;
 import Market.Market;
-import Transaction.Client;
 import WatchList.SetStateVisitor;
 import WatchList.WatchListItem;
 
 /**
+ * This page is responsible for adding a new watch list item to the
+ * list of watch list items that the user can view and manage.
+ * 
  * @authors Sultan Mira, Hunter Caskey
  */
 @SuppressWarnings("serial")
 public class AddWLItem extends MainPanel {
 
+	/****** Class Attributes ******/
 	private JTextField highB, lowB;
 	private JButton addButton;
 	private JComboBox<String> equities;
 	private HashMap<String, String> map;
 	
+	/****** Class Methods ******/
+	
 	/**
-	 * @param mainFrame
-	 * @param user
+	 * Constructor of this class. Calls the constructor of the super
+	 * then it calls helper methods to initiate its components.
+	 * 
+	 * @param mainFrame: main frame instance to be passed and stored by the super.
+	 * @param user: the user to be stored in the parent class and used
+	 * 				to extract information to display/use.
 	 */
 	public AddWLItem(MainFrame mainFrame, User user) {
 		super(mainFrame, user);
@@ -55,6 +58,12 @@ public class AddWLItem extends MainPanel {
 		this.assign();
 	}
 
+	/**
+	 * Helper method returns a panel that contains the
+	 * components of the top or NORTH side of this main panel.
+	 * 
+	 * @return Populated panel.
+	 */
 	@Override
 	protected JPanel top() {
 		JPanel panel = new JPanel();
@@ -62,6 +71,13 @@ public class AddWLItem extends MainPanel {
 		return panel;
 	}
 
+	/**
+	 * Helper method returns a panel that contains the
+	 * components of the middle or CENTER side of this main panel.
+	 * 
+	 * @return Populated panel.
+	 */
+	@SuppressWarnings("static-access")
 	@Override
 	protected JPanel middle() {
 		JPanel panel = new JPanel();
@@ -102,6 +118,12 @@ public class AddWLItem extends MainPanel {
 		return panel;
 	}
 
+	/**
+	 * Helper method returns a panel that contains the
+	 * components of the bottom or SOUTH side of this main panel.
+	 * 
+	 * @return Populated panel.
+	 */
 	@Override
 	protected JPanel bottom() {
 		JPanel panel = new JPanel();
@@ -110,6 +132,10 @@ public class AddWLItem extends MainPanel {
 		return panel;
 	}
 
+	/**
+	 * This is a private helper method that fills and sorts the HashMap variable.
+	 */
+	@SuppressWarnings({ "static-access", "rawtypes", "unchecked" })
 	private void fill(){
 		ArrayList<String> info = new ArrayList<String>();
 	    
@@ -135,6 +161,11 @@ public class AddWLItem extends MainPanel {
 			this.equities.addItem(st);
 		}
 	}
+	
+	/**
+	 * This method contains any action listeners for any components
+	 * in this class that might need one.
+	 */
 	@Override
 	protected void assign() {
 		this.addButton.addActionListener(new ActionListener() {

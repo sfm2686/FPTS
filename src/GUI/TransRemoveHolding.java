@@ -1,6 +1,3 @@
-/**
- * 
- */
 package GUI;
 
 import java.awt.*;
@@ -16,18 +13,31 @@ import Transaction.*;
 import Finance.*;
 
 /**
+ * This panel is responsible for removing a holding from the user owned
+ * collections. The panel displays all of the holdings that are owned by
+ * the current logged in user as check-boxes and the user is able to check
+ * the holdings they wish to remove.
+ * 
  * @authors Sultan Mira, Hunter Caskey
  *
  */
 @SuppressWarnings("serial")
 public class TransRemoveHolding extends MainPanel {
 
+	/****** Class Attributes ******/
 	private ArrayList<JCheckBox> checkBoxesCash, checkBoxesEq;
 	private JButton remove;
 	private HashMap<String, Object[]> cashMap, eqMap;
 	
+	/****** Class Methods ******/
+	
 	/**
-	 * Create the panel.
+	 * Constructor of this class. Calls the constructor of the super
+	 * then it calls helper methods to initiate its components.
+	 * 
+	 * @param mainFrame: main frame instance to be passed and stored by the super.
+	 * @param user: the user to be stored in the parent class and used
+	 * 				to extract information to display/use.
 	 */
 	public TransRemoveHolding(MainFrame mainFrame, User user) {
 		super(mainFrame, user);
@@ -45,12 +55,27 @@ public class TransRemoveHolding extends MainPanel {
 		this.assign();
 	}
 	
+	/**
+	 * Helper method returns a panel that contains the
+	 * components of the top or NORTH side of this main panel.
+	 * 
+	 * @return Populated panel.
+	 */
+	@Override
 	protected JPanel top(){
 		JPanel panel = new JPanel();
 		panel.add(new JLabel("Remove a Holding from a Portfolio"));
 		return panel;
 	}
 	
+	/**
+	 * Helper method returns a panel that contains the
+	 * components of the middle or CENTER side of this main panel.
+	 * 
+	 * @return Populated panel.
+	 */
+	@SuppressWarnings("static-access")
+	@Override
 	protected JPanel middle(){
 		
 		JPanel panel = new JPanel();
@@ -83,6 +108,13 @@ public class TransRemoveHolding extends MainPanel {
 		return panel;
 	}
 
+	/**
+	 * Helper method returns a panel that contains the
+	 * components of the bottom or SOUTH side of this main panel.
+	 * 
+	 * @return Populated panel.
+	 */
+	@Override
 	protected JPanel bottom(){
 		JPanel panel = new JPanel();
 		
@@ -92,6 +124,9 @@ public class TransRemoveHolding extends MainPanel {
 		return panel;
 	}
 	
+	/**
+	 * This is a private helper method that fills and sortsthe HashMap variable.
+	 */
 	private void fill(){
 		String label;
 		for(Portfolio port : this.getUser().getPorts()){
@@ -106,7 +141,10 @@ public class TransRemoveHolding extends MainPanel {
 		}
 	}
 	
-	//Did not test equity removal yet ..
+	/**
+	 * This method contains any action listeners for any components
+	 * in this class that might need one.
+	 */
 	protected void assign(){
 		this.remove.addActionListener(new ActionListener() {
 			
@@ -137,6 +175,11 @@ public class TransRemoveHolding extends MainPanel {
 		});
 	}
 	
+	/**
+	 * The toString for this class.
+	 * 
+	 * @return: A string representation of this class.
+	 */
 	@Override
 	public String toString(){
 		return "Remove Holding";

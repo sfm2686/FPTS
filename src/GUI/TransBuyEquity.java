@@ -9,14 +9,21 @@ import Market.Market;
 import Transaction.Client;
 
 /**
+ * This panel is the views and controls of buying an equity.
+ * The panel validates all of the input taken from the user before
+ * creating a new Client from the Transaction package in order to complete
+ * the transaction.
+ * 
  * @authors Sultan Mira, Hunter Caskey
  *
  */
+@SuppressWarnings("serial")
 public class TransBuyEquity extends MainPanel {
 
 	/****** Class Attributes ******/
 	private HashMap<String, Object[]> cashMap;
 	private HashMap<String, String> eqMap;
+	@SuppressWarnings("rawtypes")
 	private JComboBox destPort, equities, cashAccts;
 	private JSpinner shareS, dateS;
 	private JButton buy;
@@ -24,8 +31,12 @@ public class TransBuyEquity extends MainPanel {
 	/****** Class Methods ******/
 	
 	/**
-	 * @param mainFrame
-	 * @param user
+	 * Constructor of this class. Calls the constructor of the super
+	 * then it calls helper methods to initiate its components.
+	 * 
+	 * @param mainFrame: main frame instance to be passed and stored by the super.
+	 * @param user: the user to be stored in the parent class and used
+	 * 				to extract information to display/use.
 	 */
 	public TransBuyEquity(MainFrame mainFrame, User user) {
 		super(mainFrame, user);
@@ -38,8 +49,11 @@ public class TransBuyEquity extends MainPanel {
 		this.assign();
 	}
 
-	/* (non-Javadoc)
-	 * @see GUI.MainPanel#top()
+	/**
+	 * Helper method returns a panel that contains the
+	 * components of the top or NORTH side of this main panel.
+	 * 
+	 * @return Populated panel.
 	 */
 	@Override
 	protected JPanel top() {
@@ -48,14 +62,18 @@ public class TransBuyEquity extends MainPanel {
 		return panel;
 	}
 
-	/* (non-Javadoc)
-	 * @see GUI.MainPanel#middle()
+	/**
+	 * Helper method returns a panel that contains the
+	 * components of the middle or CENTER side of this main panel.
+	 * 
+	 * @return Populated panel.
 	 */
+	@SuppressWarnings({ "static-access", "unchecked", "rawtypes" })
 	@Override
 	protected JPanel middle() {
 		JPanel panel = new JPanel();
 		
-		// Initialize the portfolio dropdown menu
+		// Initialize the portfolio drop-down menu
 		this.destPort = super.getPortDropdown();
 	
 		SpinnerModel t;
@@ -90,7 +108,7 @@ public class TransBuyEquity extends MainPanel {
 			this.equities.addItem(st);
 		}
 		
-		// Initialize the src cash account dropdown
+		// Initialize the src cash account drop-down
 		this.cashAccts = new JComboBox(this.cashMap.keySet().toArray());
 		
 		panel.setLayout(new GridBagLayout());
@@ -132,8 +150,11 @@ public class TransBuyEquity extends MainPanel {
 		return panel;
 	}
 
-	/* (non-Javadoc)
-	 * @see GUI.MainPanel#bottom()
+	/**
+	 * Helper method returns a panel that contains the
+	 * components of the bottom or SOUTH side of this main panel.
+	 * 
+	 * @return Populated panel.
 	 */
 	@Override
 	protected JPanel bottom() {
@@ -154,8 +175,9 @@ public class TransBuyEquity extends MainPanel {
 		}
 	}
 	
-	/* (non-Javadoc)
-	 * @see GUI.MainPanel#assign()
+	/**
+	 * This method contains any action listeners for any components
+	 * in this class that might need one.
 	 */
 	@Override
 	protected void assign() {
@@ -187,6 +209,11 @@ public class TransBuyEquity extends MainPanel {
 		
 	}
 	
+	/**
+	 * The toString for this class.
+	 * 
+	 * @return: A string representation of this class.
+	 */
 	@Override
 	public String toString(){
 		return "Buy Equity";

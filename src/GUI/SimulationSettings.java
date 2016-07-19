@@ -1,22 +1,28 @@
-/**
- * 
- */
 package GUI;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.*;
-
-import Finance.Portfolio;
 import Finance.User;
 import Simulation.*;
 
 /**
+ * This panel is where the user is able to specify the settings of
+ * the simulation they wish to perform on a selected portfolio.
+ * The settings the user is able to specify are:
+ * 	1. portoflio
+ * 	2. simulation type
+ * 	3. growth rate
+ * 	4. time interval
+ * 	5. number of steps
+ * All of the input is auto-validated by the GUI swing components.
+ * The user is unable to input invalid values here.
+ * 
  * @authors Sultan Mira, Hunter Caskey
  *
  */
+@SuppressWarnings("serial")
 public class SimulationSettings extends MainPanel {
 	
 	/*
@@ -24,6 +30,8 @@ public class SimulationSettings extends MainPanel {
 	 * Bull - Positive
 	 * No-growth - 0
 	 */
+	
+	/****** Class Attributes ******/
 	private final String[] types = {"Bear", "Bull", "No-growth"};
 	private final String[] intervals = {"Year", "Month", "Day"};
 	private JComboBox<String> type = new JComboBox<>(this.types);
@@ -33,8 +41,15 @@ public class SimulationSettings extends MainPanel {
 	private double value = -1;
 	private JSpinner stepS, gRateS;
 	
+	/****** Class Methods ******/
+
 	/**
-	 * Create the panel.
+	 * Constructor of this class. Calls the constructor of the super
+	 * then it calls helper methods to initiate its components.
+	 * 
+	 * @param mainFrame: main frame instance to be passed and stored by the super.
+	 * @param user: the user to be stored in the parent class and used
+	 * 				to extract information to display/use.
 	 */
 	public SimulationSettings(MainFrame mainFrame, User user) {
 		super(mainFrame, user);
@@ -45,6 +60,19 @@ public class SimulationSettings extends MainPanel {
 		this.assign();
 	}
 	
+	/**
+	 * This is a second constructor for this class.
+	 * The only difference between this constructor and the first one is
+	 * that this one takes an additional pram, the value. If the value was
+	 * passed into the class it will not display a drop-down menu for the user
+	 * to a select a portfolio, if this constructor was called then the new simulation
+	 * will be bassed of an old one.
+	 * 
+	 * @param mainFrame: main frame instance to be passed and stored by the super.
+	 * @param user: the user to be stored in the parent class and used
+	 * 				to extract information to display/use.
+	 * @pram value: the value to start the new simulation off.
+	 */
 	public SimulationSettings(MainFrame mainFrame, double value, User user) {
 		super(mainFrame, user);
 		this.value = value;
@@ -55,12 +83,27 @@ public class SimulationSettings extends MainPanel {
 		this.assign();
 	}
 	
+	/**
+	 * Helper method returns a panel that contains the
+	 * components of the top or NORTH side of this main panel.
+	 * 
+	 * @return Populated panel.
+	 */
+	@Override
 	protected JPanel top(){
 		JPanel panel = new JPanel();
 		panel.add(new JLabel("Simulation Setup"));
 		return panel;
 	}
 	
+	/**
+	 * Helper method returns a panel that contains the
+	 * components of the middle or CENTER side of this main panel.
+	 * 
+	 * @return Populated panel.
+	 */
+	@SuppressWarnings("static-access")
+	@Override
 	protected JPanel middle(){
 		JPanel panel = new JPanel(new GridBagLayout());
 
@@ -128,6 +171,13 @@ public class SimulationSettings extends MainPanel {
 		return panel;
 	}
 	
+	/**
+	 * Helper method returns a panel that contains the
+	 * components of the bottom or SOUTH side of this main panel.
+	 * 
+	 * @return Populated panel.
+	 */
+	@Override
 	protected JPanel bottom(){
 		JPanel panel = new JPanel();
 		
@@ -137,6 +187,11 @@ public class SimulationSettings extends MainPanel {
 		return panel;
 	}
 	
+	/**
+	 * This method contains any action listeners for any components
+	 * in this class that might need one.
+	 */
+	@Override
 	protected void assign(){
 		
 		this.simulate.addActionListener(new ActionListener() {
@@ -167,6 +222,11 @@ public class SimulationSettings extends MainPanel {
 		});
 	}
 	
+	/**
+	 * The toString for this class.
+	 * 
+	 * @return: A string representation of this class.
+	 */
 	@Override
 	public String toString(){
 		return "Simulation";

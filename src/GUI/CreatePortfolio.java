@@ -5,19 +5,19 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-
 import Finance.Portfolio;
 import Finance.User;
 
 /**
+ * This page is responsible for creation of a Portfolio and adding it
+ * to the collection of portfolios that the current logged in user owns.
+ * 
  * @authors Sultan Mira, Hunter Caskey
  *
  */
@@ -28,7 +28,6 @@ public class CreatePortfolio extends MainPanel{
 	/****** Class Attributes ******/
 
 	private JTextField name;
-	private JComboBox<String> ports;
 	private JButton create;
 	
 	
@@ -36,8 +35,12 @@ public class CreatePortfolio extends MainPanel{
 	
 	
 	/**
-	 * @param mainFrame
-	 * @param user
+	 * Constructor of this class. Calls the constructor of the super
+	 * then it calls helper methods to initiate its components.
+	 * 
+	 * @param mainFrame: main frame instance to be passed and stored by the super.
+	 * @param user: the user to be stored in the parent class and used
+	 * 				to extract information to display/use.
 	 */
 	public CreatePortfolio(MainFrame mainFrame, User user) {
 		super(mainFrame, user);
@@ -48,6 +51,12 @@ public class CreatePortfolio extends MainPanel{
 		this.assign();
 	}
 
+	/**
+	 * Helper method returns a panel that contains the
+	 * components of the top or NORTH side of this main panel.
+	 * 
+	 * @return Populated panel.
+	 */
 	@Override
 	protected JPanel top() {
 		JPanel panel = new JPanel();
@@ -55,6 +64,13 @@ public class CreatePortfolio extends MainPanel{
 		return panel;
 	}
 
+	/**
+	 * Helper method returns a panel that contains the
+	 * components of the middle or CENTER side of this main panel.
+	 * 
+	 * @return Populated panel.
+	 */
+	@SuppressWarnings("static-access")
 	@Override
 	protected JPanel middle() {
 		JPanel panel = new JPanel();
@@ -73,6 +89,12 @@ public class CreatePortfolio extends MainPanel{
 		return panel;
 	}
 
+	/**
+	 * Helper method returns a panel that contains the
+	 * components of the bottom or SOUTH side of this main panel.
+	 * 
+	 * @return Populated panel.
+	 */
 	@Override
 	protected JPanel bottom() {
 		JPanel panel = new JPanel();
@@ -81,6 +103,10 @@ public class CreatePortfolio extends MainPanel{
 		return panel;
 	}
 
+	/**
+	 * This method contains any action listeners for any components
+	 * in this class that might need one.
+	 */
 	@Override
 	protected void assign() {
 		this.create.addActionListener(new ActionListener() {
@@ -107,6 +133,11 @@ public class CreatePortfolio extends MainPanel{
 		});
 	}
 	
+	/**
+	 * The toString for this class.
+	 * 
+	 * @return: A string representation of this class.
+	 */
 	@Override
 	public String toString(){
 		return "Create Portfolio";

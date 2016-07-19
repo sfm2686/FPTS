@@ -11,19 +11,28 @@ import Finance.User;
  */
 
 /**
+ * This JFrame class represents the login page. This class contains both
+ * the views and the controls that validate the user input for login.
+ * This class alsp creates popups with error messages for the user.
+ * 
  * @authors Sultan Mira, Hunter Caskey
  *
  */
+@SuppressWarnings("serial")
 public class Login extends JFrame {
 
+	/****** Class Attributes ******/
 	private JButton login, register;
 	private JTextField usernameF;
 	private JPasswordField passF;
 	private JLabel passL, usernameL, welcomeL;
-	
 	private final StringBuffer username, password;
+	
+	/****** Class Methods ******/
+	
 	/**
 	 * Create the frame.
+	 * This is the constructor of the login JFrame class.
 	 */
 	public Login() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -47,6 +56,12 @@ public class Login extends JFrame {
 		return panel;
 	}
 	
+	/**
+	 * Helper method returns a panel that contains the
+	 * components of the top or NORTH side of this main panel.
+	 * 
+	 * @return Populated panel.
+	 */
 	private JPanel middle(){
 		JPanel panel = new JPanel(new GridBagLayout());
 		GridBagConstraints gbc = new GridBagConstraints();
@@ -78,6 +93,12 @@ public class Login extends JFrame {
 		return panel;
 	}
 	
+	/**
+	 * Helper method returns a panel that contains the
+	 * components of the bottom or SOUTH side of this main panel.
+	 * 
+	 * @return Populated panel.
+	 */
 	private JPanel bottom(){
 		JPanel panel = new JPanel();
 		
@@ -89,8 +110,11 @@ public class Login extends JFrame {
 		return panel;
 	}
 	
+	/**
+	 * This method contains any action listeners for any components
+	 * in this class that might need one.
+	 */
 	private void assign(){
-
 		this.usernameF.addFocusListener(new FocusListener() {
 			
 			@Override

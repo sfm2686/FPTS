@@ -15,11 +15,22 @@ import DataInterface.DBInterface;
 import Finance.User;
 
 /**
+ * This JFrame represents the registration page that users can
+ * go to in order to make new accounts that are not in the system.
+ * This class contains both the views and the controls of the registration
+ * logic.
+ * 
  * @authors Sultan Mira, Hunter Caskey
  *
  */
 public class Registeration extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	/****** Class Attributes ******/
 	private JButton done, clear;
 	private JPasswordField pass1, pass2;
 	private JTextField usernameF;
@@ -27,6 +38,13 @@ public class Registeration extends JFrame {
 	
 	private final StringBuffer usernameV, passwordV1, passwordV2;
 	
+	/****** Class Methods ******/
+	
+	/**
+	 * Constructor for the Registration class.
+	 * Sets up all of the default settings for a JFrame such as
+	 * exit on close and size of the window.
+	 */
 	public Registeration() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(new Dimension(800, 800));
@@ -36,12 +54,32 @@ public class Registeration extends JFrame {
 		
 		this.setTitle("Registeration Page");
 		this.setLayout(new BorderLayout());
-		this.add(pan(), BorderLayout.CENTER);
+		
+		this.add(top(), BorderLayout.NORTH);
+		this.add(middle(), BorderLayout.CENTER);
 		this.add(bottom(), BorderLayout.SOUTH);
 		this.assign();
 	}
 
-	private JPanel pan(){
+	/**
+	 * Helper method returns a panel that contains the
+	 * components of the top or NORTH side of this main panel.
+	 * 
+	 * @return Populated panel.
+	 */
+	private JPanel top(){
+		JPanel panel = new JPanel();
+		panel.add(new JLabel("Registration"));
+		return panel;
+	}
+	
+	/**
+	 * Helper method returns a panel that contains the
+	 * components of the middle or CENTER side of this main panel.
+	 * 
+	 * @return Populated panel.
+	 */
+	private JPanel middle(){
 		JPanel panel = new JPanel(new GridBagLayout());
 
 		GridBagConstraints gbc = new GridBagConstraints();
@@ -86,6 +124,12 @@ public class Registeration extends JFrame {
 		return panel;
 	}
 	
+	/**
+	 * Helper method returns a panel that contains the
+	 * components of the bottom or SOUTH side of this main panel.
+	 * 
+	 * @return Populated panel.
+	 */
 	private JPanel bottom(){
 		JPanel panel = new JPanel();
 		this.done = new JButton("Register");
@@ -96,6 +140,10 @@ public class Registeration extends JFrame {
 		return panel;
 	}
 	
+	/**
+	 * This method contains any action listeners for any components
+	 * in this class that might need one.
+	 */
 	private void assign(){
 		
 		this.clear.addActionListener(new ActionListener() {
@@ -187,7 +235,7 @@ public class Registeration extends JFrame {
 	}
 
 	/**
-	 * Launch the application.
+	 * Testing purposes.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -201,9 +249,4 @@ public class Registeration extends JFrame {
 			}
 		});
 	}
-
-	/**
-	 * Create the frame.
-	 */
-
 }

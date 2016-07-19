@@ -1,43 +1,42 @@
 package GUI;
 
 import javax.swing.*;
-
-import DataInterface.DBInterface;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.Collections;
-
 import WatchList.*;
 import WatchList.WatchListItem.State;
-import Finance.Equity;
-import Finance.Index;
-import Finance.Stock;
 import Finance.User;
-import Market.Market;
-import Transaction.Invoker;
-import TransactionStorage.UndoRedo;
 
 /**
+ * This class represents the views and the controls of managing a watch list
+ * item for the user to configure. The options that the user has are:
+ * current watch list item, edit current watch list item, and reset state 
+ * of the current watch list item back to normal.
+ * 
  * @authors Sultan Mira, Hunter Caskey
  *
  */
+@SuppressWarnings("serial")
 public class ManageWLItem extends MainPanel {
 
+	/****** Class Attributes ******/
 	private WatchListItem item;
 	private JButton remove, resetState, edit;
 	private JTextField highB, lowB;
 	
 	
 	/**
-	 * Create the panel.
+	 * Constructor of this class. Calls the constructor of the super
+	 * then it calls helper methods to initiate its components.
+	 * 
+	 * @param mainFrame: main frame instance to be passed and stored by the super.
+	 * @param user: the user to be stored in the parent class and used
+	 * 				to extract information to display/use.
 	 */
 	public ManageWLItem(MainFrame mainFrame, User user, WatchListItem item) {
 		super(mainFrame, user);
 		this.item = item;
-
 		
 		this.add(this.top(), BorderLayout.NORTH);
 		this.add(this.middle(), BorderLayout.CENTER);
@@ -52,6 +51,12 @@ public class ManageWLItem extends MainPanel {
 		return panel;
 	}
 
+	/**
+	 * Helper method returns a panel that contains the
+	 * components of the top or NORTH side of this main panel.
+	 * 
+	 * @return Populated panel.
+	 */
 	@Override
 	protected JPanel middle() {
 		JPanel panel = new JPanel();
@@ -63,6 +68,13 @@ public class ManageWLItem extends MainPanel {
 		return panel;
 	}
 	
+	/**
+	 * This is a private helper method for the middle() method.
+	 * This method does the edit part of the manage watch list item panel.
+	 * @return JPanel: A JPanel containing all of the components needed for 
+	 * 				   editing a watch list item.
+	 */
+	@SuppressWarnings("static-access")
 	private JPanel editPanel(){
 		JPanel panel = new JPanel();
 		
@@ -93,6 +105,13 @@ public class ManageWLItem extends MainPanel {
 		return panel;
 	}
 	
+	/**
+	 * This is a private helper method for the middle() method.
+	 * This method does the information part of the manage watch list item panel.
+	 * @return JPanel: A JPanel containing all of the components needed for 
+	 * 				   displaying a watch list item.
+	 */
+	@SuppressWarnings("static-access")
 	private JPanel InfoPanel(){
 		JPanel panel = new JPanel();
 		panel.setLayout(new GridLayout());
@@ -144,6 +163,12 @@ public class ManageWLItem extends MainPanel {
 		return panel;		
 	}
 
+	/**
+	 * Helper method returns a panel that contains the
+	 * components of the bottom or SOUTH side of this main panel.
+	 * 
+	 * @return Populated panel.
+	 */
 	@Override
 	protected JPanel bottom() {
 		JPanel panel = new JPanel();
@@ -157,6 +182,10 @@ public class ManageWLItem extends MainPanel {
 		return panel;
 	}
 	
+	/**
+	 * This method contains any action listeners for any components
+	 * in this class that might need one.
+	 */
 	@Override
 	protected void assign() {
 		this.edit.addActionListener(new ActionListener() {
