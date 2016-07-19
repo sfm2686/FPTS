@@ -23,18 +23,13 @@ import Finance.User;
  * @authors Sultan Mira, Hunter Caskey
  *
  */
+@SuppressWarnings("serial")
 public class Registeration extends JFrame {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	
 	/****** Class Attributes ******/
 	private JButton done, clear;
 	private JPasswordField pass1, pass2;
 	private JTextField usernameF;
-	private JLabel usernameL, passL1, passL2;
 	
 	private final StringBuffer usernameV, passwordV1, passwordV2;
 	
@@ -86,17 +81,14 @@ public class Registeration extends JFrame {
 		
 		gbc.gridx = 0;
 		gbc.gridy = 0;
-		this.usernameL = new JLabel("Username ");
 		this.usernameF = new JTextField();
 		this.usernameF.setPreferredSize(new Dimension(200, 20));
 		this.pass1 = new JPasswordField();
 		this.pass1.setPreferredSize(new Dimension(200, 20));
 		this.pass2 = new JPasswordField();
 		this.pass2.setPreferredSize(new Dimension(200, 20));
-		this.passL1 = new JLabel("Password ");
-		this.passL2 = new JLabel("Confirm Password ");
 		
-		panel.add(this.usernameL, gbc);
+		panel.add(new JLabel("Username "), gbc);
 		gbc.gridx ++;
 		panel.add(this.usernameF, gbc);
 		
@@ -106,7 +98,7 @@ public class Registeration extends JFrame {
 		panel.add(new JLabel(" "), gbc);
 		gbc.gridy ++;
 		
-		panel.add(this.passL1, gbc);
+		panel.add(new JLabel("Password "), gbc);
 		gbc.gridx ++;
 		panel.add(this.pass1, gbc);
 		
@@ -116,7 +108,7 @@ public class Registeration extends JFrame {
 		panel.add(new JLabel(" "), gbc);
 		gbc.gridy ++;
 		
-		panel.add(this.passL2, gbc);
+		panel.add(new JLabel("Confirm Password "), gbc);
 		gbc.gridx ++;
 		panel.add(this.pass2, gbc);
 

@@ -43,6 +43,10 @@ public class MainFrame extends JFrame {
 	 * 					 of the main frame.
 	 */
 	public MainFrame(User user, JPanel mainPanel) {
+		reinit(user, mainPanel);
+	}
+	
+	private void reinit(User user, JPanel mainPanel){
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(new Dimension(1100, 850));
 		this.setTitle("Main View");
@@ -57,9 +61,6 @@ public class MainFrame extends JFrame {
 		this.watchListPanel = new WatchListGUI(this, this.user);
 		this.add(this.watchListPanel, BorderLayout.EAST);
 		this.assign();
-		
-		//TODO
-		//PORMPT USER FOR TIME INTERVAL FOR UPDATING STOCKS
 	}
 	
 	/**
@@ -119,9 +120,10 @@ public class MainFrame extends JFrame {
 	 * @param panel: The new main panel to replace the old one in the refresh.
 	 */
 	public void refresh(JPanel panel){
+		this.setVisible(false);
+		this.dispose();
 		MainFrame main = new MainFrame(this.user, panel);
 		main.setVisible(true);
-		this.dispose();
 	}
 	
 	/**
@@ -159,11 +161,11 @@ public class MainFrame extends JFrame {
 					stack.clean(user.getLog());
 					
 					DBInterface.saveUserData(user);
-					//TODO
 					// CLOSE USER SESSION
 					user = null;
 					Login login = new Login();
-					dispose();
+					MainFrame.this.setVisible(false);
+					MainFrame.this.dispose();
 					login.setVisible(true);
 				}
 				else

@@ -18,7 +18,7 @@ public class Market extends Observable {
 	/****** Class Attributes ******/
 	private final int nameIndex = 0;
 	private final int priceIndex = 1;
-	private int updateInterval = 02; // Default to updating the thread every two seconds
+	private int updateInterval = 60; // Default to updating the thread every 60 seconds
 	/* The key of the HashMap is the ticker symbol. Value by index: 0. name 1. price 2..n indices.*/
 	private static HashMap<String, ArrayList<String>> stocks;
 	/* The key of the HashMap is the name of the Index. Value by index: 0..n Stocks in that index. */
