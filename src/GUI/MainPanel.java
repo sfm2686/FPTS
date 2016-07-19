@@ -1,23 +1,17 @@
-/**
- * 
- */
 package GUI;
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-
+import java.awt.*;
+import javax.swing.*;
 import Finance.User;
-import Finance.Portfolio;
-
 
 /**
+ * MainPanel serves as template for the GUI for this application. It provides 
+ * information that should be common to all subclasses, and it enforces a few methods
+ * so that the GUI has a uniform look and feel.
+ * 
  * @authors Sultan Mira, Hunter Caskey
- *
  */
+@SuppressWarnings("serial")
 abstract class MainPanel extends JPanel{
 
 	protected final Dimension TEXTD = new Dimension(120, 20);

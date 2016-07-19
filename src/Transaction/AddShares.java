@@ -58,7 +58,12 @@ public class AddShares extends Command implements Serializable, UndoableRedoable
 		// Otherwise create an appropriate equity using Market
 		else{
 			if(Market.getMarketInstance().isIndex(this.equityName))
-				equity = new Index(this.numShares, this.equityName);
+				if(equityName.equals("DOW")){
+					equity = Market.getMarketInstance().getDow(this.numShares);
+				}
+				else{
+					equity = new Index(this.numShares, this.equityName);
+				}
 			else if(Market.getMarketInstance().isStock(this.equityName))
 				equity = new Stock(this.numShares, this.equityName);
 			if(equity != null){

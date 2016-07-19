@@ -237,14 +237,30 @@ public class Market extends Observable {
 	}
 	
 	/**
+	 * getDow handles the issues of creating an instance of the DJIA separately.
+	 * 
+	 * @param shares The number of shares to have for the DJIA.
+	 * @return An instance of DJIA.
+	 */
+	public DJIA getDow(int shares){
+		DJIA dow = new DJIA(shares);
+		for(String value : Market.getIndices().get("DOW")){
+			Stock stock = new Stock(0, value);
+			dow.addChild(stock);
+		}
+		return(dow);
+	}
+	
+	/**
 	 * Accessor for the price of the given stock.
 	 * 
 	 * @param ticker The identifying string of the stock to get the price of.
 	 * @return The price of the passed ticker symbol's corresponding stock.
 	 */
 	public double getPrice(String ticker){
-		if(Market.getStocks().containsKey(ticker))
+		if(Market.getStocks().containsKey(ticker)){
 			return Double.parseDouble(Market.getStocks().get(ticker).get(priceIndex));
+		}
 		return 0.0;
 	}
 	
@@ -257,7 +273,10 @@ public class Market extends Observable {
 	public double getIndexPrice(String name){
 		if ( !Market.getIndices().containsKey(name) )
 			return 0.0;
-		
+		if(name.equals("DOW")){
+			Index dow = getDow(0);
+			return (dow.getPrice());
+		}
 		double sum = 0;
 		for ( String key : Market.getIndices().get(name) ) {
 			sum += Double.parseDouble(Market.getStocks().get(key).get(priceIndex));

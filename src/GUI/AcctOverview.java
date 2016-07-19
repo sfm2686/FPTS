@@ -8,7 +8,6 @@ import javax.swing.*;
 
 import Transaction.*;
 
-import Finance.CashAcct;
 import Finance.Portfolio;
 import Finance.User;
 
